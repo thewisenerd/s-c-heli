@@ -1,0 +1,119 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    05/Sep/2007  13:11:57 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\kalman\readline.c          #
+#    Command line    =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\kalman\readline.c -lC      #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\RAM_Debug\List\ --remarks -o                       #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\RAM_Debug\Obj\ -z9 --debug --cpu_mode thumb        #
+#                       --endian little --cpu ARM7TDMI --stack_align 4       #
+#                       --interwork -e --fpu None --dlib_config "C:\Program  #
+#                       Files\IAR Systems\Embedded Workbench 4.0             #
+#                       Evaluation\ARM\LIB\dl4tptinl8f.h" -I                 #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\srcIAR\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR #
+#                       \AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-US #
+#                       ART_USB\Compil\..\src\ -I                            #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR\ #
+#                       AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USA #
+#                       RT_USB\Compil\..\..\kalman\ -I "C:\Program           #
+#                       Files\IAR Systems\Embedded Workbench 4.0             #
+#                       Evaluation\ARM\INC\"                                 #
+#    List file       =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\RAM_Debug\List\readline.lst                        #
+#    Object file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\RAM_Debug\Obj\readline.r79                         #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\kalman\readline.c
+      1          #include<includs.h>
+      2          
+
+   \                                 In segment CODE, align 4, keep-with-next
+      3          char *index(char *line,char character)
+      4          {
+      5            unsigned char i;
+      6            for (i=0;i<255;i++)
+   \                     index:
+   \   00000000   0022               MOV         R2,#+0
+      7                if(line[i]==character)return &line[++i];
+   \                     ??index_0:
+   \   00000002   835C               LDRB        R3,[R0, R2]
+   \   00000004   8B42               CMP         R3,R1
+   \   00000006   04D1               BNE         ??index_1
+   \   00000008   521C               ADD         R2,R2,#+1
+   \   0000000A   1206               LSL         R2,R2,#+24
+   \   0000000C   120E               LSR         R2,R2,#+24
+   \   0000000E   8018               ADD         R0,R0,R2
+   \   00000010   05E0               B           ??index_2
+   \                     ??index_1:
+   \   00000012   521C               ADD         R2,R2,#+1
+   \   00000014   1306               LSL         R3,R2,#+24
+   \   00000016   1B0E               LSR         R3,R3,#+24
+   \   00000018   FF2B               CMP         R3,#+255
+   \   0000001A   F2D1               BNE         ??index_0
+      8            return 0;
+   \   0000001C   0020               MOV         R0,#+0
+   \                     ??index_2:
+   \   0000001E   00B0               ADD         SP,#+0
+   \   00000020   7047               BX          LR                 ;; return
+      9          }
+     10          
+     11          
+     12          static inline unsigned char nmea_split( char *line,int *values,unsigned char max_values)
+                                             ^
+Warning[Pe177]: function "nmea_split" was declared but never referenced
+     13          {
+     14          	unsigned char	i;
+     15          	line = index( line, ',' );
+     16          	if( !line )return 0;
+     17          	for( i=0 ; i<max_values ; i++ )
+     18          	{
+     19          		char *			end_ptr;
+     20          		values[i] = strtol( line+1, &end_ptr, 16 );
+     21          		line = end_ptr;
+     22          		if( ! *line )	break;
+     23          	}
+     24          	return i+1;
+     25          }
+     26          
+     27          
+
+   Maximum stack usage in bytes:
+
+     Function CSTACK
+     -------- ------
+     index        4
+
+
+   Segment part sizes:
+
+     Function/Label Bytes
+     -------------- -----
+     index            34
+      Others           8
+
+ 
+ 42 bytes in segment CODE
+ 
+ 34 bytes of CODE memory (+ 8 bytes shared)
+
+Errors: none
+Warnings: 1

@@ -1,0 +1,258 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    01/Mar/2008  10:19:31 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\srcIAR\Cstartup_SAM7.c                             #
+#    Command line    =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\srcIAR\Cstartup_SAM7.c -lC                         #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\List\ -o F:\airplane\arm\atmel\AT91SAM7SE51 #
+#                       2_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7 #
+#                       SE-USART_USB\Compil\Binary\Obj\ -z9 --debug          #
+#                       --cpu_mode thumb --endian little --cpu ARM7TDMI      #
+#                       --stack_align 4 --interwork -e --fpu None            #
+#                       --dlib_config "C:\Program Files\IAR                  #
+#                       Systems\Embedded Workbench 4.0                       #
+#                       Evaluation\ARM\LIB\dl4tptinl8n.h" -I                 #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\srcIAR\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR #
+#                       \AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-US #
+#                       ART_USB\Compil\..\src\ -I                            #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR\ #
+#                       AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USA #
+#                       RT_USB\Compil\..\..\kalman\ -I                       #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\pcm\ -I F:\airplane\arm\atmel\AT91SAM7SE512_ #
+#                       IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\spi\ -I "C:\Program          #
+#                       Files\IAR Systems\Embedded Workbench 4.0             #
+#                       Evaluation\ARM\INC\"                                 #
+#    List file       =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\List\Cstartup_SAM7.lst                      #
+#    Object file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\Obj\Cstartup_SAM7.r79                       #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compil\srcIAR\Cstartup_SAM7.c
+      1          //-----------------------------------------------------------------------------
+      2          //         ATMEL Microcontroller Software Support  -  ROUSSET  -
+      3          //-----------------------------------------------------------------------------
+      4          // DISCLAIMER:  THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR
+      5          // IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+      6          // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+      7          // DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR ANY DIRECT, INDIRECT,
+      8          // INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+      9          // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+     10          // OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+     11          // LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+     12          // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+     13          // EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+     14          //-----------------------------------------------------------------------------
+     15          // File Name           : Cstartup_SAM7.c
+     16          // Object              : Low level initialisations written in C for Tools
+     17          //                       For AT91SAM7SE512 with 2 flash plane
+     18          // Creation            : JPP  09-May-2006
+     19          //-----------------------------------------------------------------------------
+     20          
+     21          #include "project.h"
+     22          
+     23          
+     24          //  The following functions must be write in ARM mode this function called
+     25          // directly by exception vector
+     26          extern void AT91F_Spurious_handler(void);
+     27          extern void AT91F_Default_IRQ_handler(void);
+     28          extern void AT91F_Default_FIQ_handler(void);
+     29          
+     30          //*----------------------------------------------------------------------------
+     31          //* \fn    AT91F_LowLevelInit
+     32          //* \brief This function performs very low level HW initialization
+     33          //*        this function can use a Stack, depending the compilation
+     34          //*        optimization mode
+     35          //*----------------------------------------------------------------------------
+
+   \                                 In segment CODE, align 4, keep-with-next
+     36          void AT91F_LowLevelInit(void)
+     37          {
+   \                     AT91F_LowLevelInit:
+   \   00000000   10B5               PUSH        {R4,LR}
+     38              unsigned char i;
+     39              ///////////////////////////////////////////////////////////////////////////
+     40              // EFC Init
+     41              ///////////////////////////////////////////////////////////////////////////
+     42              AT91C_BASE_MC->MC0_FMR = AT91C_MC_FWS_2FWS;// 2 Wait State to work at 48MHz
+   \   00000002   8020               MOV         R0,#+128
+   \   00000004   8000               LSL         R0,R0,#+2          ;; #+512
+   \   00000006   9F21               MOV         R1,#+159
+   \   00000008   C943               MVN         R1,R1              ;; #-160
+   \   0000000A   0860               STR         R0,[R1, #+0]
+     43              AT91C_BASE_MC->MC1_FMR = AT91C_MC_FWS_2FWS;// 2 Wait State to work at 48MHz
+   \   0000000C   8F21               MOV         R1,#+143
+   \   0000000E   C943               MVN         R1,R1              ;; #-144
+   \   00000010   0860               STR         R0,[R1, #+0]
+     44          
+     45              ///////////////////////////////////////////////////////////////////////////
+     46              // Init PMC Step 1. Enable Main Oscillator
+     47              // Main Oscillator startup time is board specific:
+     48              // Main Oscillator Startup Time worst case (3MHz) corresponds to 15ms
+     49              // (0x40 for AT91C_CKGR_OSCOUNT field)
+     50              ///////////////////////////////////////////////////////////////////////////
+     51              AT91C_BASE_PMC->PMC_MOR = (( AT91C_CKGR_OSCOUNT & (0x40 <<8) | AT91C_CKGR_MOSCEN ));
+   \   00000012   1A48               LDR         R0,??AT91F_LowLevelInit_0  ;; 0xfffffc20
+   \   00000014   1A49               LDR         R1,??AT91F_LowLevelInit_0+0x4  ;; 0x4001
+   \   00000016   0160               STR         R1,[R0, #+0]
+   \   00000018   1A48               LDR         R0,??AT91F_LowLevelInit_0+0x8  ;; 0xfffffc68
+     52              // Wait Main Oscillator stabilization
+     53              while(!(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_MOSCS));
+   \                     ??AT91F_LowLevelInit_1:
+   \   0000001A   0168               LDR         R1,[R0, #+0]
+   \   0000001C   C907               LSL         R1,R1,#+31
+   \   0000001E   FCD5               BPL         ??AT91F_LowLevelInit_1
+     54          
+     55              ///////////////////////////////////////////////////////////////////////////
+     56              // Init PMC Step 2.
+     57              // Set PLL to 96MHz (96,109MHz) and UDP Clock to 48MHz
+     58              // PLL Startup time depends on PLL RC filter: worst case is choosen
+     59              // UDP Clock (48,058MHz) is compliant with the Universal Serial Bus
+     60              // Specification (+/- 0.25% for full speed)
+     61              ///////////////////////////////////////////////////////////////////////////
+     62              AT91C_BASE_PMC->PMC_PLLR = AT91C_CKGR_USBDIV_1           |
+     63                                         AT91C_CKGR_OUT_0              |
+     64                                         (16 << 8)                     |
+     65                                         (AT91C_CKGR_MUL & (72 << 16)) |
+     66                                         (AT91C_CKGR_DIV & 14);
+   \   00000020   1949               LDR         R1,??AT91F_LowLevelInit_0+0xC  ;; 0xfffffc2c
+   \   00000022   1A4A               LDR         R2,??AT91F_LowLevelInit_0+0x10  ;; 0x1048100e
+   \   00000024   0A60               STR         R2,[R1, #+0]
+     67              // Wait for PLL stabilization
+     68              while( !(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_LOCK) );
+   \                     ??AT91F_LowLevelInit_2:
+   \   00000026   0168               LDR         R1,[R0, #+0]
+   \   00000028   4907               LSL         R1,R1,#+29
+   \   0000002A   FCD5               BPL         ??AT91F_LowLevelInit_2
+     69              // Wait until the master clock is established for the case we already
+     70              // turn on the PLL
+     71              while( !(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_MCKRDY) );
+   \                     ??AT91F_LowLevelInit_3:
+   \   0000002C   0821               MOV         R1,#+8
+   \   0000002E   0268               LDR         R2,[R0, #+0]
+   \   00000030   0A42               TST         R2,R1
+   \   00000032   FBD0               BEQ         ??AT91F_LowLevelInit_3
+     72          
+     73              ///////////////////////////////////////////////////////////////////////////
+     74              // Init PMC Step 3.
+     75              // Selection of Master Clock MCK equal to (Processor Clock PCK) PLL/2=48MHz
+     76              // The PMC_MCKR register must not be programmed in a single write operation
+     77              // (see. Product Errata Sheet)
+     78              ///////////////////////////////////////////////////////////////////////////
+     79              AT91C_BASE_PMC->PMC_MCKR = AT91C_PMC_PRES_CLK_2;
+   \   00000034   164A               LDR         R2,??AT91F_LowLevelInit_0+0x14  ;; 0xfffffc30
+   \   00000036   0423               MOV         R3,#+4
+   \   00000038   1360               STR         R3,[R2, #+0]
+     80              // Wait until the master clock is established
+     81              while( !(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_MCKRDY) );
+   \                     ??AT91F_LowLevelInit_4:
+   \   0000003A   0368               LDR         R3,[R0, #+0]
+   \   0000003C   0B42               TST         R3,R1
+   \   0000003E   FCD0               BEQ         ??AT91F_LowLevelInit_4
+     82          
+     83              AT91C_BASE_PMC->PMC_MCKR |= AT91C_PMC_CSS_PLL_CLK;
+   \   00000040   1368               LDR         R3,[R2, #+0]
+   \   00000042   0324               MOV         R4,#+3
+   \   00000044   1C43               ORR         R4,R3
+   \   00000046   1460               STR         R4,[R2, #+0]
+     84              // Wait until the master clock is established
+     85              while( !(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_MCKRDY) );
+   \                     ??AT91F_LowLevelInit_5:
+   \   00000048   0268               LDR         R2,[R0, #+0]
+   \   0000004A   0A42               TST         R2,R1
+   \   0000004C   FCD0               BEQ         ??AT91F_LowLevelInit_5
+     86          
+     87              ///////////////////////////////////////////////////////////////////////////
+     88              //  Disable Watchdog (write once register)
+     89              ///////////////////////////////////////////////////////////////////////////
+     90              AT91C_BASE_WDTC->WDTC_WDMR = AT91C_WDTC_WDDIS;
+   \   0000004E   1148               LDR         R0,??AT91F_LowLevelInit_0+0x18  ;; 0xfffffd44
+   \   00000050   0903               LSL         R1,R1,#+12
+   \   00000052   0160               STR         R1,[R0, #+0]
+     91          
+     92              ///////////////////////////////////////////////////////////////////////////
+     93              //  Init AIC: assign corresponding handler for each interrupt source
+     94              ///////////////////////////////////////////////////////////////////////////
+     95              AT91C_BASE_AIC->AIC_SVR[0] = (int) AT91F_Default_FIQ_handler ;
+   \   00000054   1048               LDR         R0,??AT91F_LowLevelInit_0+0x1C  ;; 0xfffff080
+   \   00000056   1149               LDR         R1,??AT91F_LowLevelInit_0+0x20  ;; AT91F_Default_FIQ_handler
+   \   00000058   0160               STR         R1,[R0, #+0]
+     96              for (i = 1; i < 31; i++) {
+   \   0000005A   0120               MOV         R0,#+1
+   \   0000005C   0E4A               LDR         R2,??AT91F_LowLevelInit_0+0x1C  ;; 0xfffff080
+   \   0000005E   104B               LDR         R3,??AT91F_LowLevelInit_0+0x24  ;; AT91F_Default_IRQ_handler
+     97                  AT91C_BASE_AIC->AIC_SVR[i] = (int) AT91F_Default_IRQ_handler ;
+   \                     ??AT91F_LowLevelInit_6:
+   \   00000060   8100               LSL         R1,R0,#+2
+   \   00000062   5350               STR         R3,[R2, R1]
+     98              }
+   \   00000064   401C               ADD         R0,R0,#+1
+   \   00000066   0106               LSL         R1,R0,#+24
+   \   00000068   090E               LSR         R1,R1,#+24
+   \   0000006A   1F29               CMP         R1,#+31
+   \   0000006C   F8D3               BCC         ??AT91F_LowLevelInit_6
+     99              AT91C_BASE_AIC->AIC_SPU = (unsigned int) AT91F_Spurious_handler;
+   \   0000006E   0D48               LDR         R0,??AT91F_LowLevelInit_0+0x28  ;; 0xfffff134
+   \   00000070   0D49               LDR         R1,??AT91F_LowLevelInit_0+0x2C  ;; AT91F_Spurious_handler
+   \   00000072   0160               STR         R1,[R0, #+0]
+    100          }
+   \   00000074   10BC               POP         {R4}
+   \   00000076   01BC               POP         {R0}
+   \   00000078   0047               BX          R0                 ;; return
+   \   0000007A   C046               NOP         
+   \                     ??AT91F_LowLevelInit_0:
+   \   0000007C   20FCFFFF           DC32        0xfffffc20
+   \   00000080   01400000           DC32        0x4001
+   \   00000084   68FCFFFF           DC32        0xfffffc68
+   \   00000088   2CFCFFFF           DC32        0xfffffc2c
+   \   0000008C   0E104810           DC32        0x1048100e
+   \   00000090   30FCFFFF           DC32        0xfffffc30
+   \   00000094   44FDFFFF           DC32        0xfffffd44
+   \   00000098   80F0FFFF           DC32        0xfffff080
+   \   0000009C   ........           DC32        AT91F_Default_FIQ_handler
+   \   000000A0   ........           DC32        AT91F_Default_IRQ_handler
+   \   000000A4   34F1FFFF           DC32        0xfffff134
+   \   000000A8   ........           DC32        AT91F_Spurious_handler
+
+   Maximum stack usage in bytes:
+
+     Function           CSTACK
+     --------           ------
+     AT91F_LowLevelInit     8
+
+
+   Segment part sizes:
+
+     Function/Label     Bytes
+     --------------     -----
+     AT91F_LowLevelInit  172
+      Others               8
+
+ 
+ 180 bytes in segment CODE
+ 
+ 172 bytes of CODE memory (+ 8 bytes shared)
+
+Errors: none
+Warnings: none

@@ -1,0 +1,194 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    01/Mar/2008  10:19:34 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\src\m #
+#                       ain.c                                                #
+#    Command line    =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\src\m #
+#                       ain.c -lC F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT #
+#                       91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART #
+#                       _USB\Compil\Binary\List\ -o                          #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\Obj\ -z9 --debug --cpu_mode thumb --endian  #
+#                       little --cpu ARM7TDMI --stack_align 4 --interwork    #
+#                       -e --fpu None --dlib_config "C:\Program Files\IAR    #
+#                       Systems\Embedded Workbench 4.0                       #
+#                       Evaluation\ARM\LIB\dl4tptinl8n.h" -I                 #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\srcIAR\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR #
+#                       \AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-US #
+#                       ART_USB\Compil\..\src\ -I                            #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR\ #
+#                       AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USA #
+#                       RT_USB\Compil\..\..\kalman\ -I                       #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\pcm\ -I F:\airplane\arm\atmel\AT91SAM7SE512_ #
+#                       IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\spi\ -I "C:\Program          #
+#                       Files\IAR Systems\Embedded Workbench 4.0             #
+#                       Evaluation\ARM\INC\"                                 #
+#    List file       =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\List\main.lst                               #
+#    Object file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\Obj\main.r79                                #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\src\main.c
+      1          //*--------------------------------------------------------------------------------------
+      2          //*      ATMEL Microcontroller Software Support  -  ROUSSET  -
+      3          //*--------------------------------------------------------------------------------------
+      4          //* The software is delivered "AS IS" without warranty or condition of any
+      5          //* kind, either express, implied or statutory. This includes without
+      6          //* limitation any warranty or condition with respect to merchantability or
+      7          //* fitness for any particular purpose, or against the infringements of
+      8          //* intellectual property rights of others.
+      9          //*--------------------------------------------------------------------------------------
+     10          //* File Name           : main file
+     11          //* Object              :
+     12          //* Translator          :
+     13          //* 1.0 02/Mar/05 JPP	: Creation
+     14          //*--------------------------------------------------------------------------------------
+     15          
+     16          #include <includs.h>
+     17          
+     18          #define MSG_SIZE 				1000
+     19          
+     20          //* external function
+     21          
+     22          extern void Usart_init ( void );
+     23          extern void AT91F_US_Put( char *buffer); // \arg pointer to a string ending by \0
+     24          extern void Trace_Toggel_LED( unsigned int led) ;
+     25          extern void ClearTerminal(void);
+     26          extern void ClearTerminal_DBUG(void);
+     27          extern void AT91F_DBGU_Init(void);
+     28          extern void AT91F_DBGU_Put(char *buffer);
+     29          
+
+   \                                 In segment DATA_Z, align 4, align-sorted
+     30          unsigned int    command[2];
+   \                     command:
+   \   00000000                      DS8 8
+     31          //*--------------------------------------------------------------------------------------
+     32          //* Function Name       : main
+     33          //* Object              :
+     34          //*--------------------------------------------------------------------------------------
+
+   \                                 In segment CODE, align 4, keep-with-next
+     35          int main ( void )
+     36          {
+   \                     main:
+   \   00000000   10B5               PUSH        {R4,LR}
+     37          	char *data;
+     38                 
+     39          	//unsigned int length;
+     40               // Enable User Reset and set its minimal assertion to 960 us
+     41               AT91C_BASE_RSTC->RSTC_RMR = AT91C_RSTC_URSTEN | (0x4<<8) | (unsigned int)(0xA5<<24);
+   \   00000002   0B48               LDR         R0,??main_0        ;; 0xfffffd08
+   \   00000004   0B49               LDR         R1,??main_0+0x4    ;; 0xa5000401
+   \   00000006   0160               STR         R1,[R0, #+0]
+     42             // Led init
+     43             // First, enable the clock of the PIOB
+     44              // AT91F_SpiInit();
+     45                    
+     46             //  AT91F_PMC_EnablePeriphClock ( AT91C_BASE_PMC, 1 << AT91C_ID_SPI ) ;
+     47             //* to be outputs. No need to set these pins to be driven by the PIO because it is GPIO pins only.
+     48             //  AT91F_PIO_CfgOutput( AT91C_BASE_PIOA, AT91B_LED_MASK ) ;
+     49             //* Clear the LED's.
+     50            //  AT91F_PIO_SetOutput( AT91C_BASE_PIOA, AT91B_LED_MASK ) ;
+     51             //* Set led 1e LED's.
+     52             //AT91F_PIO_ClearOutput( AT91C_BASE_PIOA, AT91B_LED1 ) ;
+     53          
+     54           
+     55              // Set Usart in interrupt
+     56              init_translator();
+   \   00000008   ........           _BLF        init_translator,??init_translator??rT
+     57              Usart_init();
+   \   0000000C   ........           _BLF        Usart_init,??Usart_init??rT
+     58              Usart1_init(); 
+   \   00000010   ........           _BLF        Usart1_init,??Usart1_init??rT
+     59              AT91F_DBGU_Init();
+   \   00000014   ........           _BLF        AT91F_DBGU_Init,??AT91F_DBGU_Init??rT
+     60             //* Set led all LED's.
+     61             // AT91F_PIO_ClearOutput( AT91C_BASE_PIOA, AT91B_LED_MASK ) ;
+     62               data="hurenxu\r\n";
+   \   00000018   074C               LDR         R4,??main_0+0x8    ;; `?<Constant "hurenxu\\r\\n">`
+     63             while (1)
+     64             {      
+     65          	  //CDCLKSET;
+     66                    data="hurenxu\r\n";
+     67                    AT91F_US_Put(data);
+   \                     ??main_1:
+   \   0000001A   201C               MOV         R0,R4
+   \   0000001C   ........           _BLF        AT91F_US_Put,??AT91F_US_Put??rT
+     68                    AT91F_DBGU_Put(data);
+   \   00000020   201C               MOV         R0,R4
+   \   00000022   ........           _BLF        AT91F_DBGU_Put,??AT91F_DBGU_Put??rT
+     69                    AT91F_US1_Put(data);
+   \   00000026   201C               MOV         R0,R4
+   \   00000028   ........           _BLF        AT91F_US1_Put,??AT91F_US1_Put??rT
+   \   0000002C   F5E7               B           ??main_1
+   \   0000002E   C046               NOP         
+   \                     ??main_0:
+   \   00000030   08FDFFFF           DC32        0xfffffd08
+   \   00000034   010400A5           DC32        0xa5000401
+   \   00000038   ........           DC32        `?<Constant "hurenxu\\r\\n">`
+     70                  //  CDCLKRESET;
+     71             }
+     72                // kalman_task();  
+     73                  return 1;
+                         ^
+Warning[Pe111]: statement is unreachable
+     74          }
+
+   \                                 In segment DATA_C, align 4, align-sorted
+   \                     `?<Constant "hurenxu\\r\\n">`:
+   \   00000000   687572656E78       DC8 "hurenxu\015\012"
+   \              750D0A00    
+   \   0000000A   0000               DC8 0, 0
+     75          
+     76          
+     77          
+
+   Maximum stack usage in bytes:
+
+     Function CSTACK
+     -------- ------
+     main         8
+
+
+   Segment part sizes:
+
+     Function/Label            Bytes
+     --------------            -----
+     command                      8
+     main                        60
+     ?<Constant "hurenxu\r\n">   12
+      Others                     76
+
+ 
+ 124 bytes in segment CODE
+  12 bytes in segment DATA_C
+   8 bytes in segment DATA_Z
+  12 bytes in segment INITTAB
+ 
+ 60 bytes of CODE  memory (+ 76 bytes shared)
+ 12 bytes of CONST memory
+  8 bytes of DATA  memory
+
+Errors: none
+Warnings: 1

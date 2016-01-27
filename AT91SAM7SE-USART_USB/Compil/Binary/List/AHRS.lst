@@ -1,0 +1,1888 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    01/Mar/2008  10:19:32 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\kalman\AHRS.c              #
+#    Command line    =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\kalman\AHRS.c -lC          #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\List\ -o F:\airplane\arm\atmel\AT91SAM7SE51 #
+#                       2_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7 #
+#                       SE-USART_USB\Compil\Binary\Obj\ -z9 --debug          #
+#                       --cpu_mode thumb --endian little --cpu ARM7TDMI      #
+#                       --stack_align 4 --interwork -e --fpu None            #
+#                       --dlib_config "C:\Program Files\IAR                  #
+#                       Systems\Embedded Workbench 4.0                       #
+#                       Evaluation\ARM\LIB\dl4tptinl8n.h" -I                 #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\srcIAR\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR #
+#                       \AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-US #
+#                       ART_USB\Compil\..\src\ -I                            #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR\ #
+#                       AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USA #
+#                       RT_USB\Compil\..\..\kalman\ -I                       #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\pcm\ -I F:\airplane\arm\atmel\AT91SAM7SE512_ #
+#                       IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\spi\ -I "C:\Program          #
+#                       Files\IAR Systems\Embedded Workbench 4.0             #
+#                       Evaluation\ARM\INC\"                                 #
+#    List file       =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\List\AHRS.lst                               #
+#    Object file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\Obj\AHRS.r79                                #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\kalman\AHRS.c
+      1          #include<includs.h>
+      2          
+      3          
+      4          float Quat[4];
+      5          float DCM[3][3];
+      6          float bias[3];
+      7          float ahrs_theta[3];
+
+   \                                 In segment DATA_I, align 4, align-sorted
+      8          float P[7][7]={{0},{0},{0},{0},{0,0,0,0,1},{0,0,0,0,0,1},{0,0,0,0,0,0,1}};
+   \                     P:
+   \   00000000                      DS8 196
+   \   000000C4                      REQUIRE `?<Initializer for P>`
+
+   \                                 In segment DATA_I, align 4, align-sorted
+      9          float Q[7][7]={{0.0001},{0,0.0001},{0,0,0.0001},{0,0,0,0.0001},{0,0,0,0,0.03},{0,0,0,0,0,0.03},{0,0,0,0,0,0,0.03}};
+   \                     Q:
+   \   00000000                      DS8 196
+   \   000000C4                      REQUIRE `?<Initializer for Q>`
+
+   \                                 In segment DATA_I, align 4, align-sorted
+     10          float R_attitude[3][3]={{1500},{0,1500},{0,50,0}};
+   \                     R_attitude:
+   \   00000000                      DS8 36
+   \   00000024                      REQUIRE `?<Initializer for R_attitude>`
+
+   \                                 In segment DATA_Z, align 4, align-sorted
+   \                     Quat:
+   \   00000000                      DS8 16
+   \                     bias:
+   \   00000010                      DS8 12
+   \                     DCM:
+   \   0000001C                      DS8 36
+   \                     ahrs_theta:
+   \   00000040                      DS8 12
+     11          //float R_heading[1][1]=50;
+     12          float trace;
+   \                     trace:
+   \   0000004C                      DS8 4
+     13          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     14          void Kalman(float (*p)[N],float *X,const float (*c)[N],const float *err)
+     15          {
+   \                     Kalman:
+   \   00000000   FFB5               PUSH        {R0-R7,LR}
+   \   00000002   E6B0               SUB         SP,#+408
+     16            float c_transpose[N][M];
+     17            float E[M][M];
+     18            float K[N][M];
+     19            
+     20            float temp[N][N]={{0}};  
+   \   00000004   0BA8               ADD         R0,SP,#+44
+   \   00000006   0021               MOV         R1,#+0
+   \   00000008   C422               MOV         R2,#+196
+   \                     ??Kalman_0:
+   \   0000000A   121F               SUB         R2,R2,#+4
+   \   0000000C   8150               STR         R1,[R0, R2]
+   \   0000000E   FCD1               BNE         ??Kalman_0
+   \   00000010   0020               MOV         R0,#+0
+     21           
+     22              
+     23            unsigned char i,j,l;
+     24            for(i=0 ; i<M ; i++ )
+     25          		{
+     26          		 for( j=0 ; j<N ; j++ )
+   \                     ??Kalman_1:
+   \   00000012   0025               MOV         R5,#+0
+     27          		 c_transpose[j][i] = c[i][j];
+   \                     ??Kalman_2:
+   \   00000014   0C21               MOV         R1,#+12
+   \   00000016   6943               MUL         R1,R5
+   \   00000018   8200               LSL         R2,R0,#+2
+   \   0000001A   3CAB               ADD         R3,SP,#+240
+   \   0000001C   9A18               ADD         R2,R3,R2
+   \   0000001E   AB00               LSL         R3,R5,#+2
+   \   00000020   1C24               MOV         R4,#+28
+   \   00000022   4443               MUL         R4,R0
+   \   00000024   689E               LDR         R6,[SP, #+416]
+   \   00000026   3419               ADD         R4,R6,R4
+   \   00000028   E358               LDR         R3,[R4, R3]
+   \   0000002A   5350               STR         R3,[R2, R1]
+   \   0000002C   6D1C               ADD         R5,R5,#+1
+   \   0000002E   2906               LSL         R1,R5,#+24
+   \   00000030   090E               LSR         R1,R1,#+24
+   \   00000032   0729               CMP         R1,#+7
+   \   00000034   EED3               BCC         ??Kalman_2
+     28          		}                      //transpose(c);
+   \   00000036   401C               ADD         R0,R0,#+1
+   \   00000038   0106               LSL         R1,R0,#+24
+   \   0000003A   090E               LSR         R1,R1,#+24
+   \   0000003C   0329               CMP         R1,#+3
+   \   0000003E   E8D3               BCC         ??Kalman_1
+     29            
+     30              for( i=0;i<M;i++)
+   \   00000040   0020               MOV         R0,#+0
+     31                 for(j=0;j<M;j++)
+   \                     ??Kalman_3:
+   \   00000042   0025               MOV         R5,#+0
+   \   00000044   0C21               MOV         R1,#+12
+   \   00000046   4143               MUL         R1,R0
+     32                   E[i][j]=R_attitude[i][j];
+   \                     ??Kalman_4:
+   \   00000048   AA00               LSL         R2,R5,#+2
+   \   0000004A   02AB               ADD         R3,SP,#+8
+   \   0000004C   5B18               ADD         R3,R3,R1
+   \   0000004E   9C4C               LDR         R4,??Kalman_5      ;; R_attitude
+   \   00000050   6418               ADD         R4,R4,R1
+   \   00000052   A458               LDR         R4,[R4, R2]
+   \   00000054   9C50               STR         R4,[R3, R2]
+   \   00000056   6D1C               ADD         R5,R5,#+1
+   \   00000058   2A06               LSL         R2,R5,#+24
+   \   0000005A   120E               LSR         R2,R2,#+24
+   \   0000005C   032A               CMP         R2,#+3
+   \   0000005E   F3D3               BCC         ??Kalman_4
+   \   00000060   401C               ADD         R0,R0,#+1
+   \   00000062   0106               LSL         R1,R0,#+24
+   \   00000064   090E               LSR         R1,R1,#+24
+   \   00000066   0329               CMP         R1,#+3
+   \   00000068   EBD3               BCC         ??Kalman_3
+     33            
+     34            for(i=0;i<M;i++) 
+   \   0000006A   0024               MOV         R4,#+0
+     35              for(j=0;j<N;j++)
+   \                     ??Kalman_6:
+   \   0000006C   0025               MOV         R5,#+0
+     36               for(l=0;l<N;l++)
+   \                     ??Kalman_7:
+   \   0000006E   0026               MOV         R6,#+0
+   \   00000070   A800               LSL         R0,R5,#+2
+   \   00000072   0190               STR         R0,[SP, #+4]
+   \   00000074   1C20               MOV         R0,#+28
+   \   00000076   6043               MUL         R0,R4
+   \   00000078   0090               STR         R0,[SP, #+0]
+   \   0000007A   0198               LDR         R0,[SP, #+4]
+   \   0000007C   0099               LDR         R1,[SP, #+0]
+   \   0000007E   0BAA               ADD         R2,SP,#+44
+   \   00000080   5118               ADD         R1,R2,R1
+   \   00000082   0F18               ADD         R7,R1,R0
+     37                temp[i][j] += c[i][l]*p[l][j];//mult(c,p,c_transpose)
+   \                     ??Kalman_8:
+   \   00000084   B000               LSL         R0,R6,#+2
+   \   00000086   0099               LDR         R1,[SP, #+0]
+   \   00000088   689A               LDR         R2,[SP, #+416]
+   \   0000008A   5118               ADD         R1,R2,R1
+   \   0000008C   0858               LDR         R0,[R1, R0]
+   \   0000008E   1C21               MOV         R1,#+28
+   \   00000090   7143               MUL         R1,R6
+   \   00000092   019A               LDR         R2,[SP, #+4]
+   \   00000094   669B               LDR         R3,[SP, #+408]
+   \   00000096   9A18               ADD         R2,R3,R2
+   \   00000098   5158               LDR         R1,[R2, R1]
+   \   0000009A   ........           _BLF        __fMul,??__fMul??rT
+   \   0000009E   3968               LDR         R1,[R7, #+0]
+   \   000000A0   ........           _BLF        __fAdd,??__fAdd??rT
+   \   000000A4   3860               STR         R0,[R7, #+0]
+   \   000000A6   761C               ADD         R6,R6,#+1
+   \   000000A8   3006               LSL         R0,R6,#+24
+   \   000000AA   000E               LSR         R0,R0,#+24
+   \   000000AC   0728               CMP         R0,#+7
+   \   000000AE   E9D3               BCC         ??Kalman_8
+   \   000000B0   6D1C               ADD         R5,R5,#+1
+   \   000000B2   2806               LSL         R0,R5,#+24
+   \   000000B4   000E               LSR         R0,R0,#+24
+   \   000000B6   0728               CMP         R0,#+7
+   \   000000B8   D9D3               BCC         ??Kalman_7
+   \   000000BA   641C               ADD         R4,R4,#+1
+   \   000000BC   2006               LSL         R0,R4,#+24
+   \   000000BE   000E               LSR         R0,R0,#+24
+   \   000000C0   0328               CMP         R0,#+3
+   \   000000C2   D3D3               BCC         ??Kalman_6
+     38            for(i=0;i<M;i++)
+   \   000000C4   0024               MOV         R4,#+0
+     39              for(j=0;j<M;j++)
+   \                     ??Kalman_9:
+   \   000000C6   0025               MOV         R5,#+0
+     40               for(l=0;l<N;l++)
+   \                     ??Kalman_10:
+   \   000000C8   0026               MOV         R6,#+0
+   \   000000CA   A800               LSL         R0,R5,#+2
+   \   000000CC   0090               STR         R0,[SP, #+0]
+   \   000000CE   0C21               MOV         R1,#+12
+   \   000000D0   6143               MUL         R1,R4
+   \   000000D2   02AA               ADD         R2,SP,#+8
+   \   000000D4   5118               ADD         R1,R2,R1
+   \   000000D6   0F18               ADD         R7,R1,R0
+     41                   E[i][j]+=temp[i][l]*c_transpose[l][j];
+   \                     ??Kalman_11:
+   \   000000D8   B000               LSL         R0,R6,#+2
+   \   000000DA   1C21               MOV         R1,#+28
+   \   000000DC   6143               MUL         R1,R4
+   \   000000DE   0BAA               ADD         R2,SP,#+44
+   \   000000E0   5118               ADD         R1,R2,R1
+   \   000000E2   0858               LDR         R0,[R1, R0]
+   \   000000E4   0C21               MOV         R1,#+12
+   \   000000E6   7143               MUL         R1,R6
+   \   000000E8   009A               LDR         R2,[SP, #+0]
+   \   000000EA   3CAB               ADD         R3,SP,#+240
+   \   000000EC   9A18               ADD         R2,R3,R2
+   \   000000EE   5158               LDR         R1,[R2, R1]
+   \   000000F0   ........           _BLF        __fMul,??__fMul??rT
+   \   000000F4   3968               LDR         R1,[R7, #+0]
+   \   000000F6   ........           _BLF        __fAdd,??__fAdd??rT
+   \   000000FA   3860               STR         R0,[R7, #+0]
+   \   000000FC   761C               ADD         R6,R6,#+1
+   \   000000FE   3006               LSL         R0,R6,#+24
+   \   00000100   000E               LSR         R0,R0,#+24
+   \   00000102   0728               CMP         R0,#+7
+   \   00000104   E8D3               BCC         ??Kalman_11
+   \   00000106   6D1C               ADD         R5,R5,#+1
+   \   00000108   2806               LSL         R0,R5,#+24
+   \   0000010A   000E               LSR         R0,R0,#+24
+   \   0000010C   0328               CMP         R0,#+3
+   \   0000010E   DBD3               BCC         ??Kalman_10
+   \   00000110   641C               ADD         R4,R4,#+1
+   \   00000112   2006               LSL         R0,R4,#+24
+   \   00000114   000E               LSR         R0,R0,#+24
+   \   00000116   0328               CMP         R0,#+3
+   \   00000118   D5D3               BCC         ??Kalman_9
+     42             invert3(E,3);
+   \   0000011A   0321               MOV         R1,#+3
+   \   0000011C   02A8               ADD         R0,SP,#+8
+   \   0000011E   ........           _BLF        invert3,??invert3??rT
+     43            
+     44             for(i=0;i<N;i++)
+   \   00000122   0024               MOV         R4,#+0
+     45              for(j=0;j<M;j++)
+   \                     ??Kalman_12:
+   \   00000124   0025               MOV         R5,#+0
+     46               for(l=0;l<N;l++)
+   \                     ??Kalman_13:
+   \   00000126   0026               MOV         R6,#+0
+   \   00000128   A800               LSL         R0,R5,#+2
+   \   0000012A   0090               STR         R0,[SP, #+0]
+   \   0000012C   1C20               MOV         R0,#+28
+   \   0000012E   6043               MUL         R0,R4
+   \   00000130   0190               STR         R0,[SP, #+4]
+   \   00000132   0098               LDR         R0,[SP, #+0]
+   \   00000134   0199               LDR         R1,[SP, #+4]
+   \   00000136   0BAA               ADD         R2,SP,#+44
+   \   00000138   5118               ADD         R1,R2,R1
+   \   0000013A   0F18               ADD         R7,R1,R0
+     47                temp[i][j] += p[i][l]*c_transpose[l][j];
+   \                     ??Kalman_14:
+   \   0000013C   B000               LSL         R0,R6,#+2
+   \   0000013E   0199               LDR         R1,[SP, #+4]
+   \   00000140   669A               LDR         R2,[SP, #+408]
+   \   00000142   5118               ADD         R1,R2,R1
+   \   00000144   0858               LDR         R0,[R1, R0]
+   \   00000146   0C21               MOV         R1,#+12
+   \   00000148   7143               MUL         R1,R6
+   \   0000014A   009A               LDR         R2,[SP, #+0]
+   \   0000014C   3CAB               ADD         R3,SP,#+240
+   \   0000014E   9A18               ADD         R2,R3,R2
+   \   00000150   5158               LDR         R1,[R2, R1]
+   \   00000152   ........           _BLF        __fMul,??__fMul??rT
+   \   00000156   011C               MOV         R1,R0
+   \   00000158   3868               LDR         R0,[R7, #+0]
+   \   0000015A   ........           _BLF        __fAdd,??__fAdd??rT
+   \   0000015E   3860               STR         R0,[R7, #+0]
+   \   00000160   761C               ADD         R6,R6,#+1
+   \   00000162   3006               LSL         R0,R6,#+24
+   \   00000164   000E               LSR         R0,R0,#+24
+   \   00000166   0728               CMP         R0,#+7
+   \   00000168   E8D3               BCC         ??Kalman_14
+   \   0000016A   6D1C               ADD         R5,R5,#+1
+   \   0000016C   2806               LSL         R0,R5,#+24
+   \   0000016E   000E               LSR         R0,R0,#+24
+   \   00000170   0328               CMP         R0,#+3
+   \   00000172   D8D3               BCC         ??Kalman_13
+   \   00000174   641C               ADD         R4,R4,#+1
+   \   00000176   2006               LSL         R0,R4,#+24
+   \   00000178   000E               LSR         R0,R0,#+24
+   \   0000017A   0728               CMP         R0,#+7
+   \   0000017C   D2D3               BCC         ??Kalman_12
+     48            for(i=0;i<N;i++)
+   \   0000017E   0024               MOV         R4,#+0
+     49              for(j=0;j<M;j++)
+   \                     ??Kalman_15:
+   \   00000180   0025               MOV         R5,#+0
+     50               for(l=0;l<M;l++)
+   \                     ??Kalman_16:
+   \   00000182   0026               MOV         R6,#+0
+   \   00000184   AF00               LSL         R7,R5,#+2
+     51                   K[i][j]=temp[i][l]*E[l][j];//mult3( P, C_transpose,  invert( E ) );
+   \                     ??Kalman_17:
+   \   00000186   0C20               MOV         R0,#+12
+   \   00000188   6043               MUL         R0,R4
+   \   0000018A   51A9               ADD         R1,SP,#+324
+   \   0000018C   0918               ADD         R1,R1,R0
+   \   0000018E   02B4               PUSH        {R1}
+   \   00000190   B000               LSL         R0,R6,#+2
+   \   00000192   1C21               MOV         R1,#+28
+   \   00000194   6143               MUL         R1,R4
+   \   00000196   0CAA               ADD         R2,SP,#+48
+   \   00000198   5118               ADD         R1,R2,R1
+   \   0000019A   0858               LDR         R0,[R1, R0]
+   \   0000019C   0C21               MOV         R1,#+12
+   \   0000019E   7143               MUL         R1,R6
+   \   000001A0   03AA               ADD         R2,SP,#+12
+   \   000001A2   D219               ADD         R2,R2,R7
+   \   000001A4   5158               LDR         R1,[R2, R1]
+   \   000001A6   ........           _BLF        __fMul,??__fMul??rT
+   \   000001AA   02BC               POP         {R1}
+   \   000001AC   C851               STR         R0,[R1, R7]
+   \   000001AE   761C               ADD         R6,R6,#+1
+   \   000001B0   3006               LSL         R0,R6,#+24
+   \   000001B2   000E               LSR         R0,R0,#+24
+   \   000001B4   0328               CMP         R0,#+3
+   \   000001B6   E6D3               BCC         ??Kalman_17
+   \   000001B8   6D1C               ADD         R5,R5,#+1
+   \   000001BA   2806               LSL         R0,R5,#+24
+   \   000001BC   000E               LSR         R0,R0,#+24
+   \   000001BE   0328               CMP         R0,#+3
+   \   000001C0   DFD3               BCC         ??Kalman_16
+   \   000001C2   641C               ADD         R4,R4,#+1
+   \   000001C4   2006               LSL         R0,R4,#+24
+   \   000001C6   000E               LSR         R0,R0,#+24
+   \   000001C8   0728               CMP         R0,#+7
+   \   000001CA   D9D3               BCC         ??Kalman_15
+     52          
+     53            for(i=0;i<N;i++)
+   \   000001CC   0024               MOV         R4,#+0
+     54              for(j=0;j<M;j++)
+   \                     ??Kalman_18:
+   \   000001CE   0025               MOV         R5,#+0
+   \   000001D0   A000               LSL         R0,R4,#+2
+   \   000001D2   6799               LDR         R1,[SP, #+412]
+   \   000001D4   0E18               ADD         R6,R1,R0
+     55                X[i]+=K[i][j]*err[j];
+   \                     ??Kalman_19:
+   \   000001D6   A800               LSL         R0,R5,#+2
+   \   000001D8   0C21               MOV         R1,#+12
+   \   000001DA   6143               MUL         R1,R4
+   \   000001DC   51AA               ADD         R2,SP,#+324
+   \   000001DE   5118               ADD         R1,R2,R1
+   \   000001E0   0958               LDR         R1,[R1, R0]
+   \   000001E2   699A               LDR         R2,[SP, #+420]
+   \   000001E4   1058               LDR         R0,[R2, R0]
+   \   000001E6   ........           _BLF        __fMul,??__fMul??rT
+   \   000001EA   011C               MOV         R1,R0
+   \   000001EC   3068               LDR         R0,[R6, #+0]
+   \   000001EE   ........           _BLF        __fAdd,??__fAdd??rT
+   \   000001F2   3060               STR         R0,[R6, #+0]
+   \   000001F4   6D1C               ADD         R5,R5,#+1
+   \   000001F6   2806               LSL         R0,R5,#+24
+   \   000001F8   000E               LSR         R0,R0,#+24
+   \   000001FA   0328               CMP         R0,#+3
+   \   000001FC   EBD3               BCC         ??Kalman_19
+   \   000001FE   641C               ADD         R4,R4,#+1
+   \   00000200   2006               LSL         R0,R4,#+24
+   \   00000202   000E               LSR         R0,R0,#+24
+   \   00000204   0728               CMP         R0,#+7
+   \   00000206   E2D3               BCC         ??Kalman_18
+     56            
+     57            for(i=0;i<M;i++)
+   \   00000208   0024               MOV         R4,#+0
+     58              for(j=0;j<N;j++)
+   \                     ??Kalman_20:
+   \   0000020A   0025               MOV         R5,#+0
+     59               for(l=0;l<N;l++)
+   \                     ??Kalman_21:
+   \   0000020C   0026               MOV         R6,#+0
+   \   0000020E   A800               LSL         R0,R5,#+2
+   \   00000210   0090               STR         R0,[SP, #+0]
+   \   00000212   1C20               MOV         R0,#+28
+   \   00000214   6043               MUL         R0,R4
+   \   00000216   0190               STR         R0,[SP, #+4]
+   \   00000218   0098               LDR         R0,[SP, #+0]
+   \   0000021A   0199               LDR         R1,[SP, #+4]
+   \   0000021C   0BAA               ADD         R2,SP,#+44
+   \   0000021E   5118               ADD         R1,R2,R1
+   \   00000220   0F18               ADD         R7,R1,R0
+     60                temp[i][j] +=  c[i][l]*p[l][j];
+   \                     ??Kalman_22:
+   \   00000222   B000               LSL         R0,R6,#+2
+   \   00000224   0199               LDR         R1,[SP, #+4]
+   \   00000226   689A               LDR         R2,[SP, #+416]
+   \   00000228   5118               ADD         R1,R2,R1
+   \   0000022A   0858               LDR         R0,[R1, R0]
+   \   0000022C   1C21               MOV         R1,#+28
+   \   0000022E   7143               MUL         R1,R6
+   \   00000230   009A               LDR         R2,[SP, #+0]
+   \   00000232   669B               LDR         R3,[SP, #+408]
+   \   00000234   9A18               ADD         R2,R3,R2
+   \   00000236   5158               LDR         R1,[R2, R1]
+   \   00000238   ........           _BLF        __fMul,??__fMul??rT
+   \   0000023C   011C               MOV         R1,R0
+   \   0000023E   3868               LDR         R0,[R7, #+0]
+   \   00000240   ........           _BLF        __fAdd,??__fAdd??rT
+   \   00000244   3860               STR         R0,[R7, #+0]
+   \   00000246   761C               ADD         R6,R6,#+1
+   \   00000248   3006               LSL         R0,R6,#+24
+   \   0000024A   000E               LSR         R0,R0,#+24
+   \   0000024C   0728               CMP         R0,#+7
+   \   0000024E   E8D3               BCC         ??Kalman_22
+   \   00000250   6D1C               ADD         R5,R5,#+1
+   \   00000252   2806               LSL         R0,R5,#+24
+   \   00000254   000E               LSR         R0,R0,#+24
+   \   00000256   0728               CMP         R0,#+7
+   \   00000258   D8D3               BCC         ??Kalman_21
+   \   0000025A   641C               ADD         R4,R4,#+1
+   \   0000025C   2006               LSL         R0,R4,#+24
+   \   0000025E   000E               LSR         R0,R0,#+24
+   \   00000260   0328               CMP         R0,#+3
+   \   00000262   D2D3               BCC         ??Kalman_20
+     61            for(i=0;i<N;i++)
+   \   00000264   0024               MOV         R4,#+0
+     62              for(j=0;j<N;j++)
+   \                     ??Kalman_23:
+   \   00000266   0025               MOV         R5,#+0
+     63               for(l=0;l<M;l++)
+   \                     ??Kalman_24:
+   \   00000268   0026               MOV         R6,#+0
+   \   0000026A   A800               LSL         R0,R5,#+2
+   \   0000026C   0090               STR         R0,[SP, #+0]
+   \   0000026E   1C21               MOV         R1,#+28
+   \   00000270   6143               MUL         R1,R4
+   \   00000272   669A               LDR         R2,[SP, #+408]
+   \   00000274   5118               ADD         R1,R2,R1
+   \   00000276   0F18               ADD         R7,R1,R0
+     64                   p[i][j]-=K[i][l]*temp[l][j];
+   \                     ??Kalman_25:
+   \   00000278   B000               LSL         R0,R6,#+2
+   \   0000027A   0C21               MOV         R1,#+12
+   \   0000027C   6143               MUL         R1,R4
+   \   0000027E   51AA               ADD         R2,SP,#+324
+   \   00000280   5118               ADD         R1,R2,R1
+   \   00000282   0858               LDR         R0,[R1, R0]
+   \   00000284   1C21               MOV         R1,#+28
+   \   00000286   7143               MUL         R1,R6
+   \   00000288   009A               LDR         R2,[SP, #+0]
+   \   0000028A   0BAB               ADD         R3,SP,#+44
+   \   0000028C   9A18               ADD         R2,R3,R2
+   \   0000028E   5158               LDR         R1,[R2, R1]
+   \   00000290   ........           _BLF        __fMul,??__fMul??rT
+   \   00000294   011C               MOV         R1,R0
+   \   00000296   3868               LDR         R0,[R7, #+0]
+   \   00000298   ........           _BLF        __fSub,??__fSub??rT
+   \   0000029C   3860               STR         R0,[R7, #+0]
+   \   0000029E   761C               ADD         R6,R6,#+1
+   \   000002A0   3006               LSL         R0,R6,#+24
+   \   000002A2   000E               LSR         R0,R0,#+24
+   \   000002A4   0328               CMP         R0,#+3
+   \   000002A6   E7D3               BCC         ??Kalman_25
+   \   000002A8   6D1C               ADD         R5,R5,#+1
+   \   000002AA   2806               LSL         R0,R5,#+24
+   \   000002AC   000E               LSR         R0,R0,#+24
+   \   000002AE   0728               CMP         R0,#+7
+   \   000002B0   DAD3               BCC         ??Kalman_24
+   \   000002B2   641C               ADD         R4,R4,#+1
+   \   000002B4   2006               LSL         R0,R4,#+24
+   \   000002B6   000E               LSR         R0,R0,#+24
+   \   000002B8   0728               CMP         R0,#+7
+   \   000002BA   D4D3               BCC         ??Kalman_23
+     65            
+     66          }
+   \   000002BC   6AB0               ADD         SP,#+424
+   \   000002BE   ....               B           ?Subroutine5
+   \                     ??Kalman_5:
+   \   000002C0   ........           DC32        R_attitude
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ?Subroutine5:
+   \   00000000   F0BC               POP         {R4-R7}
+   \   00000002   01BC               POP         {R0}
+   \   00000004   0047               BX          R0                 ;; return
+   \   00000006   C046               NOP         
+   \                     ??Subroutine5_0:
+   \   00000008   0000F03F           DC32        0x3ff00000
+   \   0000000C   0000F0BF           DC32        0xbff00000
+   \   00000010   ........           DC32        Quat + 32
+   \   00000014   ........           DC32        heading
+   \   00000018   192D4454           DC32        0x54442d19
+   \   0000001C   FB210940           DC32        0x400921fb
+   \   00000020   182D4454           DC32        0x54442d18
+   \   00000024   FB2119C0           DC32        0xc01921fb
+   \   00000028   182D4454           DC32        0x54442d18
+   \   0000002C   FB2109C0           DC32        0xc00921fb
+   \   00000030   182D4454           DC32        0x54442d18
+   \   00000034   FB211940           DC32        0x401921fb
+     67          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     68          void do_kalman(const float (*c)[7],const float *eTHETA)//row is m
+     69          {
+   \                     do_kalman:
+   \   00000000   10B5               PUSH        {R4,LR}
+   \   00000002   87B0               SUB         SP,#+28
+   \   00000004   021C               MOV         R2,R0
+     70            float X_vect[N];
+     71            
+     72            X_vect[0]	= Quat[0];
+   \   00000006   ....               LDR         R4,??DataTable2    ;; Quat
+   \   00000008   2068               LDR         R0,[R4, #+0]
+   \   0000000A   0090               STR         R0,[SP, #+0]
+     73            X_vect[1]	= Quat[1];
+   \   0000000C   6068               LDR         R0,[R4, #+4]
+   \   0000000E   0190               STR         R0,[SP, #+4]
+     74            X_vect[2]	= Quat[2];
+   \   00000010   A068               LDR         R0,[R4, #+8]
+   \   00000012   0290               STR         R0,[SP, #+8]
+     75            X_vect[3]	= Quat[3];
+   \   00000014   E068               LDR         R0,[R4, #+12]
+   \   00000016   0390               STR         R0,[SP, #+12]
+     76          
+     77            X_vect[4]	= bias[0];
+   \   00000018   2069               LDR         R0,[R4, #+16]
+   \   0000001A   0490               STR         R0,[SP, #+16]
+     78            X_vect[5]	= bias[1];
+   \   0000001C   6069               LDR         R0,[R4, #+20]
+   \   0000001E   0590               STR         R0,[SP, #+20]
+     79            X_vect[6]	= bias[2];
+   \   00000020   A069               LDR         R0,[R4, #+24]
+   \   00000022   0690               STR         R0,[SP, #+24]
+     80            Kalman(P,X_vect,c,eTHETA);
+   \   00000024   0B1C               MOV         R3,R1
+   \   00000026   6946               MOV         R1,SP
+   \   00000028   ....               LDR         R0,??DataTable1    ;; P
+   \   0000002A   ........           BL          Kalman
+     81            Quat[0]=X_vect[0];
+   \   0000002E   0098               LDR         R0,[SP, #+0]
+   \   00000030   2060               STR         R0,[R4, #+0]
+     82            Quat[1]=X_vect[1];
+   \   00000032   0198               LDR         R0,[SP, #+4]
+   \   00000034   6060               STR         R0,[R4, #+4]
+     83            Quat[2]=X_vect[2];
+   \   00000036   0298               LDR         R0,[SP, #+8]
+   \   00000038   A060               STR         R0,[R4, #+8]
+     84            Quat[3]=X_vect[3];
+   \   0000003A   0398               LDR         R0,[SP, #+12]
+   \   0000003C   E060               STR         R0,[R4, #+12]
+     85            
+     86            bias[0]=X_vect[4];
+   \   0000003E   0498               LDR         R0,[SP, #+16]
+   \   00000040   2061               STR         R0,[R4, #+16]
+     87            bias[1]=X_vect[5];
+   \   00000042   0598               LDR         R0,[SP, #+20]
+   \   00000044   6061               STR         R0,[R4, #+20]
+     88            bias[2]=X_vect[6];
+   \   00000046   0698               LDR         R0,[SP, #+24]
+   \   00000048   A061               STR         R0,[R4, #+24]
+     89          
+     90            
+     91            norm(Quat);
+   \   0000004A   201C               MOV         R0,R4
+   \   0000004C   ........           _BLF        norm,??norm??rT
+     92          }
+   \   00000050   07B0               ADD         SP,#+28
+   \   00000052   ....               B           ?Subroutine6
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ?Subroutine6:
+   \   00000000   10BC               POP         {R4}
+   \   00000002   01BC               POP         {R0}
+   \   00000004   0047               BX          R0                 ;; return
+   \   00000006   C046               NOP         
+   \                     ??Subroutine6_0:
+   \   00000008   ........           DC32        pqr
+     93          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     94          void ahrs_init (void)
+     95          {
+   \                     ahrs_init:
+   \   00000000   10B5               PUSH        {R4,LR}
+     96            for(unsigned char i=0;i<3;i++)
+   \   00000002   0021               MOV         R1,#+0
+   \   00000004   ....               LDR         R0,??DataTable2    ;; Quat
+     97               {
+     98                bias[i]=pqr[i];
+   \                     ??ahrs_init_0:
+   \   00000006   8A00               LSL         R2,R1,#+2
+   \   00000008   8318               ADD         R3,R0,R2
+   \   0000000A   ....               LDR         R4,??Subroutine6_0  ;; pqr
+   \   0000000C   A458               LDR         R4,[R4, R2]
+   \   0000000E   1C61               STR         R4,[R3, #+16]
+     99                ahrs_theta[i]=euler[i];
+   \   00000010   ....               LDR         R4,??DataTable17   ;; euler
+   \   00000012   A258               LDR         R2,[R4, R2]
+   \   00000014   1A64               STR         R2,[R3, #+64]
+    100               }
+   \   00000016   491C               ADD         R1,R1,#+1
+   \   00000018   0906               LSL         R1,R1,#+24
+   \   0000001A   090E               LSR         R1,R1,#+24
+   \   0000001C   0329               CMP         R1,#+3
+   \   0000001E   F2D3               BCC         ??ahrs_init_0
+    101             euler2quat (Quat, ahrs_theta);
+   \   00000020   011C               MOV         R1,R0
+   \   00000022   4031               ADD         R1,#+64
+   \   00000024   ........           _BLF        euler2quat,??euler2quat??rT
+    102          }
+   \   00000028                      REQUIRE ?Subroutine6
+   \   00000028                      ;; // Fall through to label ?Subroutine6
+    103          
+    104          /*void kalman_compass_update(float heading,const float (*DCM)[3],const float *THETAe)
+    105          {
+    106            float C[1][N]={{0}};
+    107          
+    108          	// PSI section
+    109          	const float	err = 2.0 / ((DCM[0][0]*DCM[0][0]) + (DCM[0][1]*DCM[0][1]));
+    110          	C[0][0] = err * ( Quat[3] * DCM[0][0] );
+    111          	C[0][1] = err * ( Quat[2] * DCM[0][0] );
+    112          	C[0][2] = err * ( Quat[1] * DCM[0][0] + 2.0 * Quat[2] * DCM[0][1] );
+    113          	C[0][3] = err * ( Quat[0] * DCM[0][0] + 2.0 * Quat[3] * DCM[0][1] );
+    114          
+    115          	// Compute the error
+    116                  float eTHETA[1];
+    117          
+    118          	eTHETA[0] = heading - THETAe[2];
+    119          	if( eTHETA[0] > C_PI )
+    120          		eTHETA[0] -= 2.0 * C_PI;
+    121          	else
+    122          	if( eTHETA[0] < -C_PI )
+    123          		eTHETA[0] += 2.0 * C_PI;
+    124          
+    125          	do_kalman(C,eTHETA,1);
+    126          }
+    127          
+    128          void compass_update(float heading)
+    129          {
+    130            quat2DCM(DCM,Quat);
+    131            kalman_compass_update(heading,DCM,ahrs_theta);
+    132            
+    133          }*/
+    134          
+
+   \                                 In segment CODE, align 4, keep-with-next
+    135          void kalman_attitude_update( const float (*dcm)[3], const float *theta)
+    136          {
+   \                     kalman_attitude_update:
+   \   00000000   F2B5               PUSH        {R1,R4-R7,LR}
+   \   00000002   A3B0               SUB         SP,#+140
+   \   00000004   041C               MOV         R4,R0
+    137            float			err;
+    138            //THETAm( my2_accel2euler( accel, THETAe[2] ) );
+    139            // make the C matrix
+    140             float 		C[M][N];
+    141          
+    142          	// PHI section
+    143          	err = 2.0 / ( (dcm[2][2]*dcm[2][2]) + (dcm[1][2]*dcm[1][2]) );
+   \   00000006   4169               LDR         R1,[R0, #+20]
+   \   00000008   081C               MOV         R0,R1
+   \   0000000A   ........           _BLF        __fMul,??__fMul??rT
+   \   0000000E   051C               MOV         R5,R0
+   \   00000010   216A               LDR         R1,[R4, #+32]
+   \   00000012   081C               MOV         R0,R1
+   \   00000014   ........           _BLF        __fMul,??__fMul??rT
+   \   00000018   291C               MOV         R1,R5
+   \   0000001A   ........           _BLF        __fAdd,??__fAdd??rT
+   \   0000001E   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000022   021C               MOV         R2,R0
+   \   00000024   0B1C               MOV         R3,R1
+   \   00000026   0020               MOV         R0,#+0
+   \   00000028   8021               MOV         R1,#+128
+   \   0000002A   C905               LSL         R1,R1,#+23         ;; #+1073741824
+   \   0000002C   ........           _BLF        __dDiv,??__dDiv??rT
+   \   00000030   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   00000034   0090               STR         R0,[SP, #+0]
+   \   00000036   ....               LDR         R0,??DataTable15   ;; Quat + 4
+   \   00000038   0168               LDR         R1,[R0, #+0]
+   \   0000003A   206A               LDR         R0,[R4, #+32]
+   \   0000003C   ........           _BLF        __fMul,??__fMul??rT
+   \   00000040   0099               LDR         R1,[SP, #+0]
+   \   00000042   ........           _BLF        __fMul,??__fMul??rT
+   \   00000046   0E90               STR         R0,[SP, #+56]
+    144          
+    145          	C[0][0] = ( Quat[1] * dcm[2][2]                            ) * err;
+    146          	C[0][1] = ( Quat[0] * dcm[2][2] + 2.0 * Quat[1] * dcm[1][2] ) * err;
+   \   00000048   01AD               ADD         R5,SP,#+4
+   \   0000004A   ....               LDR         R0,??DataTable15   ;; Quat + 4
+   \   0000004C   0068               LDR         R0,[R0, #+0]
+   \   0000004E   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000052   021C               MOV         R2,R0
+   \   00000054   0B1C               MOV         R3,R1
+   \   00000056   0020               MOV         R0,#+0
+   \   00000058   8021               MOV         R1,#+128
+   \   0000005A   C905               LSL         R1,R1,#+23         ;; #+1073741824
+   \   0000005C   ........           _BLF        __dMul,??__dMul??rT
+   \   00000060   03C5               STMIA       R5!,{R0,R1}
+   \   00000062   08AD               ADD         R5,SP,#+32
+   \   00000064   0098               LDR         R0,[SP, #+0]
+   \   00000066   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   0000006A   03C5               STMIA       R5!,{R0,R1}
+   \   0000006C   01A8               ADD         R0,SP,#+4
+   \   0000006E   C0C8               LDMIA       R0!,{R6,R7}
+   \   00000070   6069               LDR         R0,[R4, #+20]
+   \   00000072   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000076   321C               MOV         R2,R6
+   \   00000078   3B1C               MOV         R3,R7
+   \   0000007A   ........           _BLF        __dMul,??__dMul??rT
+   \   0000007E   061C               MOV         R6,R0
+   \   00000080   0F1C               MOV         R7,R1
+   \   00000082   ....               LDR         R0,??DataTable16   ;; Quat
+   \   00000084   0168               LDR         R1,[R0, #+0]
+   \   00000086   206A               LDR         R0,[R4, #+32]
+   \   00000088   ........           _BLF        __fMul,??__fMul??rT
+   \   0000008C   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000090   321C               MOV         R2,R6
+   \   00000092   3B1C               MOV         R3,R7
+   \   00000094   ........           _BLF        __dAdd,??__dAdd??rT
+   \   00000098   08AA               ADD         R2,SP,#+32
+   \   0000009A   0CCA               LDMIA       R2!,{R2,R3}
+   \   0000009C   ........           _BLF        __dMul,??__dMul??rT
+   \   000000A0   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   000000A4   0F90               STR         R0,[SP, #+60]
+   \   000000A6   03AD               ADD         R5,SP,#+12
+   \   000000A8   ....               LDR         R0,??DataTable14   ;; Quat + 8
+   \   000000AA   0068               LDR         R0,[R0, #+0]
+   \   000000AC   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   000000B0   03C5               STMIA       R5!,{R0,R1}
+   \   000000B2   0AAD               ADD         R5,SP,#+40
+   \   000000B4   03A8               ADD         R0,SP,#+12
+   \   000000B6   0CC8               LDMIA       R0!,{R2,R3}
+   \   000000B8   0020               MOV         R0,#+0
+   \   000000BA   8021               MOV         R1,#+128
+   \   000000BC   C905               LSL         R1,R1,#+23         ;; #+1073741824
+   \   000000BE   ........           _BLF        __dMul,??__dMul??rT
+   \   000000C2   03C5               STMIA       R5!,{R0,R1}
+   \   000000C4   0AA8               ADD         R0,SP,#+40
+   \   000000C6   C0C8               LDMIA       R0!,{R6,R7}
+   \   000000C8   6069               LDR         R0,[R4, #+20]
+   \   000000CA   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   000000CE   321C               MOV         R2,R6
+   \   000000D0   3B1C               MOV         R3,R7
+   \   000000D2   ........           _BLF        __dMul,??__dMul??rT
+   \   000000D6   061C               MOV         R6,R0
+   \   000000D8   0F1C               MOV         R7,R1
+   \   000000DA   ....               LDR         R0,??DataTable13   ;; Quat + 12
+   \   000000DC   0168               LDR         R1,[R0, #+0]
+   \   000000DE   206A               LDR         R0,[R4, #+32]
+   \   000000E0   ........           _BLF        __fMul,??__fMul??rT
+   \   000000E4   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   000000E8   321C               MOV         R2,R6
+   \   000000EA   3B1C               MOV         R3,R7
+   \   000000EC   ........           _BLF        __dAdd,??__dAdd??rT
+   \   000000F0   08AA               ADD         R2,SP,#+32
+   \   000000F2   0CCA               LDMIA       R2!,{R2,R3}
+   \   000000F4   ........           _BLF        __dMul,??__dMul??rT
+   \   000000F8   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   000000FC   1090               STR         R0,[SP, #+64]
+    147          	C[0][2] = ( Quat[3] * dcm[2][2] + 2.0 * Quat[2] * dcm[1][2] ) * err;
+    148          	C[0][3] = ( Quat[2] * dcm[2][2]                            ) * err;
+   \   000000FE   ....               LDR         R0,??DataTable14   ;; Quat + 8
+   \   00000100   0168               LDR         R1,[R0, #+0]
+   \   00000102   206A               LDR         R0,[R4, #+32]
+   \   00000104   ........           _BLF        __fMul,??__fMul??rT
+   \   00000108   0099               LDR         R1,[SP, #+0]
+   \   0000010A   ........           _BLF        __fMul,??__fMul??rT
+   \   0000010E   1190               STR         R0,[SP, #+68]
+    149          	C[0][4] = 0.0;
+   \   00000110   0025               MOV         R5,#+0
+   \   00000112   1295               STR         R5,[SP, #+72]
+    150          	C[0][5] = 0.0;
+   \   00000114   1395               STR         R5,[SP, #+76]
+    151          	C[0][6] = 0.0;
+   \   00000116   1495               STR         R5,[SP, #+80]
+    152          
+    153          	// THETA section
+    154          	err = -1.0 / sqrt(1.0 - (dcm[0][2]*dcm[0][2]) );
+   \   00000118   A168               LDR         R1,[R4, #+8]
+   \   0000011A   081C               MOV         R0,R1
+   \   0000011C   ........           _BLF        __fMul,??__fMul??rT
+   \   00000120   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000124   021C               MOV         R2,R0
+   \   00000126   0B1C               MOV         R3,R1
+   \   00000128   0020               MOV         R0,#+0
+   \   0000012A   ....               LDR         R1,??Subroutine5_0  ;; 0x3ff00000
+   \   0000012C   ........           _BLF        __dSub,??__dSub??rT
+   \   00000130   ........           _BLF        sqrt,??sqrt??rT
+   \   00000134   021C               MOV         R2,R0
+   \   00000136   0B1C               MOV         R3,R1
+   \   00000138   281C               MOV         R0,R5
+   \   0000013A   ....               LDR         R1,??Subroutine5_0+0x4  ;; 0xbff00000
+   \   0000013C   ........           _BLF        __dDiv,??__dDiv??rT
+   \   00000140   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+    155          
+    156          	C[1][0] = -2.0 * Quat[2] * err;
+   \   00000144   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000148   061C               MOV         R6,R0
+   \   0000014A   0F1C               MOV         R7,R1
+   \   0000014C   03A8               ADD         R0,SP,#+12
+   \   0000014E   03C8               LDMIA       R0!,{R0,R1}
+   \   00000150   2A1C               MOV         R2,R5
+   \   00000152   C023               MOV         R3,#+192
+   \   00000154   1B06               LSL         R3,R3,#+24         ;; #-1073741824
+   \   00000156   ........           _BLF        __dMul,??__dMul??rT
+   \   0000015A   321C               MOV         R2,R6
+   \   0000015C   3B1C               MOV         R3,R7
+   \   0000015E   ........           _BLF        __dMul,??__dMul??rT
+   \   00000162   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   00000166   1590               STR         R0,[SP, #+84]
+    157          	C[1][1] =  2.0 * Quat[3] * err;
+   \   00000168   0CAC               ADD         R4,SP,#+48
+   \   0000016A   ....               LDR         R0,??DataTable13   ;; Quat + 12
+   \   0000016C   0068               LDR         R0,[R0, #+0]
+   \   0000016E   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000172   021C               MOV         R2,R0
+   \   00000174   0B1C               MOV         R3,R1
+   \   00000176   281C               MOV         R0,R5
+   \   00000178   8021               MOV         R1,#+128
+   \   0000017A   C905               LSL         R1,R1,#+23         ;; #+1073741824
+   \   0000017C   ........           _BLF        __dMul,??__dMul??rT
+   \   00000180   03C4               STMIA       R4!,{R0,R1}
+   \   00000182   0CA8               ADD         R0,SP,#+48
+   \   00000184   03C8               LDMIA       R0!,{R0,R1}
+   \   00000186   321C               MOV         R2,R6
+   \   00000188   3B1C               MOV         R3,R7
+   \   0000018A   ........           _BLF        __dMul,??__dMul??rT
+   \   0000018E   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   00000192   1690               STR         R0,[SP, #+88]
+    158          	C[1][2] = -2.0 * Quat[0] * err;
+   \   00000194   ....               LDR         R0,??DataTable16   ;; Quat
+   \   00000196   0068               LDR         R0,[R0, #+0]
+   \   00000198   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   0000019C   021C               MOV         R2,R0
+   \   0000019E   0B1C               MOV         R3,R1
+   \   000001A0   281C               MOV         R0,R5
+   \   000001A2   C021               MOV         R1,#+192
+   \   000001A4   0906               LSL         R1,R1,#+24         ;; #-1073741824
+   \   000001A6   ........           _BLF        __dMul,??__dMul??rT
+   \   000001AA   321C               MOV         R2,R6
+   \   000001AC   3B1C               MOV         R3,R7
+   \   000001AE   ........           _BLF        __dMul,??__dMul??rT
+   \   000001B2   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   000001B6   1790               STR         R0,[SP, #+92]
+    159          	C[1][3] =  2.0 * Quat[1] * err;
+   \   000001B8   01A8               ADD         R0,SP,#+4
+   \   000001BA   03C8               LDMIA       R0!,{R0,R1}
+   \   000001BC   321C               MOV         R2,R6
+   \   000001BE   3B1C               MOV         R3,R7
+   \   000001C0   ........           _BLF        __dMul,??__dMul??rT
+   \   000001C4   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   000001C8   1890               STR         R0,[SP, #+96]
+    160          	C[1][4] = 0.0;
+   \   000001CA   1995               STR         R5,[SP, #+100]
+    161          	C[1][5] = 0.0;
+   \   000001CC   1A95               STR         R5,[SP, #+104]
+    162          	C[1][6] = 0.0;
+   \   000001CE   1B95               STR         R5,[SP, #+108]
+    163                   
+    164                  // PSI section
+    165          	err = 2.0 / ((DCM[0][0]*DCM[0][0]) + (DCM[0][1]*DCM[0][1]));
+   \   000001D0   ....               LDR         R0,??Subroutine5_0+0x8  ;; Quat + 32
+   \   000001D2   0768               LDR         R7,[R0, #+0]
+   \   000001D4   ....               LDR         R0,??DataTable12   ;; Quat + 28
+   \   000001D6   0468               LDR         R4,[R0, #+0]
+   \   000001D8   381C               MOV         R0,R7
+   \   000001DA   391C               MOV         R1,R7
+   \   000001DC   ........           _BLF        __fMul,??__fMul??rT
+   \   000001E0   061C               MOV         R6,R0
+   \   000001E2   201C               MOV         R0,R4
+   \   000001E4   211C               MOV         R1,R4
+   \   000001E6   ........           _BLF        __fMul,??__fMul??rT
+   \   000001EA   311C               MOV         R1,R6
+   \   000001EC   ........           _BLF        __fAdd,??__fAdd??rT
+   \   000001F0   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   000001F4   021C               MOV         R2,R0
+   \   000001F6   0B1C               MOV         R3,R1
+   \   000001F8   281C               MOV         R0,R5
+   \   000001FA   8021               MOV         R1,#+128
+   \   000001FC   C905               LSL         R1,R1,#+23         ;; #+1073741824
+   \   000001FE   ........           _BLF        __dDiv,??__dDiv??rT
+   \   00000202   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   00000206   061C               MOV         R6,R0
+    166          	C[2][0] = err * ( Quat[3] * DCM[0][0] );
+   \   00000208   ....               LDR         R0,??DataTable13   ;; Quat + 12
+   \   0000020A   0068               LDR         R0,[R0, #+0]
+   \   0000020C   211C               MOV         R1,R4
+   \   0000020E   ........           _BLF        __fMul,??__fMul??rT
+   \   00000212   311C               MOV         R1,R6
+   \   00000214   ........           _BLF        __fMul,??__fMul??rT
+   \   00000218   1C90               STR         R0,[SP, #+112]
+    167          	C[2][1] = err * ( Quat[2] * DCM[0][0] );
+   \   0000021A   ....               LDR         R0,??DataTable14   ;; Quat + 8
+   \   0000021C   0068               LDR         R0,[R0, #+0]
+   \   0000021E   211C               MOV         R1,R4
+   \   00000220   ........           _BLF        __fMul,??__fMul??rT
+   \   00000224   311C               MOV         R1,R6
+   \   00000226   ........           _BLF        __fMul,??__fMul??rT
+   \   0000022A   1D90               STR         R0,[SP, #+116]
+    168          	C[2][2] = err * ( Quat[1] * DCM[0][0] + 2.0 * Quat[2] * DCM[0][1] );
+   \   0000022C   01AA               ADD         R2,SP,#+4
+   \   0000022E   04B4               PUSH        {R2}
+   \   00000230   381C               MOV         R0,R7
+   \   00000232   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000236   04BC               POP         {R2}
+   \   00000238   03C2               STMIA       R2!,{R0,R1}
+   \   0000023A   03AF               ADD         R7,SP,#+12
+   \   0000023C   301C               MOV         R0,R6
+   \   0000023E   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000242   03C7               STMIA       R7!,{R0,R1}
+   \   00000244   0AA8               ADD         R0,SP,#+40
+   \   00000246   03C8               LDMIA       R0!,{R0,R1}
+   \   00000248   01AA               ADD         R2,SP,#+4
+   \   0000024A   0CCA               LDMIA       R2!,{R2,R3}
+   \   0000024C   ........           _BLF        __dMul,??__dMul??rT
+   \   00000250   061C               MOV         R6,R0
+   \   00000252   0F1C               MOV         R7,R1
+   \   00000254   ....               LDR         R0,??DataTable15   ;; Quat + 4
+   \   00000256   0068               LDR         R0,[R0, #+0]
+   \   00000258   211C               MOV         R1,R4
+   \   0000025A   ........           _BLF        __fMul,??__fMul??rT
+   \   0000025E   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000262   321C               MOV         R2,R6
+   \   00000264   3B1C               MOV         R3,R7
+   \   00000266   ........           _BLF        __dAdd,??__dAdd??rT
+   \   0000026A   021C               MOV         R2,R0
+   \   0000026C   0B1C               MOV         R3,R1
+   \   0000026E   03A8               ADD         R0,SP,#+12
+   \   00000270   03C8               LDMIA       R0!,{R0,R1}
+   \   00000272   ........           _BLF        __dMul,??__dMul??rT
+   \   00000276   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   0000027A   1E90               STR         R0,[SP, #+120]
+    169          	C[2][3] = err * ( Quat[0] * DCM[0][0] + 2.0 * Quat[3] * DCM[0][1] );
+   \   0000027C   0CA8               ADD         R0,SP,#+48
+   \   0000027E   03C8               LDMIA       R0!,{R0,R1}
+   \   00000280   01AA               ADD         R2,SP,#+4
+   \   00000282   0CCA               LDMIA       R2!,{R2,R3}
+   \   00000284   ........           _BLF        __dMul,??__dMul??rT
+   \   00000288   061C               MOV         R6,R0
+   \   0000028A   0F1C               MOV         R7,R1
+   \   0000028C   ....               LDR         R0,??DataTable16   ;; Quat
+   \   0000028E   0068               LDR         R0,[R0, #+0]
+   \   00000290   211C               MOV         R1,R4
+   \   00000292   ........           _BLF        __fMul,??__fMul??rT
+   \   00000296   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   0000029A   321C               MOV         R2,R6
+   \   0000029C   3B1C               MOV         R3,R7
+   \   0000029E   ........           _BLF        __dAdd,??__dAdd??rT
+   \   000002A2   03AA               ADD         R2,SP,#+12
+   \   000002A4   0CCA               LDMIA       R2!,{R2,R3}
+   \   000002A6   ........           _BLF        __dMul,??__dMul??rT
+   \   000002AA   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   000002AE   1F90               STR         R0,[SP, #+124]
+    170                  C[2][4] = 0.0;
+   \   000002B0   2095               STR         R5,[SP, #+128]
+    171          	C[2][5] = 0.0;
+   \   000002B2   2195               STR         R5,[SP, #+132]
+    172          	C[2][6] = 0.0;
+   \   000002B4   2295               STR         R5,[SP, #+136]
+    173                  
+    174          	// compute the error; this should be ( THETAm - THETAe ),
+    175          	// but we can only use the pitch and roll angles here
+    176          	float        	eTHETA[M];
+    177                  
+    178          	eTHETA[0] = euler[0] - theta[0];   //euler[3] come from imu.c
+   \   000002B6   ....               LDR         R4,??DataTable17   ;; euler
+   \   000002B8   2068               LDR         R0,[R4, #+0]
+   \   000002BA   2399               LDR         R1,[SP, #+140]
+   \   000002BC   0968               LDR         R1,[R1, #+0]
+   \   000002BE   ........           _BLF        __fSub,??__fSub??rT
+   \   000002C2   0590               STR         R0,[SP, #+20]
+    179          	eTHETA[1] = euler[1] - theta[1];
+   \   000002C4   6068               LDR         R0,[R4, #+4]
+   \   000002C6   2399               LDR         R1,[SP, #+140]
+   \   000002C8   4968               LDR         R1,[R1, #+4]
+   \   000002CA   ........           _BLF        __fSub,??__fSub??rT
+   \   000002CE   0690               STR         R0,[SP, #+24]
+    180                  eTHETA[2] = heading  - theta[2];
+   \   000002D0   ....               LDR         R0,??Subroutine5_0+0xC  ;; heading
+   \   000002D2   0068               LDR         R0,[R0, #+0]
+   \   000002D4   2399               LDR         R1,[SP, #+140]
+   \   000002D6   8968               LDR         R1,[R1, #+8]
+   \   000002D8   ........           _BLF        __fSub,??__fSub??rT
+   \   000002DC   0790               STR         R0,[SP, #+28]
+    181                  
+    182          	if( eTHETA[2] > C_PI )
+   \   000002DE   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   000002E2   041C               MOV         R4,R0
+   \   000002E4   0D1C               MOV         R5,R1
+   \   000002E6   ....               LDR         R2,??Subroutine5_0+0x10  ;; 0x54442d19
+   \   000002E8   ....               LDR         R3,??Subroutine5_0+0x14  ;; 0x400921fb
+   \   000002EA   ........           _BLF        __dGreaterEqual,??__dGreaterEqual??rT
+   \   000002EE   0028               CMP         R0,#+0
+   \   000002F0   02D0               BEQ         ??kalman_attitude_update_0
+    183          		eTHETA[2] -= 2.0 * C_PI;
+   \   000002F2   ....               LDR         R0,??Subroutine5_0+0x18  ;; 0x54442d18
+   \   000002F4   ....               LDR         R1,??Subroutine5_0+0x1C  ;; 0xc01921fb
+   \   000002F6   09E0               B           ??kalman_attitude_update_1
+    184          	else
+    185          	if( eTHETA[2] < -C_PI )
+   \                     ??kalman_attitude_update_0:
+   \   000002F8   201C               MOV         R0,R4
+   \   000002FA   291C               MOV         R1,R5
+   \   000002FC   ....               LDR         R2,??Subroutine5_0+0x20  ;; 0x54442d18
+   \   000002FE   ....               LDR         R3,??Subroutine5_0+0x24  ;; 0xc00921fb
+   \   00000300   ........           _BLF        __dLess,??__dLess??rT
+   \   00000304   0028               CMP         R0,#+0
+   \   00000306   08D0               BEQ         ??kalman_attitude_update_2
+    186          		eTHETA[2] += 2.0 * C_PI;
+   \   00000308   ....               LDR         R0,??Subroutine5_0+0x28  ;; 0x54442d18
+   \   0000030A   ....               LDR         R1,??Subroutine5_0+0x2C  ;; 0x401921fb
+   \                     ??kalman_attitude_update_1:
+   \   0000030C   221C               MOV         R2,R4
+   \   0000030E   2B1C               MOV         R3,R5
+   \   00000310   ........           _BLF        __dAdd,??__dAdd??rT
+   \   00000314   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   00000318   0790               STR         R0,[SP, #+28]
+    187                  
+    188                 do_kalman(C,eTHETA);      
+   \                     ??kalman_attitude_update_2:
+   \   0000031A   05A9               ADD         R1,SP,#+20
+   \   0000031C   0EA8               ADD         R0,SP,#+56
+   \   0000031E   ........           BL          do_kalman
+    189          }
+   \   00000322   24B0               ADD         SP,#+144
+   \   00000324                      REQUIRE ?Subroutine5
+   \   00000324                      ;; // Fall through to label ?Subroutine5
+    190          
+
+   \                                 In segment CODE, align 4, keep-with-next
+    191          void imu_update(const float *accel,const float *pqr)
+    192          {
+   \                     imu_update:
+   \   00000000   F0B5               PUSH        {R4-R7,LR}
+   \   00000002   FFB0               SUB         SP,#+508
+   \   00000004   9CB0               SUB         SP,#+112
+   \   00000006   0C1C               MOV         R4,R1
+    193            unsigned char i,j,l;
+    194            float A[N][N],A_transpose[N][N];
+    195            float Pdot[N][N];
+    196            float Xdot[4];
+    197            
+    198           /*-----------------------make_a_matrix----------------------------------------------------------*/
+    199            const float		p = pqr[0] / 2.0;
+   \   00000008   0868               LDR         R0,[R1, #+0]
+   \   0000000A   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   0000000E   0022               MOV         R2,#+0
+   \   00000010   8023               MOV         R3,#+128
+   \   00000012   DB05               LSL         R3,R3,#+23         ;; #+1073741824
+   \   00000014   ........           _BLF        __dDiv,??__dDiv??rT
+   \   00000018   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   0000001C   071C               MOV         R7,R0
+    200            const float		q = pqr[1] / 2.0;
+   \   0000001E   6068               LDR         R0,[R4, #+4]
+   \   00000020   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000024   0022               MOV         R2,#+0
+   \   00000026   8023               MOV         R3,#+128
+   \   00000028   DB05               LSL         R3,R3,#+23         ;; #+1073741824
+   \   0000002A   ........           _BLF        __dDiv,??__dDiv??rT
+   \   0000002E   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   00000032   061C               MOV         R6,R0
+    201            const float		r = pqr[2] / 2.0;
+   \   00000034   A068               LDR         R0,[R4, #+8]
+   \   00000036   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   0000003A   0022               MOV         R2,#+0
+   \   0000003C   8023               MOV         R3,#+128
+   \   0000003E   DB05               LSL         R3,R3,#+23         ;; #+1073741824
+   \   00000040   ........           _BLF        __dDiv,??__dDiv??rT
+   \   00000044   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   00000048   051C               MOV         R5,R0
+   \   0000004A   E548               LDR         R0,??imu_update_0  ;; Quat
+   \   0000004C   0068               LDR         R0,[R0, #+0]
+   \   0000004E   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000052   0022               MOV         R2,#+0
+   \   00000054   8023               MOV         R3,#+128
+   \   00000056   DB05               LSL         R3,R3,#+23         ;; #+1073741824
+   \   00000058   ........           _BLF        __dDiv,??__dDiv??rT
+   \   0000005C   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   00000060   0390               STR         R0,[SP, #+12]
+    202          
+    203            const float		q0 = Quat[0] / 2.0;
+    204            const float		q1 = Quat[1] / 2.0;
+   \   00000062   E048               LDR         R0,??imu_update_0+0x4  ;; Quat + 4
+   \   00000064   0068               LDR         R0,[R0, #+0]
+   \   00000066   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   0000006A   0022               MOV         R2,#+0
+   \   0000006C   8023               MOV         R3,#+128
+   \   0000006E   DB05               LSL         R3,R3,#+23         ;; #+1073741824
+   \   00000070   ........           _BLF        __dDiv,??__dDiv??rT
+   \   00000074   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   00000078   0290               STR         R0,[SP, #+8]
+    205            const float		q2 = Quat[2] / 2.0;
+   \   0000007A   DB48               LDR         R0,??imu_update_0+0x8  ;; Quat + 8
+   \   0000007C   0068               LDR         R0,[R0, #+0]
+   \   0000007E   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000082   0022               MOV         R2,#+0
+   \   00000084   8023               MOV         R3,#+128
+   \   00000086   DB05               LSL         R3,R3,#+23         ;; #+1073741824
+   \   00000088   ........           _BLF        __dDiv,??__dDiv??rT
+   \   0000008C   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   00000090   0190               STR         R0,[SP, #+4]
+    206            const float		q3 = Quat[3] / 2.0;
+   \   00000092   E448               LDR         R0,??imu_update_1  ;; Quat + 12
+   \   00000094   0068               LDR         R0,[R0, #+0]
+   \   00000096   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   0000009A   0022               MOV         R2,#+0
+   \   0000009C   8023               MOV         R3,#+128
+   \   0000009E   DB05               LSL         R3,R3,#+23         ;; #+1073741824
+   \   000000A0   ........           _BLF        __dDiv,??__dDiv??rT
+   \   000000A4   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   000000A8   0090               STR         R0,[SP, #+0]
+   \   000000AA   0020               MOV         R0,#+0
+   \   000000AC   0890               STR         R0,[SP, #+32]
+    207          
+    208          	A[0][0] =  0;
+    209          	A[0][1] = -p;
+   \   000000AE   381C               MOV         R0,R7
+   \   000000B0   8021               MOV         R1,#+128
+   \   000000B2   0906               LSL         R1,R1,#+24         ;; #-2147483648
+   \   000000B4   4840               EOR         R0,R1
+   \   000000B6   0990               STR         R0,[SP, #+36]
+    210          	A[0][2] = -q;
+   \   000000B8   311C               MOV         R1,R6
+   \   000000BA   8022               MOV         R2,#+128
+   \   000000BC   1206               LSL         R2,R2,#+24         ;; #-2147483648
+   \   000000BE   5140               EOR         R1,R2
+   \   000000C0   0A91               STR         R1,[SP, #+40]
+    211          	A[0][3] = -r;
+   \   000000C2   2A1C               MOV         R2,R5
+   \   000000C4   8023               MOV         R3,#+128
+   \   000000C6   1B06               LSL         R3,R3,#+24         ;; #-2147483648
+   \   000000C8   5A40               EOR         R2,R3
+   \   000000CA   0B92               STR         R2,[SP, #+44]
+    212          	A[0][4] =  q1;
+   \   000000CC   029B               LDR         R3,[SP, #+8]
+   \   000000CE   0C93               STR         R3,[SP, #+48]
+    213          	A[0][5] =  q2;
+   \   000000D0   019B               LDR         R3,[SP, #+4]
+   \   000000D2   0D93               STR         R3,[SP, #+52]
+    214          	A[0][6] =  q3;
+   \   000000D4   009B               LDR         R3,[SP, #+0]
+   \   000000D6   0E93               STR         R3,[SP, #+56]
+    215          
+    216          	A[1][0] =  p;
+   \   000000D8   0F97               STR         R7,[SP, #+60]
+    217          	A[1][1] =  0;
+   \   000000DA   0023               MOV         R3,#+0
+   \   000000DC   1093               STR         R3,[SP, #+64]
+    218          	A[1][2] =  r;
+   \   000000DE   1195               STR         R5,[SP, #+68]
+    219          	A[1][3] = -q;
+   \   000000E0   1291               STR         R1,[SP, #+72]
+    220          	A[1][4] = -q0;
+   \   000000E2   0399               LDR         R1,[SP, #+12]
+   \   000000E4   8023               MOV         R3,#+128
+   \   000000E6   1B06               LSL         R3,R3,#+24         ;; #-2147483648
+   \   000000E8   5940               EOR         R1,R3
+   \   000000EA   1391               STR         R1,[SP, #+76]
+    221          	A[1][5] =  q3;
+   \   000000EC   009B               LDR         R3,[SP, #+0]
+   \   000000EE   1493               STR         R3,[SP, #+80]
+    222          	A[1][6] = -q2;
+   \   000000F0   019B               LDR         R3,[SP, #+4]
+   \   000000F2   8024               MOV         R4,#+128
+   \   000000F4   2406               LSL         R4,R4,#+24         ;; #-2147483648
+   \   000000F6   6340               EOR         R3,R4
+   \   000000F8   1593               STR         R3,[SP, #+84]
+    223          
+    224          	A[2][0] =  q;
+   \   000000FA   1696               STR         R6,[SP, #+88]
+    225          	A[2][1] = -r;
+   \   000000FC   1792               STR         R2,[SP, #+92]
+    226          	A[2][2] =  0;
+   \   000000FE   0022               MOV         R2,#+0
+   \   00000100   1892               STR         R2,[SP, #+96]
+    227          	A[2][3] =  p;
+   \   00000102   1997               STR         R7,[SP, #+100]
+    228          	A[2][4] = -q3;
+   \   00000104   009A               LDR         R2,[SP, #+0]
+   \   00000106   6240               EOR         R2,R4
+   \   00000108   1A92               STR         R2,[SP, #+104]
+    229          	A[2][5] = -q0;
+   \   0000010A   1B91               STR         R1,[SP, #+108]
+    230          	A[2][6] =  q1;
+   \   0000010C   029A               LDR         R2,[SP, #+8]
+   \   0000010E   1C92               STR         R2,[SP, #+112]
+    231          
+    232          	A[3][0] =  r;
+   \   00000110   1D95               STR         R5,[SP, #+116]
+    233          	A[3][1] =  q;
+   \   00000112   1E96               STR         R6,[SP, #+120]
+    234          	A[3][2] = -p;
+   \   00000114   1F90               STR         R0,[SP, #+124]
+    235          	A[3][3] =  0;
+   \   00000116   0020               MOV         R0,#+0
+   \   00000118   2090               STR         R0,[SP, #+128]
+    236          	A[3][4] =  q2;
+   \   0000011A   0198               LDR         R0,[SP, #+4]
+   \   0000011C   2190               STR         R0,[SP, #+132]
+    237          	A[3][5] = -q1;
+   \   0000011E   101C               MOV         R0,R2
+   \   00000120   6040               EOR         R0,R4
+   \   00000122   2290               STR         R0,[SP, #+136]
+    238          	A[3][6] = -q0;
+   \   00000124   2391               STR         R1,[SP, #+140]
+    239          
+    240          	for( i=4 ; i<N ; i++ )
+   \   00000126   0420               MOV         R0,#+4
+    241          		for( j=0 ; j<N ; j++ )
+   \                     ??imu_update_2:
+   \   00000128   0024               MOV         R4,#+0
+    242          			A[i][j] = 0;        
+   \                     ??imu_update_3:
+   \   0000012A   A100               LSL         R1,R4,#+2
+   \   0000012C   1C22               MOV         R2,#+28
+   \   0000012E   4243               MUL         R2,R0
+   \   00000130   08AB               ADD         R3,SP,#+32
+   \   00000132   9B18               ADD         R3,R3,R2
+   \   00000134   0022               MOV         R2,#+0
+   \   00000136   5A50               STR         R2,[R3, R1]
+   \   00000138   641C               ADD         R4,R4,#+1
+   \   0000013A   2106               LSL         R1,R4,#+24
+   \   0000013C   090E               LSR         R1,R1,#+24
+   \   0000013E   0729               CMP         R1,#+7
+   \   00000140   F3D3               BCC         ??imu_update_3
+   \   00000142   401C               ADD         R0,R0,#+1
+   \   00000144   0106               LSL         R1,R0,#+24
+   \   00000146   090E               LSR         R1,R1,#+24
+   \   00000148   0729               CMP         R1,#+7
+   \   0000014A   EDD3               BCC         ??imu_update_2
+    243            /*----------------------------propagate_state-----------------------------------------------------*/      
+    244                  
+    245                    Xdot[0]=(-p * q1 - q * q2 - r * q3)*dt;
+   \   0000014C   0098               LDR         R0,[SP, #+0]
+   \   0000014E   291C               MOV         R1,R5
+   \   00000150   ........           _BLF        __fMul,??__fMul??rT
+   \   00000154   011C               MOV         R1,R0
+   \   00000156   02B4               PUSH        {R1}
+   \   00000158   0298               LDR         R0,[SP, #+8]
+   \   0000015A   311C               MOV         R1,R6
+   \   0000015C   ........           _BLF        __fMul,??__fMul??rT
+   \   00000160   041C               MOV         R4,R0
+   \   00000162   0398               LDR         R0,[SP, #+12]
+   \   00000164   391C               MOV         R1,R7
+   \   00000166   ........           _BLF        __fMul,??__fMul??rT
+   \   0000016A   8021               MOV         R1,#+128
+   \   0000016C   0906               LSL         R1,R1,#+24         ;; #-2147483648
+   \   0000016E   4840               EOR         R0,R1
+   \   00000170   211C               MOV         R1,R4
+   \   00000172   ........           _BLF        __fSub,??__fSub??rT
+   \   00000176   02BC               POP         {R1}
+   \   00000178   ........           _BLF        __fSub,??__fSub??rT
+   \   0000017C   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000180   021C               MOV         R2,R0
+   \   00000182   0B1C               MOV         R3,R1
+   \   00000184   A848               LDR         R0,??imu_update_1+0x4  ;; 0xa0b5ed8d
+   \   00000186   A949               LDR         R1,??imu_update_1+0x8  ;; 0x3fa0c6f7
+   \   00000188   ........           _BLF        __dMul,??__dMul??rT
+   \   0000018C   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   00000190   0490               STR         R0,[SP, #+16]
+    246                    Xdot[1]= (p * q0 - q * q3 + r * q2)*dt;
+   \   00000192   0198               LDR         R0,[SP, #+4]
+   \   00000194   291C               MOV         R1,R5
+   \   00000196   ........           _BLF        __fMul,??__fMul??rT
+   \   0000019A   011C               MOV         R1,R0
+   \   0000019C   02B4               PUSH        {R1}
+   \   0000019E   0198               LDR         R0,[SP, #+4]
+   \   000001A0   311C               MOV         R1,R6
+   \   000001A2   ........           _BLF        __fMul,??__fMul??rT
+   \   000001A6   041C               MOV         R4,R0
+   \   000001A8   0498               LDR         R0,[SP, #+16]
+   \   000001AA   391C               MOV         R1,R7
+   \   000001AC   ........           _BLF        __fMul,??__fMul??rT
+   \   000001B0   211C               MOV         R1,R4
+   \   000001B2   ........           _BLF        __fSub,??__fSub??rT
+   \   000001B6   02BC               POP         {R1}
+   \   000001B8   ........           _BLF        __fAdd,??__fAdd??rT
+   \   000001BC   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   000001C0   021C               MOV         R2,R0
+   \   000001C2   0B1C               MOV         R3,R1
+   \   000001C4   9848               LDR         R0,??imu_update_1+0x4  ;; 0xa0b5ed8d
+   \   000001C6   9949               LDR         R1,??imu_update_1+0x8  ;; 0x3fa0c6f7
+   \   000001C8   ........           _BLF        __dMul,??__dMul??rT
+   \   000001CC   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   000001D0   0590               STR         R0,[SP, #+20]
+    247                    Xdot[2]= (p * q3 + q * q0 - r * q1)*dt;
+   \   000001D2   0298               LDR         R0,[SP, #+8]
+   \   000001D4   291C               MOV         R1,R5
+   \   000001D6   ........           _BLF        __fMul,??__fMul??rT
+   \   000001DA   011C               MOV         R1,R0
+   \   000001DC   02B4               PUSH        {R1}
+   \   000001DE   0498               LDR         R0,[SP, #+16]
+   \   000001E0   311C               MOV         R1,R6
+   \   000001E2   ........           _BLF        __fMul,??__fMul??rT
+   \   000001E6   041C               MOV         R4,R0
+   \   000001E8   0198               LDR         R0,[SP, #+4]
+   \   000001EA   391C               MOV         R1,R7
+   \   000001EC   ........           _BLF        __fMul,??__fMul??rT
+   \   000001F0   211C               MOV         R1,R4
+   \   000001F2   ........           _BLF        __fAdd,??__fAdd??rT
+   \   000001F6   02BC               POP         {R1}
+   \   000001F8   ........           _BLF        __fSub,??__fSub??rT
+   \   000001FC   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000200   021C               MOV         R2,R0
+   \   00000202   0B1C               MOV         R3,R1
+   \   00000204   8848               LDR         R0,??imu_update_1+0x4  ;; 0xa0b5ed8d
+   \   00000206   8949               LDR         R1,??imu_update_1+0x8  ;; 0x3fa0c6f7
+   \   00000208   ........           _BLF        __dMul,??__dMul??rT
+   \   0000020C   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   00000210   0690               STR         R0,[SP, #+24]
+    248                    Xdot[3]=(-p * q2 + q * q1 + r * q0)*dt;  //the quaternion instant modify;
+   \   00000212   0398               LDR         R0,[SP, #+12]
+   \   00000214   291C               MOV         R1,R5
+   \   00000216   ........           _BLF        __fMul,??__fMul??rT
+   \   0000021A   041C               MOV         R4,R0
+   \   0000021C   0198               LDR         R0,[SP, #+4]
+   \   0000021E   391C               MOV         R1,R7
+   \   00000220   ........           _BLF        __fMul,??__fMul??rT
+   \   00000224   051C               MOV         R5,R0
+   \   00000226   0298               LDR         R0,[SP, #+8]
+   \   00000228   311C               MOV         R1,R6
+   \   0000022A   ........           _BLF        __fMul,??__fMul??rT
+   \   0000022E   291C               MOV         R1,R5
+   \   00000230   ........           _BLF        __fSub,??__fSub??rT
+   \   00000234   211C               MOV         R1,R4
+   \   00000236   ........           _BLF        __fAdd,??__fAdd??rT
+   \   0000023A   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   0000023E   7A4A               LDR         R2,??imu_update_1+0x4  ;; 0xa0b5ed8d
+   \   00000240   7A4B               LDR         R3,??imu_update_1+0x8  ;; 0x3fa0c6f7
+   \   00000242   ........           _BLF        __dMul,??__dMul??rT
+   \   00000246   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   0000024A   0790               STR         R0,[SP, #+28]
+    249                 for(i=0;i<4;i++)
+   \   0000024C   0024               MOV         R4,#+0
+    250                  Quat[i]+=Xdot[i];
+   \                     ??imu_update_4:
+   \   0000024E   A100               LSL         R1,R4,#+2
+   \   00000250   6348               LDR         R0,??imu_update_0  ;; Quat
+   \   00000252   4518               ADD         R5,R0,R1
+   \   00000254   2868               LDR         R0,[R5, #+0]
+   \   00000256   04AA               ADD         R2,SP,#+16
+   \   00000258   5158               LDR         R1,[R2, R1]
+   \   0000025A   ........           _BLF        __fAdd,??__fAdd??rT
+   \   0000025E   2860               STR         R0,[R5, #+0]
+   \   00000260   641C               ADD         R4,R4,#+1
+   \   00000262   2006               LSL         R0,R4,#+24
+   \   00000264   000E               LSR         R0,R0,#+24
+   \   00000266   0428               CMP         R0,#+4
+   \   00000268   F1D3               BCC         ??imu_update_4
+    251                 norm(Quat);  
+   \   0000026A   5D48               LDR         R0,??imu_update_0  ;; Quat
+   \   0000026C   ........           _BLF        norm,??norm??rT
+    252            /*-------------------------------propagate_covariance--------------------------------------------------*/      
+    253                 for(i=0;i<N;i++)
+   \   00000270   0020               MOV         R0,#+0
+   \   00000272   6F4C               LDR         R4,??imu_update_1+0xC  ;; Q
+    254                   Pdot[i][i]=Q[i][i];
+   \                     ??imu_update_5:
+   \   00000274   8100               LSL         R1,R0,#+2
+   \   00000276   1C22               MOV         R2,#+28
+   \   00000278   4243               MUL         R2,R0
+   \   0000027A   6AAB               ADD         R3,SP,#+424
+   \   0000027C   9B18               ADD         R3,R3,R2
+   \   0000027E   A218               ADD         R2,R4,R2
+   \   00000280   5258               LDR         R2,[R2, R1]
+   \   00000282   5A50               STR         R2,[R3, R1]
+   \   00000284   401C               ADD         R0,R0,#+1
+   \   00000286   0106               LSL         R1,R0,#+24
+   \   00000288   090E               LSR         R1,R1,#+24
+   \   0000028A   0729               CMP         R1,#+7
+   \   0000028C   F2D3               BCC         ??imu_update_5
+    255                 
+    256              for(i=0;i<N;i++)
+   \   0000028E   0025               MOV         R5,#+0
+    257                for(j=0;j<N;j++)
+   \                     ??imu_update_6:
+   \   00000290   0024               MOV         R4,#+0
+    258                  for(l=0;l<N;l++)
+   \                     ??imu_update_7:
+   \   00000292   0026               MOV         R6,#+0
+   \   00000294   A000               LSL         R0,R4,#+2
+   \   00000296   0090               STR         R0,[SP, #+0]
+   \   00000298   1C20               MOV         R0,#+28
+   \   0000029A   6843               MUL         R0,R5
+   \   0000029C   0190               STR         R0,[SP, #+4]
+   \   0000029E   0098               LDR         R0,[SP, #+0]
+   \   000002A0   0199               LDR         R1,[SP, #+4]
+   \   000002A2   6AAA               ADD         R2,SP,#+424
+   \   000002A4   5118               ADD         R1,R2,R1
+   \   000002A6   0F18               ADD         R7,R1,R0
+    259                    Pdot[i][j] += A[i][l]*P[l][j];
+   \                     ??imu_update_8:
+   \   000002A8   B000               LSL         R0,R6,#+2
+   \   000002AA   0199               LDR         R1,[SP, #+4]
+   \   000002AC   08AA               ADD         R2,SP,#+32
+   \   000002AE   5118               ADD         R1,R2,R1
+   \   000002B0   0858               LDR         R0,[R1, R0]
+   \   000002B2   1C21               MOV         R1,#+28
+   \   000002B4   7143               MUL         R1,R6
+   \   000002B6   009A               LDR         R2,[SP, #+0]
+   \   000002B8   ....               LDR         R3,??DataTable21   ;; P
+   \   000002BA   9A18               ADD         R2,R3,R2
+   \   000002BC   5158               LDR         R1,[R2, R1]
+   \   000002BE   ........           _BLF        __fMul,??__fMul??rT
+   \   000002C2   011C               MOV         R1,R0
+   \   000002C4   3868               LDR         R0,[R7, #+0]
+   \   000002C6   ........           _BLF        __fAdd,??__fAdd??rT
+   \   000002CA   3860               STR         R0,[R7, #+0]
+   \   000002CC   761C               ADD         R6,R6,#+1
+   \   000002CE   3006               LSL         R0,R6,#+24
+   \   000002D0   000E               LSR         R0,R0,#+24
+   \   000002D2   0728               CMP         R0,#+7
+   \   000002D4   E8D3               BCC         ??imu_update_8
+   \   000002D6   641C               ADD         R4,R4,#+1
+   \   000002D8   2006               LSL         R0,R4,#+24
+   \   000002DA   000E               LSR         R0,R0,#+24
+   \   000002DC   0728               CMP         R0,#+7
+   \   000002DE   D8D3               BCC         ??imu_update_7
+   \   000002E0   6D1C               ADD         R5,R5,#+1
+   \   000002E2   2806               LSL         R0,R5,#+24
+   \   000002E4   000E               LSR         R0,R0,#+24
+   \   000002E6   0728               CMP         R0,#+7
+   \   000002E8   D2D3               BCC         ??imu_update_6
+    260             
+    261              for(i=0 ; i<N ; i++ )
+   \   000002EA   0020               MOV         R0,#+0
+   \   000002EC   08AE               ADD         R6,SP,#+32
+    262          		{
+    263          		 for( j=0 ; j<N ; j++ )
+   \                     ??imu_update_9:
+   \   000002EE   0024               MOV         R4,#+0
+    264          		 A_transpose[j][i] = A[i][j];
+   \                     ??imu_update_10:
+   \   000002F0   1C21               MOV         R1,#+28
+   \   000002F2   6143               MUL         R1,R4
+   \   000002F4   8200               LSL         R2,R0,#+2
+   \   000002F6   39AB               ADD         R3,SP,#+228
+   \   000002F8   9A18               ADD         R2,R3,R2
+   \   000002FA   A300               LSL         R3,R4,#+2
+   \   000002FC   1C25               MOV         R5,#+28
+   \   000002FE   4543               MUL         R5,R0
+   \   00000300   7519               ADD         R5,R6,R5
+   \   00000302   EB58               LDR         R3,[R5, R3]
+   \   00000304   5350               STR         R3,[R2, R1]
+   \   00000306   641C               ADD         R4,R4,#+1
+   \   00000308   2106               LSL         R1,R4,#+24
+   \   0000030A   090E               LSR         R1,R1,#+24
+   \   0000030C   0729               CMP         R1,#+7
+   \   0000030E   EFD3               BCC         ??imu_update_10
+    265          		} 
+   \   00000310   401C               ADD         R0,R0,#+1
+   \   00000312   0106               LSL         R1,R0,#+24
+   \   00000314   090E               LSR         R1,R1,#+24
+   \   00000316   0729               CMP         R1,#+7
+   \   00000318   E9D3               BCC         ??imu_update_9
+    266              for(i=0;i<N;i++)
+   \   0000031A   0025               MOV         R5,#+0
+    267                for(j=0;j<N;j++)
+   \                     ??imu_update_11:
+   \   0000031C   0024               MOV         R4,#+0
+    268                  for(l=0;l<N;l++)
+   \                     ??imu_update_12:
+   \   0000031E   0026               MOV         R6,#+0
+   \   00000320   A000               LSL         R0,R4,#+2
+   \   00000322   0190               STR         R0,[SP, #+4]
+   \   00000324   1C20               MOV         R0,#+28
+   \   00000326   6843               MUL         R0,R5
+   \   00000328   0090               STR         R0,[SP, #+0]
+   \   0000032A   0198               LDR         R0,[SP, #+4]
+   \   0000032C   0099               LDR         R1,[SP, #+0]
+   \   0000032E   6AAA               ADD         R2,SP,#+424
+   \   00000330   5118               ADD         R1,R2,R1
+   \   00000332   0F18               ADD         R7,R1,R0
+    269                    Pdot[i][j] += P[i][l]*A_transpose[l][j];
+   \                     ??imu_update_13:
+   \   00000334   B000               LSL         R0,R6,#+2
+   \   00000336   0099               LDR         R1,[SP, #+0]
+   \   00000338   ....               LDR         R2,??DataTable21   ;; P
+   \   0000033A   5118               ADD         R1,R2,R1
+   \   0000033C   0858               LDR         R0,[R1, R0]
+   \   0000033E   1C21               MOV         R1,#+28
+   \   00000340   7143               MUL         R1,R6
+   \   00000342   019A               LDR         R2,[SP, #+4]
+   \   00000344   39AB               ADD         R3,SP,#+228
+   \   00000346   9A18               ADD         R2,R3,R2
+   \   00000348   5158               LDR         R1,[R2, R1]
+   \   0000034A   ........           _BLF        __fMul,??__fMul??rT
+   \   0000034E   011C               MOV         R1,R0
+   \   00000350   3868               LDR         R0,[R7, #+0]
+   \   00000352   ........           _BLF        __fAdd,??__fAdd??rT
+   \   00000356   3860               STR         R0,[R7, #+0]
+   \   00000358   761C               ADD         R6,R6,#+1
+   \   0000035A   3006               LSL         R0,R6,#+24
+   \   0000035C   000E               LSR         R0,R0,#+24
+   \   0000035E   0728               CMP         R0,#+7
+   \   00000360   E8D3               BCC         ??imu_update_13
+   \   00000362   641C               ADD         R4,R4,#+1
+   \   00000364   2006               LSL         R0,R4,#+24
+   \   00000366   000E               LSR         R0,R0,#+24
+   \   00000368   0728               CMP         R0,#+7
+   \   0000036A   D8D3               BCC         ??imu_update_12
+   \   0000036C   6D1C               ADD         R5,R5,#+1
+   \   0000036E   2806               LSL         R0,R5,#+24
+   \   00000370   000E               LSR         R0,R0,#+24
+   \   00000372   0728               CMP         R0,#+7
+   \   00000374   D2D3               BCC         ??imu_update_11
+    270              
+    271              for(i=0;i<N;i++)
+   \   00000376   0027               MOV         R7,#+0
+    272                for(j=0;j<N;j++)
+   \                     ??imu_update_14:
+   \   00000378   0024               MOV         R4,#+0
+   \   0000037A   1C20               MOV         R0,#+28
+   \   0000037C   7843               MUL         R0,R7
+   \   0000037E   0090               STR         R0,[SP, #+0]
+    273                   {  Pdot[i][j]*=dt;
+   \                     ??imu_update_15:
+   \   00000380   A600               LSL         R6,R4,#+2
+   \   00000382   0098               LDR         R0,[SP, #+0]
+   \   00000384   6AA9               ADD         R1,SP,#+424
+   \   00000386   0818               ADD         R0,R1,R0
+   \   00000388   8519               ADD         R5,R0,R6
+   \   0000038A   2868               LDR         R0,[R5, #+0]
+   \   0000038C   ........           _BLF        __floatToDouble,??__floatToDouble??rT
+   \   00000390   021C               MOV         R2,R0
+   \   00000392   0B1C               MOV         R3,R1
+   \   00000394   2448               LDR         R0,??imu_update_1+0x4  ;; 0xa0b5ed8d
+   \   00000396   2549               LDR         R1,??imu_update_1+0x8  ;; 0x3fa0c6f7
+   \   00000398   ........           _BLF        __dMul,??__dMul??rT
+   \   0000039C   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   000003A0   2860               STR         R0,[R5, #+0]
+    274                      P[i][j]+=Pdot[i][j];
+   \   000003A2   0099               LDR         R1,[SP, #+0]
+   \   000003A4   ....               LDR         R2,??DataTable21   ;; P
+   \   000003A6   5118               ADD         R1,R2,R1
+   \   000003A8   8D19               ADD         R5,R1,R6
+   \   000003AA   2968               LDR         R1,[R5, #+0]
+   \   000003AC   ........           _BLF        __fAdd,??__fAdd??rT
+   \   000003B0   2860               STR         R0,[R5, #+0]
+    275                   }
+   \   000003B2   641C               ADD         R4,R4,#+1
+   \   000003B4   2006               LSL         R0,R4,#+24
+   \   000003B6   000E               LSR         R0,R0,#+24
+   \   000003B8   0728               CMP         R0,#+7
+   \   000003BA   E1D3               BCC         ??imu_update_15
+   \   000003BC   7F1C               ADD         R7,R7,#+1
+   \   000003BE   3806               LSL         R0,R7,#+24
+   \   000003C0   000E               LSR         R0,R0,#+24
+   \   000003C2   0728               CMP         R0,#+7
+   \   000003C4   D8D3               BCC         ??imu_update_14
+    276          
+    277          	trace = 0;
+   \   000003C6   1B48               LDR         R0,??imu_update_1+0x10  ;; Quat + 76
+   \   000003C8   0021               MOV         R1,#+0
+   \   000003CA   0160               STR         R1,[R0, #+0]
+    278          
+    279          	for( i=0 ; i<N ; i++ )
+   \   000003CC   0024               MOV         R4,#+0
+   \   000003CE   194D               LDR         R5,??imu_update_1+0x10  ;; Quat + 76
+    280          	  trace += P[i][i];	
+   \                     ??imu_update_16:
+   \   000003D0   1848               LDR         R0,??imu_update_1+0x10  ;; Quat + 76
+   \   000003D2   0068               LDR         R0,[R0, #+0]
+   \   000003D4   A100               LSL         R1,R4,#+2
+   \   000003D6   1C22               MOV         R2,#+28
+   \   000003D8   6243               MUL         R2,R4
+   \   000003DA   ....               LDR         R3,??DataTable21   ;; P
+   \   000003DC   9A18               ADD         R2,R3,R2
+   \   000003DE   05E0               B           ??imu_update_17
+   \                     ??imu_update_0:
+   \   000003E0   ........           DC32        Quat
+   \   000003E4   ........           DC32        Quat + 4
+   \   000003E8   ........           DC32        Quat + 8
+   \                     ??imu_update_17:
+   \   000003EC   5158               LDR         R1,[R2, R1]
+   \   000003EE   ........           _BLF        __fAdd,??__fAdd??rT
+   \   000003F2   2860               STR         R0,[R5, #+0]
+   \   000003F4   641C               ADD         R4,R4,#+1
+   \   000003F6   2006               LSL         R0,R4,#+24
+   \   000003F8   000E               LSR         R0,R0,#+24
+   \   000003FA   0728               CMP         R0,#+7
+   \   000003FC   E8D3               BCC         ??imu_update_16
+    281            /*-----------------------------kalman_attitude_update----------------------------------------------------*/  
+    282                  quat2DCM(DCM,Quat);
+   \   000003FE   ....               LDR         R1,??DataTable26   ;; Quat
+   \   00000400   ....               LDR         R0,??DataTable25   ;; Quat + 28
+   \   00000402   ........           _BLF        quat2DCM,??quat2DCM??rT
+    283                  quat2euler(ahrs_theta,Quat);
+   \   00000406   ....               LDR         R1,??DataTable26   ;; Quat
+   \   00000408   0B48               LDR         R0,??imu_update_1+0x14  ;; Quat + 64
+   \   0000040A   ........           _BLF        quat2euler,??quat2euler??rT
+    284                  kalman_attitude_update(DCM,ahrs_theta);
+   \   0000040E   0A49               LDR         R1,??imu_update_1+0x14  ;; Quat + 64
+   \   00000410   ....               LDR         R0,??DataTable25   ;; Quat + 28
+   \   00000412   ........           BL          kalman_attitude_update
+    285                  quat2euler(ahrs_theta,Quat);
+   \   00000416   ....               LDR         R1,??DataTable26   ;; Quat
+   \   00000418   0748               LDR         R0,??imu_update_1+0x14  ;; Quat + 64
+   \   0000041A   ........           _BLF        quat2euler,??quat2euler??rT
+    286                 
+    287          }
+   \   0000041E   7FB0               ADD         SP,#+508
+   \   00000420   1CB0               ADD         SP,#+112
+   \   00000422   ....               B           ?Subroutine5
+   \                     ??imu_update_1:
+   \   00000424   ........           DC32        Quat + 12
+   \   00000428   8DEDB5A0           DC32        0xa0b5ed8d
+   \   0000042C   F7C6A03F           DC32        0x3fa0c6f7
+   \   00000430   ........           DC32        Q
+   \   00000434   ........           DC32        Quat + 76
+   \   00000438   ........           DC32        Quat + 64
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   ........           DC32        P
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   ........           DC32        Quat
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable12:
+   \   00000000   ........           DC32        Quat + 28
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable13:
+   \   00000000   ........           DC32        Quat + 12
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable14:
+   \   00000000   ........           DC32        Quat + 8
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable15:
+   \   00000000   ........           DC32        Quat + 4
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable16:
+   \   00000000   ........           DC32        Quat
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable17:
+   \   00000000   ........           DC32        euler
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable21:
+   \   00000000   ........           DC32        P
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable25:
+   \   00000000   ........           DC32        Quat + 28
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable26:
+   \   00000000   ........           DC32        Quat
+
+   \                                 In segment DATA_ID, align 4, align-sorted
+   \                     `?<Initializer for P>`:
+   \   00000000   00000000           DC32 0H
+   \   00000004   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   00000014   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0
+   \              0000        
+   \   0000001C   00000000           DC32 0H
+   \   00000020   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   00000030   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0
+   \              0000        
+   \   00000038   00000000           DC32 0H
+   \   0000003C   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   0000004C   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0
+   \              0000        
+   \   00000054   00000000           DC32 0H
+   \   00000058   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   00000068   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0
+   \              0000        
+   \   00000070   000000000000       DC32 0H, 0H, 0H, 0H, 3F800000H
+   \              000000000000
+   \              000000000000
+   \              803F        
+   \   00000084   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0
+   \              0000        
+   \   0000008C   000000000000       DC32 0H, 0H, 0H, 0H, 0H, 3F800000H
+   \              000000000000
+   \              000000000000
+   \              00000000803F
+   \   000000A4   00000000           DC8 0, 0, 0, 0
+   \   000000A8   000000000000       DC32 0H, 0H, 0H, 0H, 0H, 0H, 3F800000H
+   \              000000000000
+   \              000000000000
+   \              000000000000
+   \              0000803F    
+
+   \                                 In segment DATA_ID, align 4, align-sorted
+   \                     `?<Initializer for Q>`:
+   \   00000000   17B7D138           DC32 38D1B717H
+   \   00000004   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   00000014   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0
+   \              0000        
+   \   0000001C   0000000017B7       DC32 0H, 38D1B717H
+   \              D138        
+   \   00000024   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              000000000000
+   \              0000        
+   \   00000038   000000000000       DC32 0H, 0H, 38D1B717H
+   \              000017B7D138
+   \   00000044   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   00000054   000000000000       DC32 0H, 0H, 0H, 38D1B717H
+   \              000000000000
+   \              17B7D138    
+   \   00000064   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \   00000070   000000000000       DC32 0H, 0H, 0H, 0H, 3CF5C28FH
+   \              000000000000
+   \              000000008FC2
+   \              F53C        
+   \   00000084   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0
+   \              0000        
+   \   0000008C   000000000000       DC32 0H, 0H, 0H, 0H, 0H, 3CF5C28FH
+   \              000000000000
+   \              000000000000
+   \              00008FC2F53C
+   \   000000A4   00000000           DC8 0, 0, 0, 0
+   \   000000A8   000000000000       DC32 0H, 0H, 0H, 0H, 0H, 0H, 3CF5C28FH
+   \              000000000000
+   \              000000000000
+   \              000000000000
+   \              8FC2F53C    
+
+   \                                 In segment DATA_ID, align 4, align-sorted
+   \                     `?<Initializer for R_attitude>`:
+   \   00000000   0080BB44           DC32 44BB8000H
+   \   00000004   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0
+   \              0000        
+   \   0000000C   000000000080       DC32 0H, 44BB8000H
+   \              BB44        
+   \   00000014   00000000           DC8 0, 0, 0, 0
+   \   00000018   000000000000       DC32 0H, 42480000H, 0H
+   \              484200000000
+
+   \                                 In segment DATA_C, align 4, align-sorted
+   \   00000000   00000000           DC32 0H
+   \   00000004   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   00000014   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   00000024   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   00000034   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   00000044   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   00000054   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   00000064   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   00000074   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   00000084   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   00000094   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   000000A4   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+   \   000000B4   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+   \              000000000000
+   \              00000000    
+    288          
+    289          
+    290          
+    291           
+    292          
+    293          
+    294          
+    295          
+    296          
+
+   Maximum stack usage in bytes:
+
+     Function               CSTACK
+     --------               ------
+     Kalman                   448
+     ahrs_init                  8
+     do_kalman                 36
+     imu_update               644
+     kalman_attitude_update   168
+
+
+   Segment part sizes:
+
+     Function/Label                Bytes
+     --------------                -----
+     P                              196
+     Q                              196
+     R_attitude                      36
+     Quat                            80
+     Kalman                         708
+     ?Subroutine5                    56
+     do_kalman                       84
+     ?Subroutine6                    12
+     ahrs_init                       40
+     kalman_attitude_update         804
+     imu_update                    1084
+     ??DataTable1                     4
+     ??DataTable2                     4
+     ??DataTable12                    4
+     ??DataTable13                    4
+     ??DataTable14                    4
+     ??DataTable15                    4
+     ??DataTable16                    4
+     ??DataTable17                    4
+     ??DataTable21                    4
+     ??DataTable25                    4
+     ??DataTable26                    4
+     ?<Initializer for P>           196
+     ?<Initializer for Q>           196
+     ?<Initializer for R_attitude>   36
+     ?<Constant {{(0.0F)}}>         196
+      Others                        248
+
+ 
+ 3 056 bytes in segment CODE
+   196 bytes in segment DATA_C
+   428 bytes in segment DATA_I
+   428 bytes in segment DATA_ID
+    80 bytes in segment DATA_Z
+    24 bytes in segment INITTAB
+ 
+ 2 832 bytes of CODE  memory (+ 248 bytes shared)
+   624 bytes of CONST memory
+   508 bytes of DATA  memory
+
+Errors: none
+Warnings: none

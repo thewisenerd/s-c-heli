@@ -1,0 +1,186 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    03/Sep/2011  22:06:34 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10ch #
+#                       ar发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE- #
+#                       USART_USB\Compil\srcIAR\Cstartup_SAM7.c              #
+#    Command line    =  "F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10c #
+#                       har发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE #
+#                       -USART_USB\Compil\srcIAR\Cstartup_SAM7.c" -lC        #
+#                       "F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10c #
+#                       har发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE #
+#                       -USART_USB\Compil\RAM_Debug\List\" --remarks -o      #
+#                       "F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10c #
+#                       har发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE #
+#                       -USART_USB\Compil\RAM_Debug\Obj\" -z9 --debug        #
+#                       --cpu_mode thumb --endian little --cpu ARM7TDMI      #
+#                       --stack_align 4 --interwork -e --fpu None            #
+#                       --dlib_config "C:\Program Files\IAR                  #
+#                       Systems\Embedded Workbench 4.0                       #
+#                       Evaluation\ARM\LIB\dl4tptinl8f.h" -I                 #
+#                       "F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10c #
+#                       har发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE #
+#                       -USART_USB\Compil\srcIAR\" -I                        #
+#                       "F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10c #
+#                       har发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE #
+#                       -USART_USB\Compil\..\src\" -I                        #
+#                       "F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10c #
+#                       har发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\" -I                         #
+#                       "F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10c #
+#                       har发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\kalman\" -I                  #
+#                       "F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10c #
+#                       har发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\pcm\" -I                     #
+#                       "F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10c #
+#                       har发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\spi\" -I                     #
+#                       "F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10c #
+#                       har发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\timer\" -I                   #
+#                       "F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10c #
+#                       har发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\pid\" -I "C:\Program         #
+#                       Files\IAR Systems\Embedded Workbench 4.0             #
+#                       Evaluation\ARM\INC\"                                 #
+#    List file       =  F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10ch #
+#                       ar发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE- #
+#                       USART_USB\Compil\RAM_Debug\List\Cstartup_SAM7.lst    #
+#    Object file     =  F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10ch #
+#                       ar发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE- #
+#                       USART_USB\Compil\RAM_Debug\Obj\Cstartup_SAM7.r79     #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10char发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE-USART_USB\Compil\srcIAR\Cstartup_SAM7.c
+      1          //-----------------------------------------------------------------------------
+      2          //         ATMEL Microcontroller Software Support  -  ROUSSET  -
+      3          //-----------------------------------------------------------------------------
+      4          // DISCLAIMER:  THIS SOFTWARE IS PROVIDED BY ATMEL "AS IS" AND ANY EXPRESS OR
+      5          // IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+      6          // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT ARE
+      7          // DISCLAIMED. IN NO EVENT SHALL ATMEL BE LIABLE FOR ANY DIRECT, INDIRECT,
+      8          // INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+      9          // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+     10          // OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+     11          // LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+     12          // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+     13          // EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+     14          //-----------------------------------------------------------------------------
+     15          // File Name           : Cstartup_SAM7.c
+     16          // Object              : Low level initialisations written in C for Tools
+     17          //                       For AT91SAM7SE512 with 2 flash plane
+     18          // Creation            : JPP  09-May-2006
+     19          //-----------------------------------------------------------------------------
+     20          
+     21          #include "project.h"   
+     22          
+     23          
+     24          //  The following functions must be write in ARM mode this function called
+     25          // directly by exception vector
+     26          extern "C" void AT91F_Spurious_handler(void);
+                        ^
+Error[Pe040]: expected an identifier
+     27          extern "C" void AT91F_Default_IRQ_handler(void);
+                        ^
+Error[Pe040]: expected an identifier
+     28          extern "C" void AT91F_Default_FIQ_handler(void);
+                        ^
+Error[Pe040]: expected an identifier
+     29          
+     30          //*----------------------------------------------------------------------------
+     31          //* \fn    AT91F_LowLevelInit
+     32          //* \brief This function performs very low level HW initialization
+     33          //*        this function can use a Stack, depending the compilation
+     34          //*        optimization mode
+     35          //*----------------------------------------------------------------------------
+     36          extern "C" void AT91F_LowLevelInit(void)
+                        ^
+Error[Pe040]: expected an identifier
+
+  extern "C" void AT91F_LowLevelInit(void)
+         ^
+"F:\雷虎PPM自控版本\雷虎PPM自控版本\上位机程序GPS10char发送\上位机程序GPS无存储38400(无死机）\AT91SAM7SE-USART_USB\Compil\srcIAR\Cstartup_SAM7.c",36  Remark[Pe260]: 
+          explicit type is missing ("int" assumed)
+     37          {
+     38              unsigned char i;
+     39              ///////////////////////////////////////////////////////////////////////////
+     40              // EFC Init
+     41              ///////////////////////////////////////////////////////////////////////////
+     42              AT91C_BASE_MC->MC0_FMR = AT91C_MC_FWS_2FWS;// 2 Wait State to work at 48MHz
+     43              AT91C_BASE_MC->MC1_FMR = AT91C_MC_FWS_2FWS;// 2 Wait State to work at 48MHz
+     44          
+     45              ///////////////////////////////////////////////////////////////////////////
+     46              // Init PMC Step 1. Enable Main Oscillator
+     47              // Main Oscillator startup time is board specific:
+     48              // Main Oscillator Startup Time worst case (3MHz) corresponds to 15ms
+     49              // (0x40 for AT91C_CKGR_OSCOUNT field)
+     50              ///////////////////////////////////////////////////////////////////////////
+     51              AT91C_BASE_PMC->PMC_MOR = (( AT91C_CKGR_OSCOUNT & (0x40 <<8) | AT91C_CKGR_MOSCEN ));
+     52              // Wait Main Oscillator stabilization
+     53              while(!(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_MOSCS));
+     54          
+     55              ///////////////////////////////////////////////////////////////////////////
+     56              // Init PMC Step 2.
+     57              // Set PLL to 96MHz (96,109MHz) and UDP Clock to 48MHz
+     58              // PLL Startup time depends on PLL RC filter: worst case is choosen
+     59              // UDP Clock (48,058MHz) is compliant with the Universal Serial Bus
+     60              // Specification (+/- 0.25% for full speed)
+     61              ///////////////////////////////////////////////////////////////////////////
+     62              AT91C_BASE_PMC->PMC_PLLR = AT91C_CKGR_USBDIV_1           |
+     63                                         AT91C_CKGR_OUT_0              |
+     64                                         (16 << 8)                     |
+     65                                         (AT91C_CKGR_MUL & (72 << 16)) |
+     66                                         (AT91C_CKGR_DIV & 14);
+     67              // Wait for PLL stabilization
+     68              while( !(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_LOCK) );
+     69              // Wait until the master clock is established for the case we already
+     70              // turn on the PLL
+     71              while( !(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_MCKRDY) );
+     72          
+     73              ///////////////////////////////////////////////////////////////////////////
+     74              // Init PMC Step 3.
+     75              // Selection of Master Clock MCK equal to (Processor Clock PCK) PLL/2=48MHz
+     76              // The PMC_MCKR register must not be programmed in a single write operation
+     77              // (see. Product Errata Sheet)
+     78              ///////////////////////////////////////////////////////////////////////////
+     79              AT91C_BASE_PMC->PMC_MCKR = AT91C_PMC_PRES_CLK_2;
+     80              // Wait until the master clock is established
+     81              while( !(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_MCKRDY) );
+     82          
+     83              AT91C_BASE_PMC->PMC_MCKR |= AT91C_PMC_CSS_PLL_CLK;
+     84              // Wait until the master clock is established
+     85              while( !(AT91C_BASE_PMC->PMC_SR & AT91C_PMC_MCKRDY) );
+     86          
+     87              ///////////////////////////////////////////////////////////////////////////
+     88              //  Disable Watchdog (write once register)
+     89              ///////////////////////////////////////////////////////////////////////////
+     90              AT91C_BASE_WDTC->WDTC_WDMR = AT91C_WDTC_WDDIS;
+     91          
+     92              ///////////////////////////////////////////////////////////////////////////
+     93              //  Init AIC: assign corresponding handler for each interrupt source
+     94              ///////////////////////////////////////////////////////////////////////////
+     95              AT91C_BASE_AIC->AIC_SVR[0] = (int) AT91F_Default_FIQ_handler ;
+                                                        ^
+Error[Pe020]: identifier "AT91F_Default_FIQ_handler" is undefined
+     96              for (i = 1; i < 31; i++) {
+     97                  AT91C_BASE_AIC->AIC_SVR[i] = (int) AT91F_Default_IRQ_handler ;
+                                                            ^
+Error[Pe020]: identifier "AT91F_Default_IRQ_handler" is undefined
+     98              }
+     99              AT91C_BASE_AIC->AIC_SPU = (unsigned int) AT91F_Spurious_handler;
+                                                              ^
+Error[Pe020]: identifier "AT91F_Spurious_handler" is undefined
+    100          }
+                 ^
+Remark[Pe940]: missing return statement at end of non-void function "<error>"
+
+Errors: 7
+Warnings: none

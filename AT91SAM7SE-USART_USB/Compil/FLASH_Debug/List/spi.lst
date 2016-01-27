@@ -1,0 +1,278 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    07/Jan/2016  21:50:26 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27ห๘ฮฒ #
+#                       \ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQR_2 #
+#                       014_7_31\spi\spi.c                                   #
+#    Command line    =  H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27ห๘ฮฒ #
+#                       \ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQR_2 #
+#                       014_7_31\spi\spi.c -lC H:\สตั้สานคื๗2015-8-20\2014-1 #
+#                       0-1สตั้สา\2015-6-27ห๘ฮฒ\ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ #
+#                       ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQR_2014_7_31\AT91SAM7SE-USART_USB #
+#                       \Compil\FLASH_Debug\List\ -o                         #
+#                       H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27ห๘ฮฒ #
+#                       \ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\FLASH_Debug\Obj #
+#                       \ -z9 --debug --cpu_mode thumb --endian little       #
+#                       --cpu ARM7TDMI --stack_align 4 --interwork -e --fpu  #
+#                       None --ec++ --dlib_config                            #
+#                       D:\IAREWE431\ARM\LIB\dl4tptinl8n.h -I                #
+#                       H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27ห๘ฮฒ #
+#                       \ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\srcIAR\ -I      #
+#                       H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27ห๘ฮฒ #
+#                       \ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\..\src\ -I      #
+#                       H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27ห๘ฮฒ #
+#                       \ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\ -I       #
+#                       H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27ห๘ฮฒ #
+#                       \ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\kalman\   #
+#                       -I H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27ห #
+#                       ๘ฮฒ\ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQ #
+#                       R_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\pcm\   #
+#                       -I H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27ห #
+#                       ๘ฮฒ\ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQ #
+#                       R_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\spi\   #
+#                       -I H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27ห #
+#                       ๘ฮฒ\ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQ #
+#                       R_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\timer\ #
+#                        -I H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27 #
+#                       ห๘ฮฒ\ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+L #
+#                       QR_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\pid\  #
+#                       -I H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27ห #
+#                       ๘ฮฒ\ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQ #
+#                       R_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\avcs\  #
+#                       -I D:\IAREWE431\ARM\INC\                             #
+#    List file       =  H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27ห๘ฮฒ #
+#                       \ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\FLASH_Debug\Lis #
+#                       t\spi.lst                                            #
+#    Object file     =  H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27ห๘ฮฒ #
+#                       \ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\FLASH_Debug\Obj #
+#                       \spi.r79                                             #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+H:\สตั้สานคื๗2015-8-20\2014-10-1สตั้สา\2015-6-27ห๘ฮฒ\ะกึฑษýป๚ด๚ย๋ฒโสิ1-6\ะกึฑษýป๚ด๚ย๋ฒโสิ\ยทพถนๆปฎ+LQR_2014_7_31\spi\spi.c
+      1          #include<includs.h>
+      2          
+
+   \                                 In segment DATA_Z, align 4, align-sorted
+      3          AT91PS_SPI SPI;
+   \                     SPI:
+   \   00000000                      DS8 4
+      4          //char pni_axis=1;
+      5          //long pni_value[3];
+
+   \                                 In segment DATA_Z, align 4, align-sorted
+      6          long  imuframe[8]; //imu information
+   \                     imuframe:
+   \   00000000                      DS8 32
+
+   \                                 In segment DATA_I, align 4, align-sorted
+      7          int    imuaddress[8]= {0x0200,0x0400,0x0600,0x0800,0x0A00,0x0C00,0x0E00,0x3C00};
+   \                     imuaddress:
+   \   00000000                      DS8 32
+   \   00000020                      REQUIRE `?<Initializer for imuaddress>`
+      8          //char DRDY=0;
+      9          //char    avrframe[10];
+     10          
+     11          /*void FIQ_c_irq_handler(void)
+     12          {
+     13            int dummy;
+     14            dummy =AT91D_BASE_PIO_SW->PIO_ISR;
+     15            dummy =dummy;
+     16          
+     17          } 
+     18          
+     19          void pio_c_irq_handler(void)
+     20          {
+     21            int dummy;
+     22            dummy =AT91D_BASE_PIO_SW->PIO_ISR;
+     23            dummy =dummy;
+     24            DRDY=1;
+     25          */    
+     26               // AT91F_SPI_PutChar(AT91C_BASE_SPI,0,1);
+     27               // pni_value[pni_axis]=AT91F_SPI_GetChar(AT91C_BASE_SPI);
+     28                // pni_value[pni_axis]=AT91F_SPI_GetChar(AT91C_BASE_SPI);
+     29             /*   pni_axis++;
+     30             if(pni_axis<=3)
+     31             {
+     32               COMPASSSET;
+     33               AT91C_BASE_SPI->SPI_CSR[1]= AT91C_SPI_BITS_8|((unsigned int) 0xff <<8) |AT91C_SPI_CPOL;
+     34               COMPASSRESET;
+     35               AT91F_SPI_PutChar(AT91C_BASE_SPI,pni_axis,1);
+     36             }
+     37             else
+     38              {
+     39                pni_axis=0;
+     40                SSSET;
+     41              }*/
+     42             //AT91F_US_Put("scut\r\n");
+     43          //}
+     44          
+     45          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     46          void AT91F_SpiInit(void)
+     47          {  
+     48              SPI=AT91C_BASE_SPI;
+   \                     ??AT91F_SpiInit:
+   \   00000000   0B48               LDR         R0,??AT91F_SpiInit_1  ;; 0xfffe0000
+   \   00000002   0C49               LDR         R1,??AT91F_SpiInit_1+0x4  ;; SPI
+   \   00000004   0860               STR         R0,[R1, #+0]
+     49          /*------------------------------IMU---------------------------------------------------*/    
+     50              AT91F_PIO_CfgPeriph(AT91C_BASE_PIOA, // PIO controller base address
+     51          	  (((unsigned int) AT91C_PA11_NPCS0 ) |((unsigned int) AT91C_PA12_MISO  )|
+     52                     ((unsigned int)AT91C_PA13_MOSI ) |((unsigned int) AT91C_PA14_SPCK)),0) ;// Peripheral A
+   \   00000006   F021               MOV         R1,#+240
+   \   00000008   C901               LSL         R1,R1,#+7          ;; #+30720
+   \   0000000A   0B4A               LDR         R2,??AT91F_SpiInit_1+0x8  ;; 0xfffff470
+   \   0000000C   1160               STR         R1,[R2, #+0]
+   \   0000000E   0B4A               LDR         R2,??AT91F_SpiInit_1+0xC  ;; 0xfffff474
+   \   00000010   0023               MOV         R3,#+0
+   \   00000012   1360               STR         R3,[R2, #+0]
+   \   00000014   0A4A               LDR         R2,??AT91F_SpiInit_1+0x10  ;; 0xfffff404
+   \   00000016   1160               STR         R1,[R2, #+0]
+     53          /*---------------------------------------------------------------------------------*/
+     54              
+     55          /*------------------------------AVR---------------------------------------------------*/
+     56            //  AT91F_PIO_CfgPeriph(AT91C_BASE_PIOA, // PIO controller base address
+     57          	//  (((unsigned int) AT91C_PA11_NPCS0 ) |((unsigned int) AT91C_PA12_MISO  )|((unsigned int) AT91C_PA31_NPCS1  )|
+     58                //     ((unsigned int)AT91C_PA13_MOSI ) |((unsigned int) AT91C_PA14_SPCK)),0) ;// Peripheral A
+     59          /*---------------------------------------------------------------------------------*/
+     60              
+     61              AT91F_SPI_CfgPMC() ;
+   \   00000018   0A49               LDR         R1,??AT91F_SpiInit_1+0x14  ;; 0xfffffc10
+   \   0000001A   2022               MOV         R2,#+32
+   \   0000001C   0A60               STR         R2,[R1, #+0]
+     62               // Reset SPI0
+     63             // SPI->SPI_CR = AT91C_SPI_SWRST;
+     64           
+     65                // Configure SPI0 in Master Mode with No CS selected 
+     66             // *(AT91C_SPI_CSR + 0) = AT91C_SPI_CPOL | AT91C_SPI_BITS_8 | ((AT91B_MASTER_CLOCK / AT91C_SPI_CLK) << 8);
+     67                       
+     68               SPI->SPI_MR=AT91C_SPI_MSTR | AT91C_SPI_PS_VARIABLE | AT91C_SPI_MODFDIS ;
+   \   0000001E   0A49               LDR         R1,??AT91F_SpiInit_1+0x18  ;; 0xfffe0004
+   \   00000020   1322               MOV         R2,#+19
+   \   00000022   0A60               STR         R2,[R1, #+0]
+     69                                    //  ((unsigned int) 0xE << 16);
+     70                                      
+     71               SPI->SPI_CR=AT91C_SPI_SPIEN;
+   \   00000024   0121               MOV         R1,#+1
+   \   00000026   0160               STR         R1,[R0, #+0]
+     72               
+     73               SPI->SPI_CSR[0]= AT91C_SPI_BITS_16 |IMU_SPI_BAUD_RATE \
+     74                                |AT91C_SPI_CPOL|AT91C_SPI_CSAAT;//|AT91C_SPI_DLYBCT;
+   \   00000028   0848               LDR         R0,??AT91F_SpiInit_1+0x1C  ;; 0xfffe0030
+   \   0000002A   0949               LDR         R1,??AT91F_SpiInit_1+0x20  ;; 0x5089
+   \   0000002C   0160               STR         R1,[R0, #+0]
+     75               //--------by syc compass spiถมศกลไึร
+     76               //SPI->SPI_CSR[1]= AT91C_SPI_BITS_8 | COMPASS_SPI_BAUD_RATE |AT91C_SPI_CPOL|AT91C_SPI_NCPHA;
+     77               
+     78               //SPI->SPI_CSR[2]= AT91C_SPI_BITS_8 | ((unsigned int) 0x08 <<  8) |AT91C_SPI_CPOL|AT91C_SPI_NCPHA;
+     79               //SPI->SPI_CSR[3]= AT91C_SPI_BITS_8 | ((unsigned int) 0x08 <<  8) |AT91C_SPI_CPOL|AT91C_SPI_NCPHA;
+     80               
+     81               // AT91F_PDC_Open (AT91C_BASE_PDC_SPI);
+     82             //  AT91F_AIC_ConfigureIt (AT91C_BASE_AIC, AT91C_ID_SPI, SPI_INTERRUPT_LEVEL,
+     83              //                       AT91C_AIC_SRCTYPE_INT_HIGH_LEVEL, SPI_c_irq_handler);
+     84              // AT91F_AIC_EnableIt (AT91C_BASE_AIC, AT91C_ID_SPI);
+     85               
+     86            //   SPI->SPI_RPR = (unsigned int) avrframe;
+     87              // SPI->SPI_RCR = 10;
+     88              
+     89            //   AT91F_SPI_EnableIt(SPI,AT91C_SPI_RXBUFF  );
+     90               
+     91          }
+   \   0000002E   7047               BX          LR                 ;; return
+   \                     ??AT91F_SpiInit_1:
+   \   00000030   0000FEFF           DC32        0xfffe0000
+   \   00000034   ........           DC32        SPI
+   \   00000038   70F4FFFF           DC32        0xfffff470
+   \   0000003C   74F4FFFF           DC32        0xfffff474
+   \   00000040   04F4FFFF           DC32        0xfffff404
+   \   00000044   10FCFFFF           DC32        0xfffffc10
+   \   00000048   0400FEFF           DC32        0xfffe0004
+   \   0000004C   3000FEFF           DC32        0xfffe0030
+   \   00000050   89500000           DC32        0x5089
+
+   \                                 In segment DATA_ID, align 4, align-sorted
+   \                     `?<Initializer for imuaddress>`:
+   \   00000000   000200000004       DC32 512, 1024, 1536, 2048, 2560, 3072, 3584, 15360
+   \              000000060000
+   \              00080000000A
+   \              0000000C0000
+   \              000E0000003C
+   \              0000        
+     92          
+     93          /*void FIQ_init(void)  
+     94          {
+     95            AT91F_PIO_CfgPeriph(AT91C_BASE_PIOB,(unsigned int)AT91C_PB19_FIQ,0);
+     96            
+     97            AT91F_PMC_EnablePeriphClock ( AT91C_BASE_PMC, 1 << AT91C_ID_FIQ) ;
+     98            
+     99            AT91F_AIC_ConfigureIt (AT91C_BASE_AIC, AT91C_ID_FIQ, FIQ_INTERRUPT_LEVEL,
+    100                                     AT91C_AIC_SRCTYPE_POSITIVE_EDGE, FIQ_c_irq_handler);
+    101            //AT91F_AIC_EnableIt(AT91C_BASE_AIC,AT91C_ID_FIQ);
+    102          }
+    103          
+    104          void PIOB0_init(void)
+    105          {
+    106             AT91F_PMC_EnablePeriphClock ( AT91C_BASE_PMC, 1 << AT91C_ID_PIOB ) ;
+    107          
+    108             AT91F_PIO_CfgInput(AT91C_BASE_PIOB, AT91B_COMPASS );
+    109             AT91F_AIC_ConfigureIt ( AT91C_BASE_AIC, AT91D_ID_PIO_SW,
+    110          	                   PIO_INTERRUPT_LEVEL,
+    111          	                   AT91C_AIC_SRCTYPE_INT_POSITIVE_EDGE,
+    112          	                   pio_c_irq_handler);
+    113             
+    114             AT91F_PIO_InterruptEnable(AT91D_BASE_PIO_SW,AT91B_COMPASS);
+    115             
+    116             AT91F_AIC_EnableIt (AT91C_BASE_AIC, AT91D_ID_PIO_SW);
+    117          }*/
+    118          
+    119          
+    120          
+    121          
+    122          
+
+   Maximum stack usage in bytes:
+
+     Function        CSTACK
+     --------        ------
+     AT91F_SpiInit()     0
+
+
+   Segment part sizes:
+
+     Function/Label                Bytes
+     --------------                -----
+     SPI                              4
+     imuframe                        32
+     imuaddress                      32
+     AT91F_SpiInit()                 84
+     ?<Initializer for imuaddress>   32
+      Others                         32
+
+ 
+ 92 bytes in segment CODE
+ 32 bytes in segment DATA_I
+ 32 bytes in segment DATA_ID
+ 36 bytes in segment DATA_Z
+ 24 bytes in segment INITTAB
+ 
+ 84 bytes of CODE  memory (+ 32 bytes shared)
+ 32 bytes of CONST memory
+ 68 bytes of DATA  memory
+
+Errors: none
+Warnings: none

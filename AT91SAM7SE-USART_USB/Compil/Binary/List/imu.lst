@@ -1,0 +1,525 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    01/Mar/2008  10:19:33 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\kalman\imu.c               #
+#    Command line    =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\kalman\imu.c -lC           #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\List\ -o F:\airplane\arm\atmel\AT91SAM7SE51 #
+#                       2_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7 #
+#                       SE-USART_USB\Compil\Binary\Obj\ -z9 --debug          #
+#                       --cpu_mode thumb --endian little --cpu ARM7TDMI      #
+#                       --stack_align 4 --interwork -e --fpu None            #
+#                       --dlib_config "C:\Program Files\IAR                  #
+#                       Systems\Embedded Workbench 4.0                       #
+#                       Evaluation\ARM\LIB\dl4tptinl8n.h" -I                 #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\srcIAR\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR #
+#                       \AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-US #
+#                       ART_USB\Compil\..\src\ -I                            #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR\ #
+#                       AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USA #
+#                       RT_USB\Compil\..\..\kalman\ -I                       #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\pcm\ -I F:\airplane\arm\atmel\AT91SAM7SE512_ #
+#                       IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\spi\ -I "C:\Program          #
+#                       Files\IAR Systems\Embedded Workbench 4.0             #
+#                       Evaluation\ARM\INC\"                                 #
+#    List file       =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\List\imu.lst                                #
+#    Object file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\Obj\imu.r79                                 #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\kalman\imu.c
+      1          #include<includs.h>
+      2          
+      3          //char *GPADC_LINE;
+
+   \                                 In segment DATA_Z, align 4, align-sorted
+      4          float heading;
+      5          float euler[3];
+      6          float pqr[3];
+      7          float accel[3];
+      8          
+      9          // static int first = 0;
+     10          //static float last_accel[3] = {0.0, 0.0, 0.0};
+     11          //static float last_compass[3] = {0.0, 0.0, 0.0};
+     12          //static float last_pqr[3] = {0.0, 0.0, 0.0};
+     13          
+     14          int adc_samples[MAX_ADC_SAMPLES];
+   \                     adc_samples:
+   \   00000000                      DS8 36
+   \                     euler:
+   \   00000024                      DS8 12
+   \                     pqr:
+   \   00000030                      DS8 12
+   \                     accel:
+   \   0000003C                      DS8 12
+   \                     heading:
+   \   00000048                      DS8 4
+     15          /******************************************************************/
+     16          /******************************************************************/
+
+   \                                 In segment CODE, align 4, keep-with-next
+     17          char *index(char *line,char character)
+     18          {
+     19            unsigned char i;
+     20            for (i=0;i<10;i++)
+   \                     index:
+   \   00000000   0022               MOV         R2,#+0
+     21                if(line[i]==character)return &line[++i];
+   \                     ??index_0:
+   \   00000002   835C               LDRB        R3,[R0, R2]
+   \   00000004   8B42               CMP         R3,R1
+   \   00000006   04D1               BNE         ??index_1
+   \   00000008   521C               ADD         R2,R2,#+1
+   \   0000000A   1206               LSL         R2,R2,#+24
+   \   0000000C   120E               LSR         R2,R2,#+24
+   \   0000000E   8018               ADD         R0,R0,R2
+   \   00000010   05E0               B           ??index_2
+   \                     ??index_1:
+   \   00000012   521C               ADD         R2,R2,#+1
+   \   00000014   1306               LSL         R3,R2,#+24
+   \   00000016   1B0E               LSR         R3,R3,#+24
+   \   00000018   0A2B               CMP         R3,#+10
+   \   0000001A   F2D3               BCC         ??index_0
+     22            return 0;
+   \   0000001C   0020               MOV         R0,#+0
+   \                     ??index_2:
+   \   0000001E   00B0               ADD         SP,#+0
+   \   00000020   7047               BX          LR                 ;; return
+     23          }
+     24          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     25          unsigned char nmea_split(  char * line ) 
+     26          {
+   \                     nmea_split:
+   \   00000000   F1B5               PUSH        {R0,R4-R7,LR}
+     27          	unsigned char i;
+     28          
+     29          	line = index( line,',');
+   \   00000002   2C21               MOV         R1,#+44
+   \   00000004   ........           BL          index
+   \   00000008   071C               MOV         R7,R0
+     30          	
+     31          	if (!line) return 0;
+   \   0000000A   01D1               BNE         ??nmea_split_0
+   \   0000000C   0020               MOV         R0,#+0
+   \   0000000E   2DE0               B           ??nmea_split_1
+     32          
+     33          	for( i=0; i< MAX_ADC_SAMPLES; i++){
+   \                     ??nmea_split_0:
+   \   00000010   0025               MOV         R5,#+0
+   \   00000012   18A4               ADR         R4,??nmea_split_2  ;; "\r\n"
+   \   00000014   ....               LDR         R6,??DataTable3    ;; adc_samples
+     34          		char* end_ptr;
+     35          		adc_samples[ i ] = strtol( line + 1, &end_ptr, 16 );
+   \                     ??nmea_split_3:
+   \   00000016   1022               MOV         R2,#+16
+   \   00000018   6946               MOV         R1,SP
+   \   0000001A   7F1C               ADD         R7,R7,#+1
+   \   0000001C   381C               MOV         R0,R7
+   \   0000001E   ........           _BLF        strtol,??strtol??rT
+   \   00000022   A900               LSL         R1,R5,#+2
+   \   00000024   7050               STR         R0,[R6, R1]
+     36                          line = end_ptr;
+   \   00000026   009F               LDR         R7,[SP, #+0]
+     37                          if(adc_samples[0]==31592)AT91F_US_Put("hurenxu\r\n");
+   \   00000028   3068               LDR         R0,[R6, #+0]
+   \   0000002A   1349               LDR         R1,??nmea_split_2+0x4  ;; 0x7b68
+   \   0000002C   8842               CMP         R0,R1
+   \   0000002E   02D1               BNE         ??nmea_split_4
+   \   00000030   ....               LDR         R0,??DataTable4    ;; `?<Constant "hurenxu\\r\\n">`
+   \   00000032   ........           _BLF        AT91F_US_Put,??AT91F_US_Put??rT
+     38                          AT91F_US_Put(line);
+   \                     ??nmea_split_4:
+   \   00000036   381C               MOV         R0,R7
+   \   00000038   ........           _BLF        AT91F_US_Put,??AT91F_US_Put??rT
+     39                          AT91F_US_Put("\r\n");
+   \   0000003C   201C               MOV         R0,R4
+   \   0000003E   ........           _BLF        AT91F_US_Put,??AT91F_US_Put??rT
+     40          		//if( !*line ) break;
+     41          	}	
+   \   00000042   6D1C               ADD         R5,R5,#+1
+   \   00000044   2806               LSL         R0,R5,#+24
+   \   00000046   000E               LSR         R0,R0,#+24
+   \   00000048   0928               CMP         R0,#+9
+   \   0000004A   E4D3               BCC         ??nmea_split_3
+     42                  //AT91F_US_Put("hurenxu\r\n");
+     43                  put_uint16_t(i);
+                         ^
+Warning[Pe223]: function "put_uint16_t" declared implicitly
+   \   0000004C   2E06               LSL         R6,R5,#+24
+   \   0000004E   360E               LSR         R6,R6,#+24
+   \   00000050   ........           _BLF        put_uint16_t,??put_uint16_t??rT
+     44                  AT91F_US_Put("\r\n");
+   \   00000054   201C               MOV         R0,R4
+   \   00000056   ........           _BLF        AT91F_US_Put,??AT91F_US_Put??rT
+     45                  put_uint16_t(i+1);
+   \   0000005A   761C               ADD         R6,R6,#+1
+   \   0000005C   301C               MOV         R0,R6
+   \   0000005E   ........           _BLF        put_uint16_t,??put_uint16_t??rT
+     46                  AT91F_US_Put("\r\n");
+   \   00000062   201C               MOV         R0,R4
+   \   00000064   ........           _BLF        AT91F_US_Put,??AT91F_US_Put??rT
+     47          	return i;
+   \   00000068   2806               LSL         R0,R5,#+24
+   \   0000006A   000E               LSR         R0,R0,#+24
+   \                     ??nmea_split_1:
+   \   0000006C   F8BC               POP         {R3-R7}
+   \   0000006E   02BC               POP         {R1}
+   \   00000070   0847               BX          R1                 ;; return
+   \   00000072   C046               NOP         
+   \                     ??nmea_split_2:
+   \   00000074   0D0A0000           DC8         "\r\n",+0
+   \   00000078   687B0000           DC32        0x7b68
+     48          }
+     49          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     50          void raw_imu_update( void )
+     51          {
+   \                     raw_imu_update:
+   \   00000000   10B5               PUSH        {R4,LR}
+     52          	short rate;
+     53          			
+     54          	rate = adc_samples[ INDEX_GX ] - gyro_zero_x;
+     55          	pqr[ 0 ] = rate * gyro_scale_x * (PI / 180.0) / 6.0 ;
+   \   00000002   ....               LDR         R4,??DataTable3    ;; adc_samples
+   \   00000004   E068               LDR         R0,[R4, #+12]
+   \   00000006   3749               LDR         R1,??raw_imu_update_0  ;; 0xffffc4fe
+   \   00000008   4018               ADD         R0,R0,R1
+   \   0000000A   0004               LSL         R0,R0,#+16
+   \   0000000C   0014               ASR         R0,R0,#+16
+   \   0000000E   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   00000012   354A               LDR         R2,??raw_imu_update_0+0x4  ;; 0xd68405b4
+   \   00000014   354B               LDR         R3,??raw_imu_update_0+0x8  ;; 0x3fbd97c3
+   \   00000016   ........           _BLF        __dMul,??__dMul??rT
+   \   0000001A   354A               LDR         R2,??raw_imu_update_0+0xC  ;; 0x9d353918
+   \   0000001C   354B               LDR         R3,??raw_imu_update_0+0x10  ;; 0x3f91df46
+   \   0000001E   ........           _BLF        __dMul,??__dMul??rT
+   \   00000022   0022               MOV         R2,#+0
+   \   00000024   344B               LDR         R3,??raw_imu_update_0+0x14  ;; 0x40180000
+   \   00000026   ........           _BLF        __dDiv,??__dDiv??rT
+   \   0000002A   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   0000002E   2063               STR         R0,[R4, #+48]
+     56          					
+     57          	rate = adc_samples[ INDEX_GY] - gyro_zero_y;
+     58          	pqr[ 1 ] = rate * gyro_scale_y * (PI / 180.0) / 5.5 ;
+   \   00000030   2069               LDR         R0,[R4, #+16]
+   \   00000032   3249               LDR         R1,??raw_imu_update_0+0x18  ;; 0xffffc236
+   \   00000034   4018               ADD         R0,R0,R1
+   \   00000036   0004               LSL         R0,R0,#+16
+   \   00000038   0014               ASR         R0,R0,#+16
+   \   0000003A   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   0000003E   2A4A               LDR         R2,??raw_imu_update_0+0x4  ;; 0xd68405b4
+   \   00000040   2F4B               LDR         R3,??raw_imu_update_0+0x1C  ;; 0xbfbd97c3
+   \   00000042   ........           _BLF        __dMul,??__dMul??rT
+   \   00000046   2A4A               LDR         R2,??raw_imu_update_0+0xC  ;; 0x9d353918
+   \   00000048   2A4B               LDR         R3,??raw_imu_update_0+0x10  ;; 0x3f91df46
+   \   0000004A   ........           _BLF        __dMul,??__dMul??rT
+   \   0000004E   0022               MOV         R2,#+0
+   \   00000050   2C4B               LDR         R3,??raw_imu_update_0+0x20  ;; 0x40160000
+   \   00000052   ........           _BLF        __dDiv,??__dDiv??rT
+   \   00000056   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   0000005A   6063               STR         R0,[R4, #+52]
+     59          	
+     60          	rate = adc_samples[ INDEX_GZ ] - gyro_zero_z;
+     61          	pqr[ 2 ] = rate * gyro_scale_z * (PI / 180.0) / 5.0 ;
+   \   0000005C   6069               LDR         R0,[R4, #+20]
+   \   0000005E   2A49               LDR         R1,??raw_imu_update_0+0x24  ;; 0xffffbe75
+   \   00000060   4018               ADD         R0,R0,R1
+   \   00000062   0004               LSL         R0,R0,#+16
+   \   00000064   0014               ASR         R0,R0,#+16
+   \   00000066   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   0000006A   1F4A               LDR         R2,??raw_imu_update_0+0x4  ;; 0xd68405b4
+   \   0000006C   1F4B               LDR         R3,??raw_imu_update_0+0x8  ;; 0x3fbd97c3
+   \   0000006E   ........           _BLF        __dMul,??__dMul??rT
+   \   00000072   1F4A               LDR         R2,??raw_imu_update_0+0xC  ;; 0x9d353918
+   \   00000074   1F4B               LDR         R3,??raw_imu_update_0+0x10  ;; 0x3f91df46
+   \   00000076   ........           _BLF        __dMul,??__dMul??rT
+   \   0000007A   0022               MOV         R2,#+0
+   \   0000007C   234B               LDR         R3,??raw_imu_update_0+0x28  ;; 0x40140000
+   \   0000007E   ........           _BLF        __dDiv,??__dDiv??rT
+   \   00000082   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   00000086   A063               STR         R0,[R4, #+56]
+     62          	
+     63          	rate = adc_samples[ INDEX_AX ] - bias_ax;
+     64          	accel[ 0 ] = rate * accel_scale_x;
+   \   00000088   2068               LDR         R0,[R4, #+0]
+   \   0000008A   2149               LDR         R1,??raw_imu_update_0+0x2C  ;; 0xffffad45
+   \   0000008C   4018               ADD         R0,R0,R1
+   \   0000008E   0004               LSL         R0,R0,#+16
+   \   00000090   0014               ASR         R0,R0,#+16
+   \   00000092   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   00000096   1F4A               LDR         R2,??raw_imu_update_0+0x30  ;; 0xc455afe0
+   \   00000098   1F4B               LDR         R3,??raw_imu_update_0+0x34  ;; 0x3f52b3e1
+   \   0000009A   ........           _BLF        __dMul,??__dMul??rT
+   \   0000009E   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   000000A2   E063               STR         R0,[R4, #+60]
+     65                 // put_uint16_t(adc_samples[ INDEX_AX ]);
+     66                 // AT91F_US_Put("\r\n");
+     67                //  if(rate<0)AT91F_US_Put("l\r\n");
+     68                 // if(accel[0]<-12)AT91F_US_Put("o\r\n");
+     69                 // if(accel[0]<-13)AT91F_US_Put("v\r\n");
+     70                 // if(accel[0]<-11.8866)AT91F_US_Put("e\r\n");
+     71                 // if(accel[0]>0)AT91F_US_Put("h\r\n");
+     72          	rate = adc_samples[ INDEX_AY ] - bias_ay;
+     73          	accel[ 1 ] = rate * accel_scale_y;
+   \   000000A4   6068               LDR         R0,[R4, #+4]
+   \   000000A6   1D49               LDR         R1,??raw_imu_update_0+0x38  ;; 0xffffbe1d
+   \   000000A8   4018               ADD         R0,R0,R1
+   \   000000AA   0004               LSL         R0,R0,#+16
+   \   000000AC   0014               ASR         R0,R0,#+16
+   \   000000AE   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   000000B2   1B4A               LDR         R2,??raw_imu_update_0+0x3C  ;; 0x9d48fb9c
+   \   000000B4   1B4B               LDR         R3,??raw_imu_update_0+0x40  ;; 0x3f5442c2
+   \   000000B6   ........           _BLF        __dMul,??__dMul??rT
+   \   000000BA   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   000000BE   2064               STR         R0,[R4, #+64]
+     74          	
+     75          	rate = adc_samples[ INDEX_AZ ] - bias_az;
+     76          	accel[ 2 ] = rate * accel_scale_z;
+   \   000000C0   A068               LDR         R0,[R4, #+8]
+   \   000000C2   1949               LDR         R1,??raw_imu_update_0+0x44  ;; 0xffffaeba
+   \   000000C4   4018               ADD         R0,R0,R1
+   \   000000C6   0004               LSL         R0,R0,#+16
+   \   000000C8   0014               ASR         R0,R0,#+16
+   \   000000CA   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   000000CE   174A               LDR         R2,??raw_imu_update_0+0x48  ;; 0xb0f885e3
+   \   000000D0   174B               LDR         R3,??raw_imu_update_0+0x4C  ;; 0x3f546eac
+   \   000000D2   ........           _BLF        __dMul,??__dMul??rT
+   \   000000D6   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   000000DA   6064               STR         R0,[R4, #+68]
+     77          }
+   \   000000DC   10BC               POP         {R4}
+   \   000000DE   01BC               POP         {R0}
+   \   000000E0   0047               BX          R0                 ;; return
+   \   000000E2   C046               NOP         
+   \                     ??raw_imu_update_0:
+   \   000000E4   FEC4FFFF           DC32        0xffffc4fe
+   \   000000E8   B40584D6           DC32        0xd68405b4
+   \   000000EC   C397BD3F           DC32        0x3fbd97c3
+   \   000000F0   1839359D           DC32        0x9d353918
+   \   000000F4   46DF913F           DC32        0x3f91df46
+   \   000000F8   00001840           DC32        0x40180000
+   \   000000FC   36C2FFFF           DC32        0xffffc236
+   \   00000100   C397BDBF           DC32        0xbfbd97c3
+   \   00000104   00001640           DC32        0x40160000
+   \   00000108   75BEFFFF           DC32        0xffffbe75
+   \   0000010C   00001440           DC32        0x40140000
+   \   00000110   45ADFFFF           DC32        0xffffad45
+   \   00000114   E0AF55C4           DC32        0xc455afe0
+   \   00000118   E1B3523F           DC32        0x3f52b3e1
+   \   0000011C   1DBEFFFF           DC32        0xffffbe1d
+   \   00000120   9CFB489D           DC32        0x9d48fb9c
+   \   00000124   C242543F           DC32        0x3f5442c2
+   \   00000128   BAAEFFFF           DC32        0xffffaeba
+   \   0000012C   E385F8B0           DC32        0xb0f885e3
+   \   00000130   AC6E543F           DC32        0x3f546eac
+     78          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     79          void raw_compass_update( void )
+     80          {
+   \                     raw_compass_update:
+   \   00000000   17B5               PUSH        {R0-R2,R4,LR}
+     81          	signed int rate;
+     82                  float compass[3];
+     83                  
+     84          	if( adc_samples[INDEX_CX] > 32767 )
+   \   00000002   ....               LDR         R4,??DataTable3    ;; adc_samples
+   \   00000004   206A               LDR         R0,[R4, #+32]
+   \   00000006   2049               LDR         R1,??raw_compass_update_0  ;; 0xffff0000
+   \   00000008   8022               MOV         R2,#+128
+   \   0000000A   1202               LSL         R2,R2,#+8          ;; #+32768
+   \   0000000C   9042               CMP         R0,R2
+   \   0000000E   01DB               BLT         ??raw_compass_update_1
+     85          	    adc_samples[INDEX_CX] = adc_samples[INDEX_CX] - 65536;
+   \   00000010   4018               ADD         R0,R0,R1
+   \   00000012   2062               STR         R0,[R4, #+32]
+     86                  if( adc_samples[INDEX_CY] > 32767 )
+   \                     ??raw_compass_update_1:
+   \   00000014   E069               LDR         R0,[R4, #+28]
+   \   00000016   9042               CMP         R0,R2
+   \   00000018   01DB               BLT         ??raw_compass_update_2
+     87          	    adc_samples[INDEX_CY] = adc_samples[INDEX_CY] - 65536;
+   \   0000001A   4018               ADD         R0,R0,R1
+   \   0000001C   E061               STR         R0,[R4, #+28]
+     88                  if( adc_samples[INDEX_CZ] > 32767 )
+   \                     ??raw_compass_update_2:
+   \   0000001E   A069               LDR         R0,[R4, #+24]
+   \   00000020   9042               CMP         R0,R2
+   \   00000022   01DB               BLT         ??raw_compass_update_3
+     89          	    adc_samples[INDEX_CZ] = adc_samples[INDEX_CZ] - 65536;
+   \   00000024   4018               ADD         R0,R0,R1
+   \   00000026   A061               STR         R0,[R4, #+24]
+     90                  
+     91          	rate = adc_samples[ INDEX_CX ] - compass_bias_x;
+     92          	compass[ 0 ] = rate  * compass_scale_x;
+   \                     ??raw_compass_update_3:
+   \   00000028   206A               LDR         R0,[R4, #+32]
+   \   0000002A   1849               LDR         R1,??raw_compass_update_0+0x4  ;; 0xffff77cb
+   \   0000002C   4018               ADD         R0,R0,R1
+   \   0000002E   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   00000032   174A               LDR         R2,??raw_compass_update_0+0x8  ;; 0x35b8c98b
+   \   00000034   174B               LDR         R3,??raw_compass_update_0+0xC  ;; 0x3f26d32b
+   \   00000036   ........           _BLF        __dMul,??__dMul??rT
+   \   0000003A   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   0000003E   0090               STR         R0,[SP, #+0]
+     93          	
+     94          	rate = adc_samples[ INDEX_CY ] - compass_bias_y;
+     95          	compass[ 1 ] = rate * compass_scale_y;
+   \   00000040   E069               LDR         R0,[R4, #+28]
+   \   00000042   1549               LDR         R1,??raw_compass_update_0+0x10  ;; 0xffff758d
+   \   00000044   4018               ADD         R0,R0,R1
+   \   00000046   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   0000004A   144A               LDR         R2,??raw_compass_update_0+0x14  ;; 0xbeca7800
+   \   0000004C   144B               LDR         R3,??raw_compass_update_0+0x18  ;; 0x3f272cb9
+   \   0000004E   ........           _BLF        __dMul,??__dMul??rT
+   \   00000052   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   00000056   0190               STR         R0,[SP, #+4]
+     96          	
+     97          	rate = adc_samples[ INDEX_CZ ] - compass_bias_z;
+     98          	compass[ 2 ] = rate * compass_scale_z;
+   \   00000058   A069               LDR         R0,[R4, #+24]
+   \   0000005A   1249               LDR         R1,??raw_compass_update_0+0x1C  ;; 0xffffb402
+   \   0000005C   4018               ADD         R0,R0,R1
+   \   0000005E   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   00000062   114A               LDR         R2,??raw_compass_update_0+0x20  ;; 0xdf060a5b
+   \   00000064   114B               LDR         R3,??raw_compass_update_0+0x24  ;; 0xbf271a4d
+   \   00000066   ........           _BLF        __dMul,??__dMul??rT
+   \   0000006A   ........           _BLF        __doubleToFloat,??__doubleToFloat??rT
+   \   0000006E   0290               STR         R0,[SP, #+8]
+     99                  
+    100                  accel2euler (euler, accel, compass);
+   \   00000070   6A46               MOV         R2,SP
+   \   00000072   211C               MOV         R1,R4
+   \   00000074   3C31               ADD         R1,#+60
+   \   00000076   201C               MOV         R0,R4
+   \   00000078   2430               ADD         R0,#+36
+   \   0000007A   ........           _BLF        accel2euler,??accel2euler??rT
+    101                  heading = euler[2];
+   \   0000007E   E06A               LDR         R0,[R4, #+44]
+   \   00000080   A064               STR         R0,[R4, #+72]
+    102          }
+   \   00000082   1EBC               POP         {R1-R4}
+   \   00000084   01BC               POP         {R0}
+   \   00000086   0047               BX          R0                 ;; return
+   \                     ??raw_compass_update_0:
+   \   00000088   0000FFFF           DC32        0xffff0000
+   \   0000008C   CB77FFFF           DC32        0xffff77cb
+   \   00000090   8BC9B835           DC32        0x35b8c98b
+   \   00000094   2BD3263F           DC32        0x3f26d32b
+   \   00000098   8D75FFFF           DC32        0xffff758d
+   \   0000009C   0078CABE           DC32        0xbeca7800
+   \   000000A0   B92C273F           DC32        0x3f272cb9
+   \   000000A4   02B4FFFF           DC32        0xffffb402
+   \   000000A8   5B0A06DF           DC32        0xdf060a5b
+   \   000000AC   4D1A27BF           DC32        0xbf271a4d
+    103          
+
+   \                                 In segment CODE, align 4, keep-with-next
+    104          bool interface_step(void)
+    105          { 
+   \                     interface_step:
+   \   00000000   00B5               PUSH        {LR}
+    106            if(nmea_split(buff_rx)!=9)return 0;
+   \   00000002   0848               LDR         R0,??interface_step_0  ;; buff_rx
+   \   00000004   ........           BL          nmea_split
+   \   00000008   0928               CMP         R0,#+9
+   \   0000000A   01D0               BEQ         ??interface_step_1
+   \   0000000C   0020               MOV         R0,#+0
+   \   0000000E   07E0               B           ??interface_step_2
+    107            AT91F_US_Put("hurenxu\r\n");
+   \                     ??interface_step_1:
+   \   00000010   ....               LDR         R0,??DataTable4    ;; `?<Constant "hurenxu\\r\\n">`
+   \   00000012   ........           _BLF        AT91F_US_Put,??AT91F_US_Put??rT
+    108            raw_imu_update();
+   \   00000016   ........           BL          raw_imu_update
+    109            raw_compass_update();
+   \   0000001A   ........           BL          raw_compass_update
+    110            return 1;
+   \   0000001E   0120               MOV         R0,#+1
+   \                     ??interface_step_2:
+   \   00000020   02BC               POP         {R1}
+   \   00000022   0847               BX          R1                 ;; return
+   \                     ??interface_step_0:
+   \   00000024   ........           DC32        buff_rx
+    111          }
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable3:
+   \   00000000   ........           DC32        adc_samples
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable4:
+   \   00000000   ........           DC32        `?<Constant "hurenxu\\r\\n">`
+
+   \                                 In segment DATA_C, align 4, align-sorted
+   \                     `?<Constant "hurenxu\\r\\n">`:
+   \   00000000   687572656E78       DC8 "hurenxu\015\012"
+   \              750D0A00    
+   \   0000000A   0000               DC8 0, 0
+
+   \                                 In segment DATA_C, align 1, align-sorted
+   \   00000000   0D0A00             DC8 "\015\012"
+    112          
+
+   Maximum stack usage in bytes:
+
+     Function           CSTACK
+     --------           ------
+     index                  4
+     interface_step         4
+     nmea_split            24
+     raw_compass_update    20
+     raw_imu_update         8
+
+
+   Segment part sizes:
+
+     Function/Label            Bytes
+     --------------            -----
+     adc_samples                 76
+     index                       34
+     nmea_split                 124
+     raw_imu_update             308
+     raw_compass_update         176
+     interface_step              40
+     ??DataTable3                 4
+     ??DataTable4                 4
+     ?<Constant "hurenxu\r\n">   12
+     ?<Constant "\r\n">           3
+      Others                    140
+
+ 
+ 818 bytes in segment CODE
+  15 bytes in segment DATA_C
+  76 bytes in segment DATA_Z
+  12 bytes in segment INITTAB
+ 
+ 690 bytes of CODE  memory (+ 140 bytes shared)
+  15 bytes of CONST memory
+  76 bytes of DATA  memory
+
+Errors: none
+Warnings: 1

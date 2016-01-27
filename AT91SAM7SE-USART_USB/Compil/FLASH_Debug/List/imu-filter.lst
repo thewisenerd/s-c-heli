@@ -1,0 +1,137 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    01/Mar/2008  10:30:17 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\kalman\imu-filter.c        #
+#    Command line    =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\kalman\imu-filter.c -lC    #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\FLASH_Debug\List\ -o F:\airplane\arm\atmel\AT91SAM #
+#                       7SE512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT9 #
+#                       1SAM7SE-USART_USB\Compil\FLASH_Debug\Obj\ -z9        #
+#                       --debug --cpu_mode thumb --endian little --cpu       #
+#                       ARM7TDMI --stack_align 4 --interwork -e --fpu None   #
+#                       --dlib_config "C:\Program Files\IAR                  #
+#                       Systems\Embedded Workbench 4.0                       #
+#                       Evaluation\ARM\LIB\dl4tptinl8n.h" -I                 #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\srcIAR\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR #
+#                       \AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-US #
+#                       ART_USB\Compil\..\src\ -I                            #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR\ #
+#                       AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USA #
+#                       RT_USB\Compil\..\..\kalman\ -I                       #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\pcm\ -I F:\airplane\arm\atmel\AT91SAM7SE512_ #
+#                       IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\spi\ -I "C:\Program          #
+#                       Files\IAR Systems\Embedded Workbench 4.0             #
+#                       Evaluation\ARM\INC\"                                 #
+#    List file       =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\FLASH_Debug\List\imu-filter.lst                    #
+#    Object file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\FLASH_Debug\Obj\imu-filter.r79                     #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\kalman\imu-filter.c
+      1          #include<includs.h>
+      2          
+
+   \                                 In segment CODE, align 4, keep-with-next
+      3          void kalman_task(void)
+      4          {
+   \                     kalman_task:
+   \   00000000   10B5               PUSH        {R4,LR}
+   \   00000002   0F4C               LDR         R4,??kalman_task_0  ;; receiveimusignal
+      5            while(receiveimusignal==0)
+   \                     ??kalman_task_1:
+   \   00000004   2078               LDRB        R0,[R4, #+0]
+   \   00000006   0028               CMP         R0,#+0
+   \   00000008   FCD0               BEQ         ??kalman_task_1
+      6              ;
+      7              if(interface_step())ahrs_init();
+   \   0000000A   ........           _BLF        interface_step,??interface_step??rT
+   \   0000000E   0028               CMP         R0,#+0
+   \   00000010   01D0               BEQ         ??kalman_task_2
+   \   00000012   ........           _BLF        ahrs_init,??ahrs_init??rT
+      8            while(1)
+      9            {
+     10             if(receiveimusignal==1)
+   \                     ??kalman_task_2:
+   \   00000016   2078               LDRB        R0,[R4, #+0]
+   \   00000018   0128               CMP         R0,#+1
+   \   0000001A   FCD1               BNE         ??kalman_task_2
+     11             // AT91F_US_Put("o\r\n");
+     12               if(interface_step())
+   \   0000001C   ........           _BLF        interface_step,??interface_step??rT
+   \   00000020   0028               CMP         R0,#+0
+   \   00000022   F8D0               BEQ         ??kalman_task_2
+     13                {
+     14                  imu_update( accel,pqr );
+   \   00000024   0749               LDR         R1,??kalman_task_0+0x4  ;; pqr
+   \   00000026   0848               LDR         R0,??kalman_task_0+0x8  ;; accel
+   \   00000028   ........           _BLF        imu_update,??imu_update??rT
+     15                 AT91F_US_Put("v\r\n");
+   \   0000002C   07A0               ADR         R0,??kalman_task_0+0xC  ;; "v\r\n"
+   \   0000002E   ........           _BLF        AT91F_US_Put,??AT91F_US_Put??rT
+     16                  receiveimusignal=0;
+   \   00000032   0020               MOV         R0,#+0
+   \   00000034   2070               STRB        R0,[R4, #+0]
+     17                  AT91F_US_EnableIt(AT91C_BASE_US0,AT91C_US_RXBUFF  );
+   \   00000036   0648               LDR         R0,??kalman_task_0+0x10  ;; 0xfffc0008
+   \   00000038   8021               MOV         R1,#+128
+   \   0000003A   4901               LSL         R1,R1,#+5          ;; #+4096
+   \   0000003C   0160               STR         R1,[R0, #+0]
+   \   0000003E   EAE7               B           ??kalman_task_2
+   \                     ??kalman_task_0:
+   \   00000040   ........           DC32        receiveimusignal
+   \   00000044   ........           DC32        pqr
+   \   00000048   ........           DC32        accel
+   \   0000004C   760D0A00           DC8         "v\r\n"
+   \   00000050   0800FCFF           DC32        0xfffc0008
+     18                }
+     19            }
+     20          }
+
+   \                                 In segment DATA_C, align 4, align-sorted
+   \   00000000   760D0A00           DC8 "v\015\012"
+     21          
+
+   Maximum stack usage in bytes:
+
+     Function    CSTACK
+     --------    ------
+     kalman_task     8
+
+
+   Segment part sizes:
+
+     Function/Label      Bytes
+     --------------      -----
+     kalman_task           84
+     ?<Constant "v\r\n">    4
+      Others               40
+
+ 
+ 124 bytes in segment CODE
+   4 bytes in segment DATA_C
+ 
+ 84 bytes of CODE  memory (+ 40 bytes shared)
+  4 bytes of CONST memory
+
+Errors: none
+Warnings: none

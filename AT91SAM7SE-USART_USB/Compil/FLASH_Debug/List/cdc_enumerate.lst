@@ -1,0 +1,1265 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    03/Aug/2007  17:15:52 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\src\c #
+#                       dc_enumerate.c                                       #
+#    Command line    =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\src\c #
+#                       dc_enumerate.c -lC F:\airplane\arm\atmel\AT91SAM7SE5 #
+#                       12_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM #
+#                       7SE-USART_USB\Compil\FLASH_Debug\List\ -o            #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\FLASH_Debug\Obj\ -z9 --debug --cpu_mode thumb      #
+#                       --endian little --cpu ARM7TDMI --stack_align 4       #
+#                       --interwork -e --fpu None --dlib_config "C:\Program  #
+#                       Files\IAR Systems\Embedded Workbench 4.0             #
+#                       Evaluation\ARM\LIB\dl4tptinl8n.h" -I                 #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\srcIAR\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR #
+#                       \AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-US #
+#                       ART_USB\Compil\..\src\ -I                            #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\ -I "C:\Program Files\IAR Systems\Embedded   #
+#                       Workbench 4.0 Evaluation\ARM\INC\"                   #
+#    List file       =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\FLASH_Debug\List\cdc_enumerate.lst                 #
+#    Object file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\FLASH_Debug\Obj\cdc_enumerate.r79                  #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\src\cdc_enumerate.c
+      1          //*----------------------------------------------------------------------------
+      2          //*      ATMEL Microcontroller Software Support  -  ROUSSET  -
+      3          //*----------------------------------------------------------------------------
+      4          //* The software is delivered "AS IS" without warranty or condition of any
+      5          //* kind, either express, implied or statutory. This includes without
+      6          //* limitation any warranty or condition with respect to merchantability or
+      7          //* fitness for any particular purpose, or against the infringements of
+      8          //* intellectual property rights of others.
+      9          //*----------------------------------------------------------------------------
+     10          //* File Name           : cdc_enumerate.c
+     11          //* Object              : Handle CDC enumeration
+     12          //*
+     13          //* 1.0 Apr 20 200 	: ODi Creation
+     14          //* 1.1 14/Sep/2004 JPP : Minor change
+     15          //* 1.1 15/12/2004  JPP : suppress warning
+     16          //* 1.2 30-Jun-2006 JPP : Set in AT91C_UDP_EPTYPE_INT_IN
+     17          //*----------------------------------------------------------------------------
+     18          #include "Project.h"
+     19          #include "cdc_enumerate.h"
+     20          
+     21          typedef unsigned char  uchar;
+     22          typedef unsigned short ushort;
+     23          typedef unsigned int   uint;
+     24          
+     25          #define MIN(a, b) (((a) < (b)) ? (a) : (b))
+     26          
+     27          #define AT91C_EP_IN_SIZE 0x40
+     28          
+
+   \                                 In segment DATA_C, align 4, align-sorted
+     29          const char devDescriptor[] = {
+   \                     devDescriptor:
+   \   00000000   120110010200       DC8 18, 1, 16, 1, 2, 0, 0, 8, 235, 3, 36, 97, 16, 1, 0, 0, 0, 1, 0, 0
+   \              0008EB032461
+   \              100100000001
+   \              0000        
+     30          	/* Device descriptor */
+     31          	0x12,   // bLength
+     32          	0x01,   // bDescriptorType
+     33          	0x10,   // bcdUSBL
+     34          	0x01,   //
+     35          	0x02,   // bDeviceClass:    CDC class code
+     36          	0x00,   // bDeviceSubclass: CDC class sub code
+     37          	0x00,   // bDeviceProtocol: CDC Device protocol
+     38          	0x08,   // bMaxPacketSize0
+     39          	0xEB,   // idVendorL
+     40          	0x03,   //
+     41          	0x24,   // idProductL
+     42          	0x61,   //
+     43          	0x10,   // bcdDeviceL
+     44          	0x01,   //
+     45          	0x00,   // iManufacturer    // 0x01
+     46          	0x00,   // iProduct
+     47          	0x00,   // SerialNumber
+     48          	0x01    // bNumConfigs
+     49          };
+     50          
+     51          const char cfgDescriptor[] = {
+   \                     cfgDescriptor:
+   \   00000014   090243000201       DC8 9, 2, 67, 0, 2, 1, 0, 192, 0, 9, 4, 0, 0, 1, 2, 2, 0, 0, 5, 36, 0
+   \              00C000090400
+   \              000102020000
+   \              052400      
+   \   00000029   100104240200       DC8 16, 1, 4, 36, 2, 0, 5, 36, 6, 0, 1, 5, 36, 1, 0, 1, 7, 5, 131, 3, 8
+   \              052406000105
+   \              240100010705
+   \              830308      
+   \   0000003E   00FF09040100       DC8 0, 255, 9, 4, 1, 0, 2, 10, 0, 0, 0, 7, 5, 1, 2, 64, 0, 0, 7, 5, 130
+   \              020A00000007
+   \              050102400000
+   \              070582      
+   \   00000053   0240000000         DC8 2, 64, 0, 0, 0
+     52          	/* ============== CONFIGURATION 1 =========== */
+     53          	/* Configuration 1 descriptor */
+     54          	0x09,   // CbLength
+     55          	0x02,   // CbDescriptorType
+     56          	0x43,   // CwTotalLength 2 EP + Control
+     57          	0x00,
+     58          	0x02,   // CbNumInterfaces
+     59          	0x01,   // CbConfigurationValue
+     60          	0x00,   // CiConfiguration
+     61          	0xC0,   // CbmAttributes 0xA0
+     62          	0x00,   // CMaxPower
+     63          
+     64          	/* Communication Class Interface Descriptor Requirement */
+     65          	0x09, // bLength
+     66          	0x04, // bDescriptorType
+     67          	0x00, // bInterfaceNumber
+     68          	0x00, // bAlternateSetting
+     69          	0x01, // bNumEndpoints
+     70          	0x02, // bInterfaceClass
+     71          	0x02, // bInterfaceSubclass
+     72          	0x00, // bInterfaceProtocol
+     73          	0x00, // iInterface
+     74          
+     75          	/* Header Functional Descriptor */
+     76          	0x05, // bFunction Length
+     77          	0x24, // bDescriptor type: CS_INTERFACE
+     78          	0x00, // bDescriptor subtype: Header Func Desc
+     79          	0x10, // bcdCDC:1.1
+     80          	0x01,
+     81          
+     82          	/* ACM Functional Descriptor */
+     83          	0x04, // bFunctionLength
+     84          	0x24, // bDescriptor Type: CS_INTERFACE
+     85          	0x02, // bDescriptor Subtype: ACM Func Desc
+     86          	0x00, // bmCapabilities
+     87          
+     88          	/* Union Functional Descriptor */
+     89          	0x05, // bFunctionLength
+     90          	0x24, // bDescriptorType: CS_INTERFACE
+     91          	0x06, // bDescriptor Subtype: Union Func Desc
+     92          	0x00, // bMasterInterface: Communication Class Interface
+     93          	0x01, // bSlaveInterface0: Data Class Interface
+     94          
+     95          	/* Call Management Functional Descriptor */
+     96          	0x05, // bFunctionLength
+     97          	0x24, // bDescriptor Type: CS_INTERFACE
+     98          	0x01, // bDescriptor Subtype: Call Management Func Desc
+     99          	0x00, // bmCapabilities: D1 + D0
+    100          	0x01, // bDataInterface: Data Class Interface 1
+    101          
+    102          	/* Endpoint 1 descriptor */
+    103          	0x07,   // bLength
+    104          	0x05,   // bDescriptorType
+    105          	0x83,   // bEndpointAddress, Endpoint 03 - IN
+    106          	0x03,   // bmAttributes      INT
+    107          	0x08,   // wMaxPacketSize
+    108          	0x00,
+    109          	0xFF,   // bInterval
+    110          
+    111          	/* Data Class Interface Descriptor Requirement */
+    112          	0x09, // bLength
+    113          	0x04, // bDescriptorType
+    114          	0x01, // bInterfaceNumber
+    115          	0x00, // bAlternateSetting
+    116          	0x02, // bNumEndpoints
+    117          	0x0A, // bInterfaceClass
+    118          	0x00, // bInterfaceSubclass
+    119          	0x00, // bInterfaceProtocol
+    120          	0x00, // iInterface
+    121          
+    122          	/* First alternate setting */
+    123          	/* Endpoint 1 descriptor */
+    124          	0x07,   // bLength
+    125          	0x05,   // bDescriptorType
+    126          	0x01,   // bEndpointAddress, Endpoint 01 - OUT
+    127          	0x02,   // bmAttributes      BULK
+    128          	AT91C_EP_OUT_SIZE,   // wMaxPacketSize
+    129          	0x00,
+    130          	0x00,   // bInterval
+    131          
+    132          	/* Endpoint 2 descriptor */
+    133          	0x07,   // bLength
+    134          	0x05,   // bDescriptorType
+    135          	0x82,   // bEndpointAddress, Endpoint 02 - IN
+    136          	0x02,   // bmAttributes      BULK
+    137          	AT91C_EP_IN_SIZE,   // wMaxPacketSize
+    138          	0x00,
+    139          	0x00    // bInterval
+    140          };
+    141          
+    142          /* USB standard request code */
+    143          #define STD_GET_STATUS_ZERO           0x0080
+    144          #define STD_GET_STATUS_INTERFACE      0x0081
+    145          #define STD_GET_STATUS_ENDPOINT       0x0082
+    146          
+    147          #define STD_CLEAR_FEATURE_ZERO        0x0100
+    148          #define STD_CLEAR_FEATURE_INTERFACE   0x0101
+    149          #define STD_CLEAR_FEATURE_ENDPOINT    0x0102
+    150          
+    151          #define STD_SET_FEATURE_ZERO          0x0300
+    152          #define STD_SET_FEATURE_INTERFACE     0x0301
+    153          #define STD_SET_FEATURE_ENDPOINT      0x0302
+    154          
+    155          #define STD_SET_ADDRESS               0x0500
+    156          #define STD_GET_DESCRIPTOR            0x0680
+    157          #define STD_SET_DESCRIPTOR            0x0700
+    158          #define STD_GET_CONFIGURATION         0x0880
+    159          #define STD_SET_CONFIGURATION         0x0900
+    160          #define STD_GET_INTERFACE             0x0A81
+    161          #define STD_SET_INTERFACE             0x0B01
+    162          #define STD_SYNCH_FRAME               0x0C82
+    163          
+    164          /* CDC Class Specific Request Code */
+    165          #define GET_LINE_CODING               0x21A1
+    166          #define SET_LINE_CODING               0x2021
+    167          #define SET_CONTROL_LINE_STATE        0x2221
+    168          
+    169          
+    170          typedef struct {
+    171          	unsigned int dwDTERRate;
+    172          	char bCharFormat;
+    173          	char bParityType;
+    174          	char bDataBits;
+    175          } AT91S_CDC_LINE_CODING, *AT91PS_CDC_LINE_CODING;
+    176          
+
+   \                                 In segment DATA_I, align 4, align-sorted
+    177          AT91S_CDC_LINE_CODING line = {
+   \                     line:
+   \   00000000                      DS8 8
+   \   00000008                      REQUIRE `?<Initializer for line>`
+    178          	115200, // baudrate
+    179          	0,      // 1 Stop Bit
+    180          	0,      // None Parity
+    181          	8};     // 8 Data bits
+    182          
+
+   \                                 In segment DATA_I, align 4, align-sorted
+    183          uint currentReceiveBank = AT91C_UDP_RX_DATA_BK0;
+   \                     currentReceiveBank:
+   \   00000000                      DS8 4
+   \   00000004                      REQUIRE `?<Initializer for currentReceiveBank>`
+    184          
+    185          
+    186          static uchar AT91F_UDP_IsConfigured(AT91PS_CDC pCdc);
+    187          static uint AT91F_UDP_Read(AT91PS_CDC pCdc, char *pData, uint length);
+    188          static uint AT91F_UDP_Write(AT91PS_CDC pCdc, const char *pData, uint length);
+    189          static void AT91F_CDC_Enumerate(AT91PS_CDC pCdc);
+    190          
+    191          
+    192          //*----------------------------------------------------------------------------
+    193          //* \fn    AT91F_CDC_Open
+    194          //* \brief
+    195          //*----------------------------------------------------------------------------
+
+   \                                 In segment CODE, align 4, keep-with-next
+    196          AT91PS_CDC AT91F_CDC_Open(AT91PS_CDC pCdc, AT91PS_UDP pUdp)
+    197          {
+    198          	pCdc->pUdp = pUdp;
+   \                     AT91F_CDC_Open:
+   \   00000000   0160               STR         R1,[R0, #+0]
+    199          	pCdc->currentConfiguration = 0;
+   \   00000002   0021               MOV         R1,#+0
+   \   00000004   0171               STRB        R1,[R0, #+4]
+    200          	pCdc->currentConnection    = 0;
+   \   00000006   4171               STRB        R1,[R0, #+5]
+    201          	pCdc->currentRcvBank       = AT91C_UDP_RX_DATA_BK0;
+   \   00000008   0221               MOV         R1,#+2
+   \   0000000A   8160               STR         R1,[R0, #+8]
+    202          	pCdc->IsConfigured = AT91F_UDP_IsConfigured;
+   \   0000000C   0349               LDR         R1,??AT91F_CDC_Open_0  ;; AT91F_UDP_IsConfigured
+   \   0000000E   C160               STR         R1,[R0, #+12]
+    203          	pCdc->Write        = AT91F_UDP_Write;
+   \   00000010   0349               LDR         R1,??AT91F_CDC_Open_0+0x4  ;; AT91F_UDP_Write
+   \   00000012   0161               STR         R1,[R0, #+16]
+    204          	pCdc->Read         = AT91F_UDP_Read;
+   \   00000014   0349               LDR         R1,??AT91F_CDC_Open_0+0x8  ;; AT91F_UDP_Read
+   \   00000016   4161               STR         R1,[R0, #+20]
+    205          	return pCdc;
+   \   00000018   7047               BX          LR                 ;; return
+   \   0000001A   C046               NOP         
+   \                     ??AT91F_CDC_Open_0:
+   \   0000001C   ........           DC32        AT91F_UDP_IsConfigured
+   \   00000020   ........           DC32        AT91F_UDP_Write
+   \   00000024   ........           DC32        AT91F_UDP_Read
+    206          }
+    207          
+    208          //*----------------------------------------------------------------------------
+    209          //* \fn    AT91F_UDP_IsConfigured
+    210          //* \brief Test if the device is configured and handle enumeration
+    211          //*----------------------------------------------------------------------------
+
+   \                                 In segment CODE, align 4, keep-with-next
+    212          static uchar AT91F_UDP_IsConfigured(AT91PS_CDC pCdc)
+    213          {
+   \                     AT91F_UDP_IsConfigured:
+   \   00000000   11B5               PUSH        {R0,R4,LR}
+   \   00000002   041C               MOV         R4,R0
+    214          	AT91PS_UDP pUDP = pCdc->pUdp;
+   \   00000004   0068               LDR         R0,[R0, #+0]
+    215          	AT91_REG isr = pUDP->UDP_ISR;
+   \   00000006   C169               LDR         R1,[R0, #+28]
+   \   00000008   0091               STR         R1,[SP, #+0]
+    216          
+    217          	if (isr & AT91C_UDP_ENDBUSRES) {
+   \   0000000A   8021               MOV         R1,#+128
+   \   0000000C   4901               LSL         R1,R1,#+5          ;; #+4096
+   \   0000000E   009A               LDR         R2,[SP, #+0]
+   \   00000010   0A42               TST         R2,R1
+   \   00000012   0BD0               BEQ         ??AT91F_UDP_IsConfigured_0
+    218          		pUDP->UDP_ICR = AT91C_UDP_ENDBUSRES;
+   \   00000014   0162               STR         R1,[R0, #+32]
+    219          		// reset all endpoints
+    220          		pUDP->UDP_RSTEP  = (unsigned int)-1;
+   \   00000016   0021               MOV         R1,#+0
+   \   00000018   C943               MVN         R1,R1              ;; #-1
+   \   0000001A   8162               STR         R1,[R0, #+40]
+    221          		pUDP->UDP_RSTEP  = 0;
+   \   0000001C   0021               MOV         R1,#+0
+   \   0000001E   8162               STR         R1,[R0, #+40]
+    222          		// Enable the function
+    223          		pUDP->UDP_FADDR = AT91C_UDP_FEN;
+   \   00000020   8021               MOV         R1,#+128
+   \   00000022   4900               LSL         R1,R1,#+1          ;; #+256
+   \   00000024   8160               STR         R1,[R0, #+8]
+    224          		// Configure endpoint 0
+    225          		pUDP->UDP_CSR[0] = (AT91C_UDP_EPEDS | AT91C_UDP_EPTYPE_CTRL);
+   \   00000026   C901               LSL         R1,R1,#+7
+   \   00000028   0163               STR         R1,[R0, #+48]
+   \   0000002A   07E0               B           ??AT91F_UDP_IsConfigured_1
+    226          	}
+    227          	else if (isr & AT91C_UDP_EPINT0) {
+   \                     ??AT91F_UDP_IsConfigured_0:
+   \   0000002C   0099               LDR         R1,[SP, #+0]
+   \   0000002E   C907               LSL         R1,R1,#+31
+   \   00000030   04D5               BPL         ??AT91F_UDP_IsConfigured_1
+    228          		pUDP->UDP_ICR = AT91C_UDP_EPINT0;
+   \   00000032   0121               MOV         R1,#+1
+   \   00000034   0162               STR         R1,[R0, #+32]
+    229          		AT91F_CDC_Enumerate(pCdc);
+   \   00000036   201C               MOV         R0,R4
+   \   00000038   ........           BL          AT91F_CDC_Enumerate
+    230          	}
+    231          	return pCdc->currentConfiguration;
+   \                     ??AT91F_UDP_IsConfigured_1:
+   \   0000003C   2079               LDRB        R0,[R4, #+4]
+   \   0000003E   18BC               POP         {R3,R4}
+   \   00000040   02BC               POP         {R1}
+   \   00000042   0847               BX          R1                 ;; return
+    232          }
+    233          
+    234          //*----------------------------------------------------------------------------
+    235          //* \fn    AT91F_UDP_Read
+    236          //* \brief Read available data from Endpoint OUT
+    237          //*----------------------------------------------------------------------------
+
+   \                                 In segment CODE, align 4, keep-with-next
+    238          static uint AT91F_UDP_Read(AT91PS_CDC pCdc, char *pData, uint length)
+    239          {
+   \                     AT91F_UDP_Read:
+   \   00000000   F3B5               PUSH        {R0,R1,R4-R7,LR}
+   \   00000002   141C               MOV         R4,R2
+    240          	AT91PS_UDP pUdp = pCdc->pUdp;
+   \   00000004   0568               LDR         R5,[R0, #+0]
+   \   00000006   0026               MOV         R6,#+0
+    241          	uint packetSize, nbBytesRcv = 0, currentReceiveBank = pCdc->currentRcvBank;
+   \   00000008   8768               LDR         R7,[R0, #+8]
+   \   0000000A   00E0               B           ??AT91F_UDP_Read_0
+    242          
+    243          	while (length) {
+    244          		if ( !AT91F_UDP_IsConfigured(pCdc) )
+    245          			break;
+    246          		if ( pUdp->UDP_CSR[AT91C_EP_OUT] & currentReceiveBank ) {
+    247          			packetSize = MIN(pUdp->UDP_CSR[AT91C_EP_OUT] >> 16, length);
+    248          			length -= packetSize;
+    249          			if (packetSize < AT91C_EP_OUT_SIZE)
+    250          				length = 0;
+    251          			while(packetSize--)
+    252          				pData[nbBytesRcv++] = pUdp->UDP_FDR[AT91C_EP_OUT];
+    253          			pUdp->UDP_CSR[AT91C_EP_OUT] &= ~(currentReceiveBank);
+    254          			if (currentReceiveBank == AT91C_UDP_RX_DATA_BK0)
+    255          				currentReceiveBank = AT91C_UDP_RX_DATA_BK1;
+   \                     ??AT91F_UDP_Read_1:
+   \   0000000C   4027               MOV         R7,#+64
+   \                     ??AT91F_UDP_Read_0:
+   \   0000000E   002C               CMP         R4,#+0
+   \   00000010   23D0               BEQ         ??AT91F_UDP_Read_2
+   \                     ??AT91F_UDP_Read_3:
+   \   00000012   0098               LDR         R0,[SP, #+0]
+   \   00000014   ........           BL          AT91F_UDP_IsConfigured
+   \   00000018   0028               CMP         R0,#+0
+   \   0000001A   1ED0               BEQ         ??AT91F_UDP_Read_2
+   \   0000001C   686B               LDR         R0,[R5, #+52]
+   \   0000001E   3842               TST         R0,R7
+   \   00000020   F7D0               BEQ         ??AT91F_UDP_Read_3
+   \   00000022   686B               LDR         R0,[R5, #+52]
+   \   00000024   000C               LSR         R0,R0,#+16
+   \   00000026   A042               CMP         R0,R4
+   \   00000028   02D2               BCS         ??AT91F_UDP_Read_4
+   \   0000002A   686B               LDR         R0,[R5, #+52]
+   \   0000002C   000C               LSR         R0,R0,#+16
+   \   0000002E   00E0               B           ??AT91F_UDP_Read_5
+   \                     ??AT91F_UDP_Read_4:
+   \   00000030   201C               MOV         R0,R4
+   \                     ??AT91F_UDP_Read_5:
+   \   00000032   241A               SUB         R4,R4,R0
+   \   00000034   4028               CMP         R0,#+64
+   \   00000036   05D2               BCS         ??AT91F_UDP_Read_6
+   \   00000038   0024               MOV         R4,#+0
+   \   0000003A   03E0               B           ??AT91F_UDP_Read_6
+   \                     ??AT91F_UDP_Read_7:
+   \   0000003C   0199               LDR         R1,[SP, #+4]
+   \   0000003E   6A6D               LDR         R2,[R5, #+84]
+   \   00000040   8A55               STRB        R2,[R1, R6]
+   \   00000042   761C               ADD         R6,R6,#+1
+   \                     ??AT91F_UDP_Read_6:
+   \   00000044   011C               MOV         R1,R0
+   \   00000046   401E               SUB         R0,R0,#+1
+   \   00000048   0029               CMP         R1,#+0
+   \   0000004A   F7D1               BNE         ??AT91F_UDP_Read_7
+   \   0000004C   686B               LDR         R0,[R5, #+52]
+   \   0000004E   B843               BIC         R0,R7
+   \   00000050   6863               STR         R0,[R5, #+52]
+   \   00000052   022F               CMP         R7,#+2
+   \   00000054   DAD0               BEQ         ??AT91F_UDP_Read_1
+    256          			else
+    257          				currentReceiveBank = AT91C_UDP_RX_DATA_BK0;
+   \   00000056   0227               MOV         R7,#+2
+   \   00000058   D9E7               B           ??AT91F_UDP_Read_0
+    258          
+    259          		}
+    260          	}
+    261          	pCdc->currentRcvBank = currentReceiveBank;
+   \                     ??AT91F_UDP_Read_2:
+   \   0000005A   0098               LDR         R0,[SP, #+0]
+   \   0000005C   8760               STR         R7,[R0, #+8]
+    262          	return nbBytesRcv;
+   \   0000005E   301C               MOV         R0,R6
+   \   00000060   FCBC               POP         {R2-R7}
+   \   00000062   02BC               POP         {R1}
+   \   00000064   0847               BX          R1                 ;; return
+    263          
+    264          }
+    265          
+    266          //*----------------------------------------------------------------------------
+    267          //* \fn    AT91F_CDC_Write
+    268          //* \brief Send through endpoint 2
+    269          //*----------------------------------------------------------------------------
+
+   \                                 In segment CODE, align 4, keep-with-next
+    270          static uint AT91F_UDP_Write(AT91PS_CDC pCdc, const char *pData, uint length)
+    271          {
+   \                     AT91F_UDP_Write:
+   \   00000000   F1B5               PUSH        {R0,R4-R7,LR}
+   \   00000002   0D1C               MOV         R5,R1
+    272          	AT91PS_UDP pUdp = pCdc->pUdp;
+   \   00000004   0468               LDR         R4,[R0, #+0]
+   \   00000006   402A               CMP         R2,#+64
+   \   00000008   01D2               BCS         ??AT91F_UDP_Write_0
+   \   0000000A   101C               MOV         R0,R2
+   \   0000000C   00E0               B           ??AT91F_UDP_Write_1
+   \                     ??AT91F_UDP_Write_0:
+   \   0000000E   4020               MOV         R0,#+64
+    273          	uint cpt = 0;
+    274          
+    275          	// Send the first packet
+    276          	cpt = MIN(length, AT91C_EP_IN_SIZE);
+    277          	length -= cpt;
+   \                     ??AT91F_UDP_Write_1:
+   \   00000010   161A               SUB         R6,R2,R0
+   \   00000012   02E0               B           ??AT91F_UDP_Write_2
+    278          	while (cpt--) pUdp->UDP_FDR[AT91C_EP_IN] = *pData++;
+   \                     ??AT91F_UDP_Write_3:
+   \   00000014   2978               LDRB        R1,[R5, #+0]
+   \   00000016   A165               STR         R1,[R4, #+88]
+   \   00000018   6D1C               ADD         R5,R5,#+1
+   \                     ??AT91F_UDP_Write_2:
+   \   0000001A   011C               MOV         R1,R0
+   \   0000001C   401E               SUB         R0,R0,#+1
+   \   0000001E   0029               CMP         R1,#+0
+   \   00000020   F8D1               BNE         ??AT91F_UDP_Write_3
+   \   00000022   05E0               B           ??AT91F_UDP_Write_4
+    279          	pUdp->UDP_CSR[AT91C_EP_IN] |= AT91C_UDP_TXPKTRDY;
+    280          
+    281          	while (length) {
+    282          		// Fill the second bank
+    283          		cpt = MIN(length, AT91C_EP_IN_SIZE);
+    284          		length -= cpt;
+    285          		while (cpt--) pUdp->UDP_FDR[AT91C_EP_IN] = *pData++;
+    286          		// Wait for the the first bank to be sent
+    287          		while ( !(pUdp->UDP_CSR[AT91C_EP_IN] & AT91C_UDP_TXCOMP) )
+    288          			if ( !AT91F_UDP_IsConfigured(pCdc) ) return length;
+    289          		pUdp->UDP_CSR[AT91C_EP_IN] &= ~(AT91C_UDP_TXCOMP);
+   \                     ??AT91F_UDP_Write_5:
+   \   00000024   A06B               LDR         R0,[R4, #+56]
+   \   00000026   0740               AND         R7,R0
+   \   00000028   A763               STR         R7,[R4, #+56]
+    290          		while (pUdp->UDP_CSR[AT91C_EP_IN] & AT91C_UDP_TXCOMP);
+   \                     ??AT91F_UDP_Write_6:
+   \   0000002A   A06B               LDR         R0,[R4, #+56]
+   \   0000002C   C007               LSL         R0,R0,#+31
+   \   0000002E   FCD4               BMI         ??AT91F_UDP_Write_6
+    291          		pUdp->UDP_CSR[AT91C_EP_IN] |= AT91C_UDP_TXPKTRDY;
+   \                     ??AT91F_UDP_Write_4:
+   \   00000030   A06B               LDR         R0,[R4, #+56]
+   \   00000032   1021               MOV         R1,#+16
+   \   00000034   0143               ORR         R1,R0
+   \   00000036   A163               STR         R1,[R4, #+56]
+   \   00000038   0127               MOV         R7,#+1
+   \   0000003A   FF43               MVN         R7,R7              ;; #-2
+   \   0000003C   002E               CMP         R6,#+0
+   \   0000003E   1ED0               BEQ         ??AT91F_UDP_Write_7
+   \   00000040   402E               CMP         R6,#+64
+   \   00000042   01D2               BCS         ??AT91F_UDP_Write_8
+   \   00000044   301C               MOV         R0,R6
+   \   00000046   00E0               B           ??AT91F_UDP_Write_9
+   \                     ??AT91F_UDP_Write_8:
+   \   00000048   4020               MOV         R0,#+64
+   \                     ??AT91F_UDP_Write_9:
+   \   0000004A   361A               SUB         R6,R6,R0
+   \   0000004C   02E0               B           ??AT91F_UDP_Write_10
+   \                     ??AT91F_UDP_Write_11:
+   \   0000004E   2978               LDRB        R1,[R5, #+0]
+   \   00000050   A165               STR         R1,[R4, #+88]
+   \   00000052   6D1C               ADD         R5,R5,#+1
+   \                     ??AT91F_UDP_Write_10:
+   \   00000054   011C               MOV         R1,R0
+   \   00000056   401E               SUB         R0,R0,#+1
+   \   00000058   0029               CMP         R1,#+0
+   \   0000005A   F8D1               BNE         ??AT91F_UDP_Write_11
+   \                     ??AT91F_UDP_Write_12:
+   \   0000005C   A06B               LDR         R0,[R4, #+56]
+   \   0000005E   C007               LSL         R0,R0,#+31
+   \   00000060   E0D4               BMI         ??AT91F_UDP_Write_5
+   \   00000062   0098               LDR         R0,[SP, #+0]
+   \   00000064   ........           BL          AT91F_UDP_IsConfigured
+   \   00000068   0028               CMP         R0,#+0
+   \   0000006A   F7D1               BNE         ??AT91F_UDP_Write_12
+   \                     ??AT91F_UDP_Write_13:
+   \   0000006C   301C               MOV         R0,R6
+   \   0000006E   F8BC               POP         {R3-R7}
+   \   00000070   02BC               POP         {R1}
+   \   00000072   0847               BX          R1                 ;; return
+    292          	}
+    293          	// Wait for the end of transfer
+    294          	while ( !(pUdp->UDP_CSR[AT91C_EP_IN] & AT91C_UDP_TXCOMP) )
+    295          		if ( !AT91F_UDP_IsConfigured(pCdc) ) return length;
+   \                     ??AT91F_UDP_Write_14:
+   \   00000074   0098               LDR         R0,[SP, #+0]
+   \   00000076   ........           BL          AT91F_UDP_IsConfigured
+   \   0000007A   0028               CMP         R0,#+0
+   \   0000007C   F6D0               BEQ         ??AT91F_UDP_Write_13
+   \                     ??AT91F_UDP_Write_7:
+   \   0000007E   A06B               LDR         R0,[R4, #+56]
+   \   00000080   C007               LSL         R0,R0,#+31
+   \   00000082   F7D5               BPL         ??AT91F_UDP_Write_14
+    296          	pUdp->UDP_CSR[AT91C_EP_IN] &= ~(AT91C_UDP_TXCOMP);
+   \   00000084   A06B               LDR         R0,[R4, #+56]
+   \   00000086   0740               AND         R7,R0
+   \   00000088   A763               STR         R7,[R4, #+56]
+    297          	while (pUdp->UDP_CSR[AT91C_EP_IN] & AT91C_UDP_TXCOMP);
+   \                     ??AT91F_UDP_Write_15:
+   \   0000008A   A06B               LDR         R0,[R4, #+56]
+   \   0000008C   C007               LSL         R0,R0,#+31
+   \   0000008E   FCD4               BMI         ??AT91F_UDP_Write_15
+   \   00000090   ECE7               B           ??AT91F_UDP_Write_13
+    298          
+    299          	return length;
+    300          }
+    301          
+    302          //*----------------------------------------------------------------------------
+    303          //* \fn    AT91F_USB_SendData
+    304          //* \brief Send Data through the control endpoint
+    305          //*----------------------------------------------------------------------------
+
+   \                                 In segment DATA_Z, align 4, align-sorted
+    306          unsigned int csrTab[100];
+   \                     csrTab:
+   \   00000000                      DS8 400
+
+   \                                 In segment DATA_Z, align 1, align-sorted
+    307          unsigned char csrIdx = 0;
+   \                     csrIdx:
+   \   00000000                      DS8 1
+    308          
+
+   \                                 In segment CODE, align 4, keep-with-next
+    309          static void AT91F_USB_SendData(AT91PS_UDP pUdp, const char *pData, uint length)
+    310          {
+   \                     AT91F_USB_SendData:
+   \   00000000   31B5               PUSH        {R0,R4,R5,LR}
+    311          	uint cpt = 0;
+    312          	AT91_REG csr;
+    313          
+    314          	do {
+    315          		cpt = MIN(length, 8);
+   \                     ??AT91F_USB_SendData_0:
+   \   00000002   082A               CMP         R2,#+8
+   \   00000004   01D2               BCS         ??AT91F_USB_SendData_1
+   \   00000006   131C               MOV         R3,R2
+   \   00000008   00E0               B           ??AT91F_USB_SendData_2
+   \                     ??AT91F_USB_SendData_1:
+   \   0000000A   0823               MOV         R3,#+8
+    316          		length -= cpt;
+   \                     ??AT91F_USB_SendData_2:
+   \   0000000C   D21A               SUB         R2,R2,R3
+   \   0000000E   02E0               B           ??AT91F_USB_SendData_3
+    317          
+    318          		while (cpt--)
+    319          			pUdp->UDP_FDR[0] = *pData++;
+   \                     ??AT91F_USB_SendData_4:
+   \   00000010   0C78               LDRB        R4,[R1, #+0]
+   \   00000012   0465               STR         R4,[R0, #+80]
+   \   00000014   491C               ADD         R1,R1,#+1
+   \                     ??AT91F_USB_SendData_3:
+   \   00000016   1C1C               MOV         R4,R3
+   \   00000018   5B1E               SUB         R3,R3,#+1
+   \   0000001A   002C               CMP         R4,#+0
+   \   0000001C   F8D1               BNE         ??AT91F_USB_SendData_4
+    320          
+    321          		if (pUdp->UDP_CSR[0] & AT91C_UDP_TXCOMP) {
+   \   0000001E   0123               MOV         R3,#+1
+   \   00000020   DB43               MVN         R3,R3              ;; #-2
+   \   00000022   046B               LDR         R4,[R0, #+48]
+   \   00000024   E407               LSL         R4,R4,#+31
+   \   00000026   05D5               BPL         ??AT91F_USB_SendData_5
+    322          			pUdp->UDP_CSR[0] &= ~(AT91C_UDP_TXCOMP);
+   \   00000028   046B               LDR         R4,[R0, #+48]
+   \   0000002A   1C40               AND         R4,R3
+   \   0000002C   0463               STR         R4,[R0, #+48]
+    323          			while (pUdp->UDP_CSR[0] & AT91C_UDP_TXCOMP);
+   \                     ??AT91F_USB_SendData_6:
+   \   0000002E   046B               LDR         R4,[R0, #+48]
+   \   00000030   E407               LSL         R4,R4,#+31
+   \   00000032   FCD4               BMI         ??AT91F_USB_SendData_6
+    324          		}
+    325          
+    326          		pUdp->UDP_CSR[0] |= AT91C_UDP_TXPKTRDY;
+   \                     ??AT91F_USB_SendData_5:
+   \   00000034   046B               LDR         R4,[R0, #+48]
+   \   00000036   1025               MOV         R5,#+16
+   \   00000038   2543               ORR         R5,R4
+   \   0000003A   0563               STR         R5,[R0, #+48]
+    327          		do {
+    328          			csr = pUdp->UDP_CSR[0];
+   \                     ??AT91F_USB_SendData_7:
+   \   0000003C   046B               LDR         R4,[R0, #+48]
+   \   0000003E   0094               STR         R4,[SP, #+0]
+    329          
+    330          			// Data IN stage has been stopped by a status OUT
+    331          			if (csr & AT91C_UDP_RX_DATA_BK0) {
+   \   00000040   009C               LDR         R4,[SP, #+0]
+   \   00000042   A407               LSL         R4,R4,#+30
+   \   00000044   04D5               BPL         ??AT91F_USB_SendData_8
+    332          				pUdp->UDP_CSR[0] &= ~(AT91C_UDP_RX_DATA_BK0);
+   \   00000046   016B               LDR         R1,[R0, #+48]
+   \   00000048   0222               MOV         R2,#+2
+   \   0000004A   9143               BIC         R1,R2
+   \   0000004C   0163               STR         R1,[R0, #+48]
+    333          				return;
+   \   0000004E   0DE0               B           ??AT91F_USB_SendData_9
+    334          			}
+    335          		} while ( !(csr & AT91C_UDP_TXCOMP) );
+   \                     ??AT91F_USB_SendData_8:
+   \   00000050   009C               LDR         R4,[SP, #+0]
+   \   00000052   E407               LSL         R4,R4,#+31
+   \   00000054   F2D5               BPL         ??AT91F_USB_SendData_7
+    336          
+    337          	} while (length);
+   \   00000056   002A               CMP         R2,#+0
+   \   00000058   D3D1               BNE         ??AT91F_USB_SendData_0
+    338          
+    339          	if (pUdp->UDP_CSR[0] & AT91C_UDP_TXCOMP) {
+   \   0000005A   016B               LDR         R1,[R0, #+48]
+   \   0000005C   C907               LSL         R1,R1,#+31
+   \   0000005E   05D5               BPL         ??AT91F_USB_SendData_9
+    340          		pUdp->UDP_CSR[0] &= ~(AT91C_UDP_TXCOMP);
+   \   00000060   016B               LDR         R1,[R0, #+48]
+   \   00000062   0B40               AND         R3,R1
+   \   00000064   0363               STR         R3,[R0, #+48]
+    341          		while (pUdp->UDP_CSR[0] & AT91C_UDP_TXCOMP);
+   \                     ??AT91F_USB_SendData_10:
+   \   00000066   016B               LDR         R1,[R0, #+48]
+   \   00000068   C907               LSL         R1,R1,#+31
+   \   0000006A   FCD4               BMI         ??AT91F_USB_SendData_10
+   \                     ??AT91F_USB_SendData_9:
+   \   0000006C   38BC               POP         {R3-R5}
+   \   0000006E   01BC               POP         {R0}
+   \   00000070   0047               BX          R0                 ;; return
+    342          	}
+    343          }
+    344          
+    345          //*----------------------------------------------------------------------------
+    346          //* \fn    AT91F_USB_SendZlp
+    347          //* \brief Send zero length packet through the control endpoint
+    348          //*----------------------------------------------------------------------------
+
+   \                                 In segment CODE, align 4, keep-with-next
+    349          void AT91F_USB_SendZlp(AT91PS_UDP pUdp)
+    350          {
+    351          	pUdp->UDP_CSR[0] |= AT91C_UDP_TXPKTRDY;
+   \                     AT91F_USB_SendZlp:
+   \   00000000   016B               LDR         R1,[R0, #+48]
+   \   00000002   1022               MOV         R2,#+16
+   \   00000004   0A43               ORR         R2,R1
+   \   00000006   0263               STR         R2,[R0, #+48]
+    352          	while ( !(pUdp->UDP_CSR[0] & AT91C_UDP_TXCOMP) );
+   \                     ??AT91F_USB_SendZlp_0:
+   \   00000008   016B               LDR         R1,[R0, #+48]
+   \   0000000A   C907               LSL         R1,R1,#+31
+   \   0000000C   FCD5               BPL         ??AT91F_USB_SendZlp_0
+    353          	pUdp->UDP_CSR[0] &= ~(AT91C_UDP_TXCOMP);
+   \   0000000E   016B               LDR         R1,[R0, #+48]
+   \   00000010   0122               MOV         R2,#+1
+   \   00000012   9143               BIC         R1,R2
+   \   00000014   0163               STR         R1,[R0, #+48]
+    354          	while (pUdp->UDP_CSR[0] & AT91C_UDP_TXCOMP);
+   \                     ??AT91F_USB_SendZlp_1:
+   \   00000016   016B               LDR         R1,[R0, #+48]
+   \   00000018   C907               LSL         R1,R1,#+31
+   \   0000001A   FCD4               BMI         ??AT91F_USB_SendZlp_1
+    355          }
+   \   0000001C   7047               BX          LR                 ;; return
+    356          
+    357          //*----------------------------------------------------------------------------
+    358          //* \fn    AT91F_USB_SendStall
+    359          //* \brief Stall the control endpoint
+    360          //*----------------------------------------------------------------------------
+
+   \                                 In segment CODE, align 4, keep-with-next
+    361          void AT91F_USB_SendStall(AT91PS_UDP pUdp)
+    362          {
+    363          	pUdp->UDP_CSR[0] |= AT91C_UDP_FORCESTALL;
+   \                     AT91F_USB_SendStall:
+   \   00000000   016B               LDR         R1,[R0, #+48]
+   \   00000002   2022               MOV         R2,#+32
+   \   00000004   0A43               ORR         R2,R1
+   \   00000006   0263               STR         R2,[R0, #+48]
+    364          	while ( !(pUdp->UDP_CSR[0] & AT91C_UDP_ISOERROR) );
+   \                     ??AT91F_USB_SendStall_0:
+   \   00000008   016B               LDR         R1,[R0, #+48]
+   \   0000000A   0907               LSL         R1,R1,#+28
+   \   0000000C   FCD5               BPL         ??AT91F_USB_SendStall_0
+    365          	pUdp->UDP_CSR[0] &= ~(AT91C_UDP_FORCESTALL | AT91C_UDP_ISOERROR);
+   \   0000000E   016B               LDR         R1,[R0, #+48]
+   \   00000010   2822               MOV         R2,#+40
+   \   00000012   9143               BIC         R1,R2
+   \   00000014   0163               STR         R1,[R0, #+48]
+    366          	while (pUdp->UDP_CSR[0] & (AT91C_UDP_FORCESTALL | AT91C_UDP_ISOERROR));
+   \                     ??AT91F_USB_SendStall_1:
+   \   00000016   016B               LDR         R1,[R0, #+48]
+   \   00000018   1142               TST         R1,R2
+   \   0000001A   FCD1               BNE         ??AT91F_USB_SendStall_1
+    367          }
+   \   0000001C   7047               BX          LR                 ;; return
+    368          
+    369          //*----------------------------------------------------------------------------
+    370          //* \fn    AT91F_CDC_Enumerate
+    371          //* \brief This function is a callback invoked when a SETUP packet is received
+    372          //*----------------------------------------------------------------------------
+
+   \                                 In segment CODE, align 4, keep-with-next
+    373          static void AT91F_CDC_Enumerate(AT91PS_CDC pCdc)
+    374          {
+   \                     AT91F_CDC_Enumerate:
+   \   00000000   F3B5               PUSH        {R0,R1,R4-R7,LR}
+   \   00000002   011C               MOV         R1,R0
+    375          	AT91PS_UDP pUDP = pCdc->pUdp;
+   \   00000004   0468               LDR         R4,[R0, #+0]
+    376          	uchar bmRequestType, bRequest;
+    377          	ushort wValue, wIndex, wLength, wStatus;
+    378          
+    379          
+    380          	if ( !(pUDP->UDP_CSR[0] & AT91C_UDP_RXSETUP) )
+   \   00000006   206B               LDR         R0,[R4, #+48]
+   \   00000008   4007               LSL         R0,R0,#+29
+   \   0000000A   67D5               BPL         ??AT91F_CDC_Enumerate_0
+    381          		return;
+    382          
+    383          	bmRequestType = pUDP->UDP_FDR[0];
+   \   0000000C   206D               LDR         R0,[R4, #+80]
+   \   0000000E   0006               LSL         R0,R0,#+24
+   \   00000010   000E               LSR         R0,R0,#+24
+   \   00000012   0190               STR         R0,[SP, #+4]
+    384          	bRequest      = pUDP->UDP_FDR[0];
+   \   00000014   236D               LDR         R3,[R4, #+80]
+   \   00000016   1B06               LSL         R3,R3,#+24
+   \   00000018   1B0E               LSR         R3,R3,#+24
+    385          	wValue        = (pUDP->UDP_FDR[0] & 0xFF);
+   \   0000001A   FF26               MOV         R6,#+255
+   \   0000001C   206D               LDR         R0,[R4, #+80]
+   \   0000001E   3040               AND         R0,R6
+    386          	wValue       |= (pUDP->UDP_FDR[0] << 8);
+   \   00000020   226D               LDR         R2,[R4, #+80]
+   \   00000022   1502               LSL         R5,R2,#+8
+   \   00000024   0543               ORR         R5,R0
+   \   00000026   2D04               LSL         R5,R5,#+16
+   \   00000028   2D0C               LSR         R5,R5,#+16
+    387          	wIndex        = (pUDP->UDP_FDR[0] & 0xFF);
+   \   0000002A   226D               LDR         R2,[R4, #+80]
+   \   0000002C   3240               AND         R2,R6
+    388          	wIndex       |= (pUDP->UDP_FDR[0] << 8);
+   \   0000002E   206D               LDR         R0,[R4, #+80]
+   \   00000030   0002               LSL         R0,R0,#+8
+   \   00000032   1043               ORR         R0,R2
+    389          	wLength       = (pUDP->UDP_FDR[0] & 0xFF);
+   \   00000034   226D               LDR         R2,[R4, #+80]
+   \   00000036   1640               AND         R6,R2
+    390          	wLength      |= (pUDP->UDP_FDR[0] << 8);
+   \   00000038   226D               LDR         R2,[R4, #+80]
+   \   0000003A   1202               LSL         R2,R2,#+8
+   \   0000003C   3243               ORR         R2,R6
+   \   0000003E   1204               LSL         R2,R2,#+16
+   \   00000040   120C               LSR         R2,R2,#+16
+    391          
+    392          	if (bmRequestType & 0x80) {
+   \   00000042   019E               LDR         R6,[SP, #+4]
+   \   00000044   3606               LSL         R6,R6,#+24
+   \   00000046   06D5               BPL         ??AT91F_CDC_Enumerate_1
+    393          		pUDP->UDP_CSR[0] |= AT91C_UDP_DIR;
+   \   00000048   266B               LDR         R6,[R4, #+48]
+   \   0000004A   8027               MOV         R7,#+128
+   \   0000004C   3743               ORR         R7,R6
+   \   0000004E   2763               STR         R7,[R4, #+48]
+    394          		while ( !(pUDP->UDP_CSR[0] & AT91C_UDP_DIR) );
+   \                     ??AT91F_CDC_Enumerate_2:
+   \   00000050   266B               LDR         R6,[R4, #+48]
+   \   00000052   3606               LSL         R6,R6,#+24
+   \   00000054   FCD5               BPL         ??AT91F_CDC_Enumerate_2
+    395          	}
+    396          	pUDP->UDP_CSR[0] &= ~AT91C_UDP_RXSETUP;
+   \                     ??AT91F_CDC_Enumerate_1:
+   \   00000056   266B               LDR         R6,[R4, #+48]
+   \   00000058   0427               MOV         R7,#+4
+   \   0000005A   BE43               BIC         R6,R7
+   \   0000005C   2663               STR         R6,[R4, #+48]
+    397          	while ( (pUDP->UDP_CSR[0]  & AT91C_UDP_RXSETUP)  );
+   \                     ??AT91F_CDC_Enumerate_3:
+   \   0000005E   266B               LDR         R6,[R4, #+48]
+   \   00000060   7607               LSL         R6,R6,#+29
+   \   00000062   FCD4               BMI         ??AT91F_CDC_Enumerate_3
+    398          
+    399          	// Handle supported standard device request Cf Table 9-3 in USB specification Rev 1.1
+    400          	switch ((bRequest << 8) | bmRequestType) {
+   \   00000064   0007               LSL         R0,R0,#+28
+   \   00000066   000F               LSR         R0,R0,#+28
+   \   00000068   0026               MOV         R6,#+0
+   \   0000006A   1F02               LSL         R7,R3,#+8
+   \   0000006C   019B               LDR         R3,[SP, #+4]
+   \   0000006E   1B06               LSL         R3,R3,#+24
+   \   00000070   1B0E               LSR         R3,R3,#+24
+   \   00000072   3B43               ORR         R3,R7
+   \   00000074   803B               SUB         R3,#+128
+   \   00000076   012B               CMP         R3,#+1
+   \   00000078   6CD9               BLS         ??AT91F_CDC_Enumerate_4
+   \   0000007A   9B1E               SUB         R3,R3,#+2
+   \   0000007C   6FD0               BEQ         ??AT91F_CDC_Enumerate_5
+   \   0000007E   7F3B               SUB         R3,#+127
+   \   00000080   04D0               BEQ         ??AT91F_CDC_Enumerate_6
+   \   00000082   5B1E               SUB         R3,R3,#+1
+   \   00000084   ....               BNE         .+5
+   \   00000086   9DE0               B           ??AT91F_CDC_Enumerate_7
+   \   00000088   624F               LDR         R7,??AT91F_CDC_Enumerate_8  ;; 0x1ff
+   \   0000008A   DB1B               SUB         R3,R3,R7
+   \                     ??AT91F_CDC_Enumerate_6:
+   \   0000008C   ....               BNE         .+5
+   \   0000008E   95E0               B           ??AT91F_CDC_Enumerate_9
+   \   00000090   5B1E               SUB         R3,R3,#+1
+   \   00000092   ....               BNE         .+5
+   \   00000094   89E0               B           ??AT91F_CDC_Enumerate_10
+   \   00000096   7F1E               SUB         R7,R7,#+1
+   \   00000098   DB1B               SUB         R3,R3,R7
+   \   0000009A   2ED0               BEQ         ??AT91F_CDC_Enumerate_11
+   \   0000009C   7E3F               SUB         R7,#+126
+   \   0000009E   DB1B               SUB         R3,R3,R7
+   \   000000A0   11D0               BEQ         ??AT91F_CDC_Enumerate_12
+   \   000000A2   8037               ADD         R7,#+128
+   \   000000A4   DB1B               SUB         R3,R3,R7
+   \   000000A6   52D0               BEQ         ??AT91F_CDC_Enumerate_13
+   \   000000A8   803B               SUB         R3,#+128
+   \   000000AA   32D0               BEQ         ??AT91F_CDC_Enumerate_14
+   \   000000AC   5A4F               LDR         R7,??AT91F_CDC_Enumerate_8+0x4  ;; 0x1721
+   \   000000AE   DB1B               SUB         R3,R3,R7
+   \   000000B0   ....               BNE         .+5
+   \   000000B2   9FE0               B           ??AT91F_CDC_Enumerate_15
+   \   000000B4   C027               MOV         R7,#+192
+   \   000000B6   7F00               LSL         R7,R7,#+1          ;; #+384
+   \   000000B8   DB1B               SUB         R3,R3,R7
+   \   000000BA   ....               BNE         .+5
+   \   000000BC   A2E0               B           ??AT91F_CDC_Enumerate_16
+   \   000000BE   803B               SUB         R3,#+128
+   \   000000C0   ....               BNE         .+5
+   \   000000C2   A4E0               B           ??AT91F_CDC_Enumerate_17
+   \   000000C4   15E0               B           ??AT91F_CDC_Enumerate_18
+    401          	case STD_GET_DESCRIPTOR:
+    402          		if (wValue == 0x100)       // Return Device Descriptor
+   \                     ??AT91F_CDC_Enumerate_12:
+   \   000000C6   5549               LDR         R1,??AT91F_CDC_Enumerate_8+0x8  ;; devDescriptor
+   \   000000C8   8023               MOV         R3,#+128
+   \   000000CA   5B00               LSL         R3,R3,#+1          ;; #+256
+   \   000000CC   9D42               CMP         R5,R3
+   \   000000CE   08D1               BNE         ??AT91F_CDC_Enumerate_19
+    403          			AT91F_USB_SendData(pUDP, devDescriptor, MIN(sizeof(devDescriptor), wLength));
+   \   000000D0   132A               CMP         R2,#+19
+   \   000000D2   00D3               BCC         ??AT91F_CDC_Enumerate_20
+   \   000000D4   1222               MOV         R2,#+18
+   \                     ??AT91F_CDC_Enumerate_20:
+   \   000000D6   201C               MOV         R0,R4
+   \   000000D8   ........           BL          AT91F_USB_SendData
+   \                     ??AT91F_CDC_Enumerate_0:
+   \   000000DC   FCBC               POP         {R2-R7}
+   \   000000DE   01BC               POP         {R0}
+   \   000000E0   0047               BX          R0                 ;; return
+    404          		else if (wValue == 0x200)  // Return Configuration Descriptor
+   \                     ??AT91F_CDC_Enumerate_19:
+   \   000000E2   5800               LSL         R0,R3,#+1
+   \   000000E4   8542               CMP         R5,R0
+   \   000000E6   04D1               BNE         ??AT91F_CDC_Enumerate_18
+    405          			AT91F_USB_SendData(pUDP, cfgDescriptor, MIN(sizeof(cfgDescriptor), wLength));
+   \   000000E8   442A               CMP         R2,#+68
+   \   000000EA   00D3               BCC         ??AT91F_CDC_Enumerate_21
+   \   000000EC   4322               MOV         R2,#+67
+   \                     ??AT91F_CDC_Enumerate_21:
+   \   000000EE   1431               ADD         R1,#+20
+   \   000000F0   F1E7               B           ??AT91F_CDC_Enumerate_20
+    406          		else
+    407          			AT91F_USB_SendStall(pUDP);
+   \                     ??AT91F_CDC_Enumerate_18:
+   \   000000F2   201C               MOV         R0,R4
+   \   000000F4   ........           BL          AT91F_USB_SendStall
+   \   000000F8   F0E7               B           ??AT91F_CDC_Enumerate_0
+    408          		break;
+    409          	case STD_SET_ADDRESS:
+    410          		AT91F_USB_SendZlp(pUDP);
+   \                     ??AT91F_CDC_Enumerate_11:
+   \   000000FA   201C               MOV         R0,R4
+   \   000000FC   ........           BL          AT91F_USB_SendZlp
+    411          		pUDP->UDP_FADDR = (AT91C_UDP_FEN | wValue);
+   \   00000100   8020               MOV         R0,#+128
+   \   00000102   4000               LSL         R0,R0,#+1          ;; #+256
+   \   00000104   2843               ORR         R0,R5
+   \   00000106   A060               STR         R0,[R4, #+8]
+    412          		pUDP->UDP_GLBSTATE  = (wValue) ? AT91C_UDP_FADDEN : 0;
+   \   00000108   281C               MOV         R0,R5
+   \   0000010A   00D0               BEQ         ??AT91F_CDC_Enumerate_22
+   \   0000010C   0120               MOV         R0,#+1
+   \                     ??AT91F_CDC_Enumerate_22:
+   \   0000010E   6060               STR         R0,[R4, #+4]
+   \   00000110   E4E7               B           ??AT91F_CDC_Enumerate_0
+    413          		break;
+    414          	case STD_SET_CONFIGURATION:
+    415          		pCdc->currentConfiguration = wValue;
+   \                     ??AT91F_CDC_Enumerate_14:
+   \   00000112   0D71               STRB        R5,[R1, #+4]
+    416          		AT91F_USB_SendZlp(pUDP);
+   \   00000114   201C               MOV         R0,R4
+   \   00000116   ........           BL          AT91F_USB_SendZlp
+    417          		pUDP->UDP_GLBSTATE  = (wValue) ? AT91C_UDP_CONFG : AT91C_UDP_FADDEN;
+   \   0000011A   281C               MOV         R0,R5
+   \   0000011C   01D0               BEQ         ??AT91F_CDC_Enumerate_23
+   \   0000011E   0220               MOV         R0,#+2
+   \   00000120   00E0               B           ??AT91F_CDC_Enumerate_24
+   \                     ??AT91F_CDC_Enumerate_23:
+   \   00000122   0120               MOV         R0,#+1
+   \                     ??AT91F_CDC_Enumerate_24:
+   \   00000124   6060               STR         R0,[R4, #+4]
+    418          		pUDP->UDP_CSR[1] = (wValue) ? (AT91C_UDP_EPEDS | AT91C_UDP_EPTYPE_BULK_OUT) : 0;
+   \   00000126   281C               MOV         R0,R5
+   \   00000128   02D0               BEQ         ??AT91F_CDC_Enumerate_25
+   \   0000012A   8220               MOV         R0,#+130
+   \   0000012C   0002               LSL         R0,R0,#+8          ;; #+33280
+   \   0000012E   00E0               B           ??AT91F_CDC_Enumerate_26
+   \                     ??AT91F_CDC_Enumerate_25:
+   \   00000130   0020               MOV         R0,#+0
+   \                     ??AT91F_CDC_Enumerate_26:
+   \   00000132   6063               STR         R0,[R4, #+52]
+    419          		pUDP->UDP_CSR[2] = (wValue) ? (AT91C_UDP_EPEDS | AT91C_UDP_EPTYPE_BULK_IN)  : 0;
+   \   00000134   281C               MOV         R0,R5
+   \   00000136   02D0               BEQ         ??AT91F_CDC_Enumerate_27
+   \   00000138   8620               MOV         R0,#+134
+   \   0000013A   0002               LSL         R0,R0,#+8          ;; #+34304
+   \   0000013C   00E0               B           ??AT91F_CDC_Enumerate_28
+   \                     ??AT91F_CDC_Enumerate_27:
+   \   0000013E   0020               MOV         R0,#+0
+   \                     ??AT91F_CDC_Enumerate_28:
+   \   00000140   A063               STR         R0,[R4, #+56]
+    420          		pUDP->UDP_CSR[3] = (wValue) ? (AT91C_UDP_EPEDS | AT91C_UDP_EPTYPE_INT_IN)   : 0;
+   \   00000142   002D               CMP         R5,#+0
+   \   00000144   01D0               BEQ         ??AT91F_CDC_Enumerate_29
+   \   00000146   8726               MOV         R6,#+135
+   \   00000148   3602               LSL         R6,R6,#+8          ;; #+34560
+   \                     ??AT91F_CDC_Enumerate_29:
+   \   0000014A   E663               STR         R6,[R4, #+60]
+   \   0000014C   C6E7               B           ??AT91F_CDC_Enumerate_0
+    421          		break;
+    422          	case STD_GET_CONFIGURATION:
+    423          		AT91F_USB_SendData(pUDP, (char *) &(pCdc->currentConfiguration), sizeof(pCdc->currentConfiguration));
+   \                     ??AT91F_CDC_Enumerate_13:
+   \   0000014E   0122               MOV         R2,#+1
+   \   00000150   091D               ADD         R1,R1,#+4
+   \   00000152   C0E7               B           ??AT91F_CDC_Enumerate_20
+    424          		break;
+    425          	case STD_GET_STATUS_ZERO:
+    426          		wStatus = 0;
+   \                     ??AT91F_CDC_Enumerate_4:
+   \   00000154   6846               MOV         R0,SP
+   \   00000156   0680               STRH        R6,[R0, #+0]
+    427          		AT91F_USB_SendData(pUDP, (char *) &wStatus, sizeof(wStatus));
+   \   00000158   0222               MOV         R2,#+2
+   \   0000015A   6946               MOV         R1,SP
+   \   0000015C   BBE7               B           ??AT91F_CDC_Enumerate_20
+    428          		break;
+    429          	case STD_GET_STATUS_INTERFACE:
+    430          		wStatus = 0;
+    431          		AT91F_USB_SendData(pUDP, (char *) &wStatus, sizeof(wStatus));
+    432          		break;
+    433          	case STD_GET_STATUS_ENDPOINT:
+    434          		wStatus = 0;
+   \                     ??AT91F_CDC_Enumerate_5:
+   \   0000015E   6946               MOV         R1,SP
+   \   00000160   0E80               STRH        R6,[R1, #+0]
+    435          		wIndex &= 0x0F;
+    436          		if ((pUDP->UDP_GLBSTATE & AT91C_UDP_CONFG) && (wIndex <= 3)) {
+   \   00000162   6168               LDR         R1,[R4, #+4]
+   \   00000164   8907               LSL         R1,R1,#+30
+   \   00000166   0ED5               BPL         ??AT91F_CDC_Enumerate_30
+   \   00000168   0428               CMP         R0,#+4
+   \   0000016A   0CD2               BCS         ??AT91F_CDC_Enumerate_30
+    437          			wStatus = (pUDP->UDP_CSR[wIndex] & AT91C_UDP_EPEDS) ? 0 : 1;
+   \   0000016C   8000               LSL         R0,R0,#+2
+   \   0000016E   2018               ADD         R0,R4,R0
+   \   00000170   006B               LDR         R0,[R0, #+48]
+   \   00000172   8021               MOV         R1,#+128
+   \   00000174   0902               LSL         R1,R1,#+8          ;; #+32768
+   \   00000176   0140               AND         R1,R0
+   \   00000178   481E               SUB         R0,R1,#+1
+   \   0000017A   8041               SBC         R0,R0
+   \   0000017C   C00F               LSR         R0,R0,#+31
+   \   0000017E   6946               MOV         R1,SP
+   \   00000180   0880               STRH        R0,[R1, #+0]
+    438          			AT91F_USB_SendData(pUDP, (char *) &wStatus, sizeof(wStatus));
+   \   00000182   0222               MOV         R2,#+2
+   \   00000184   A7E7               B           ??AT91F_CDC_Enumerate_20
+    439          		}
+    440          		else if ((pUDP->UDP_GLBSTATE & AT91C_UDP_FADDEN) && (wIndex == 0)) {
+   \                     ??AT91F_CDC_Enumerate_30:
+   \   00000186   6168               LDR         R1,[R4, #+4]
+   \   00000188   C907               LSL         R1,R1,#+31
+   \   0000018A   B2D5               BPL         ??AT91F_CDC_Enumerate_18
+   \   0000018C   011C               MOV         R1,R0
+   \   0000018E   B0D1               BNE         ??AT91F_CDC_Enumerate_18
+    441          			wStatus = (pUDP->UDP_CSR[wIndex] & AT91C_UDP_EPEDS) ? 0 : 1;
+   \   00000190   8000               LSL         R0,R0,#+2
+   \   00000192   2018               ADD         R0,R4,R0
+   \   00000194   006B               LDR         R0,[R0, #+48]
+   \   00000196   8021               MOV         R1,#+128
+   \   00000198   0902               LSL         R1,R1,#+8          ;; #+32768
+   \   0000019A   0140               AND         R1,R0
+   \   0000019C   481E               SUB         R0,R1,#+1
+   \   0000019E   8041               SBC         R0,R0
+   \   000001A0   C00F               LSR         R0,R0,#+31
+   \   000001A2   6946               MOV         R1,SP
+   \   000001A4   0880               STRH        R0,[R1, #+0]
+    442          			AT91F_USB_SendData(pUDP, (char *) &wStatus, sizeof(wStatus));
+   \   000001A6   0222               MOV         R2,#+2
+   \   000001A8   95E7               B           ??AT91F_CDC_Enumerate_20
+    443          		}
+    444          		else
+    445          			AT91F_USB_SendStall(pUDP);
+    446          		break;
+    447          	case STD_SET_FEATURE_ZERO:
+    448          		AT91F_USB_SendStall(pUDP);
+    449          	    break;
+    450          	case STD_SET_FEATURE_INTERFACE:
+    451          		AT91F_USB_SendZlp(pUDP);
+    452          		break;
+    453          	case STD_SET_FEATURE_ENDPOINT:
+    454          		wIndex &= 0x0F;
+    455          		if ((wValue == 0) && wIndex && (wIndex <= 3)) {
+   \                     ??AT91F_CDC_Enumerate_10:
+   \   000001AA   002D               CMP         R5,#+0
+   \   000001AC   A1D1               BNE         ??AT91F_CDC_Enumerate_18
+   \   000001AE   011C               MOV         R1,R0
+   \   000001B0   9FD0               BEQ         ??AT91F_CDC_Enumerate_18
+   \   000001B2   0429               CMP         R1,#+4
+   \   000001B4   9DD2               BCS         ??AT91F_CDC_Enumerate_18
+    456          			pUDP->UDP_CSR[wIndex] = 0;
+   \   000001B6   8000               LSL         R0,R0,#+2
+   \   000001B8   2018               ADD         R0,R4,R0
+   \   000001BA   0663               STR         R6,[R0, #+48]
+    457          			AT91F_USB_SendZlp(pUDP);
+    458          		}
+   \                     ??AT91F_CDC_Enumerate_9:
+   \   000001BC   201C               MOV         R0,R4
+   \   000001BE   ........           BL          AT91F_USB_SendZlp
+   \   000001C2   8BE7               B           ??AT91F_CDC_Enumerate_0
+    459          		else
+    460          			AT91F_USB_SendStall(pUDP);
+    461          		break;
+    462          	case STD_CLEAR_FEATURE_ZERO:
+    463          		AT91F_USB_SendStall(pUDP);
+    464          	    break;
+    465          	case STD_CLEAR_FEATURE_INTERFACE:
+    466          		AT91F_USB_SendZlp(pUDP);
+    467          		break;
+    468          	case STD_CLEAR_FEATURE_ENDPOINT:
+    469          		wIndex &= 0x0F;
+    470          		if ((wValue == 0) && wIndex && (wIndex <= 3)) {
+   \                     ??AT91F_CDC_Enumerate_7:
+   \   000001C4   002D               CMP         R5,#+0
+   \   000001C6   94D1               BNE         ??AT91F_CDC_Enumerate_18
+   \   000001C8   011C               MOV         R1,R0
+   \   000001CA   92D0               BEQ         ??AT91F_CDC_Enumerate_18
+   \   000001CC   0429               CMP         R1,#+4
+   \   000001CE   90D2               BCS         ??AT91F_CDC_Enumerate_18
+    471          			if (wIndex == 1)
+   \   000001D0   0129               CMP         R1,#+1
+   \   000001D2   03D1               BNE         ??AT91F_CDC_Enumerate_31
+    472          				pUDP->UDP_CSR[1] = (AT91C_UDP_EPEDS | AT91C_UDP_EPTYPE_BULK_OUT);
+   \   000001D4   8220               MOV         R0,#+130
+   \   000001D6   0002               LSL         R0,R0,#+8          ;; #+33280
+   \   000001D8   6063               STR         R0,[R4, #+52]
+   \   000001DA   EFE7               B           ??AT91F_CDC_Enumerate_9
+    473          			else if (wIndex == 2)
+   \                     ??AT91F_CDC_Enumerate_31:
+   \   000001DC   0229               CMP         R1,#+2
+   \   000001DE   03D1               BNE         ??AT91F_CDC_Enumerate_32
+    474          				pUDP->UDP_CSR[2] = (AT91C_UDP_EPEDS | AT91C_UDP_EPTYPE_BULK_IN);
+   \   000001E0   8620               MOV         R0,#+134
+   \   000001E2   0002               LSL         R0,R0,#+8          ;; #+34304
+   \   000001E4   A063               STR         R0,[R4, #+56]
+   \   000001E6   E9E7               B           ??AT91F_CDC_Enumerate_9
+    475          			else if (wIndex == 3)
+   \                     ??AT91F_CDC_Enumerate_32:
+   \   000001E8   0328               CMP         R0,#+3
+   \   000001EA   E7D1               BNE         ??AT91F_CDC_Enumerate_9
+    476          				pUDP->UDP_CSR[3] = (AT91C_UDP_EPEDS | AT91C_UDP_EPTYPE_ISO_IN);
+   \   000001EC   8520               MOV         R0,#+133
+   \   000001EE   0002               LSL         R0,R0,#+8          ;; #+34048
+   \   000001F0   E063               STR         R0,[R4, #+60]
+   \   000001F2   E3E7               B           ??AT91F_CDC_Enumerate_9
+    477          			AT91F_USB_SendZlp(pUDP);
+    478          		}
+    479          		else
+    480          			AT91F_USB_SendStall(pUDP);
+    481          		break;
+    482          
+    483          	// handle CDC class requests
+    484          	case SET_LINE_CODING:
+    485          		while ( !(pUDP->UDP_CSR[0] & AT91C_UDP_RX_DATA_BK0) );
+   \                     ??AT91F_CDC_Enumerate_15:
+   \   000001F4   206B               LDR         R0,[R4, #+48]
+   \   000001F6   8007               LSL         R0,R0,#+30
+   \   000001F8   FCD5               BPL         ??AT91F_CDC_Enumerate_15
+    486          		pUDP->UDP_CSR[0] &= ~(AT91C_UDP_RX_DATA_BK0);
+   \   000001FA   206B               LDR         R0,[R4, #+48]
+   \   000001FC   0221               MOV         R1,#+2
+   \   000001FE   8843               BIC         R0,R1
+   \   00000200   2063               STR         R0,[R4, #+48]
+   \   00000202   DBE7               B           ??AT91F_CDC_Enumerate_9
+    487          		AT91F_USB_SendZlp(pUDP);
+    488          		break;
+    489          	case GET_LINE_CODING:
+    490          		AT91F_USB_SendData(pUDP, (char *) &line, MIN(sizeof(line), wLength));
+   \                     ??AT91F_CDC_Enumerate_16:
+   \   00000204   092A               CMP         R2,#+9
+   \   00000206   00D3               BCC         ??AT91F_CDC_Enumerate_33
+   \   00000208   0822               MOV         R2,#+8
+   \                     ??AT91F_CDC_Enumerate_33:
+   \   0000020A   0549               LDR         R1,??AT91F_CDC_Enumerate_8+0xC  ;; line
+   \   0000020C   63E7               B           ??AT91F_CDC_Enumerate_20
+    491          		break;
+    492          	case SET_CONTROL_LINE_STATE:
+    493          		pCdc->currentConnection = wValue;
+   \                     ??AT91F_CDC_Enumerate_17:
+   \   0000020E   4D71               STRB        R5,[R1, #+5]
+   \   00000210   D4E7               B           ??AT91F_CDC_Enumerate_9
+   \   00000212   C046               NOP         
+   \                     ??AT91F_CDC_Enumerate_8:
+   \   00000214   FF010000           DC32        0x1ff
+   \   00000218   21170000           DC32        0x1721
+   \   0000021C   ........           DC32        devDescriptor
+   \   00000220   ........           DC32        line
+    494          		AT91F_USB_SendZlp(pUDP);
+    495          		break;
+    496          	default:
+    497          		AT91F_USB_SendStall(pUDP);
+    498          	    break;
+    499          	}
+    500          }
+
+   \                                 In segment DATA_ID, align 4, align-sorted
+   \                     `?<Initializer for line>`:
+   \   00000000   00C20100           DC32 115200
+   \   00000004   00000800           DC8 0, 0, 8, 0
+
+   \                                 In segment DATA_ID, align 4, align-sorted
+   \                     `?<Initializer for currentReceiveBank>`:
+   \   00000000   02000000           DC32 2
+
+   Maximum stack usage in bytes:
+
+     Function               CSTACK
+     --------               ------
+     AT91F_CDC_Enumerate       28
+     AT91F_CDC_Open             0
+     AT91F_UDP_IsConfigured    12
+     AT91F_UDP_Read            28
+     AT91F_UDP_Write           24
+     AT91F_USB_SendData        16
+     AT91F_USB_SendStall        0
+     AT91F_USB_SendZlp          0
+
+
+   Segment part sizes:
+
+     Function/Label                 Bytes
+     --------------                 -----
+     devDescriptor                    88
+     line                              8
+     currentReceiveBank                4
+     AT91F_CDC_Open                   40
+     AT91F_UDP_IsConfigured           68
+     AT91F_UDP_Read                  102
+     AT91F_UDP_Write                 146
+     csrTab                          400
+     csrIdx                            1
+     AT91F_USB_SendData              114
+     AT91F_USB_SendZlp                30
+     AT91F_USB_SendStall              30
+     AT91F_CDC_Enumerate             548
+     ?<Initializer for line>           8
+     ?<Initializer for currentReceiveBank>
+                                       4
+      Others                          88
+
+ 
+ 1 142 bytes in segment CODE
+    88 bytes in segment DATA_C
+    12 bytes in segment DATA_I
+    12 bytes in segment DATA_ID
+   401 bytes in segment DATA_Z
+    24 bytes in segment INITTAB
+ 
+ 1 078 bytes of CODE  memory (+ 88 bytes shared)
+   100 bytes of CONST memory
+   413 bytes of DATA  memory
+
+Errors: none
+Warnings: none

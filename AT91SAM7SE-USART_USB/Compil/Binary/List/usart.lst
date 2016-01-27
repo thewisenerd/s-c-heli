@@ -1,0 +1,173 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    01/Mar/2008  10:19:36 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\kalman\usart.c             #
+#    Command line    =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\kalman\usart.c -lC         #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\List\ -o F:\airplane\arm\atmel\AT91SAM7SE51 #
+#                       2_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7 #
+#                       SE-USART_USB\Compil\Binary\Obj\ -z9 --debug          #
+#                       --cpu_mode thumb --endian little --cpu ARM7TDMI      #
+#                       --stack_align 4 --interwork -e --fpu None            #
+#                       --dlib_config "C:\Program Files\IAR                  #
+#                       Systems\Embedded Workbench 4.0                       #
+#                       Evaluation\ARM\LIB\dl4tptinl8n.h" -I                 #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\srcIAR\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR #
+#                       \AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-US #
+#                       ART_USB\Compil\..\src\ -I                            #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR\ #
+#                       AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USA #
+#                       RT_USB\Compil\..\..\kalman\ -I                       #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\pcm\ -I F:\airplane\arm\atmel\AT91SAM7SE512_ #
+#                       IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\spi\ -I "C:\Program          #
+#                       Files\IAR Systems\Embedded Workbench 4.0             #
+#                       Evaluation\ARM\INC\"                                 #
+#    List file       =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\List\usart.lst                              #
+#    Object file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\Obj\usart.r79                               #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\kalman\usart.c
+      1          #include<includs.h>
+      2          /*************************************************************************
+      3           *
+      4           * String and number output functions
+      5           *
+      6           */
+      7           
+      8          
+
+   \                                 In segment CODE, align 4, keep-with-next
+      9          void
+     10          put_hexdigit(unsigned char		i)
+     11          {
+     12          	if( i < 0x0A )
+   \                     put_hexdigit:
+   \   00000000   0A28               CMP         R0,#+10
+   \   00000002   01D2               BCS         ??put_hexdigit_0
+     13          		i += '0';
+   \   00000004   3030               ADD         R0,#+48
+   \   00000006   00E0               B           ??put_hexdigit_1
+     14          	else
+     15          		i += 'A' - 0x0A;
+   \                     ??put_hexdigit_0:
+   \   00000008   3730               ADD         R0,#+55
+     16          	while (!AT91F_US_TxReady(AT91C_BASE_US0));
+   \                     ??put_hexdigit_1:
+   \   0000000A   0549               LDR         R1,??put_hexdigit_2  ;; 0xfffc0014
+   \   0000000C   0968               LDR         R1,[R1, #+0]
+   \   0000000E   8907               LSL         R1,R1,#+30
+   \   00000010   FBD5               BPL         ??put_hexdigit_1
+     17          		AT91F_US_PutChar(AT91C_BASE_US0, i);
+   \   00000012   0449               LDR         R1,??put_hexdigit_2+0x4  ;; 0xfffc001c
+   \   00000014   0006               LSL         R0,R0,#+24
+   \   00000016   000E               LSR         R0,R0,#+24
+   \   00000018   0860               STR         R0,[R1, #+0]
+     18          }	
+   \   0000001A   00B0               ADD         SP,#+0
+   \   0000001C   7047               BX          LR                 ;; return
+   \   0000001E   C046               NOP         
+   \                     ??put_hexdigit_2:
+   \   00000020   1400FCFF           DC32        0xfffc0014
+   \   00000024   1C00FCFF           DC32        0xfffc001c
+     19          
+     20          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     21          void
+     22          put_uint8_t(
+     23          	unsigned char		i
+     24          )
+     25          {
+   \                     put_uint8_t:
+   \   00000000   10B5               PUSH        {R4,LR}
+   \   00000002   041C               MOV         R4,R0
+     26          	put_hexdigit( (i >> 4) & 0x0F );
+   \   00000004   0009               LSR         R0,R0,#+4
+   \   00000006   ........           BL          put_hexdigit
+     27          	put_hexdigit( (i >> 0) & 0x0F );
+   \   0000000A   2007               LSL         R0,R4,#+28
+   \   0000000C   000F               LSR         R0,R0,#+28
+   \   0000000E   ........           BL          put_hexdigit
+     28          }
+   \   00000012   ....               B           ?Subroutine3
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ?Subroutine3:
+   \   00000000   10BC               POP         {R4}
+   \   00000002   01BC               POP         {R0}
+   \   00000004   0047               BX          R0                 ;; return
+     29          
+     30          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     31          void
+     32          put_uint16_t(
+     33          	unsigned short		i
+     34          )
+     35          {
+   \                     put_uint16_t:
+   \   00000000   10B5               PUSH        {R4,LR}
+   \   00000002   041C               MOV         R4,R0
+     36          	put_uint8_t(  (i >> 8) & 0xFF );
+   \   00000004   000A               LSR         R0,R0,#+8
+   \   00000006   ........           BL          put_uint8_t
+     37          	put_uint8_t(  (i >> 0) & 0xFF );
+   \   0000000A   2006               LSL         R0,R4,#+24
+   \   0000000C   000E               LSR         R0,R0,#+24
+   \   0000000E   ........           BL          put_uint8_t
+   \   00000012   C046               NOP         
+     38          }
+   \   00000014                      REQUIRE ?Subroutine3
+   \   00000014                      ;; // Fall through to label ?Subroutine3
+     39          
+     40          
+     41          ///////////////////////////////////////////////////////////////
+     42          
+
+   Maximum stack usage in bytes:
+
+     Function     CSTACK
+     --------     ------
+     put_hexdigit     4
+     put_uint16_t     8
+     put_uint8_t      8
+
+
+   Segment part sizes:
+
+     Function/Label Bytes
+     -------------- -----
+     put_hexdigit     40
+     put_uint8_t      20
+     ?Subroutine3      6
+     put_uint16_t     20
+      Others          24
+
+ 
+ 110 bytes in segment CODE
+ 
+ 86 bytes of CODE memory (+ 24 bytes shared)
+
+Errors: none
+Warnings: none

@@ -1,0 +1,837 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    01/Mar/2008  10:19:34 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\src\i #
+#                       nterrupt_Usart.c                                     #
+#    Command line    =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\src\i #
+#                       nterrupt_Usart.c -lC F:\airplane\arm\atmel\AT91SAM7S #
+#                       E512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91S #
+#                       AM7SE-USART_USB\Compil\Binary\List\ -o               #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\Obj\ -z9 --debug --cpu_mode thumb --endian  #
+#                       little --cpu ARM7TDMI --stack_align 4 --interwork    #
+#                       -e --fpu None --dlib_config "C:\Program Files\IAR    #
+#                       Systems\Embedded Workbench 4.0                       #
+#                       Evaluation\ARM\LIB\dl4tptinl8n.h" -I                 #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\srcIAR\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR #
+#                       \AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-US #
+#                       ART_USB\Compil\..\src\ -I                            #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR\ #
+#                       AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USA #
+#                       RT_USB\Compil\..\..\kalman\ -I                       #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\pcm\ -I F:\airplane\arm\atmel\AT91SAM7SE512_ #
+#                       IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\spi\ -I "C:\Program          #
+#                       Files\IAR Systems\Embedded Workbench 4.0             #
+#                       Evaluation\ARM\INC\"                                 #
+#    List file       =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\List\interrupt_Usart.lst                    #
+#    Object file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\Obj\interrupt_Usart.r79                     #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\src\interrupt_Usart.c
+      1          #include<includs.h>
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \   __??Code16?? __code __interwork __atpcs unsigned int AT91F_AIC_ConfigureIt(AT91PS_AIC, unsigned int, unsigned int, unsigned int, void (*)())
+   \                     AT91F_AIC_ConfigureIt:
+   \   00000000   F4B4               PUSH        {R2,R4-R7}
+   \   00000002   021C               MOV         R2,R0
+   \   00000004   0C1C               MOV         R4,R1
+   \   00000006   059E               LDR         R6,[SP, #+20]
+   \   00000008   8900               LSL         R1,R1,#+2
+   \   0000000A   4718               ADD         R7,R0,R1
+   \   0000000C   8037               ADD         R7,#+128
+   \   0000000E   3868               LDR         R0,[R7, #+0]
+   \   00000010   0125               MOV         R5,#+1
+   \   00000012   A540               LSL         R5,R4
+   \   00000014   2C1C               MOV         R4,R5
+   \   00000016   9225               MOV         R5,#+146
+   \   00000018   6D00               LSL         R5,R5,#+1          ;; #+292
+   \   0000001A   5519               ADD         R5,R2,R5
+   \   0000001C   2C60               STR         R4,[R5, #+0]
+   \   0000001E   3E60               STR         R6,[R7, #+0]
+   \   00000020   009E               LDR         R6,[SP, #+0]
+   \   00000022   1E43               ORR         R6,R3
+   \   00000024   5650               STR         R6,[R2, R1]
+   \   00000026   6C60               STR         R4,[R5, #+4]
+   \   00000028   F8BC               POP         {R3-R7}
+   \   0000002A   7047               BX          LR                 ;; return
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \   __??Code16?? __code __interwork __atpcs void AT91F_PDC_Open(AT91PS_PDC)
+   \                     AT91F_PDC_Open:
+   \   00000000   0221               MOV         R1,#+2
+   \   00000002   0162               STR         R1,[R0, #+32]
+   \   00000004   0902               LSL         R1,R1,#+8
+   \   00000006   0162               STR         R1,[R0, #+32]
+   \   00000008   0021               MOV         R1,#+0
+   \   0000000A   8161               STR         R1,[R0, #+24]
+   \   0000000C   C161               STR         R1,[R0, #+28]
+   \   0000000E   0161               STR         R1,[R0, #+16]
+   \   00000010   4161               STR         R1,[R0, #+20]
+   \   00000012   8160               STR         R1,[R0, #+8]
+   \   00000014   C160               STR         R1,[R0, #+12]
+   \   00000016   0160               STR         R1,[R0, #+0]
+   \   00000018   4160               STR         R1,[R0, #+4]
+   \   0000001A   0121               MOV         R1,#+1
+   \   0000001C   0162               STR         R1,[R0, #+32]
+   \   0000001E   0902               LSL         R1,R1,#+8
+   \   00000020   0162               STR         R1,[R0, #+32]
+   \   00000022   7047               BX          LR                 ;; return
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \   __??Code16?? __code __interwork __atpcs void AT91F_US_Configure(AT91PS_USART, unsigned int, unsigned int, unsigned int, unsigned int)
+   \                     AT91F_US_Configure:
+   \   00000000   30B5               PUSH        {R4,R5,LR}
+   \   00000002   041C               MOV         R4,R0
+   \   00000004   081C               MOV         R0,R1
+   \   00000006   151C               MOV         R5,R2
+   \   00000008   039A               LDR         R2,[SP, #+12]
+   \   0000000A   0021               MOV         R1,#+0
+   \   0000000C   C943               MVN         R1,R1              ;; #-1
+   \   0000000E   E160               STR         R1,[R4, #+12]
+   \   00000010   AC21               MOV         R1,#+172
+   \   00000012   2160               STR         R1,[R4, #+0]
+   \   00000014   0A21               MOV         R1,#+10
+   \   00000016   4843               MUL         R0,R1
+   \   00000018   1901               LSL         R1,R3,#+4
+   \   0000001A   ........           _BLF        ??divu32_t,??rT??divu32_t
+   \   0000001E   0B1C               MOV         R3,R1
+   \   00000020   081C               MOV         R0,R1
+   \   00000022   0A21               MOV         R1,#+10
+   \   00000024   ........           _BLF        ??divu32_t,??rT??divu32_t
+   \   00000028   0528               CMP         R0,#+5
+   \   0000002A   05D3               BCC         ??AT91F_US_Configure_0
+   \   0000002C   181C               MOV         R0,R3
+   \   0000002E   0A21               MOV         R1,#+10
+   \   00000030   ........           _BLF        ??divu32_t,??rT??divu32_t
+   \   00000034   491C               ADD         R1,R1,#+1
+   \   00000036   03E0               B           ??AT91F_US_Configure_1
+   \                     ??AT91F_US_Configure_0:
+   \   00000038   181C               MOV         R0,R3
+   \   0000003A   0A21               MOV         R1,#+10
+   \   0000003C   ........           _BLF        ??divu32_t,??rT??divu32_t
+   \                     ??AT91F_US_Configure_1:
+   \   00000040   2162               STR         R1,[R4, #+32]
+   \   00000042   A262               STR         R2,[R4, #+40]
+   \   00000044   8020               MOV         R0,#+128
+   \   00000046   4000               LSL         R0,R0,#+1          ;; #+256
+   \   00000048   2018               ADD         R0,R4,R0
+   \   0000004A   ........           _BLF        AT91F_PDC_Open,??AT91F_PDC_Open??rT
+   \   0000004E   6560               STR         R5,[R4, #+4]
+   \   00000050   30BC               POP         {R4,R5}
+   \   00000052   01BC               POP         {R0}
+   \   00000054   0047               BX          R0                 ;; return
+      2          
+
+   \                                 In segment DATA_Z, align 4, align-sorted
+      3          AT91PS_USART COM0;
+      4          AT91PS_USART COM1;
+      5          
+      6           char buff_rx[54];
+      7           char buff_rx1[100];
+      8          unsigned char receiveimusignal;
+   \                     receiveimusignal:
+   \   00000000                      DS8 1
+   \   00000001                      DS8 3
+   \                     COM0:
+   \   00000004                      DS8 4
+   \                     COM1:
+   \   00000008                      DS8 4
+   \                     buff_rx:
+   \   0000000C                      DS8 56
+
+   \                                 In segment DATA_Z, align 4, align-sorted
+   \                     buff_rx1:
+   \   00000000                      DS8 100
+      9          
+     10          //*------------------------- Internal Function --------------------------------
+     11          
+     12          //*----------------------------------------------------------------------------
+     13          //* Function Name       : Trace_Toggel_LED
+     14          //* Object              : Toggel a LED
+     15          //*----------------------------------------------------------------------------
+
+   \                                 In segment CODE, align 4, keep-with-next
+     16          void Trace_Toggel_LED (unsigned int Led)
+     17          {
+     18              if ( (AT91F_PIO_GetInput(AT91C_BASE_PIOA) & Led ) == Led )
+   \                     Trace_Toggel_LED:
+   \   00000000   0549               LDR         R1,??Trace_Toggel_LED_0  ;; 0xfffff43c
+   \   00000002   0968               LDR         R1,[R1, #+0]
+   \   00000004   0140               AND         R1,R0
+   \   00000006   8142               CMP         R1,R0
+   \   00000008   01D1               BNE         ??Trace_Toggel_LED_1
+     19              {
+     20                  AT91F_PIO_ClearOutput( AT91C_BASE_PIOA, Led );
+   \   0000000A   0449               LDR         R1,??Trace_Toggel_LED_0+0x4  ;; 0xfffff434
+   \   0000000C   00E0               B           ??Trace_Toggel_LED_2
+     21              }
+     22              else
+     23              {
+     24                  AT91F_PIO_SetOutput( AT91C_BASE_PIOA, Led );
+   \                     ??Trace_Toggel_LED_1:
+   \   0000000E   0449               LDR         R1,??Trace_Toggel_LED_0+0x8  ;; 0xfffff430
+   \                     ??Trace_Toggel_LED_2:
+   \   00000010   0860               STR         R0,[R1, #+0]
+     25              }
+     26          }
+   \   00000012   00B0               ADD         SP,#+0
+   \   00000014   7047               BX          LR                 ;; return
+   \   00000016   C046               NOP         
+   \                     ??Trace_Toggel_LED_0:
+   \   00000018   3CF4FFFF           DC32        0xfffff43c
+   \   0000001C   34F4FFFF           DC32        0xfffff434
+   \   00000020   30F4FFFF           DC32        0xfffff430
+     27          //*------------------------- Interrupt Function -------------------------------
+     28          
+     29          //*----------------------------------------------------------------------------
+     30          //* Function Name       : Usart_c_irq_handler
+     31          //* Object              : C handler interrupt function called by the interrupts
+     32          //*                       assembling routine
+     33          //*----------------------------------------------------------------------------
+
+   \                                 In segment CODE, align 4, keep-with-next
+     34          void Usart_c_irq_handler(void)
+     35          {
+   \                     Usart_c_irq_handler:
+   \   00000000   70B5               PUSH        {R4-R6,LR}
+     36          	AT91PS_USART USART_pt = COM0;
+   \   00000002   ....               LDR         R4,??DataTable1    ;; receiveimusignal
+   \   00000004   6568               LDR         R5,[R4, #+4]
+     37          	unsigned int status;
+     38          
+     39          	//* get Usart status register and active interrupt
+     40          	status = USART_pt->US_CSR ;
+   \   00000006   6869               LDR         R0,[R5, #+20]
+     41                  status &= USART_pt->US_IMR;
+   \   00000008   2969               LDR         R1,[R5, #+16]
+   \   0000000A   0140               AND         R1,R0
+     42          
+     43          	if ( status & AT91C_US_RXBUFF){
+   \   0000000C   8026               MOV         R6,#+128
+   \   0000000E   7601               LSL         R6,R6,#+5          ;; #+4096
+   \   00000010   3142               TST         R1,R6
+   \   00000012   0CD0               BEQ         ??Usart_c_irq_handler_0
+     44          	//* Toggel LED
+     45           	Trace_Toggel_LED( AT91B_LED1) ;
+   \   00000014   0220               MOV         R0,#+2
+   \   00000016   ........           BL          Trace_Toggel_LED
+     46           	     COM0->US_RPR = (unsigned int) buff_rx;
+   \   0000001A   3009               LSR         R0,R6,#+4
+   \   0000001C   6168               LDR         R1,[R4, #+4]
+   \   0000001E   0818               ADD         R0,R1,R0
+   \   00000020   211C               MOV         R1,R4
+   \   00000022   0C31               ADD         R1,#+12
+   \   00000024   0160               STR         R1,[R0, #+0]
+     47          	     COM0->US_RCR = 53;
+   \   00000026   3521               MOV         R1,#+53
+   \   00000028   4160               STR         R1,[R0, #+4]
+     48                       receiveimusignal=1;
+   \   0000002A   0120               MOV         R0,#+1
+   \   0000002C   2070               STRB        R0,[R4, #+0]
+     49                       //strcpy(GPADC_LINE,buff_rx);
+     50                      // buff_rx[52]= '\r';
+     51                      // buff_rx[53]= '\n';
+     52                       //AT91F_US_Put("l\r\n");
+     53          	}
+     54             //* Reset the satus bit for error
+     55          	 USART_pt->US_CR = AT91C_US_RSTSTA;
+   \                     ??Usart_c_irq_handler_0:
+   \   0000002E   3009               LSR         R0,R6,#+4
+   \   00000030   2860               STR         R0,[R5, #+0]
+     56                  AT91F_US_DisableIt(COM0,AT91C_US_RXBUFF  );
+   \   00000032   6068               LDR         R0,[R4, #+4]
+   \   00000034   C660               STR         R6,[R0, #+12]
+     57          }
+   \   00000036   70BC               POP         {R4-R6}
+   \   00000038   01BC               POP         {R0}
+   \   0000003A   0047               BX          R0                 ;; return
+     58          //*-------------------------- External Function -------------------------------
+     59          
+     60          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     61          void Usart1_c_irq_handler(void)
+     62          {
+   \                     Usart1_c_irq_handler:
+   \   00000000   30B4               PUSH        {R4,R5}
+     63          	AT91PS_USART USART_pt = COM1;
+   \   00000002   ....               LDR         R0,??DataTable1    ;; receiveimusignal
+   \   00000004   8168               LDR         R1,[R0, #+8]
+   \   00000006   0A1C               MOV         R2,R1
+     64          	unsigned int status;
+     65          
+     66          	//* get Usart status register and active interrupt
+     67          	status = USART_pt->US_CSR ;
+   \   00000008   4B69               LDR         R3,[R1, #+20]
+     68                  status &= USART_pt->US_IMR;
+   \   0000000A   0C69               LDR         R4,[R1, #+16]
+   \   0000000C   1C40               AND         R4,R3
+     69          
+     70          	if ( status & AT91C_US_RXBUFF){
+   \   0000000E   8023               MOV         R3,#+128
+   \   00000010   5B01               LSL         R3,R3,#+5          ;; #+4096
+   \   00000012   1C42               TST         R4,R3
+   \   00000014   08D0               BEQ         ??Usart1_c_irq_handler_0
+     71          	//* Toggel LED
+     72           	//Trace_Toggel_LED( AT91B_LED1) ;
+     73           	     COM1->US_RPR = (unsigned int) buff_rx;
+   \   00000016   1C09               LSR         R4,R3,#+4
+   \   00000018   0C19               ADD         R4,R1,R4
+   \   0000001A   051C               MOV         R5,R0
+   \   0000001C   0C35               ADD         R5,#+12
+   \   0000001E   2560               STR         R5,[R4, #+0]
+     74          	     COM1->US_RCR = 53;
+   \   00000020   3525               MOV         R5,#+53
+   \   00000022   6560               STR         R5,[R4, #+4]
+     75                       receiveimusignal=1;
+   \   00000024   0124               MOV         R4,#+1
+   \   00000026   0470               STRB        R4,[R0, #+0]
+     76                       //strcpy(GPADC_LINE,buff_rx);
+     77                      // buff_rx[52]= '\r';
+     78                      // buff_rx[53]= '\n';
+     79                       //AT91F_US_Put("l\r\n");
+     80          	}
+     81             //* Reset the satus bit for error
+     82          	 USART_pt->US_CR = AT91C_US_RSTSTA;
+   \                     ??Usart1_c_irq_handler_0:
+   \   00000028   1809               LSR         R0,R3,#+4
+   \   0000002A   1060               STR         R0,[R2, #+0]
+     83                  AT91F_US_DisableIt(COM1,AT91C_US_RXBUFF  );
+   \   0000002C   CB60               STR         R3,[R1, #+12]
+     84          }
+   \   0000002E   30BC               POP         {R4,R5}
+   \   00000030   7047               BX          LR                 ;; return
+     85          //*----------------------------------------------------------------------------
+     86          //* \fn    AT91F_US_Printk
+     87          //* \brief This function is used to send a string through the US channel
+     88          //*----------------------------------------------------------------------------
+
+   \                                 In segment CODE, align 4, keep-with-next
+     89          void AT91F_US_Put( char *buffer) // \arg pointer to a string ending by \0
+     90          {
+   \                     AT91F_US_Put:
+   \   00000000   06E0               B           ??AT91F_US_Put_0
+     91          	while(*buffer != '\0') {
+     92          		while (!AT91F_US_TxReady(COM0));
+   \                     ??AT91F_US_Put_1:
+   \   00000002   0649               LDR         R1,??AT91F_US_Put_2  ;; receiveimusignal + 4
+   \   00000004   0968               LDR         R1,[R1, #+0]
+   \   00000006   4A69               LDR         R2,[R1, #+20]
+   \   00000008   9207               LSL         R2,R2,#+30
+   \   0000000A   FAD5               BPL         ??AT91F_US_Put_1
+     93          		AT91F_US_PutChar(COM0, *buffer++);
+   \   0000000C   CB61               STR         R3,[R1, #+28]
+   \   0000000E   401C               ADD         R0,R0,#+1
+     94          	}
+   \                     ??AT91F_US_Put_0:
+   \   00000010   0378               LDRB        R3,[R0, #+0]
+   \   00000012   002B               CMP         R3,#+0
+   \   00000014   F5D1               BNE         ??AT91F_US_Put_1
+     95          }
+   \   00000016   00B0               ADD         SP,#+0
+   \   00000018   7047               BX          LR                 ;; return
+   \   0000001A   C046               NOP         
+   \                     ??AT91F_US_Put_2:
+   \   0000001C   ........           DC32        receiveimusignal + 4
+     96          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     97          void AT91F_US1_Put( char *buffer) // \arg pointer to a string ending by \0
+     98          {
+   \                     AT91F_US1_Put:
+   \   00000000   06E0               B           ??AT91F_US1_Put_0
+     99          	while(*buffer != '\0') {
+    100          		while (!AT91F_US_TxReady(COM1));
+   \                     ??AT91F_US1_Put_1:
+   \   00000002   0649               LDR         R1,??AT91F_US1_Put_2  ;; receiveimusignal + 8
+   \   00000004   0968               LDR         R1,[R1, #+0]
+   \   00000006   4A69               LDR         R2,[R1, #+20]
+   \   00000008   9207               LSL         R2,R2,#+30
+   \   0000000A   FAD5               BPL         ??AT91F_US1_Put_1
+    101          		AT91F_US_PutChar(COM1, *buffer++);
+   \   0000000C   CB61               STR         R3,[R1, #+28]
+   \   0000000E   401C               ADD         R0,R0,#+1
+    102          	}
+   \                     ??AT91F_US1_Put_0:
+   \   00000010   0378               LDRB        R3,[R0, #+0]
+   \   00000012   002B               CMP         R3,#+0
+   \   00000014   F5D1               BNE         ??AT91F_US1_Put_1
+    103          }
+   \   00000016   00B0               ADD         SP,#+0
+   \   00000018   7047               BX          LR                 ;; return
+   \   0000001A   C046               NOP         
+   \                     ??AT91F_US1_Put_2:
+   \   0000001C   ........           DC32        receiveimusignal + 8
+    104          
+
+   \                                 In segment CODE, align 4, keep-with-next
+    105          void AT91F_DBGU_Put(char *buffer)
+    106          {
+   \                     AT91F_DBGU_Put:
+   \   00000000   05E0               B           ??AT91F_DBGU_Put_0
+    107            while(*buffer != '\0'){
+    108          	while ((!(AT91PS_USART)AT91C_BASE_DBGU->DBGU_CSR & AT91C_US_TXRDY));
+   \                     ??AT91F_DBGU_Put_1:
+   \   00000002   0549               LDR         R1,??AT91F_DBGU_Put_2  ;; 0xfffff214
+   \   00000004   0968               LDR         R1,[R1, #+0]
+    109                           buffer++;
+   \   00000006   401C               ADD         R0,R0,#+1
+    110                          AT91C_BASE_DBGU->DBGU_THR = (*buffer & 0x1FF);
+   \   00000008   0449               LDR         R1,??AT91F_DBGU_Put_2+0x4  ;; 0xfffff21c
+   \   0000000A   0278               LDRB        R2,[R0, #+0]
+   \   0000000C   0A60               STR         R2,[R1, #+0]
+    111          	}
+   \                     ??AT91F_DBGU_Put_0:
+   \   0000000E   0178               LDRB        R1,[R0, #+0]
+   \   00000010   0029               CMP         R1,#+0
+   \   00000012   F6D1               BNE         ??AT91F_DBGU_Put_1
+    112          }
+   \   00000014   00B0               ADD         SP,#+0
+   \   00000016   7047               BX          LR                 ;; return
+   \                     ??AT91F_DBGU_Put_2:
+   \   00000018   14F2FFFF           DC32        0xfffff214
+   \   0000001C   1CF2FFFF           DC32        0xfffff21c
+    113          //*----------------------------------------------------------------------------
+    114          //* Function Name       : Usart_init
+    115          //* Object              : USART initialization
+    116          //* Input Parameters    : none
+    117          //* Output Parameters   : TRUE
+    118          //*----------------------------------------------------------------------------
+
+   \                                 In segment CODE, align 4, keep-with-next
+    119          void Usart_init ( void )
+    120          //* Begin
+    121          {
+   \                     Usart_init:
+   \   00000000   30B5               PUSH        {R4,R5,LR}
+    122              COM0= AT91C_BASE_US0;
+   \   00000002   ....               LDR         R4,??DataTable18   ;; receiveimusignal
+   \   00000004   1748               LDR         R0,??Usart_init_0  ;; 0xfffc0000
+   \   00000006   6060               STR         R0,[R4, #+4]
+    123              //* Define RXD and TXD as peripheral
+    124              // Configure PIO controllers to periph mode
+    125              AT91F_PIO_CfgPeriph(
+    126          	 AT91C_BASE_PIOA, // PIO controller base address
+    127          	 ((unsigned int) AT91C_PA5_RXD0    ) |
+    128          	 ((unsigned int) AT91C_PA6_TXD0    ) , // Peripheral A
+    129          	 0 ); // Peripheral B
+   \   00000008   6021               MOV         R1,#+96
+   \   0000000A   ....               LDR         R2,??DataTable19   ;; 0xfffff470
+   \   0000000C   1160               STR         R1,[R2, #+0]
+   \   0000000E   ....               LDR         R2,??DataTable20   ;; 0xfffff474
+   \   00000010   0023               MOV         R3,#+0
+   \   00000012   1360               STR         R3,[R2, #+0]
+   \   00000014   ....               LDR         R2,??DataTable21   ;; 0xfffff404
+   \   00000016   1160               STR         R1,[R2, #+0]
+    130          
+    131              //* First, enable the clock of the PIOB
+    132              AT91F_PMC_EnablePeriphClock ( AT91C_BASE_PMC, 1 << AT91C_ID_US0 ) ;
+   \   00000018   4025               MOV         R5,#+64
+   \   0000001A   ....               LDR         R1,??DataTable22   ;; 0xfffffc10
+   \   0000001C   0D60               STR         R5,[R1, #+0]
+    133          
+    134              //* Usart Configure
+    135              AT91F_US_Configure (COM0, AT91B_MCK,AT91C_US_ASYNC_MODE,USART_BAUD_RATE , 0);
+   \   0000001E   0021               MOV         R1,#+0
+   \   00000020   02B4               PUSH        {R1}
+   \   00000022   9623               MOV         R3,#+150
+   \   00000024   1B02               LSL         R3,R3,#+8          ;; #+38400
+   \   00000026   8C22               MOV         R2,#+140
+   \   00000028   1201               LSL         R2,R2,#+4          ;; #+2240
+   \   0000002A   ....               LDR         R1,??DataTable23   ;; 0x2dd4249
+   \   0000002C   ........           _BLF        AT91F_US_Configure,??AT91F_US_Configure??rT
+    136          
+    137              //* Enable usart
+    138              COM0->US_CR = AT91C_US_RXEN | AT91C_US_TXEN;
+   \   00000030   6068               LDR         R0,[R4, #+4]
+   \   00000032   5021               MOV         R1,#+80
+   \   00000034   0160               STR         R1,[R0, #+0]
+    139          
+    140              //* open Usart interrupt
+    141              AT91F_AIC_ConfigureIt (AT91C_BASE_AIC, AT91C_ID_US0, USART_INTERRUPT_LEVEL,
+    142                                     AT91C_AIC_SRCTYPE_INT_HIGH_LEVEL, Usart_c_irq_handler);
+   \   00000036   0C48               LDR         R0,??Usart_init_0+0x4  ;; Usart_c_irq_handler
+   \   00000038   01B4               PUSH        {R0}
+   \   0000003A   0023               MOV         R3,#+0
+   \   0000003C   0222               MOV         R2,#+2
+   \   0000003E   0621               MOV         R1,#+6
+   \   00000040   ....               LDR         R0,??DataTable24   ;; 0xfffff000
+   \   00000042   ........           _BLF        AT91F_AIC_ConfigureIt,??AT91F_AIC_ConfigureIt??rT
+    143              AT91F_AIC_EnableIt (AT91C_BASE_AIC, AT91C_ID_US0);
+   \   00000046   ....               LDR         R0,??DataTable25   ;; 0xfffff120
+   \   00000048   0560               STR         R5,[R0, #+0]
+    144              // Set the PDC
+    145              AT91F_PDC_Open (AT91C_BASE_PDC_US0);
+   \   0000004A   0848               LDR         R0,??Usart_init_0+0x8  ;; 0xfffc0100
+   \   0000004C   ........           _BLF        AT91F_PDC_Open,??AT91F_PDC_Open??rT
+    146              COM0->US_RPR = (unsigned int) buff_rx;
+   \   00000050   6068               LDR         R0,[R4, #+4]
+   \   00000052   A900               LSL         R1,R5,#+2
+   \   00000054   4118               ADD         R1,R0,R1
+   \   00000056   0C34               ADD         R4,#+12
+   \   00000058   0C60               STR         R4,[R1, #+0]
+    147              COM0->US_RCR = 51;
+   \   0000005A   3322               MOV         R2,#+51
+   \   0000005C   4A60               STR         R2,[R1, #+4]
+    148              //*  and AT91C_US_ENDRX
+    149               AT91F_US_EnableIt(COM0,AT91C_US_RXBUFF  );
+   \   0000005E   A901               LSL         R1,R5,#+6
+   \   00000060   ....               B           ?Subroutine10
+   \   00000062   C046               NOP         
+   \                     ??Usart_init_0:
+   \   00000064   0000FCFF           DC32        0xfffc0000
+   \   00000068   ........           DC32        Usart_c_irq_handler
+   \   0000006C   0001FCFF           DC32        0xfffc0100
+    150          //* End
+    151          }
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ?Subroutine10:
+   \   00000000   8160               STR         R1,[R0, #+8]
+   \                     ??Subroutine10_0:
+   \   00000002   3CBC               POP         {R2-R5}
+   \   00000004   01BC               POP         {R0}
+   \   00000006   0047               BX          R0                 ;; return
+   \                     ??Subroutine10_1:
+   \   00000008   0040FCFF           DC32        0xfffc4000
+   \   0000000C   ........           DC32        Usart1_c_irq_handler
+   \   00000010   0041FCFF           DC32        0xfffc4100
+    152          
+
+   \                                 In segment CODE, align 4, keep-with-next
+    153          void Usart1_init ( void )
+    154          //* Begin
+    155          {
+   \                     Usart1_init:
+   \   00000000   30B5               PUSH        {R4,R5,LR}
+    156              COM1= AT91C_BASE_US1;
+   \   00000002   ....               LDR         R4,??DataTable18   ;; receiveimusignal
+   \   00000004   ....               LDR         R0,??Subroutine10_1  ;; 0xfffc4000
+   \   00000006   A060               STR         R0,[R4, #+8]
+    157              //* Define RXD and TXD as peripheral
+    158              // Configure PIO controllers to periph mode
+    159              AT91F_PIO_CfgPeriph(
+    160          	 AT91C_BASE_PIOA, // PIO controller base address
+    161          	 ((unsigned int) AT91C_PA21_RXD1    ) |
+    162          	 ((unsigned int) AT91C_PA22_TXD1    ) , // Peripheral A
+    163          	 0 ); // Peripheral B
+   \   00000008   C021               MOV         R1,#+192
+   \   0000000A   C903               LSL         R1,R1,#+15         ;; #+6291456
+   \   0000000C   ....               LDR         R2,??DataTable19   ;; 0xfffff470
+   \   0000000E   1160               STR         R1,[R2, #+0]
+   \   00000010   ....               LDR         R2,??DataTable20   ;; 0xfffff474
+   \   00000012   0023               MOV         R3,#+0
+   \   00000014   1360               STR         R3,[R2, #+0]
+   \   00000016   ....               LDR         R2,??DataTable21   ;; 0xfffff404
+   \   00000018   1160               STR         R1,[R2, #+0]
+    164          
+    165              //* First, enable the clock of the PIOB
+    166              AT91F_PMC_EnablePeriphClock ( AT91C_BASE_PMC, 1 << AT91C_ID_US1 ) ;
+   \   0000001A   8025               MOV         R5,#+128
+   \   0000001C   ....               LDR         R1,??DataTable22   ;; 0xfffffc10
+   \   0000001E   0D60               STR         R5,[R1, #+0]
+    167          
+    168              //* Usart Configure
+    169              AT91F_US_Configure (COM1, AT91B_MCK,AT91C_US_ASYNC_MODE,USART_BAUD_RATE , 0);
+   \   00000020   0021               MOV         R1,#+0
+   \   00000022   02B4               PUSH        {R1}
+   \   00000024   9623               MOV         R3,#+150
+   \   00000026   1B02               LSL         R3,R3,#+8          ;; #+38400
+   \   00000028   8C22               MOV         R2,#+140
+   \   0000002A   1201               LSL         R2,R2,#+4          ;; #+2240
+   \   0000002C   ....               LDR         R1,??DataTable23   ;; 0x2dd4249
+   \   0000002E   ........           _BLF        AT91F_US_Configure,??AT91F_US_Configure??rT
+    170          
+    171              //* Enable usart
+    172              COM1->US_CR = AT91C_US_RXEN | AT91C_US_TXEN;
+   \   00000032   A068               LDR         R0,[R4, #+8]
+   \   00000034   5021               MOV         R1,#+80
+   \   00000036   0160               STR         R1,[R0, #+0]
+    173          
+    174              //* open Usart interrupt
+    175              AT91F_AIC_ConfigureIt (AT91C_BASE_AIC, AT91C_ID_US1, USART1_INTERRUPT_LEVEL,
+    176                                     AT91C_AIC_SRCTYPE_INT_HIGH_LEVEL, Usart1_c_irq_handler);
+   \   00000038   ....               LDR         R0,??Subroutine10_1+0x4  ;; Usart1_c_irq_handler
+   \   0000003A   01B4               PUSH        {R0}
+   \   0000003C   0023               MOV         R3,#+0
+   \   0000003E   0422               MOV         R2,#+4
+   \   00000040   0721               MOV         R1,#+7
+   \   00000042   ....               LDR         R0,??DataTable24   ;; 0xfffff000
+   \   00000044   ........           _BLF        AT91F_AIC_ConfigureIt,??AT91F_AIC_ConfigureIt??rT
+    177              AT91F_AIC_EnableIt (AT91C_BASE_AIC, AT91C_ID_US1);
+   \   00000048   ....               LDR         R0,??DataTable25   ;; 0xfffff120
+   \   0000004A   0560               STR         R5,[R0, #+0]
+    178              // Set the PDC
+    179              AT91F_PDC_Open (AT91C_BASE_PDC_US1);
+   \   0000004C   ....               LDR         R0,??Subroutine10_1+0x8  ;; 0xfffc4100
+   \   0000004E   ........           _BLF        AT91F_PDC_Open,??AT91F_PDC_Open??rT
+    180              COM0->US_RPR = (unsigned int) buff_rx;
+   \   00000052   6800               LSL         R0,R5,#+1
+   \   00000054   6168               LDR         R1,[R4, #+4]
+   \   00000056   0818               ADD         R0,R1,R0
+   \   00000058   211C               MOV         R1,R4
+   \   0000005A   0C31               ADD         R1,#+12
+   \   0000005C   0160               STR         R1,[R0, #+0]
+    181              COM0->US_RCR = 51;
+   \   0000005E   3321               MOV         R1,#+51
+   \   00000060   4160               STR         R1,[R0, #+4]
+    182              //*  and AT91C_US_ENDRX
+    183               AT91F_US_EnableIt(COM1,AT91C_US_RXBUFF  );
+   \   00000062   A068               LDR         R0,[R4, #+8]
+   \   00000064   6901               LSL         R1,R5,#+5
+   \   00000066   C046               NOP         
+   \   00000068                      REQUIRE ?Subroutine10
+   \   00000068                      ;; // Fall through to label ?Subroutine10
+    184          //* End
+    185          }
+    186          
+
+   \                                 In segment CODE, align 4, keep-with-next
+    187          void Debug_irq_handler(void)
+    188          {
+   \                     Debug_irq_handler:
+   \   00000000   30B5               PUSH        {R4,R5,LR}
+    189          	AT91PS_USART USART_pt = COM0;
+   \   00000002   ....               LDR         R4,??DataTable18   ;; receiveimusignal
+   \   00000004   6568               LDR         R5,[R4, #+4]
+    190          	unsigned int status;
+    191          
+    192          	//* get Usart status register and active interrupt
+    193          	status = USART_pt->US_CSR ;
+   \   00000006   6869               LDR         R0,[R5, #+20]
+    194                  status &= USART_pt->US_IMR;
+   \   00000008   2969               LDR         R1,[R5, #+16]
+   \   0000000A   0140               AND         R1,R0
+    195          
+    196          	if ( status & AT91C_US_RXBUFF){
+   \   0000000C   C804               LSL         R0,R1,#+19
+   \   0000000E   0FD5               BPL         ??Debug_irq_handler_0
+    197          	//* Toggel LED
+    198           	Trace_Toggel_LED( AT91B_LED1) ;
+   \   00000010   0220               MOV         R0,#+2
+   \   00000012   ........           BL          Trace_Toggel_LED
+    199           	     COM0->US_RPR = (unsigned int) buff_rx;
+   \   00000016   8020               MOV         R0,#+128
+   \   00000018   4000               LSL         R0,R0,#+1          ;; #+256
+   \   0000001A   6168               LDR         R1,[R4, #+4]
+   \   0000001C   0818               ADD         R0,R1,R0
+   \   0000001E   211C               MOV         R1,R4
+   \   00000020   0C31               ADD         R1,#+12
+   \   00000022   0160               STR         R1,[R0, #+0]
+    200          	     COM0->US_RCR = 100;
+   \   00000024   6421               MOV         R1,#+100
+   \   00000026   4160               STR         R1,[R0, #+4]
+    201                       AT91F_US_Put(buff_rx);
+   \   00000028   0C34               ADD         R4,#+12
+   \   0000002A   201C               MOV         R0,R4
+   \   0000002C   ........           BL          AT91F_US_Put
+    202          	}
+    203             //* Reset the satus bit for error
+    204          	 USART_pt->US_CR = AT91C_US_RSTSTA;
+   \                     ??Debug_irq_handler_0:
+   \   00000030   8020               MOV         R0,#+128
+   \   00000032   4000               LSL         R0,R0,#+1          ;; #+256
+   \   00000034   2860               STR         R0,[R5, #+0]
+    205          }
+   \   00000036   30BC               POP         {R4,R5}
+   \   00000038   01BC               POP         {R0}
+   \   0000003A   0047               BX          R0                 ;; return
+    206          
+
+   \                                 In segment CODE, align 4, keep-with-next
+    207          void AT91F_DBGU_Init(void)
+    208          {
+   \                     AT91F_DBGU_Init:
+   \   00000000   30B5               PUSH        {R4,R5,LR}
+    209            AT91F_DBGU_CfgPIO();/*AT91F_PIO_CfgPeriph(
+   \   00000002   C020               MOV         R0,#+192
+   \   00000004   C000               LSL         R0,R0,#+3          ;; #+1536
+   \   00000006   ....               LDR         R1,??DataTable19   ;; 0xfffff470
+   \   00000008   0860               STR         R0,[R1, #+0]
+   \   0000000A   ....               LDR         R1,??DataTable20   ;; 0xfffff474
+   \   0000000C   0022               MOV         R2,#+0
+   \   0000000E   0A60               STR         R2,[R1, #+0]
+   \   00000010   ....               LDR         R1,??DataTable21   ;; 0xfffff404
+   \   00000012   0860               STR         R0,[R1, #+0]
+    210                      	 AT91C_BASE_PIOA, // PIO controller base address
+    211                  	 ((unsigned int) AT91C_PA9_DRXD    ) |
+    212                       	 ((unsigned int) AT91C_PA10_DTXD    ) , // Peripheral A
+    213                	 0 );*/
+    214            AT91F_DBGU_CfgPMC();//AT91F_PMC_EnablePeriphClock ( AT91C_BASE_PMC, 1 << AT91C_ID_US1 ) ;
+   \   00000014   0224               MOV         R4,#+2
+   \   00000016   ....               LDR         R0,??DataTable22   ;; 0xfffffc10
+   \   00000018   0460               STR         R4,[R0, #+0]
+    215            AT91F_US_Configure ((AT91PS_USART)AT91C_BASE_DBGU, AT91B_MCK,AT91C_US_ASYNC_MODE,USART_BAUD_RATE , 0); 
+   \   0000001A   124D               LDR         R5,??AT91F_DBGU_Init_0  ;; 0xfffff200
+   \   0000001C   0020               MOV         R0,#+0
+   \   0000001E   01B4               PUSH        {R0}
+   \   00000020   9623               MOV         R3,#+150
+   \   00000022   1B02               LSL         R3,R3,#+8          ;; #+38400
+   \   00000024   8C22               MOV         R2,#+140
+   \   00000026   1201               LSL         R2,R2,#+4          ;; #+2240
+   \   00000028   ....               LDR         R1,??DataTable23   ;; 0x2dd4249
+   \   0000002A   281C               MOV         R0,R5
+   \   0000002C   ........           _BLF        AT91F_US_Configure,??AT91F_US_Configure??rT
+    216            AT91C_BASE_DBGU->DBGU_CR = AT91C_US_RXEN | AT91C_US_TXEN;
+   \   00000030   5020               MOV         R0,#+80
+   \   00000032   2860               STR         R0,[R5, #+0]
+    217                    //* open Usart interrupt
+    218            AT91F_AIC_ConfigureIt (AT91C_BASE_AIC, AT91C_ID_SYS, DBGG_USART_INTERRUPT_LEVEL,
+    219                                                   AT91C_AIC_SRCTYPE_INT_HIGH_LEVEL, Debug_irq_handler);
+   \   00000034   0C48               LDR         R0,??AT91F_DBGU_Init_0+0x4  ;; Debug_irq_handler
+   \   00000036   01B4               PUSH        {R0}
+   \   00000038   0023               MOV         R3,#+0
+   \   0000003A   0322               MOV         R2,#+3
+   \   0000003C   0121               MOV         R1,#+1
+   \   0000003E   ....               LDR         R0,??DataTable24   ;; 0xfffff000
+   \   00000040   ........           _BLF        AT91F_AIC_ConfigureIt,??AT91F_AIC_ConfigureIt??rT
+    220            AT91F_AIC_EnableIt (AT91C_BASE_AIC, AT91C_ID_SYS);
+   \   00000044   ....               LDR         R0,??DataTable25   ;; 0xfffff120
+   \   00000046   0460               STR         R4,[R0, #+0]
+    221                  // Set the PDC
+    222            AT91F_PDC_Open (AT91C_BASE_PDC_DBGU);
+   \   00000048   084C               LDR         R4,??AT91F_DBGU_Init_0+0x8  ;; 0xfffff300
+   \   0000004A   201C               MOV         R0,R4
+   \   0000004C   ........           _BLF        AT91F_PDC_Open,??AT91F_PDC_Open??rT
+    223            AT91C_BASE_DBGU->DBGU_RPR = (unsigned int) buff_rx1;
+   \   00000050   0748               LDR         R0,??AT91F_DBGU_Init_0+0xC  ;; buff_rx1
+   \   00000052   2060               STR         R0,[R4, #+0]
+    224            AT91C_BASE_DBGU->DBGU_RCR = 8;
+   \   00000054   0748               LDR         R0,??AT91F_DBGU_Init_0+0x10  ;; 0xfffff304
+   \   00000056   0821               MOV         R1,#+8
+   \   00000058   0160               STR         R1,[R0, #+0]
+    225            AT91F_DBGU_InterruptEnable(AT91C_BASE_DBGU,AT91C_US_RXBUFF  );
+   \   0000005A   0748               LDR         R0,??AT91F_DBGU_Init_0+0x14  ;; 0xfffff208
+   \   0000005C   4902               LSL         R1,R1,#+9
+   \   0000005E   0160               STR         R1,[R0, #+0]
+    226          }
+   \   00000060   ....               B           ??Subroutine10_0
+   \   00000062   C046               NOP         
+   \                     ??AT91F_DBGU_Init_0:
+   \   00000064   00F2FFFF           DC32        0xfffff200
+   \   00000068   ........           DC32        Debug_irq_handler
+   \   0000006C   00F3FFFF           DC32        0xfffff300
+   \   00000070   ........           DC32        buff_rx1
+   \   00000074   04F3FFFF           DC32        0xfffff304
+   \   00000078   08F2FFFF           DC32        0xfffff208
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   ........           DC32        receiveimusignal
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable18:
+   \   00000000   ........           DC32        receiveimusignal
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable19:
+   \   00000000   70F4FFFF           DC32        0xfffff470
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable20:
+   \   00000000   74F4FFFF           DC32        0xfffff474
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable21:
+   \   00000000   04F4FFFF           DC32        0xfffff404
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable22:
+   \   00000000   10FCFFFF           DC32        0xfffffc10
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable23:
+   \   00000000   4942DD02           DC32        0x2dd4249
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable24:
+   \   00000000   00F0FFFF           DC32        0xfffff000
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable25:
+   \   00000000   20F1FFFF           DC32        0xfffff120
+    227          
+    228          
+
+   Maximum stack usage in bytes:
+
+     Function              CSTACK
+     --------              ------
+     AT91F_AIC_ConfigureIt    20
+     AT91F_DBGU_Init          20
+     AT91F_DBGU_Put            4
+     AT91F_PDC_Open            0
+     AT91F_US1_Put             4
+     AT91F_US_Configure       12
+     AT91F_US_Put              4
+     Debug_irq_handler        12
+     Trace_Toggel_LED          4
+     Usart1_c_irq_handler      8
+     Usart1_init              20
+     Usart_c_irq_handler      16
+     Usart_init               20
+
+
+   Segment part sizes:
+
+     Function/Label        Bytes
+     --------------        -----
+     AT91F_AIC_ConfigureIt   44
+     AT91F_PDC_Open          36
+     AT91F_US_Configure      86
+     receiveimusignal        68
+     buff_rx1               100
+     Trace_Toggel_LED        36
+     Usart_c_irq_handler     60
+     Usart1_c_irq_handler    50
+     AT91F_US_Put            32
+     AT91F_US1_Put           32
+     AT91F_DBGU_Put          32
+     Usart_init             112
+     ?Subroutine10           20
+     Usart1_init            104
+     Debug_irq_handler       60
+     AT91F_DBGU_Init        124
+     ??DataTable1             4
+     ??DataTable18            4
+     ??DataTable19            4
+     ??DataTable20            4
+     ??DataTable21            4
+     ??DataTable22            4
+     ??DataTable23            4
+     ??DataTable24            4
+     ??DataTable25            4
+      Others                148
+
+ 
+ 1 000 bytes in segment CODE
+   168 bytes in segment DATA_Z
+    12 bytes in segment INITTAB
+ 
+ 698 bytes of CODE memory (+ 314 bytes shared)
+ 168 bytes of DATA memory
+
+Errors: none
+Warnings: none

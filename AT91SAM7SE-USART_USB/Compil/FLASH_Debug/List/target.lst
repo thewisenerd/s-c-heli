@@ -1,0 +1,504 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    07/Jan/2016  21:50:33 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\target\target.c                             #
+#    Command line    =  H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\target\target.c -lC                         #
+#                       H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\FLASH_Debug\Lis #
+#                       t\ -o H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6- #
+#                       27ËøÎ²\Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»® #
+#                       +LQR_2014_7_31\AT91SAM7SE-USART_USB\Compil\FLASH_Deb #
+#                       ug\Obj\ -z9 --debug --cpu_mode thumb --endian        #
+#                       little --cpu ARM7TDMI --stack_align 4 --interwork    #
+#                       -e --fpu None --ec++ --dlib_config                   #
+#                       D:\IAREWE431\ARM\LIB\dl4tptinl8n.h -I                #
+#                       H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\srcIAR\ -I      #
+#                       H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\..\src\ -I      #
+#                       H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\ -I       #
+#                       H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\kalman\   #
+#                       -I H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27Ë #
+#                       øÎ²\Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQ #
+#                       R_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\pcm\   #
+#                       -I H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27Ë #
+#                       øÎ²\Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQ #
+#                       R_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\spi\   #
+#                       -I H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27Ë #
+#                       øÎ²\Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQ #
+#                       R_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\timer\ #
+#                        -I H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27 #
+#                       ËøÎ²\Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+L #
+#                       QR_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\pid\  #
+#                       -I H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27Ë #
+#                       øÎ²\Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQ #
+#                       R_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\avcs\  #
+#                       -I D:\IAREWE431\ARM\INC\                             #
+#    List file       =  H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\FLASH_Debug\Lis #
+#                       t\target.lst                                         #
+#    Object file     =  H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\FLASH_Debug\Obj #
+#                       \target.r79                                          #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ²\Ð¡Ö±Éý»ú´úÂë²âÊÔ1-6\Ð¡Ö±Éý»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2014_7_31\target\target.c
+      1          #include "target.h"
+      2          #include "includs.h"
+      3          
+      4          //--Target_CommandÊµÏÖ--------------//
+      5          //void get_command(char * line) :¶ÁÈ¡µØÃæÕ¾·¢À´µÄÄ¿±êÖ¸Áî
+      6          //void reset_command():Ã¿´ÎpushÍêÒ»´Îcommandºó£¬Çå³ý¸Ã×é
+      7          //----------------------------------
+
+   \                                 In segment CODE, align 4, keep-with-next
+      8          void  Target_Command::get_command(char * line)
+      9          {
+   \                     ??get_command:
+   \   00000000   F2B5               PUSH        {R1,R4-R7,LR}
+   \   00000002   071C               MOV         R7,R0
+   \   00000004   0026               MOV         R6,#+0
+     10            int i =0,j=0;
+     11            for(i =0 ; i!= MAX_COMMAND_SIZE; ++i)
+     12            {
+     13                 for(j =0 ; j!=4 ; ++j)
+   \                     ??get_command_1:
+   \   00000006   0025               MOV         R5,#+0
+   \   00000008   7401               LSL         R4,R6,#+5
+     14          	   {
+     15                   target[i][j] = strtod(line,&line);
+   \                     ??get_command_2:
+   \   0000000A   0022               MOV         R2,#+0
+   \   0000000C   6946               MOV         R1,SP
+   \   0000000E   0098               LDR         R0,[SP, #+0]
+   \   00000010   ........           _BLF        _Stod,??_Stod??rT
+   \   00000014   EA00               LSL         R2,R5,#+3
+   \   00000016   3B19               ADD         R3,R7,R4
+   \   00000018   9A18               ADD         R2,R3,R2
+   \   0000001A   03C2               STMIA       R2!,{R0,R1}
+     16                   line++;
+   \   0000001C   0098               LDR         R0,[SP, #+0]
+   \   0000001E   401C               ADD         R0,R0,#+1
+   \   00000020   0090               STR         R0,[SP, #+0]
+     17                 }
+   \   00000022   6D1C               ADD         R5,R5,#+1
+   \   00000024   042D               CMP         R5,#+4
+   \   00000026   F0D1               BNE         ??get_command_2
+     18                 target[i][2] = -1*target[i][2];//syc ¸ß¶È×ª³ÉNEDÏòÏÂÎªÕý×ø±êÖµ
+   \   00000028   381C               MOV         R0,R7
+   \   0000002A   1030               ADD         R0,#+16
+   \   0000002C   0519               ADD         R5,R0,R4
+   \   0000002E   03CD               LDMIA       R5!,{R0,R1}
+   \   00000030   083D               SUB         R5,#+8
+   \   00000032   021C               MOV         R2,R0
+   \   00000034   0B1C               MOV         R3,R1
+   \   00000036   0020               MOV         R0,#+0
+   \   00000038   ....               LDR         R1,??DataTable4    ;; 0xbff00000
+   \   0000003A   ........           _BLF        __dMul,??__dMul??rT
+   \   0000003E   03C5               STMIA       R5!,{R0,R1}
+     19                 if( -1 == target[i][3])
+   \   00000040   381C               MOV         R0,R7
+   \   00000042   1030               ADD         R0,#+16
+   \   00000044   0830               ADD         R0,#+8
+   \   00000046   0019               ADD         R0,R0,R4
+   \   00000048   0CC8               LDMIA       R0!,{R2,R3}
+   \   0000004A   0020               MOV         R0,#+0
+   \   0000004C   ....               LDR         R1,??DataTable4    ;; 0xbff00000
+   \   0000004E   ........           _BLF        __dEqual,??__dEqual??rT
+   \   00000052   0028               CMP         R0,#+0
+   \   00000054   02D1               BNE         ??get_command_3
+     20                     break;
+     21            }
+   \   00000056   761C               ADD         R6,R6,#+1
+   \   00000058   062E               CMP         R6,#+6
+   \   0000005A   D4D1               BNE         ??get_command_1
+     22            count = i ;
+   \                     ??get_command_3:
+   \   0000005C   C037               ADD         R7,#+192
+   \   0000005E   3E60               STR         R6,[R7, #+0]
+     23          }
+   \   00000060   F8BC               POP         {R3-R7}
+   \   00000062   01BC               POP         {R0}
+   \   00000064   0047               BX          R0                 ;; return
+     24          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     25          void Target_Command::reset()
+     26          {
+   \                     ??reset:
+   \   00000000   F0B5               PUSH        {R4-R7,LR}
+   \   00000002   021C               MOV         R2,R0
+     27            for(int i =0 ; i!= MAX_COMMAND_SIZE; ++i)
+   \   00000004   0023               MOV         R3,#+0
+   \   00000006   0024               MOV         R4,#+0
+     28            {
+     29               for(int j =0 ; j!=3 ; ++j)
+   \                     ??reset_2:
+   \   00000008   0025               MOV         R5,#+0
+   \   0000000A   6601               LSL         R6,R4,#+5
+     30                 target[i][j] = 0.0;
+   \                     ??reset_3:
+   \   0000000C   E800               LSL         R0,R5,#+3
+   \   0000000E   9119               ADD         R1,R2,R6
+   \   00000010   0F18               ADD         R7,R1,R0
+   \   00000012   0020               MOV         R0,#+0
+   \   00000014   191C               MOV         R1,R3
+   \   00000016   03C7               STMIA       R7!,{R0,R1}
+   \   00000018   6D1C               ADD         R5,R5,#+1
+   \   0000001A   032D               CMP         R5,#+3
+   \   0000001C   F6D1               BNE         ??reset_3
+     31               target[i][3] = -1;
+   \   0000001E   101C               MOV         R0,R2
+   \   00000020   1830               ADD         R0,#+24
+   \   00000022   8519               ADD         R5,R0,R6
+   \   00000024   0020               MOV         R0,#+0
+   \   00000026   ....               LDR         R1,??DataTable4    ;; 0xbff00000
+   \   00000028   03C5               STMIA       R5!,{R0,R1}
+     32            }
+   \   0000002A   641C               ADD         R4,R4,#+1
+   \   0000002C   062C               CMP         R4,#+6
+   \   0000002E   EBD1               BNE         ??reset_2
+     33            count = 0 ;
+   \   00000030   C032               ADD         R2,#+192
+   \   00000032   1360               STR         R3,[R2, #+0]
+     34          }
+   \   00000034   ....               B           ?Subroutine6
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ?Subroutine6:
+   \   00000000   F0BC               POP         {R4-R7}
+   \   00000002   01BC               POP         {R0}
+   \   00000004   0047               BX          R0                 ;; return
+     35          
+     36          //----------Target_QueueµÄÊµÏÖ--------//
+
+   \                                 In segment CODE, align 4, keep-with-next
+     37          void Target_Queue::reset(){
+   \                     ??reset_1:
+   \   00000000   F0B5               PUSH        {R4-R7,LR}
+   \   00000002   021C               MOV         R2,R0
+     38            index = 0;  //queueÖÐµÈ´ýÖ´ÐÅµÄÄ¿±ê¸öÊý
+   \   00000004   0023               MOV         R3,#+0
+   \   00000006   A020               MOV         R0,#+160
+   \   00000008   8000               LSL         R0,R0,#+2          ;; #+640
+   \   0000000A   1350               STR         R3,[R2, R0]
+     39            for(int i =0 ; i!=MAX_QUEUE_SIZE; ++i)
+   \   0000000C   0024               MOV         R4,#+0
+     40            {  
+     41              for(int j =0 ; j!=3 ; ++j)
+   \                     ??reset_4:
+   \   0000000E   0025               MOV         R5,#+0
+   \   00000010   6601               LSL         R6,R4,#+5
+     42                  queue[i][j] =0;   
+   \                     ??reset_5:
+   \   00000012   E800               LSL         R0,R5,#+3
+   \   00000014   9119               ADD         R1,R2,R6
+   \   00000016   0F18               ADD         R7,R1,R0
+   \   00000018   0020               MOV         R0,#+0
+   \   0000001A   191C               MOV         R1,R3
+   \   0000001C   03C7               STMIA       R7!,{R0,R1}
+   \   0000001E   6D1C               ADD         R5,R5,#+1
+   \   00000020   032D               CMP         R5,#+3
+   \   00000022   F6D1               BNE         ??reset_5
+     43              queue[i][3] = -1 ;
+   \   00000024   101C               MOV         R0,R2
+   \   00000026   1830               ADD         R0,#+24
+   \   00000028   8519               ADD         R5,R0,R6
+   \   0000002A   0020               MOV         R0,#+0
+   \   0000002C   ....               LDR         R1,??DataTable4    ;; 0xbff00000
+   \   0000002E   03C5               STMIA       R5!,{R0,R1}
+     44            }
+   \   00000030   641C               ADD         R4,R4,#+1
+   \   00000032   142C               CMP         R4,#+20
+   \   00000034   EBD1               BNE         ??reset_4
+   \   00000036   C046               NOP         
+     45          }
+   \   00000038                      REQUIRE ?Subroutine6
+   \   00000038                      ;; // Fall through to label ?Subroutine6
+     46          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     47          bool Target_Queue::push_target(Target_Command * target_c){
+   \                     ??push_target:
+   \   00000000   F2B5               PUSH        {R1,R4-R7,LR}
+   \   00000002   82B0               SUB         SP,#+8
+   \   00000004   041C               MOV         R4,R0
+     48              bool brake_flag = true;
+   \   00000006   6846               MOV         R0,SP
+   \   00000008   0121               MOV         R1,#+1
+   \   0000000A   0171               STRB        R1,[R0, #+4]
+   \   0000000C   0025               MOV         R5,#+0
+   \   0000000E   0298               LDR         R0,[SP, #+8]
+   \   00000010   C030               ADD         R0,#+192
+   \   00000012   0090               STR         R0,[SP, #+0]
+   \   00000014   00E0               B           ??push_target_1
+     49              for( int i =0 ; target_c->count >0 && index != MAX_QUEUE_SIZE; ++i)
+   \                     ??push_target_2:
+   \   00000016   6D1C               ADD         R5,R5,#+1
+   \                     ??push_target_1:
+   \   00000018   0098               LDR         R0,[SP, #+0]
+   \   0000001A   0068               LDR         R0,[R0, #+0]
+   \   0000001C   0128               CMP         R0,#+1
+   \   0000001E   2BDB               BLT         ??push_target_3
+   \   00000020   A020               MOV         R0,#+160
+   \   00000022   8000               LSL         R0,R0,#+2          ;; #+640
+   \   00000024   2218               ADD         R2,R4,R0
+   \   00000026   1068               LDR         R0,[R2, #+0]
+   \   00000028   1428               CMP         R0,#+20
+   \   0000002A   25D0               BEQ         ??push_target_3
+     50              {  
+     51                  for(int j=0; j!=4;++j)
+   \   0000002C   0023               MOV         R3,#+0
+   \   0000002E   6E01               LSL         R6,R5,#+5
+     52                     queue[index][j]=target_c->target[i][j];        
+   \                     ??push_target_4:
+   \   00000030   D800               LSL         R0,R3,#+3
+   \   00000032   1168               LDR         R1,[R2, #+0]
+   \   00000034   4901               LSL         R1,R1,#+5
+   \   00000036   6118               ADD         R1,R4,R1
+   \   00000038   0F18               ADD         R7,R1,R0
+   \   0000003A   0299               LDR         R1,[SP, #+8]
+   \   0000003C   8919               ADD         R1,R1,R6
+   \   0000003E   0818               ADD         R0,R1,R0
+   \   00000040   03C8               LDMIA       R0!,{R0,R1}
+   \   00000042   03C7               STMIA       R7!,{R0,R1}
+   \   00000044   5B1C               ADD         R3,R3,#+1
+   \   00000046   042B               CMP         R3,#+4
+   \   00000048   F2D1               BNE         ??push_target_4
+     53                  target_c->count--;   
+   \   0000004A   0098               LDR         R0,[SP, #+0]
+   \   0000004C   0168               LDR         R1,[R0, #+0]
+   \   0000004E   491E               SUB         R1,R1,#+1
+   \   00000050   0160               STR         R1,[R0, #+0]
+     54                  index ++ ;
+   \   00000052   1068               LDR         R0,[R2, #+0]
+   \   00000054   401C               ADD         R0,R0,#+1
+   \   00000056   1060               STR         R0,[R2, #+0]
+     55                  if(-2 == queue[i][3])
+   \   00000058   A019               ADD         R0,R4,R6
+   \   0000005A   1830               ADD         R0,#+24
+   \   0000005C   0CC8               LDMIA       R0!,{R2,R3}
+   \   0000005E   0020               MOV         R0,#+0
+   \   00000060   C021               MOV         R1,#+192
+   \   00000062   0906               LSL         R1,R1,#+24         ;; #-1073741824
+   \   00000064   ........           _BLF        __dEqual,??__dEqual??rT
+   \   00000068   0028               CMP         R0,#+0
+   \   0000006A   D4D0               BEQ         ??push_target_2
+     56                  {  
+     57                      reset();
+   \   0000006C   201C               MOV         R0,R4
+   \   0000006E   ........           BL          ??reset_1
+     58                      brake_flag = false;
+   \   00000072   6846               MOV         R0,SP
+   \   00000074   0021               MOV         R1,#+0
+   \   00000076   0171               STRB        R1,[R0, #+4]
+     59                      break;
+     60                  }  
+     61              }
+     62              target_c->reset();   
+   \                     ??push_target_3:
+   \   00000078   0298               LDR         R0,[SP, #+8]
+   \   0000007A   ........           BL          ??reset
+     63              return brake_flag; 
+   \   0000007E   6846               MOV         R0,SP
+   \   00000080   0079               LDRB        R0,[R0, #+4]
+   \   00000082   FEBC               POP         {R1-R7}
+   \   00000084   02BC               POP         {R1}
+   \   00000086   0847               BX          R1                 ;; return
+     64          }
+     65          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     66          bool Target_Queue::pop_target(double * target_p)
+     67          {
+   \                     ??pop_target:
+   \   00000000   F2B5               PUSH        {R1,R4-R7,LR}
+   \   00000002   071C               MOV         R7,R0
+     68            if(index <= 0)
+   \   00000004   9E20               MOV         R0,#+158
+   \   00000006   8000               LSL         R0,R0,#+2          ;; #+632
+   \   00000008   3D18               ADD         R5,R7,R0
+   \   0000000A   A868               LDR         R0,[R5, #+8]
+   \   0000000C   0128               CMP         R0,#+1
+   \   0000000E   01DA               BGE         ??pop_target_1
+     69              return false ;   //Ã»ÓÐÄ¿±êµãÁË
+   \   00000010   0020               MOV         R0,#+0
+   \   00000012   34E0               B           ??pop_target_2
+   \                     ??pop_target_1:
+   \   00000014   0024               MOV         R4,#+0
+   \   00000016   1B4E               LDR         R6,??pop_target_3  ;; trajectory
+     70            for(int i =0 ; i!=3 ; ++i)
+     71              *(target_p+i)=  queue[0][i]+trajectory.hover_xyz[i];
+   \                     ??pop_target_4:
+   \   00000018   E000               LSL         R0,R4,#+3
+   \   0000001A   0099               LDR         R1,[SP, #+0]
+   \   0000001C   0A18               ADD         R2,R1,R0
+   \   0000001E   04B4               PUSH        {R2}
+   \   00000020   3918               ADD         R1,R7,R0
+   \   00000022   0CC9               LDMIA       R1!,{R2,R3}
+   \   00000024   311C               MOV         R1,R6
+   \   00000026   6831               ADD         R1,#+104
+   \   00000028   0818               ADD         R0,R1,R0
+   \   0000002A   03C8               LDMIA       R0!,{R0,R1}
+   \   0000002C   ........           _BLF        __dAdd,??__dAdd??rT
+   \   00000030   04BC               POP         {R2}
+   \   00000032   03C2               STMIA       R2!,{R0,R1}
+   \   00000034   641C               ADD         R4,R4,#+1
+   \   00000036   032C               CMP         R4,#+3
+   \   00000038   EED1               BNE         ??pop_target_4
+     72            trajectory.hover_time =  queue[0][3]*30;  
+   \   0000003A   6036               ADD         R6,#+96
+   \   0000003C   381C               MOV         R0,R7
+   \   0000003E   1830               ADD         R0,#+24
+   \   00000040   0CC8               LDMIA       R0!,{R2,R3}
+   \   00000042   0020               MOV         R0,#+0
+   \   00000044   1049               LDR         R1,??pop_target_3+0x4  ;; 0x403e0000
+   \   00000046   ........           _BLF        __dMul,??__dMul??rT
+   \   0000004A   03C6               STMIA       R6!,{R0,R1}
+     73            
+     74            for(int i =0 ; i !=MAX_QUEUE_SIZE-1 ; ++i )
+   \   0000004C   0022               MOV         R2,#+0
+     75              for(int j =0 ; j!= 4 ; ++j)
+   \                     ??pop_target_5:
+   \   0000004E   0023               MOV         R3,#+0
+   \   00000050   5001               LSL         R0,R2,#+5
+   \   00000052   3C18               ADD         R4,R7,R0
+     76                 queue[i][j] =  queue[i+1][j];
+   \                     ??pop_target_6:
+   \   00000054   D800               LSL         R0,R3,#+3
+   \   00000056   2618               ADD         R6,R4,R0
+   \   00000058   211C               MOV         R1,R4
+   \   0000005A   2031               ADD         R1,#+32
+   \   0000005C   0818               ADD         R0,R1,R0
+   \   0000005E   03C8               LDMIA       R0!,{R0,R1}
+   \   00000060   03C6               STMIA       R6!,{R0,R1}
+   \   00000062   5B1C               ADD         R3,R3,#+1
+   \   00000064   042B               CMP         R3,#+4
+   \   00000066   F5D1               BNE         ??pop_target_6
+   \   00000068   521C               ADD         R2,R2,#+1
+   \   0000006A   132A               CMP         R2,#+19
+   \   0000006C   EFD1               BNE         ??pop_target_5
+     77            
+     78            queue[MAX_QUEUE_SIZE-1][3] = -1;
+   \   0000006E   0020               MOV         R0,#+0
+   \   00000070   ....               LDR         R1,??DataTable4    ;; 0xbff00000
+   \   00000072   03C5               STMIA       R5!,{R0,R1}
+   \   00000074   083D               SUB         R5,#+8
+     79            index--;
+   \   00000076   A868               LDR         R0,[R5, #+8]
+   \   00000078   401E               SUB         R0,R0,#+1
+   \   0000007A   A860               STR         R0,[R5, #+8]
+     80            return true;
+   \   0000007C   0120               MOV         R0,#+1
+   \                     ??pop_target_2:
+   \   0000007E   F8BC               POP         {R3-R7}
+   \   00000080   02BC               POP         {R1}
+   \   00000082   0847               BX          R1                 ;; return
+   \                     ??pop_target_3:
+   \   00000084   ........           DC32        trajectory
+   \   00000088   00003E40           DC32        0x403e0000
+     81            
+     82          } 
+     83          
+
+   \                                 In segment CODE, align 4, keep-with-next
+     84          bool Target_Queue::is_queue_empty(){
+     85            return index<=0? true:false;
+   \                     ??is_queue_empty:
+   \   00000000   A021               MOV         R1,#+160
+   \   00000002   8900               LSL         R1,R1,#+2          ;; #+640
+   \   00000004   4058               LDR         R0,[R0, R1]
+   \   00000006   0128               CMP         R0,#+1
+   \   00000008   01DA               BGE         ??is_queue_empty_1
+   \   0000000A   0120               MOV         R0,#+1
+   \   0000000C   00E0               B           ??is_queue_empty_2
+   \                     ??is_queue_empty_1:
+   \   0000000E   0020               MOV         R0,#+0
+   \                     ??is_queue_empty_2:
+   \   00000010   00B0               ADD         SP,#+0
+   \   00000012   7047               BX          LR                 ;; return
+     86          }
+
+   \                                 In segment CODE, align 4, keep-with-next
+   \                     ??DataTable4:
+   \   00000000   0000F0BF           DC32        0xbff00000
+     87          
+     88          /*bool target_monitor(void)
+     89          {
+     90             if(target[0][0] >= 500 || target[0][0] <=-500)
+     91               return false ;
+     92             
+     93             if(target[0][1] >= 500 || target[0][1] <=-500)
+     94               return false ;
+     95             
+     96             if(target[0][2] > 100 || target[0][2] <-80)
+     97               return false ;
+     98             
+     99             if(target[0][3] >= 150 || target[0][3] <=0)
+    100               return false ;
+    101          
+    102             return true;
+    103            
+    104          }
+    105          */
+    106          
+
+   Maximum stack usage in bytes:
+
+     Function                       CSTACK
+     --------                       ------
+     Target_Command::get_command(char *)
+                                       24
+     Target_Command::reset()           20
+     Target_Queue::is_queue_empty()     4
+     Target_Queue::pop_target(double *)
+                                       28
+     Target_Queue::push_target(Target_Command *)
+                                       32
+     Target_Queue::reset()             20
+
+
+   Segment part sizes:
+
+     Function/Label                 Bytes
+     --------------                 -----
+     Target_Command::get_command(char *)
+                                     102
+     Target_Command::reset()          54
+     ?Subroutine6                      6
+     Target_Queue::reset()            56
+     Target_Queue::push_target(Target_Command *)
+                                     136
+     Target_Queue::pop_target(double *)
+                                     140
+     Target_Queue::is_queue_empty()   20
+     ??DataTable4                      4
+      Others                         104
+
+ 
+ 622 bytes in segment CODE
+ 
+ 518 bytes of CODE memory (+ 104 bytes shared)
+
+Errors: none
+Warnings: none

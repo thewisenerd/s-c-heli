@@ -1,0 +1,102 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    13/Mar/2008  16:29:09 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\kalman\usart.c             #
+#    Command line    =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\kalman\usart.c -lC         #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\FLASH_Debug\List\ -o F:\airplane\arm\atmel\AT91SAM #
+#                       7SE512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT9 #
+#                       1SAM7SE-USART_USB\Compil\FLASH_Debug\Obj\ -z9        #
+#                       --debug --cpu_mode thumb --endian little --cpu       #
+#                       ARM7TDMI --stack_align 4 --interwork -e --fpu None   #
+#                       --dlib_config "C:\Program Files\IAR                  #
+#                       Systems\Embedded Workbench 4.0                       #
+#                       Evaluation\ARM\LIB\dl4tptinl8n.h" -I                 #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\srcIAR\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR #
+#                       \AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-US #
+#                       ART_USB\Compil\..\src\ -I                            #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR\ #
+#                       AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USA #
+#                       RT_USB\Compil\..\..\kalman\ -I                       #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\pcm\ -I F:\airplane\arm\atmel\AT91SAM7SE512_ #
+#                       IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\spi\ -I                      #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\timer\ -I "C:\Program Files\IAR              #
+#                       Systems\Embedded Workbench 4.0 Evaluation\ARM\INC\"  #
+#    List file       =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\FLASH_Debug\List\usart.lst                         #
+#    Object file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\FLASH_Debug\Obj\usart.r79                          #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\kalman\usart.c
+      1          #include<includs.h>
+
+  extern  char buff_rx[54];
+  ^
+"F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\include\interrupt_usart.h",10  Error[Pe130]: 
+          expected a "{"
+      2          
+      3          
+      4          void put_hexdigit(unsigned char i)
+      5          {
+                 ^
+Warning[Pe012]: parsing restarts here after previous syntax error
+      6          	if( i < 0x0A )
+                 	    ^
+Error[Pe020]: identifier "i" is undefined
+      7          		i += '0';
+      8          	else
+      9          		i += 'A' - 0x0A;
+     10          	while (!AT91F_US_TxReady(AT91C_BASE_US0));
+     11          		AT91F_US_PutChar(AT91C_BASE_US0, i);
+     12          }	
+     13          
+     14          
+     15          void
+     16          put_uint8_t(
+     17          	unsigned char		i
+     18          )
+     19          {
+     20          	put_hexdigit( (i >> 4) & 0x0F );
+                 	^
+Warning[Pe223]: function "put_hexdigit" declared implicitly
+     21          	put_hexdigit( (i >> 0) & 0x0F );
+     22          }
+     23          
+     24          
+     25          void
+     26          put_uint16_t(
+     27          	int		i
+     28          )
+     29          {
+     30          	put_uint8_t(  (i >> 8) & 0xFF );
+     31          	put_uint8_t(  (i >> 0) & 0xFF );
+     32          }
+     33          
+     34          
+     35          
+     36          
+
+Errors: 2
+Warnings: 2

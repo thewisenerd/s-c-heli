@@ -1,0 +1,907 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    08/Jan/2016  22:48:06 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\avcs\avcs.c                                 #
+#    Command line    =  H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\avcs\avcs.c -lC H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014 #
+#                       -10-1ÊµÑéÊÒ\2015-6-27ËøÎ²\Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı #
+#                       »ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2014_7_31\AT91SAM7SE-USART_U #
+#                       SB\Compil\FLASH_Debug\List\ -o                       #
+#                       H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\FLASH_Debug\Obj #
+#                       \ -z9 --debug --cpu_mode thumb --endian little       #
+#                       --cpu ARM7TDMI --stack_align 4 --interwork -e --fpu  #
+#                       None --ec++ --dlib_config                            #
+#                       D:\IAREWE431\ARM\LIB\dl4tptinl8n.h -I                #
+#                       H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\srcIAR\ -I      #
+#                       H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\..\src\ -I      #
+#                       H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\ -I       #
+#                       H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\kalman\   #
+#                       -I H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27Ë #
+#                       øÎ²\Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQ #
+#                       R_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\pcm\   #
+#                       -I H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27Ë #
+#                       øÎ²\Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQ #
+#                       R_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\spi\   #
+#                       -I H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27Ë #
+#                       øÎ²\Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQ #
+#                       R_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\timer\ #
+#                        -I H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27 #
+#                       ËøÎ²\Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+L #
+#                       QR_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\pid\  #
+#                       -I H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27Ë #
+#                       øÎ²\Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQ #
+#                       R_2014_7_31\AT91SAM7SE-USART_USB\Compil\..\..\avcs\  #
+#                       -I D:\IAREWE431\ARM\INC\                             #
+#    List file       =  H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\FLASH_Debug\Lis #
+#                       t\avcs.lst                                           #
+#    Object file     =  H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ² #
+#                       \Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2 #
+#                       014_7_31\AT91SAM7SE-USART_USB\Compil\FLASH_Debug\Obj #
+#                       \avcs.r79                                            #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+H:\ÊµÑéÊÒ¹¤×÷2015-8-20\2014-10-1ÊµÑéÊÒ\2015-6-27ËøÎ²\Ğ¡Ö±Éı»ú´úÂë²âÊÔ1-6\Ğ¡Ö±Éı»ú´úÂë²âÊÔ\Â·¾¶¹æ»®+LQR_2014_7_31\avcs\avcs.c
+      1          /******
+      2          2015-6-29 byM , ËøÎ²avcs
+      3          
+      4          */                                          
+      5          #include <includs.h>
+      6          
+      7          #define _avcs_tuning_ //Ê¦¸¸Ê×´Îµ÷µÄÊ±ºòĞèÒª¸Ã¶¨Òå!!!!!!!!!×¢Òâ,µ÷Íê²ÎÊıÖ®ºó,Òª°Ñ×¢ÊÍµô¸Ã¶¨Òå,¸Ä»Ø"¹Ì»¯²ÎÊıÄ£Ê½"
+      8          
+      9          
+     10          /*******************************************************
+     11          //º¯ÊıÃû:
+     12          //´´½¨ÈÕÆÚ:2015/7/12
+     13          //×îºóĞŞ¸ÄÈÕÆÚ:
+     14          //º¯Êı¹¦ÄÜ:
+     15          //Ê¹ÓÃ·½Ê½:
+     16          *******************************************************/
+
+   \                                 In segment CODE, align 4, keep-with-next
+     17          void avcs(int *pwm)
+     18          {
+   \                     ??avcs:
+   \   00000000   F1B5               PUSH        {R0,R4-R7,LR}
+   \   00000002   97B0               SUB         SP,#+92
+     19          #define init_gain_P 64          //ËøÎ²Ä£Ê½µÄ±ÈÀıÔöÒæ   >>>>>>½âÊÍ:ÏÂÃæ¼ÆËãÖĞ3588(arm7PWMÖµ)¶ÔÓ¦Ò£¿ØÆ÷MODEÖĞSERVOÖĞµÄ100(Ò£¿ØÆ÷ÖĞSERVOÖµ,²»ÊÇEND POINTÖµ!) , 2088¶ÔÓ¦-100 , ËùÒÔ((3588+2088)/2)¶ÔÓ¦0 , ((3588-2088)/2/100)¶ÔÓ¦SERVOÖĞÃ¿±ä»¯Ò»µãpwm±ä»¯µÄÁ¿
+     20                                            //Ê¦¸µµ÷ºÃ²ÎÊıºó,¸Ã²ÎÊıµÄ¼ÆËã·½·¨:gain_P=0.3240*(2846-pwm),ÆäÖĞpwm=((3588+2088)/2)-((3588-2088)/2)*(x/100),xÎªÇĞËøÎ²¿ª¹ØÔÚ"Ò»°ãÄ£Ê½"ÏÂÒ£¿ØÆ÷MODEÖĞSERVOÖĞgainÍ¨µÀµÄÁ¿
+     21                                            //¼ò»¯ËãÊ½:gain_P=0.3240*(8+7.5*x)
+     22          #define init_gain_I 8.8          //ËøÎ²Ä£Ê½µÄ»ı·ÖÔöÒæ
+     23                                            //Ê¦¸µµ÷ºÃ²ÎÊıºó,¸Ã²ÎÊıµÄ¼ÆËã·½·¨:gain_I=0.0324*(pwm-2830),ÆäÖĞpwm=((3588+2088)/2)+((3588-2088)/2)*(y/100),yÎªÇĞËøÎ²¿ª¹ØÔÚ"ËøÎ²Ä£Ê½"ÏÂÒ£¿ØÆ÷MODEÖĞSERVOÖĞgainÍ¨µÀµÄÁ¿
+     24                                            //¼ò»¯ËãÊ½:gain_I=0.0324*(8+7.5*y)
+     25          #define init_gain_D 0.0;//3.86
+     26          #define output_limit 430.0        //output_limitÊÇÎªÁË¸øÎ²¶æÏŞ·ù,ÈÃÎ²¶æ²»¶Â×ª,¶ÔÓ¦servo_widths_tempµÄ±ä»¯Á¿×î´óÖµ,È¡Õı·´·½Ïò½ÏĞ¡Öµ
+     27                                            //×î¼òµ¥µÄlimitÖµ²âÊÔ°ì·¨,ÏÈ°ÑÎ²¶æ½ÓÔÚµÚ5Í¨µÀ,gainÍ¨µÀ,ÔÚÒ£¿ØÆ÷MODEÖĞEND POINTÖĞÕı¸ºÇĞ»»²¢µ÷½ÚgainÍ¨µÀµÄÖµ,Ê¹´ïµ½²»³¬³öĞĞ³ÌµÄ×î´óÖµ,È»ºóÇĞ»»ÖÁÒ£¿ØÆ÷MODEÖĞSERVOÖĞ,¶ÁµÚÎåÍ¨µÀµÄÖµ²¢¼ÆËãoutput_limit
+     28                                            //¼ò»¯ËãÊ½:output_limit=7.5*z,zÎªÕı¸ºĞĞ³ÌÖĞ½ÏĞ¡Öµ
+     29          #define init_gain_coll_compensation 0.0//0.65                        //×Ü¾à²¹³¥ÓÃ
+     30            
+     31          /*¹Ì»¯ËøÎ²²ÎÊıÄ£Ê½*///ĞÂ·É»úÏÈÒª½øĞĞ"µ÷½ÚËøÎ²²ÎÊıÄ£Ê½"
+     32          #ifndef _avcs_tuning_
+     33            /*ÍÓÂİÒÇ¸Ğ¶È*/
+     34            #define gain_P   init_gain_P  
+     35            #define gain_I   init_gain_I      
+     36            #define gain_D   init_gain_D//ËøÎ²Ä£Ê½µÄÎ¢·ÖÔöÒæ   
+     37            #define gain_coll_compensation  init_gain_coll_compensation  //×Ü¾à²¹³¥ÓÃ
+     38          #endif 
+     39            
+     40          /*µ÷½ÚËøÎ²²ÎÊıÄ£Ê½*/
+     41          #ifdef _avcs_tuning_ 
+     42            /*ÍÓÂİÒÇ¸Ğ¶È*/ 
+     43            static double gain_P = init_gain_P;     //ËøÎ²Ä£Ê½µÄ±ÈÀıÔöÒæ
+     44            static double gain_I = init_gain_I;      //ËøÎ²Ä£Ê½µÄ»ı·ÖÔöÒæ
+     45            static double gain_D = init_gain_D;      //ËøÎ²Ä£Ê½µÄÎ¢·ÖÔöÒæ
+     46            static double gain_coll_compensation = init_gain_coll_compensation;      //×Ü¾à²¹³¥ÓÃ
+                                 ^
+Warning[Pe177]: variable "gain_coll_compensation" was declared but never
+          referenced
+     47          #endif
+     48           
+     49            
+     50            
+     51          /*Ò£¸ËÁéÃô¶È*/
+     52          #define gain_remote_to_rate -0.007//Ò¡¸ËÁ¿±ä³É»¡¶ÈÖÆrad/sËÙ¶È(300/180*3.14159)/((3588-2090)/2),¶ÔÓ¦Ò¡¸ËÂúÆ«300¡ã/s
+     53          /*ËøÎ²ÍÓÂİÒÇÊä³ö·½Ïò*/
+     54          #define _Direction_ -       //·´·½ÏòÎª"#define _Direction_ -"
+     55          /*ËøÎ²Í¨µÀÊä³öµÄÖĞÎ»Öµ*/
+     56          #define output_mid  2838           //¶ÔÓ¦³õÊ¼»¯Êä³ö1.52msµÄËÅ·şÂö³å,¶ÔÓ¦µÄservo_widths_tempµÄÖĞµã¶ÁÊı 
+     57          /*µÍÍ¨ÂË²¨Æ÷½ØÖ¹ÆµÂÊ*/
+     58          #define alpha 1.0 //0.5945  //0.6768//0.8073//rate_errorµÄµÍÍ¨ÂË²¨ÏµÊı,¼ÆËã·½·¨:Dt = 0.033333;filt_hz=30;alpha = Dt/(Dt+1/(2*pi*filt_hz)),ÆäÖĞDtÊÇ0.0333s,filt_hzÊÇ½ØÖÁÆµÂÊ
+     59          
+     60            
+     61          /*ÓÃµ½µÄ¾²Ì¬±äÁ¿*/
+     62          static double manual_mid;               //Ò¡¸ËÆ«ÒÆÁ¿,ÓÃÓÚ±ê¼ÇÒ£¿ØÖĞÎ»Öµ,¿ª»úÊ±³õÊ¼»¯
+     63          static double gyro_bias;                //½ÇËÙ¶ÈÆ«ÒÆÁ¿,ÓÃÓÚĞ£Õı½ÇËÙ¶ÈÖµ,¿ª»úÊ±³õÊ¼»¯
+     64          static double _rate_error = 0.0;        //ÓÃÓÚrate_errorµÄµÍÍ¨ÂË²¨,¼ÇÂ¼¾ÉµÄÖµ
+     65          static double i_rate_error = 0.0;       //ÓÃÓÚ¿ØÖÆÆ÷,±£´æ»ı·ÖÁ¿µÄÖµ
+     66          static int stage = 0;                   //ÓÃÓÚËøÎ²³õÊ¼»¯·Ö½×¶Î,ÔÚ³õÊ¼»¯½×¶Î,È·±£Ò£¿ØÆ÷µÄÒ¡¸Ë¸´Î»,²»¶¯Ö±Éı»ú,ÒòÎª¸Ã½×¶Î»á»ñÈ¡manual_midºÍgyro_bias
+     67          static bool flag_breach_limit = 0;      //yaw_out³¬ÏŞ±êÖ¾Î»,0:Ã»ÓĞ³¬,1:³¬ÁË
+     68          static int coll_zero;           //×Ü¾à²¹³¥ÓÃ
+                            ^
+Warning[Pe550]: variable "coll_zero" was set but never used
+     69          
+     70          static double tar_rate_pppppppp = 0.0;
+                               ^
+Warning[Pe550]: variable "tar_rate_pppppppp" was set but never used
+     71          static double tar_rate_ppppppp = 0.0;
+     72          static double tar_rate_pppppp = 0.0;
+     73          static double tar_rate_ppppp = 0.0;
+     74          static double tar_rate_pppp = 0.0;
+     75          static double tar_rate_ppp = 0.0;//ÓÃÓÚ»ı·Ö¿ØÖÆÆ÷,pÎªprevious,Ç°Ò»¸öµÄÒâË¼,¶æ»úÖÍºóÔ½´ó,ppppÔ½¶à
+     76          static double tar_rate_pp = 0.0;
+     77          static double tar_rate_p = 0.0;
+     78          
+     79          double target_rate = 0.0;
+     80          double d_rate_error ;
+     81          double rate_error;
+     82          double yaw_out;
+     83          
+     84          
+     85          /*ÏÂÃæ½øĞĞmanual_midÓëgyro_biasµÄ»ñÈ¡*/
+     86          if (stage < 200)
+   \   00000004   DA4C               LDR         R4,??avcs_1        ;; ??flag_breach_limit
+   \   00000006   E26E               LDR         R2,[R4, #+108]
+   \   00000008   0092               STR         R2,[SP, #+0]
+   \   0000000A   05AB               ADD         R3,SP,#+20
+   \   0000000C   201C               MOV         R0,R4
+   \   0000000E   1430               ADD         R0,#+20
+   \   00000010   03C8               LDMIA       R0!,{R0,R1}
+   \   00000012   03C3               STMIA       R3!,{R0,R1}
+   \   00000014   201C               MOV         R0,R4
+   \   00000016   1C30               ADD         R0,#+28
+   \   00000018   03C8               LDMIA       R0!,{R0,R1}
+   \   0000001A   03C3               STMIA       R3!,{R0,R1}
+   \   0000001C   C82A               CMP         R2,#+200
+   \   0000001E   0098               LDR         R0,[SP, #+0]
+   \   00000020   27DA               BGE         ??avcs_2
+     87            {
+     88                stage++; 
+   \   00000022   401C               ADD         R0,R0,#+1
+   \   00000024   0090               STR         R0,[SP, #+0]
+     89                manual_mid += *pwm;
+   \   00000026   05AD               ADD         R5,SP,#+20
+   \   00000028   05A8               ADD         R0,SP,#+20
+   \   0000002A   C0C8               LDMIA       R0!,{R6,R7}
+   \   0000002C   1798               LDR         R0,[SP, #+92]
+   \   0000002E   0068               LDR         R0,[R0, #+0]
+   \   00000030   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   00000034   321C               MOV         R2,R6
+   \   00000036   3B1C               MOV         R3,R7
+   \   00000038   ........           _BLF        __dAdd,??__dAdd??rT
+   \   0000003C   03C5               STMIA       R5!,{R0,R1}
+     90                gyro_bias += ahrs_pqr[2];//»¡¶ÈÖÆ
+   \   0000003E   07A8               ADD         R0,SP,#+28
+   \   00000040   03C8               LDMIA       R0!,{R0,R1}
+   \   00000042   CC4A               LDR         R2,??avcs_1+0x4    ;; ahrs_pqr + 16
+   \   00000044   0CCA               LDMIA       R2!,{R2,R3}
+   \   00000046   ........           _BLF        __dAdd,??__dAdd??rT
+   \                     ??avcs_3:
+   \   0000004A   03C5               STMIA       R5!,{R0,R1}
+     91                *pwm = output_mid;
+   \   0000004C   1798               LDR         R0,[SP, #+92]
+   \   0000004E   CA49               LDR         R1,??avcs_1+0x8    ;; 0xb16
+   \                     ??avcs_4:
+   \   00000050   0160               STR         R1,[R0, #+0]
+   \                     ??avcs_5:
+   \   00000052   221C               MOV         R2,R4
+   \   00000054   1C32               ADD         R2,#+28
+   \   00000056   07A8               ADD         R0,SP,#+28
+   \   00000058   03C8               LDMIA       R0!,{R0,R1}
+   \   0000005A   03C2               STMIA       R2!,{R0,R1}
+   \   0000005C   221C               MOV         R2,R4
+   \   0000005E   1432               ADD         R2,#+20
+   \   00000060   05A8               ADD         R0,SP,#+20
+   \   00000062   03C8               LDMIA       R0!,{R0,R1}
+   \   00000064   03C2               STMIA       R2!,{R0,R1}
+   \   00000066   0098               LDR         R0,[SP, #+0]
+   \   00000068   E066               STR         R0,[R4, #+108]
+     92            }
+     93          else if(stage < 201)
+     94            { 
+     95                stage++;  
+     96                manual_mid = manual_mid/200.0;
+     97                gyro_bias = gyro_bias/200.0;
+     98                *pwm = output_mid;
+     99                coll_zero = *(pwm+2);             //×Ü¾à²¹³¥ÓÃ
+    100            }
+    101          /*ÏÂÃæ¶¯×÷±íÊ¾ËøÎ²ÍÓÂİ³õÊ¼»¯ÒÑ¾­Íê³É*/
+    102          else if(stage < 216)
+    103            {
+    104                stage++;        
+    105                *pwm = output_mid + output_limit;    
+    106            }
+    107          else if(stage < 231)
+    108            {
+    109                stage++; 
+    110                *pwm = output_mid - output_limit;
+    111            }
+    112          
+    113          
+    114          /*ÏÂÃæÊÇËøÎ²ÍÓÂİÒÇµÄ¿ØÖÆËã·¨,ÓĞËøÎ²Ä£Ê½ºÍÒ»°ãÄ£Ê½,Ò»°ãÄ£Ê½ÓÃÓÚµ÷·É»úµÄÖĞÎ»Öµ*/
+    115          else 
+    116            {
+    117              /*ÆÚ´ı½ÇËÙ¶È*/
+    118              int target_pwm;
+    119              target_pwm = *pwm - manual_mid;
+    120               if(*(pwm+1) > 2838)//ËøÎ²Ä£Ê½ÏÂÆ«º½Ò£¿ØÁ¿¼ÓÈëÎ¢ÈõÒ¡¸Ë¿ØÖÆËÀÇø£¬ÕâÑùÓĞÖúÓÚ½µµÍÓÉÊÖ²úÉúµÄÈÅ¶¯
+    121              {
+    122              if(target_pwm > 23) target_pwm = target_pwm - 23;
+    123              else if(target_pwm < -23) target_pwm = target_pwm + 23;
+    124              else target_pwm = 0;
+    125              }
+    126              target_rate = target_pwm * gain_remote_to_rate;//Ò¡¸ËĞÅºÅ×ªÎª½ÇËÙ¶ÈĞÅºÅ,µ¥Î»rad/s »¡¶ÈÖÆ
+    127              yaw_commend[1]= target_rate;//¿ÉÉ¾
+    128               /*½ÇËÙ¶ÈÎó²î*/
+    129              rate_error = (target_rate - (ahrs_pqr[2] - gyro_bias));//×ªËÙÎó²î,
+    130              
+    131              
+    132              /*Îó²îµÄµÍÍ¨ÂË²¨*/
+    133              d_rate_error = (rate_error - _rate_error)*alpha;//d_rate_error¸´ÓÃ,´Ë´¦´ú±í±ä»¯Á¿(delta)
+    134              rate_error = d_rate_error + _rate_error;
+    135              d_rate_error = d_rate_error/0.03333;            //d_rate_error¸´ÓÃ,´Ë´¦´ú±í±ä»¯ÂÊ(derivative)
+    136              _rate_error = rate_error;                       //_rate_errorÓÃÓÚÏÂÒ»´ÎÂË²¨£¬ÂËµô²»ÄÜÒªµÄ¸ßÆµ£¬¸ßÆµ»áÊ¹·É»úÎ²Õğµ´
+    137              
+    138              
+    139          #ifdef _avcs_tuning_   
+    140          //    if(*(pwm+4) <= 2838)
+    141          //    {
+    142          //      if(*(pwm+4) <= 2830)
+    143          //        gain_coll_compensation = 0.003165 * (2830 - *(pwm+4));//×Ü¾à²¹³¥ÓÃ
+    144          //      else
+    145          //        gain_coll_compensation = 0.0;
+    146          //    }
+    147           
+    148              if(*(pwm+4) <= 2838)
+    149              {
+    150                if(*(pwm+4) <= 2830)
+    151                  gain_D = (2830 - *(pwm+4))/50.0;//Î¢·ÖÓÃ
+    152                else
+    153                  gain_D = 0.0;
+    154              }
+    155          #endif
+    156              
+    157              /*Ò»°ãÄ£Ê½*/
+    158              if(*(pwm+1) <= 2838)//·ÇËøÎ²Ä£Ê½/·Çavcs
+    159                {
+    160          #ifdef _avcs_tuning_
+    161                  gain_P = 0.3240 * (2846 - *(pwm+1));//Èç¹û100%¸Ğ¶È¶¼²»¹»ÓÃ,ĞŞ¸Ä±ÈÀı
+    162          #endif
+    163                  in_loop_yaw_PID[0] = gain_P;//¿ÉÉ¾
+    164                  in_loop_yaw_PID[1] = 0;//¿ÉÉ¾
+    165                  in_loop_yaw_PID[2] = gain_D;//gain_coll_compensation;//¿ÉÉ¾//×Ü¾à²¹³¥ÓÃ
+    166                  
+    167                  i_rate_error = 0.0;
+    168                  flag_breach_limit = 0;
+    169                  
+    170                  /*P¿ØÖÆÆ÷*/
+    171                  yaw_out = rate_error * gain_P;
+    172          //        yaw_out += gain_coll_compensation * (coll_zero - *(pwm+2));        //×Ü¾à²¹³¥ÓÃ
+    173                  
+    174                  if(yaw_out > output_limit) 
+    175                  {
+    176                    yaw_out = output_limit;
+    177                  }
+    178                  else if(yaw_out < -output_limit)
+    179                  {
+    180                    yaw_out = -output_limit;
+    181                  } 
+    182                  *pwm = output_mid + _Direction_(yaw_out);//_Direction_ÎªÊä³ö·½ÏòµÄ¶¨Òå
+    183                }
+    184              
+    185              /*ËøÎ²Ä£Ê½ avcs*/
+    186              else
+    187                {
+    188          #ifdef _avcs_tuning_
+    189                  gain_I = 0.0324 * (*(pwm+1) - 2830);//Èç¹û100%¸Ğ¶È¶¼²»¹»ÓÃ,ĞŞ¸Ä±ÈÀı
+    190          #endif
+    191                  in_loop_yaw_PID[0] = gain_P;//¿ÉÉ¾
+    192                  in_loop_yaw_PID[1] = gain_I;//¿ÉÉ¾
+    193                  in_loop_yaw_PID[2] = gain_D;//gain_coll_compensation;//¿ÉÉ¾//×Ü¾à²¹³¥ÓÃ
+    194                  if(((!flag_breach_limit) || (i_rate_error>0&&rate_error<0) || (i_rate_error<0&&rate_error>0)))//Ã»ÓĞ»ı·Ö±¥ºÍ,»òÕßÍË³ö»ı·Ö±¥ºÍ
+    195                  {
+    196          //        if (abs(ahrs_pqr[2] - gyro_bias)<0.5)
+    197                  i_rate_error += (tar_rate_pppp - (ahrs_pqr[2] - gyro_bias));
+    198                  }
+    199                  /*PI¿ØÖÆÆ÷,PID¶¼ÓĞ,Ö÷ÒªÊÇPI²ÎÊı×÷ÓÃ,DÔöÒæÎª0²»ÆğÖ÷Òª×÷ÓÃ*/
+    200                  if(rate_error <0.0)
+    201                    yaw_out = rate_error*gain_P*2.0*(1.0+abs(rate_error/6.0)) + i_rate_error*gain_I + d_rate_error*gain_D;
+    202                  else
+    203                    yaw_out = rate_error*gain_P*(1.0+abs(rate_error/6.0)) + i_rate_error*gain_I + d_rate_error*gain_D;
+    204          //        yaw_out += gain_coll_compensation * (coll_zero - *(pwm+2));        //×Ü¾à²¹³¥ÓÃ
+    205                  
+    206                  if(yaw_out > output_limit) 
+    207                  {
+    208                    flag_breach_limit = 1;
+    209                    yaw_out = output_limit;
+    210                  }
+    211                  else if(yaw_out < -output_limit)
+    212                  {
+    213                    flag_breach_limit = 1;
+    214                    yaw_out = -output_limit;
+    215                  } 
+    216                  else
+    217                  {
+    218                    flag_breach_limit = 0;  
+    219                  }
+    220                  *pwm = output_mid + _Direction_(yaw_out);//_Direction_ÎªÊä³ö·½ÏòµÄ¶¨Òå
+    221                }
+    222                tar_rate_pppppppp =   tar_rate_ppppppp;
+    223                tar_rate_ppppppp =    tar_rate_pppppp;
+    224                tar_rate_pppppp =     tar_rate_ppppp;
+    225                tar_rate_ppppp =      tar_rate_pppp;
+    226                tar_rate_pppp =       tar_rate_ppp;
+    227                tar_rate_ppp =        tar_rate_pp;
+    228                tar_rate_pp =         tar_rate_p;
+    229                tar_rate_p =          target_rate;
+    230            } 
+    231          }
+   \   0000006A   18B0               ADD         SP,#+96
+   \   0000006C   F0BC               POP         {R4-R7}
+   \   0000006E   01BC               POP         {R0}
+   \   00000070   0047               BX          R0                 ;; return
+   \                     ??avcs_2:
+   \   00000072   401C               ADD         R0,R0,#+1
+   \   00000074   111C               MOV         R1,R2
+   \   00000076   C92A               CMP         R2,#+201
+   \   00000078   0FDA               BGE         ??avcs_6
+   \   0000007A   0090               STR         R0,[SP, #+0]
+   \   0000007C   05AD               ADD         R5,SP,#+20
+   \   0000007E   05A8               ADD         R0,SP,#+20
+   \   00000080   03C8               LDMIA       R0!,{R0,R1}
+   \   00000082   0022               MOV         R2,#+0
+   \   00000084   D44B               LDR         R3,??avcs_7        ;; 0x40690000
+   \   00000086   ........           _BLF        __dDiv,??__dDiv??rT
+   \   0000008A   03C5               STMIA       R5!,{R0,R1}
+   \   0000008C   07A8               ADD         R0,SP,#+28
+   \   0000008E   03C8               LDMIA       R0!,{R0,R1}
+   \   00000090   0022               MOV         R2,#+0
+   \   00000092   D14B               LDR         R3,??avcs_7        ;; 0x40690000
+   \   00000094   ........           _BLF        __dDiv,??__dDiv??rT
+   \   00000098   D7E7               B           ??avcs_3
+   \                     ??avcs_6:
+   \   0000009A   D829               CMP         R1,#+216
+   \   0000009C   03DA               BGE         ??avcs_8
+   \   0000009E   0090               STR         R0,[SP, #+0]
+   \   000000A0   1798               LDR         R0,[SP, #+92]
+   \   000000A2   CE49               LDR         R1,??avcs_7+0x4    ;; 0xcc4
+   \   000000A4   D4E7               B           ??avcs_4
+   \                     ??avcs_8:
+   \   000000A6   E729               CMP         R1,#+231
+   \   000000A8   03DA               BGE         ??avcs_9
+   \   000000AA   0090               STR         R0,[SP, #+0]
+   \   000000AC   1798               LDR         R0,[SP, #+92]
+   \   000000AE   CC49               LDR         R1,??avcs_7+0x8    ;; 0x968
+   \   000000B0   CEE7               B           ??avcs_4
+   \                     ??avcs_9:
+   \   000000B2   1798               LDR         R0,[SP, #+92]
+   \   000000B4   0068               LDR         R0,[R0, #+0]
+   \   000000B6   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   000000BA   05AA               ADD         R2,SP,#+20
+   \   000000BC   0CCA               LDMIA       R2!,{R2,R3}
+   \   000000BE   ........           _BLF        __dSub,??__dSub??rT
+   \   000000C2   ........           _BLF        __doubleToLong,??__doubleToLong??rT
+   \   000000C6   1799               LDR         R1,[SP, #+92]
+   \   000000C8   4968               LDR         R1,[R1, #+4]
+   \   000000CA   C64A               LDR         R2,??avcs_7+0xC    ;; 0xb17
+   \   000000CC   9142               CMP         R1,R2
+   \   000000CE   0ADB               BLT         ??avcs_10
+   \   000000D0   1828               CMP         R0,#+24
+   \   000000D2   01DB               BLT         ??avcs_11
+   \   000000D4   1738               SUB         R0,#+23
+   \   000000D6   06E0               B           ??avcs_10
+   \                     ??avcs_11:
+   \   000000D8   1621               MOV         R1,#+22
+   \   000000DA   C943               MVN         R1,R1              ;; #-23
+   \   000000DC   8842               CMP         R0,R1
+   \   000000DE   01DA               BGE         ??avcs_12
+   \   000000E0   1730               ADD         R0,#+23
+   \   000000E2   00E0               B           ??avcs_10
+   \                     ??avcs_12:
+   \   000000E4   0020               MOV         R0,#+0
+   \                     ??avcs_10:
+   \   000000E6   09AD               ADD         R5,SP,#+36
+   \   000000E8   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   000000EC   021C               MOV         R2,R0
+   \   000000EE   0B1C               MOV         R3,R1
+   \   000000F0   BD48               LDR         R0,??avcs_7+0x10   ;; 0x3126e979
+   \   000000F2   BE49               LDR         R1,??avcs_7+0x14   ;; 0xbf7cac08
+   \   000000F4   ........           _BLF        __dMul,??__dMul??rT
+   \   000000F8   03C5               STMIA       R5!,{R0,R1}
+   \   000000FA   BD4A               LDR         R2,??avcs_7+0x18   ;; yaw_commend + 8
+   \   000000FC   09A8               ADD         R0,SP,#+36
+   \   000000FE   03C8               LDMIA       R0!,{R0,R1}
+   \   00000100   03C2               STMIA       R2!,{R0,R1}
+   \   00000102   9C48               LDR         R0,??avcs_1+0x4    ;; ahrs_pqr + 16
+   \   00000104   03C8               LDMIA       R0!,{R0,R1}
+   \   00000106   07AA               ADD         R2,SP,#+28
+   \   00000108   0CCA               LDMIA       R2!,{R2,R3}
+   \   0000010A   ........           _BLF        __dSub,??__dSub??rT
+   \   0000010E   03C5               STMIA       R5!,{R0,R1}
+   \   00000110   09A8               ADD         R0,SP,#+36
+   \   00000112   03C8               LDMIA       R0!,{R0,R1}
+   \   00000114   0BAA               ADD         R2,SP,#+44
+   \   00000116   0CCA               LDMIA       R2!,{R2,R3}
+   \   00000118   ........           _BLF        __dSub,??__dSub??rT
+   \   0000011C   221C               MOV         R2,R4
+   \   0000011E   2432               ADD         R2,#+36
+   \   00000120   0CCA               LDMIA       R2!,{R2,R3}
+   \   00000122   ........           _BLF        __dSub,??__dSub??rT
+   \   00000126   061C               MOV         R6,R0
+   \   00000128   0F1C               MOV         R7,R1
+   \   0000012A   01AD               ADD         R5,SP,#+4
+   \   0000012C   201C               MOV         R0,R4
+   \   0000012E   2430               ADD         R0,#+36
+   \   00000130   03C8               LDMIA       R0!,{R0,R1}
+   \   00000132   321C               MOV         R2,R6
+   \   00000134   3B1C               MOV         R3,R7
+   \   00000136   ........           _BLF        __dAdd,??__dAdd??rT
+   \   0000013A   03C5               STMIA       R5!,{R0,R1}
+   \   0000013C   15AD               ADD         R5,SP,#+84
+   \   0000013E   301C               MOV         R0,R6
+   \   00000140   391C               MOV         R1,R7
+   \   00000142   AC4A               LDR         R2,??avcs_7+0x1C   ;; 0x37f38c54
+   \   00000144   AC4B               LDR         R3,??avcs_7+0x20   ;; 0x3fa110a1
+   \   00000146   ........           _BLF        __dDiv,??__dDiv??rT
+   \   0000014A   03C5               STMIA       R5!,{R0,R1}
+   \   0000014C   221C               MOV         R2,R4
+   \   0000014E   2432               ADD         R2,#+36
+   \   00000150   01A8               ADD         R0,SP,#+4
+   \   00000152   03C8               LDMIA       R0!,{R0,R1}
+   \   00000154   03C2               STMIA       R2!,{R0,R1}
+   \   00000156   0026               MOV         R6,#+0
+   \   00000158   0027               MOV         R7,#+0
+   \   0000015A   1798               LDR         R0,[SP, #+92]
+   \   0000015C   0069               LDR         R0,[R0, #+16]
+   \   0000015E   A149               LDR         R1,??avcs_7+0xC    ;; 0xb17
+   \   00000160   8842               CMP         R0,R1
+   \   00000162   15DA               BGE         ??avcs_13
+   \   00000164   1798               LDR         R0,[SP, #+92]
+   \   00000166   0069               LDR         R0,[R0, #+16]
+   \   00000168   0839               SUB         R1,#+8
+   \   0000016A   8842               CMP         R0,R1
+   \   0000016C   0DDA               BGE         ??avcs_14
+   \   0000016E   251C               MOV         R5,R4
+   \   00000170   0C35               ADD         R5,#+12
+   \   00000172   481E               SUB         R0,R1,#+1
+   \   00000174   1799               LDR         R1,[SP, #+92]
+   \   00000176   0969               LDR         R1,[R1, #+16]
+   \   00000178   401A               SUB         R0,R0,R1
+   \   0000017A   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   0000017E   0022               MOV         R2,#+0
+   \   00000180   9E4B               LDR         R3,??avcs_7+0x24   ;; 0x40490000
+   \   00000182   ........           _BLF        __dDiv,??__dDiv??rT
+   \   00000186   03C5               STMIA       R5!,{R0,R1}
+   \   00000188   02E0               B           ??avcs_13
+   \                     ??avcs_14:
+   \   0000018A   201C               MOV         R0,R4
+   \   0000018C   0C30               ADD         R0,#+12
+   \   0000018E   C0C0               STMIA       R0!,{R6,R7}
+   \                     ??avcs_13:
+   \   00000190   03AA               ADD         R2,SP,#+12
+   \   00000192   201C               MOV         R0,R4
+   \   00000194   2C30               ADD         R0,#+44
+   \   00000196   03C8               LDMIA       R0!,{R0,R1}
+   \   00000198   03C2               STMIA       R2!,{R0,R1}
+   \   0000019A   994D               LDR         R5,??avcs_7+0x28   ;; in_loop_yaw_PID
+   \   0000019C   1798               LDR         R0,[SP, #+92]
+   \   0000019E   4068               LDR         R0,[R0, #+4]
+   \   000001A0   9049               LDR         R1,??avcs_7+0xC    ;; 0xb17
+   \   000001A2   8842               CMP         R0,R1
+   \   000001A4   61DA               BGE         ??avcs_15
+   \   000001A6   9748               LDR         R0,??avcs_7+0x2C   ;; 0xb1e
+   \   000001A8   1799               LDR         R1,[SP, #+92]
+   \   000001AA   4968               LDR         R1,[R1, #+4]
+   \   000001AC   401A               SUB         R0,R0,R1
+   \   000001AE   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   000001B2   954A               LDR         R2,??avcs_7+0x30   ;; 0x7ef9db23
+   \   000001B4   954B               LDR         R3,??avcs_7+0x34   ;; 0x3fd4bc6a
+   \   000001B6   ........           _BLF        __dMul,??__dMul??rT
+   \   000001BA   221D               ADD         R2,R4,#+4
+   \   000001BC   03C2               STMIA       R2!,{R0,R1}
+   \   000001BE   03C5               STMIA       R5!,{R0,R1}
+   \   000001C0   083D               SUB         R5,#+8
+   \   000001C2   2A1C               MOV         R2,R5
+   \   000001C4   0832               ADD         R2,#+8
+   \   000001C6   C0C2               STMIA       R2!,{R6,R7}
+   \   000001C8   1035               ADD         R5,#+16
+   \   000001CA   221C               MOV         R2,R4
+   \   000001CC   0C32               ADD         R2,#+12
+   \   000001CE   0CCA               LDMIA       R2!,{R2,R3}
+   \   000001D0   0CC5               STMIA       R5!,{R2,R3}
+   \   000001D2   03AA               ADD         R2,SP,#+12
+   \   000001D4   C0C2               STMIA       R2!,{R6,R7}
+   \   000001D6   0025               MOV         R5,#+0
+   \   000001D8   01AA               ADD         R2,SP,#+4
+   \   000001DA   0CCA               LDMIA       R2!,{R2,R3}
+   \   000001DC   ........           _BLF        __dMul,??__dMul??rT
+   \   000001E0   061C               MOV         R6,R0
+   \   000001E2   0F1C               MOV         R7,R1
+   \   000001E4   0122               MOV         R2,#+1
+   \   000001E6   8A4B               LDR         R3,??avcs_7+0x38   ;; 0x407ae000
+   \   000001E8   ........           _BLF        __dGreaterEqual,??__dGreaterEqual??rT
+   \   000001EC   0028               CMP         R0,#+0
+   \   000001EE   02D0               BEQ         ??avcs_16
+   \                     ??avcs_17:
+   \   000001F0   0026               MOV         R6,#+0
+   \   000001F2   874F               LDR         R7,??avcs_7+0x38   ;; 0x407ae000
+   \   000001F4   09E0               B           ??avcs_18
+   \                     ??avcs_16:
+   \   000001F6   301C               MOV         R0,R6
+   \   000001F8   391C               MOV         R1,R7
+   \   000001FA   0022               MOV         R2,#+0
+   \   000001FC   854B               LDR         R3,??avcs_7+0x3C   ;; 0xc07ae000
+   \   000001FE   ........           _BLF        __dLess,??__dLess??rT
+   \   00000202   0028               CMP         R0,#+0
+   \   00000204   01D0               BEQ         ??avcs_18
+   \                     ??avcs_19:
+   \   00000206   0026               MOV         R6,#+0
+   \   00000208   824F               LDR         R7,??avcs_7+0x3C   ;; 0xc07ae000
+   \                     ??avcs_18:
+   \   0000020A   2570               STRB        R5,[R4, #+0]
+   \   0000020C   221C               MOV         R2,R4
+   \   0000020E   2C32               ADD         R2,#+44
+   \   00000210   03A8               ADD         R0,SP,#+12
+   \   00000212   03C8               LDMIA       R0!,{R0,R1}
+   \   00000214   03C2               STMIA       R2!,{R0,R1}
+   \   00000216   179D               LDR         R5,[SP, #+92]
+   \   00000218   0020               MOV         R0,#+0
+   \   0000021A   7F49               LDR         R1,??avcs_7+0x40   ;; 0x40a62c00
+   \   0000021C   321C               MOV         R2,R6
+   \   0000021E   3B1C               MOV         R3,R7
+   \   00000220   ........           _BLF        __dSub,??__dSub??rT
+   \   00000224   ........           _BLF        __doubleToLong,??__doubleToLong??rT
+   \   00000228   2860               STR         R0,[R5, #+0]
+   \   0000022A   221C               MOV         R2,R4
+   \   0000022C   3432               ADD         R2,#+52
+   \   0000022E   201C               MOV         R0,R4
+   \   00000230   3C30               ADD         R0,#+60
+   \   00000232   03C8               LDMIA       R0!,{R0,R1}
+   \   00000234   03C2               STMIA       R2!,{R0,R1}
+   \   00000236   221C               MOV         R2,R4
+   \   00000238   3C32               ADD         R2,#+60
+   \   0000023A   606C               LDR         R0,[R4, #+68]
+   \   0000023C   A16C               LDR         R1,[R4, #+72]
+   \   0000023E   03C2               STMIA       R2!,{R0,R1}
+   \   00000240   E06C               LDR         R0,[R4, #+76]
+   \   00000242   216D               LDR         R1,[R4, #+80]
+   \   00000244   6064               STR         R0,[R4, #+68]
+   \   00000246   A164               STR         R1,[R4, #+72]
+   \   00000248   606D               LDR         R0,[R4, #+84]
+   \   0000024A   A16D               LDR         R1,[R4, #+88]
+   \   0000024C   E064               STR         R0,[R4, #+76]
+   \   0000024E   2165               STR         R1,[R4, #+80]
+   \   00000250   E06D               LDR         R0,[R4, #+92]
+   \   00000252   216E               LDR         R1,[R4, #+96]
+   \   00000254   6065               STR         R0,[R4, #+84]
+   \   00000256   A165               STR         R1,[R4, #+88]
+   \   00000258   606E               LDR         R0,[R4, #+100]
+   \   0000025A   A16E               LDR         R1,[R4, #+104]
+   \   0000025C   E065               STR         R0,[R4, #+92]
+   \   0000025E   2166               STR         R1,[R4, #+96]
+   \   00000260   09A8               ADD         R0,SP,#+36
+   \   00000262   03C8               LDMIA       R0!,{R0,R1}
+   \   00000264   6066               STR         R0,[R4, #+100]
+   \   00000266   A166               STR         R1,[R4, #+104]
+   \   00000268   F3E6               B           ??avcs_5
+   \                     ??avcs_15:
+   \   0000026A   0DAE               ADD         R6,SP,#+52
+   \   0000026C   1798               LDR         R0,[SP, #+92]
+   \   0000026E   4068               LDR         R0,[R0, #+4]
+   \   00000270   6A49               LDR         R1,??avcs_7+0x44   ;; 0xfffff4f2
+   \   00000272   4018               ADD         R0,R0,R1
+   \   00000274   ........           _BLF        __longToDouble,??__longToDouble??rT
+   \   00000278   694A               LDR         R2,??avcs_7+0x48   ;; 0x98c7e282
+   \   0000027A   6A4B               LDR         R3,??avcs_7+0x4C   ;; 0x3fa096bb
+   \   0000027C   ........           _BLF        __dMul,??__dMul??rT
+   \   00000280   03C6               STMIA       R6!,{R0,R1}
+   \   00000282   201D               ADD         R0,R4,#+4
+   \   00000284   C0C8               LDMIA       R0!,{R6,R7}
+   \   00000286   C0C5               STMIA       R5!,{R6,R7}
+   \   00000288   083D               SUB         R5,#+8
+   \   0000028A   2A1C               MOV         R2,R5
+   \   0000028C   0832               ADD         R2,#+8
+   \   0000028E   0DA8               ADD         R0,SP,#+52
+   \   00000290   03C8               LDMIA       R0!,{R0,R1}
+   \   00000292   03C2               STMIA       R2!,{R0,R1}
+   \   00000294   1035               ADD         R5,#+16
+   \   00000296   201C               MOV         R0,R4
+   \   00000298   0C30               ADD         R0,#+12
+   \   0000029A   03C8               LDMIA       R0!,{R0,R1}
+   \   0000029C   03C5               STMIA       R5!,{R0,R1}
+   \   0000029E   2078               LDRB        R0,[R4, #+0]
+   \   000002A0   0028               CMP         R0,#+0
+   \   000002A2   1FD0               BEQ         ??avcs_20
+   \   000002A4   03A8               ADD         R0,SP,#+12
+   \   000002A6   03C8               LDMIA       R0!,{R0,R1}
+   \   000002A8   0122               MOV         R2,#+1
+   \   000002AA   0023               MOV         R3,#+0
+   \   000002AC   ........           _BLF        __dGreaterEqual,??__dGreaterEqual??rT
+   \   000002B0   0028               CMP         R0,#+0
+   \   000002B2   07D0               BEQ         ??avcs_21
+   \   000002B4   01A8               ADD         R0,SP,#+4
+   \   000002B6   03C8               LDMIA       R0!,{R0,R1}
+   \   000002B8   0022               MOV         R2,#+0
+   \   000002BA   0023               MOV         R3,#+0
+   \   000002BC   ........           _BLF        __dLess,??__dLess??rT
+   \   000002C0   0028               CMP         R0,#+0
+   \   000002C2   0FD1               BNE         ??avcs_20
+   \                     ??avcs_21:
+   \   000002C4   03A8               ADD         R0,SP,#+12
+   \   000002C6   03C8               LDMIA       R0!,{R0,R1}
+   \   000002C8   0022               MOV         R2,#+0
+   \   000002CA   0023               MOV         R3,#+0
+   \   000002CC   ........           _BLF        __dLess,??__dLess??rT
+   \   000002D0   0028               CMP         R0,#+0
+   \   000002D2   15D0               BEQ         ??avcs_22
+   \   000002D4   01A8               ADD         R0,SP,#+4
+   \   000002D6   03C8               LDMIA       R0!,{R0,R1}
+   \   000002D8   0122               MOV         R2,#+1
+   \   000002DA   0023               MOV         R3,#+0
+   \   000002DC   ........           _BLF        __dGreaterEqual,??__dGreaterEqual??rT
+   \   000002E0   0028               CMP         R0,#+0
+   \   000002E2   0DD0               BEQ         ??avcs_22
+   \                     ??avcs_20:
+   \   000002E4   03AD               ADD         R5,SP,#+12
+   \   000002E6   E06C               LDR         R0,[R4, #+76]
+   \   000002E8   216D               LDR         R1,[R4, #+80]
+   \   000002EA   0BAA               ADD         R2,SP,#+44
+   \   000002EC   0CCA               LDMIA       R2!,{R2,R3}
+   \   000002EE   ........           _BLF        __dSub,??__dSub??rT
+   \   000002F2   021C               MOV         R2,R0
+   \   000002F4   0B1C               MOV         R3,R1
+   \   000002F6   03A8               ADD         R0,SP,#+12
+   \   000002F8   03C8               LDMIA       R0!,{R0,R1}
+   \   000002FA   ........           _BLF        __dAdd,??__dAdd??rT
+   \   000002FE   03C5               STMIA       R5!,{R0,R1}
+   \                     ??avcs_22:
+   \   00000300   0FAD               ADD         R5,SP,#+60
+   \   00000302   15A8               ADD         R0,SP,#+84
+   \   00000304   0CC8               LDMIA       R0!,{R2,R3}
+   \   00000306   201C               MOV         R0,R4
+   \   00000308   0C30               ADD         R0,#+12
+   \   0000030A   03C8               LDMIA       R0!,{R0,R1}
+   \   0000030C   ........           _BLF        __dMul,??__dMul??rT
+   \   00000310   03C5               STMIA       R5!,{R0,R1}
+   \   00000312   01A8               ADD         R0,SP,#+4
+   \   00000314   0CC8               LDMIA       R0!,{R2,R3}
+   \   00000316   301C               MOV         R0,R6
+   \   00000318   391C               MOV         R1,R7
+   \   0000031A   ........           _BLF        __dMul,??__dMul??rT
+   \   0000031E   03C5               STMIA       R5!,{R0,R1}
+   \   00000320   03A8               ADD         R0,SP,#+12
+   \   00000322   03C8               LDMIA       R0!,{R0,R1}
+   \   00000324   0DAA               ADD         R2,SP,#+52
+   \   00000326   0CCA               LDMIA       R2!,{R2,R3}
+   \   00000328   ........           _BLF        __dMul,??__dMul??rT
+   \   0000032C   03C5               STMIA       R5!,{R0,R1}
+   \   0000032E   01A8               ADD         R0,SP,#+4
+   \   00000330   03C8               LDMIA       R0!,{R0,R1}
+   \   00000332   0022               MOV         R2,#+0
+   \   00000334   0023               MOV         R3,#+0
+   \   00000336   ........           _BLF        __dLess,??__dLess??rT
+   \   0000033A   0028               CMP         R0,#+0
+   \   0000033C   01A8               ADD         R0,SP,#+4
+   \   0000033E   03C8               LDMIA       R0!,{R0,R1}
+   \   00000340   1CD0               BEQ         ??avcs_23
+   \   00000342   0022               MOV         R2,#+0
+   \   00000344   384B               LDR         R3,??avcs_7+0x50   ;; 0x40180000
+   \   00000346   ........           _BLF        __dDiv,??__dDiv??rT
+   \   0000034A   4900               LSL         R1,R1,#+1
+   \   0000034C   4908               LSR         R1,R1,#+1
+   \   0000034E   0022               MOV         R2,#+0
+   \   00000350   364B               LDR         R3,??avcs_7+0x54   ;; 0x3ff00000
+   \   00000352   ........           _BLF        __dAdd,??__dAdd??rT
+   \   00000356   061C               MOV         R6,R0
+   \   00000358   0F1C               MOV         R7,R1
+   \   0000035A   11A8               ADD         R0,SP,#+68
+   \   0000035C   03C8               LDMIA       R0!,{R0,R1}
+   \   0000035E   0022               MOV         R2,#+0
+   \   00000360   8023               MOV         R3,#+128
+   \   00000362   DB05               LSL         R3,R3,#+23         ;; #+1073741824
+   \   00000364   ........           _BLF        __dMul,??__dMul??rT
+   \   00000368   321C               MOV         R2,R6
+   \   0000036A   3B1C               MOV         R3,R7
+   \   0000036C   12E0               B           ??avcs_24
+   \   0000036E   C046               NOP         
+   \                     ??avcs_1:
+   \   00000370   ........           DC32        ??flag_breach_limit
+   \   00000374   ........           DC32        ahrs_pqr + 16
+   \   00000378   160B0000           DC32        0xb16
+   \                     ??avcs_23:
+   \   0000037C   0022               MOV         R2,#+0
+   \   0000037E   2A4B               LDR         R3,??avcs_7+0x50   ;; 0x40180000
+   \   00000380   ........           _BLF        __dDiv,??__dDiv??rT
+   \   00000384   4900               LSL         R1,R1,#+1
+   \   00000386   4908               LSR         R1,R1,#+1
+   \   00000388   0022               MOV         R2,#+0
+   \   0000038A   284B               LDR         R3,??avcs_7+0x54   ;; 0x3ff00000
+   \   0000038C   ........           _BLF        __dAdd,??__dAdd??rT
+   \   00000390   11AA               ADD         R2,SP,#+68
+   \   00000392   0CCA               LDMIA       R2!,{R2,R3}
+   \                     ??avcs_24:
+   \   00000394   ........           _BLF        __dMul,??__dMul??rT
+   \   00000398   13AA               ADD         R2,SP,#+76
+   \   0000039A   0CCA               LDMIA       R2!,{R2,R3}
+   \   0000039C   ........           _BLF        __dAdd,??__dAdd??rT
+   \   000003A0   0FAA               ADD         R2,SP,#+60
+   \   000003A2   0CCA               LDMIA       R2!,{R2,R3}
+   \   000003A4   ........           _BLF        __dAdd,??__dAdd??rT
+   \   000003A8   061C               MOV         R6,R0
+   \   000003AA   0F1C               MOV         R7,R1
+   \   000003AC   301C               MOV         R0,R6
+   \   000003AE   391C               MOV         R1,R7
+   \   000003B0   0122               MOV         R2,#+1
+   \   000003B2   174B               LDR         R3,??avcs_7+0x38   ;; 0x407ae000
+   \   000003B4   ........           _BLF        __dGreaterEqual,??__dGreaterEqual??rT
+   \   000003B8   0028               CMP         R0,#+0
+   \   000003BA   01D0               BEQ         ??avcs_25
+   \   000003BC   0125               MOV         R5,#+1
+   \   000003BE   17E7               B           ??avcs_17
+   \                     ??avcs_25:
+   \   000003C0   301C               MOV         R0,R6
+   \   000003C2   391C               MOV         R1,R7
+   \   000003C4   0022               MOV         R2,#+0
+   \   000003C6   134B               LDR         R3,??avcs_7+0x3C   ;; 0xc07ae000
+   \   000003C8   ........           _BLF        __dLess,??__dLess??rT
+   \   000003CC   0028               CMP         R0,#+0
+   \   000003CE   01D0               BEQ         ??avcs_26
+   \   000003D0   0125               MOV         R5,#+1
+   \   000003D2   18E7               B           ??avcs_19
+   \                     ??avcs_26:
+   \   000003D4   0025               MOV         R5,#+0
+   \   000003D6   18E7               B           ??avcs_18
+   \                     ??avcs_7:
+   \   000003D8   00006940           DC32        0x40690000
+   \   000003DC   C40C0000           DC32        0xcc4
+   \   000003E0   68090000           DC32        0x968
+   \   000003E4   170B0000           DC32        0xb17
+   \   000003E8   79E92631           DC32        0x3126e979
+   \   000003EC   08AC7CBF           DC32        0xbf7cac08
+   \   000003F0   ........           DC32        yaw_commend + 8
+   \   000003F4   548CF337           DC32        0x37f38c54
+   \   000003F8   A110A13F           DC32        0x3fa110a1
+   \   000003FC   00004940           DC32        0x40490000
+   \   00000400   ........           DC32        in_loop_yaw_PID
+   \   00000404   1E0B0000           DC32        0xb1e
+   \   00000408   23DBF97E           DC32        0x7ef9db23
+   \   0000040C   6ABCD43F           DC32        0x3fd4bc6a
+   \   00000410   00E07A40           DC32        0x407ae000
+   \   00000414   00E07AC0           DC32        0xc07ae000
+   \   00000418   002CA640           DC32        0x40a62c00
+   \   0000041C   F2F4FFFF           DC32        0xfffff4f2
+   \   00000420   82E2C798           DC32        0x98c7e282
+   \   00000424   BB96A03F           DC32        0x3fa096bb
+   \   00000428   00001840           DC32        0x40180000
+   \   0000042C   0000F03F           DC32        0x3ff00000
+
+   \                                 In segment DATA_I, align 4, align-sorted
+   \                     ??flag_breach_limit:
+   \   00000000                      DS8 1
+   \   00000001                      REQUIRE `?<Initializer for flag_breach_limit>`
+   \   00000001                      DS8 3
+   \   00000004                      DS8 8
+   \   0000000C                      REQUIRE `?<Initializer for gain_P>`
+   \   0000000C                      DS8 8
+   \   00000014                      REQUIRE `?<Initializer for gain_D>`
+   \   00000014                      DS8 8
+   \   0000001C                      REQUIRE `?<Initializer for manual_mid>`
+   \   0000001C                      DS8 8
+   \   00000024                      REQUIRE `?<Initializer for gyro_bias>`
+   \   00000024                      DS8 8
+   \   0000002C                      REQUIRE `?<Initializer for _rate_error>`
+   \   0000002C                      DS8 8
+   \   00000034                      REQUIRE `?<Initializer for i_rate_error>`
+   \   00000034                      DS8 8
+   \   0000003C                      REQUIRE `?<Initializer for tar_rate_ppppppp>`
+   \   0000003C                      DS8 8
+   \   00000044                      REQUIRE `?<Initializer for tar_rate_pppppp>`
+   \   00000044                      DS8 8
+   \   0000004C                      REQUIRE `?<Initializer for tar_rate_ppppp>`
+   \   0000004C                      DS8 8
+   \   00000054                      REQUIRE `?<Initializer for tar_rate_pppp>`
+   \   00000054                      DS8 8
+   \   0000005C                      REQUIRE `?<Initializer for tar_rate_ppp>`
+   \   0000005C                      DS8 8
+   \   00000064                      REQUIRE `?<Initializer for tar_rate_pp>`
+   \   00000064                      DS8 8
+   \   0000006C                      REQUIRE `?<Initializer for tar_rate_p>`
+   \   0000006C                      DS8 4
+   \   00000070                      REQUIRE `?<Initializer for stage>`
+
+   \                                 In segment DATA_ID, align 4, align-sorted
+   \                     `?<Initializer for flag_breach_limit>`:
+   \   00000000   00                 DC8 0
+   \   00000001   000000             DC8 0, 0, 0
+   \                     `?<Initializer for gain_P>`:
+   \   00000004   000000000000       DC32 0H, 40500000H
+   \              5040        
+   \                     `?<Initializer for gain_D>`:
+   \   0000000C   000000000000       DC32 0H, 0H
+   \              0000        
+   \                     `?<Initializer for manual_mid>`:
+   \   00000014   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0
+   \              0000        
+   \                     `?<Initializer for gyro_bias>`:
+   \   0000001C   000000000000       DC8 0, 0, 0, 0, 0, 0, 0, 0
+   \              0000        
+   \                     `?<Initializer for _rate_error>`:
+   \   00000024   000000000000       DC32 0H, 0H
+   \              0000        
+   \                     `?<Initializer for i_rate_error>`:
+   \   0000002C   000000000000       DC32 0H, 0H
+   \              0000        
+   \                     `?<Initializer for tar_rate_ppppppp>`:
+   \   00000034   000000000000       DC32 0H, 0H
+   \              0000        
+   \                     `?<Initializer for tar_rate_pppppp>`:
+   \   0000003C   000000000000       DC32 0H, 0H
+   \              0000        
+   \                     `?<Initializer for tar_rate_ppppp>`:
+   \   00000044   000000000000       DC32 0H, 0H
+   \              0000        
+   \                     `?<Initializer for tar_rate_pppp>`:
+   \   0000004C   000000000000       DC32 0H, 0H
+   \              0000        
+   \                     `?<Initializer for tar_rate_ppp>`:
+   \   00000054   000000000000       DC32 0H, 0H
+   \              0000        
+   \                     `?<Initializer for tar_rate_pp>`:
+   \   0000005C   000000000000       DC32 0H, 0H
+   \              0000        
+   \                     `?<Initializer for tar_rate_p>`:
+   \   00000064   000000000000       DC32 0H, 0H
+   \              0000        
+   \                     `?<Initializer for stage>`:
+   \   0000006C   00000000           DC32 0
+
+   Maximum stack usage in bytes:
+
+     Function    CSTACK
+     --------    ------
+     avcs(int *)   116
+
+
+   Segment part sizes:
+
+     Function/Label                 Bytes
+     --------------                 -----
+     avcs(int *)                    1072
+     flag_breach_limit               112
+     ?<Initializer for flag_breach_limit>
+                                     112
+      Others                         132
+
+ 
+ 1 192 bytes in segment CODE
+   112 bytes in segment DATA_I
+   112 bytes in segment DATA_ID
+    12 bytes in segment INITTAB
+ 
+ 1 072 bytes of CODE  memory (+ 132 bytes shared)
+   112 bytes of CONST memory
+   112 bytes of DATA  memory
+
+Errors: none
+Warnings: 3

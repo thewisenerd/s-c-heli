@@ -1,0 +1,708 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./tools_files/filelist.xml">
+<title>HTLM Tables</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>jpperie</o:Author>
+  <o:LastAuthor>jpperie</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>4</o:TotalTime>
+  <o:Created>2006-05-09T14:11:00Z</o:Created>
+  <o:LastSaved>2006-05-12T09:29:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>292</o:Words>
+  <o:Characters>1666</o:Characters>
+  <o:Company>ATMEL_ES2</o:Company>
+  <o:Lines>13</o:Lines>
+  <o:Paragraphs>3</o:Paragraphs>
+  <o:CharactersWithSpaces>2045</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>110</w:Zoom>
+ </w:WordDocument>
+</xml><![endif]-->
+<link rel=Stylesheet type="text/css" media=all href="..\HTML\at91cdrom.css">
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Courier;
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:0;
+	mso-generic-font-family:modern;
+	mso-font-format:other;
+	mso-font-pitch:fixed;
+	mso-font-signature:3 0 0 0 1 0;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:Georgia;
+	panose-1:2 4 5 2 5 4 5 2 3 3;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:#006699;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#006699;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.bodyline, li.bodyline, div.bodyline
+	{mso-style-name:bodyline;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	background:white;
+	border:none;
+	mso-border-alt:solid #98AAB1 .75pt;
+	padding:0cm;
+	mso-padding-alt:0cm 0cm 0cm 0cm;
+	font-size:12.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.forumline, li.forumline, div.forumline
+	{mso-style-name:forumline;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	background:white;
+	border:none;
+	mso-border-alt:solid #006699 1.5pt;
+	padding:0cm;
+	mso-padding-alt:0cm 0cm 0cm 0cm;
+	font-size:12.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.maintitle, li.maintitle, div.maintitle
+	{mso-style-name:maintitle;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	line-height:120%;
+	mso-pagination:widow-orphan;
+	font-size:18.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;
+	font-weight:bold;}
+p.gen, li.gen, div.gen
+	{mso-style-name:gen;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.genmed, li.genmed, div.genmed
+	{mso-style-name:genmed;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:8.5pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.gensmall, li.gensmall, div.gensmall
+	{mso-style-name:gensmall;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:7.5pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.mainmenu, li.mainmenu, div.mainmenu
+	{mso-style-name:mainmenu;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:8.5pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.cattitle, li.cattitle, div.cattitle
+	{mso-style-name:cattitle;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:#006699;
+	letter-spacing:.85pt;
+	font-weight:bold;}
+p.forumlink, li.forumlink, div.forumlink
+	{mso-style-name:forumlink;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:#006699;
+	font-weight:bold;}
+p.nav, li.nav, div.nav
+	{mso-style-name:nav;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:8.5pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;
+	font-weight:bold;}
+p.topictitle, li.topictitle, div.topictitle
+	{mso-style-name:topictitle;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:8.5pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;
+	font-weight:bold;}
+p.name, li.name, div.name
+	{mso-style-name:name;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:8.5pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.postdetails, li.postdetails, div.postdetails
+	{mso-style-name:postdetails;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:7.5pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.postbody, li.postbody, div.postbody
+	{mso-style-name:postbody;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	line-height:15.05pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.code, li.code, div.code
+	{mso-style-name:code;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	background:#FAFAFA;
+	border:none;
+	mso-border-alt:solid #D1D7DC .75pt;
+	padding:0cm;
+	mso-padding-alt:0cm 0cm 0cm 0cm;
+	font-size:8.5pt;
+	font-family:Courier;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:#006600;}
+p.quote, li.quote, div.quote
+	{mso-style-name:quote;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	line-height:125%;
+	mso-pagination:widow-orphan;
+	background:#FAFAFA;
+	border:none;
+	mso-border-alt:solid #D1D7DC .75pt;
+	padding:0cm;
+	mso-padding-alt:0cm 0cm 0cm 0cm;
+	font-size:8.5pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:#444444;}
+p.copyright, li.copyright, div.copyright
+	{mso-style-name:copyright;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:7.5pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:#444444;
+	letter-spacing:-.85pt;}
+p.helpline, li.helpline, div.helpline
+	{mso-style-name:helpline;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	background:#DEE3E7;
+	font-size:12.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.style1, li.style1, div.style1
+	{mso-style-name:style1;
+	margin-right:0cm;
+	mso-margin-top-alt:auto;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+span.style11
+	{mso-style-name:style11;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:411899949;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1995702904 87822392 1888153250 1422847148 1231977238 1472881480 1340504664 -219509138 -1873757522 1455689666;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body bgcolor="#e5e5e5" lang=EN-GB link="#006699" vlink="#006699"
+style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<table border=1 cellspacing=0 cellpadding=0 width="100%" style='width:100.0%;
+ mso-cellspacing:0cm;border:none;mso-padding-alt:0cm 0cm 0cm 0cm' height="100%">
+ <tr>
+  <td style='border:solid #98AAB1 .75pt;background:white;padding:0cm 0cm 0cm 0cm'>
+  <table border=0 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+   style='width:100.0%;mso-cellspacing:0cm;background:white;border:solid #006699 1.5pt;
+   mso-padding-alt:0cm 0cm 0cm 0cm'>
+   <tr>
+    <td style='border:inset .75pt;padding:0cm 0cm 0cm 0cm'>
+    <p class=MsoNormal align=center style='text-align:center;line-height:120%'><b><span
+    style='font-size:18.5pt;font-family:Georgia;color:black'>IAR 4.31A
+    Compilation </span></b><b><span style='font-size:18.5pt;font-family:"Trebuchet MS";
+    color:black'><o:p></o:p></span></b></p>
+    </td>
+   </tr>
+  </table>
+  <p class=MsoNormal><span style='font-size:8.5pt;font-family:Verdana;
+  color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <table border=0 cellpadding=0 width="100%" style='width:100.0%;mso-cellspacing:
+   1.5pt;border:outset .75pt;mso-padding-alt:0cm 0cm 0cm 0cm'>
+   <tr style='height:245.25pt'>
+    <td style='border:inset .75pt;padding:.75pt .75pt .75pt .75pt;height:245.25pt'>
+    <h2><span style='font-size:10.0pt;font-family:Verdana'>Introduction<u1:p></u1:p><o:p></o:p></span></h2>
+    <p class=style1>The goal of this project is to describe the IAR compilation
+    with an AT91-based device<u1:p>.</u1:p></p>
+    <h2><span style='font-size:10.0pt;font-family:Verdana'>Cross compiling
+    using IAR 4.31A <u1:p></u1:p><o:p></o:p></span></h2>
+    <p class=style1>A default IAR project (Workspace) <b>.eww</b> file is
+    delivered with this example (in <b>compil</b> directory).<br>
+    The processor selected must be ARM7tm for compiler and assembler.<u1:p></u1:p></p>
+    <h2><span style='font-size:10.0pt;font-family:Verdana'>Compilation <u1:p></u1:p><o:p></o:p></span></h2>
+    <ul type=disc>
+     <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+         auto;mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><span
+         class=style11><span style='font-size:10.0pt;font-family:Verdana'>Open
+         the IAR Embedded Workbench IDE.</span></span><span style='font-family:
+         Verdana'><o:p></o:p></span></li>
+     <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+         auto;mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><span
+         class=style11><span style='font-size:10.0pt;font-family:Verdana'>Open
+         the project file from the directory compil/xxx.eww</span></span><span
+         style='font-family:Verdana'><o:p></o:p></span></li>
+     <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+         auto;mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><span
+         class=style11><span style='font-size:10.0pt;font-family:Verdana'>Build
+         the project<u1:p></span></span><span style='font-size:10.0pt;
+         font-family:Verdana'><br style='mso-special-character:line-break'>
+         <![if !supportLineBreakNewLine]><br style='mso-special-character:line-break'>
+         <![endif]></u1:p></span><span style='font-family:Verdana'><o:p></o:p></span></li>
+     <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+         auto;mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><span
+         style='font-family:Verdana'>C</span><span class=style11><span
+         style='font-size:10.0pt;font-family:Verdana'>onnect to the target
+         board with a JTAG ICE interface<u1:p></span></span><span
+         style='font-size:10.0pt;font-family:Verdana'><br>
+         </u1:p><span class=style11>The JTAG ICE interface can be selected from
+         the menu &quot;Project -&gt; Options&quot;, category
+         &quot;Debugger&quot; and select your ICE interface (for example
+         J-Link) in the setup tab.</span></span><span style='font-family:Verdana'><o:p></o:p></span></li>
+     <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+         auto;mso-list:l0 level1 lfo3;tab-stops:list 36.0pt'><span
+         class=style11><span style='font-size:10.0pt;font-family:Verdana'>Load
+         and debug this application using the &quot;Debug&quot; command<u1:p></u1:p></span><u1:p></u1:p></span><span
+         style='font-family:Verdana'><u1:p></u1:p><o:p></o:p></span></li>
+    </ul>
+    <table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+     style='width:100.0%;mso-cellspacing:0cm;background:white;border:solid #006699 1.5pt;
+     mso-padding-alt:0cm 0cm 0cm 0cm'>
+     <tr>
+      <td width="100%" style='width:100.0%;padding:0cm 0cm 0cm 0cm'>
+      <div align=center>
+      <table border=1 cellspacing=0 cellpadding=0 width="100%"
+       style='width:100.0%;mso-cellspacing:0cm;mso-padding-alt:0cm 0cm 0cm 0cm'>
+       <tr style='height:23.45pt'>
+        <td width=247 style='width:185.25pt;border:solid white .25pt;
+        border-left:solid white .75pt;background:#D1D7DC;padding:0cm 0cm 0cm 0cm;
+        height:23.45pt'>
+        <h1><span style='font-family:Verdana'>IAR Workspace <o:p></o:p></span></h1>
+        </td>
+        <td width=388 style='width:291.0pt;border:solid white .25pt;border-left:
+        solid white .75pt;background:#D1D7DC;padding:0cm 0cm 0cm 0cm;
+        height:23.45pt'>
+        <h1><span style='font-size:10.0pt;font-family:Verdana'>Description<o:p></o:p></span></h1>
+        </td>
+       </tr>
+       <tr>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span class=style11><span style='font-size:10.0pt;
+        font-family:Verdana'>RAM_Debug</span></span><span style='font-family:
+        Verdana'><o:p></o:p></span></p>
+        </td>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span style='font-size:10.0pt;font-family:Verdana;
+        color:black'>RAM application for debug (All code and data are located in
+        RAM)<o:p></o:p></span></p>
+        </td>
+       </tr>
+       <tr>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span class=style11><span style='font-size:10.0pt;
+        font-family:Verdana;color:black'>Flash_Debug</span></span><span
+        style='font-size:8.5pt;font-family:Verdana;color:black'><o:p></o:p></span></p>
+        </td>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span style='font-size:10.0pt;font-family:Verdana;
+        color:black'>Flash application for debug to be loaded using the IAR
+        utility (All located in FLASH at 0x0 without REMAP)<o:p></o:p></span></p>
+        </td>
+       </tr>
+       <tr>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span class=style11><span style='font-size:10.0pt;
+        font-family:Verdana;color:black'>Binary</span></span><span
+        style='font-size:8.5pt;font-family:Verdana;color:black'><o:p></o:p></span></p>
+        </td>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span style='font-size:10.0pt;font-family:Verdana;
+        color:black'>Generate binary output (without flash download)<o:p></o:p></span></p>
+        </td>
+       </tr>
+      </table>
+      </div>
+      <p class=MsoNormal><span style='font-family:Verdana'><o:p></o:p></span></p>
+      </td>
+     </tr>
+    </table>
+    <p class=MsoNormal><span style='font-family:Verdana'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+    <table border=1 cellspacing=0 cellpadding=0 width="100%" bgcolor=white
+     style='width:100.0%;mso-cellspacing:0cm;background:white;border:solid #006699 1.5pt;
+     mso-padding-alt:0cm 0cm 0cm 0cm'>
+     <tr>
+      <td width="100%" style='width:100.0%;border:none;padding:0cm 0cm 0cm 0cm'>
+      <div align=center>
+      <table border=1 cellspacing=1 cellpadding=0 width="100%"
+       style='width:100.0%;mso-cellspacing:.7pt;mso-padding-alt:0cm 0cm 0cm 0cm'>
+       <tr style='height:23.45pt'>
+        <td width=251 style='width:188.25pt;border:solid white .25pt;
+        border-left:solid white .75pt;background:#D1D7DC;padding:0cm 0cm 0cm 0cm;
+        height:23.45pt'>
+        <h1><span style='font-size:10.0pt;font-family:Verdana'>Compilation
+        Files <o:p></o:p></span></h1>
+        </td>
+        <td width=384 style='width:288.0pt;border:solid white .25pt;border-left:
+        solid white .75pt;background:#D1D7DC;padding:0cm 0cm 0cm 0cm;
+        height:23.45pt'>
+        <h1><span style='font-size:10.0pt;font-family:Verdana'>Description<o:p></o:p></span></h1>
+        </td>
+       </tr>
+       <tr>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span lang=FR style='mso-bidi-font-size:10.0pt;
+        font-family:Verdana;mso-ansi-language:FR'>BasicIAR.eww<u1:p></u1:p></span><span
+        style='font-family:Verdana'><o:p></o:p></span></p>
+        </td>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span style='font-size:10.0pt;font-family:Verdana;
+        color:black'>IAR main project file (Workspace)<o:p></o:p></span></p>
+        </td>
+       </tr>
+       <tr>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span class=style11><span style='font-size:10.0pt;
+        font-family:Verdana;color:black'>BasicIAR.ewp</span></span><span
+        style='font-size:8.5pt;font-family:Verdana;color:black'><o:p></o:p></span></p>
+        </td>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span class=style11><span style='font-size:10.0pt;
+        font-family:Verdana;color:black'>IAR workbench project file</span></span><span
+        style='font-size:8.5pt;font-family:Verdana;color:black'><o:p></o:p></span></p>
+        </td>
+       </tr>
+       <tr>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span class=style11><span style='font-size:10.0pt;
+        font-family:Verdana;color:black'>BasicIAR.ewd</span></span><span
+        style='font-size:8.5pt;font-family:Verdana;color:black'><o:p></o:p></span></p>
+        </td>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span class=style11><span style='font-size:10.0pt;
+        font-family:Verdana;color:black'>IAR workbench project file</span></span><span
+        style='font-size:8.5pt;font-family:Verdana;color:black'><o:p></o:p></span></p>
+        </td>
+       </tr>
+       <tr>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span class=style11><span style='font-size:10.0pt;
+        font-family:Verdana;color:black'>resource/</span></span><span
+        style='font-size:8.5pt;font-family:Verdana;color:black'><o:p></o:p></span></p>
+        </td>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><b><span style='mso-bidi-font-size:10.0pt;
+        font-family:Verdana'>Project resource files directory</span></b><span
+        style='font-family:Verdana'> <o:p></o:p></span></p>
+        </td>
+       </tr>
+       <tr>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span class=style11><span style='font-size:10.0pt;
+        font-family:Verdana;color:black'>resource/at91SAM7xxx_FLASH.xcl<u1:p></u1:p></span></span><span
+        style='font-size:8.5pt;font-family:Verdana;color:black'><o:p></o:p></span></p>
+        </td>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span class=style11><span style='font-size:10.0pt;
+        font-family:Verdana;color:black'>Linker file for the FLASH application which
+        defines the memory mapping and sections for the target board<u1:p></u1:p>
+        to application not use the REMAP feature.</span></span><span
+        style='font-size:8.5pt;font-family:Verdana;color:black'><o:p></o:p></span></p>
+        </td>
+       </tr>
+       <tr>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span class=style11><span style='font-size:10.0pt;
+        font-family:Verdana;color:black'>resource/at91SAM7xxxx_RAM.xcl<u1:p></u1:p></span></span><span
+        style='font-size:8.5pt;font-family:Verdana;color:black'><o:p></o:p></span></p>
+        </td>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span class=style11><span style='font-size:10.0pt;
+        font-family:Verdana;color:black'>Linker file for the RAM application
+        which defines the memory mapping and sections for the target board<u1:p></u1:p></span></span><span
+        style='font-size:8.5pt;font-family:Verdana;color:black'><o:p></o:p></span></p>
+        </td>
+       </tr>
+       <tr>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span lang=DE style='mso-bidi-font-size:10.0pt;
+        font-family:Verdana;mso-ansi-language:DE'>resource/SAM7_FLASH.mac<u1:p></u1:p></span><span
+        style='font-family:Verdana'><o:p></o:p></span></p>
+        </td>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span class=style11><span style='font-size:10.0pt;
+        font-family:Verdana;color:black'>Script file for setting the processor
+        before to download and to debug the FLASH application using a JTAG ICE
+        interface<u1:p></u1:p></span></span><span style='font-size:8.5pt;
+        font-family:Verdana;color:black'><o:p></o:p></span></p>
+        </td>
+       </tr>
+       <tr>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span lang=DE style='mso-bidi-font-size:10.0pt;
+        font-family:Verdana;mso-ansi-language:DE'>resource/SAM7_RAM.mac</span><span
+        style='font-family:Verdana'><o:p></o:p></span></p>
+        </td>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span class=style11><span style='font-size:10.0pt;
+        font-family:Verdana;color:black'>Script file for setting the processor
+        before to download and to debug the RAM application using a JTAG ICE interface<u1:p></u1:p></span></span><span
+        style='font-size:8.5pt;font-family:Verdana;color:black'><o:p></o:p></span></p>
+        </td>
+       </tr>
+       <tr>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span lang=DE style='mso-bidi-font-size:10.0pt;
+        font-family:Verdana;mso-ansi-language:DE'>RAM_Debug/<u1:p></u1:p></span><span
+        style='font-family:Verdana'><o:p></o:p></span></p>
+        </td>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><b><span style='mso-bidi-font-size:10.0pt;
+        font-family:Verdana'>IAR object and list directory <u1:p>for the RAM
+        application<u1:p></u1:p></span></b><span style='font-family:Verdana'></u1:p><o:p></o:p></span></p>
+        </td>
+       </tr>
+       <tr>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span lang=DE style='mso-bidi-font-size:10.0pt;
+        font-family:Verdana;mso-ansi-language:DE'>FLASH_Debug/<u1:p></u1:p></span><span
+        style='font-family:Verdana'><o:p></o:p></span></p>
+        </td>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><b><span style='mso-bidi-font-size:10.0pt;
+        font-family:Verdana'>IAR object and list directory for the Flash
+        application<u1:p></u1:p></span></b><span style='font-family:Verdana'><o:p></o:p></span></p>
+        </td>
+       </tr>
+       <tr>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><span lang=DE style='mso-bidi-font-size:10.0pt;
+        font-family:Verdana;mso-ansi-language:DE'>Binary/<u1:p></u1:p></span><span
+        style='font-family:Verdana'><o:p></o:p></span></p>
+        </td>
+        <td style='padding:0cm 0cm 0cm 0cm'>
+        <p class=MsoNormal><b><span style='mso-bidi-font-size:10.0pt;
+        font-family:Verdana'>IAR object and list directory for the binary
+        generation<u1:p></u1:p></span></b><span style='font-family:Verdana'><o:p></o:p></span></p>
+        </td>
+       </tr>
+      </table>
+      </div>
+      <p class=MsoNormal><span style='font-family:Verdana'><o:p></o:p></span></p>
+      </td>
+     </tr>
+    </table>
+    <p class=MsoNormal><span style='font-family:Verdana'><o:p></o:p></span></p>
+    </td>
+   </tr>
+  </table>
+  <p class=MsoNormal><span style='font-size:8.5pt;font-family:Verdana;
+  color:black'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='height:10.5pt'>
+  <td style='border:solid #98AAB1 .75pt;background:white;padding:0cm 0cm 0cm 0cm;
+  height:10.5pt'>
+  <p class=MsoNormal><span style='font-size:8.5pt;font-family:Verdana;
+  color:black'>&nbsp;<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+</div>
+
+</body>
+
+</html>

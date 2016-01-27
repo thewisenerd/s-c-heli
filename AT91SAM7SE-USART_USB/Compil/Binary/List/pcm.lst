@@ -1,0 +1,127 @@
+##############################################################################
+#                                                                            #
+# IAR ARM ANSI C/C++ Compiler V4.31A/W32 EVALUATION    01/Mar/2008  10:19:35 #
+# Copyright 1999-2005 IAR Systems. All rights reserved.                      #
+#                                                                            #
+#    Cpu mode        =  interwork                                            #
+#    Endian          =  little                                               #
+#    Stack alignment =  4                                                    #
+#    Source file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\pcm\pcm.c                  #
+#    Command line    =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\pcm\pcm.c -lC              #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\List\ -o F:\airplane\arm\atmel\AT91SAM7SE51 #
+#                       2_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7 #
+#                       SE-USART_USB\Compil\Binary\Obj\ -z9 --debug          #
+#                       --cpu_mode thumb --endian little --cpu ARM7TDMI      #
+#                       --stack_align 4 --interwork -e --fpu None            #
+#                       --dlib_config "C:\Program Files\IAR                  #
+#                       Systems\Embedded Workbench 4.0                       #
+#                       Evaluation\ARM\LIB\dl4tptinl8n.h" -I                 #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\srcIAR\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR #
+#                       \AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-US #
+#                       ART_USB\Compil\..\src\ -I                            #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\ -I F:\airplane\arm\atmel\AT91SAM7SE512_IAR\ #
+#                       AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USA #
+#                       RT_USB\Compil\..\..\kalman\ -I                       #
+#                       F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\..\..\pcm\ -I F:\airplane\arm\atmel\AT91SAM7SE512_ #
+#                       IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\AT91SAM7SE #
+#                       -USART_USB\Compil\..\..\spi\ -I "C:\Program          #
+#                       Files\IAR Systems\Embedded Workbench 4.0             #
+#                       Evaluation\ARM\INC\"                                 #
+#    List file       =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\List\pcm.lst                                #
+#    Object file     =  F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE51 #
+#                       2-USART_USB-IAR4_31A-1_00\AT91SAM7SE-USART_USB\Compi #
+#                       l\Binary\Obj\pcm.r79                                 #
+#                                                                            #
+#                                                                            #
+##############################################################################
+
+F:\airplane\arm\atmel\AT91SAM7SE512_IAR\AT91SAM7SE512-USART_USB-IAR4_31A-1_00\pcm\pcm.c
+      1          #include <includs.h>
+      2          
+
+   \                                 In segment CODE, align 4, keep-with-next
+      3          void init_translator(void)
+      4          {
+      5            AT91F_PMC_EnablePeriphClock ( AT91C_BASE_PMC, 1 << AT91C_ID_PIOA ) ;
+   \                     init_translator:
+   \   00000000   0B48               LDR         R0,??init_translator_0  ;; 0xfffffc10
+   \   00000002   0421               MOV         R1,#+4
+   \   00000004   0160               STR         R1,[R0, #+0]
+      6            AT91F_PMC_EnablePeriphClock ( AT91C_BASE_PMC, 1 << AT91C_ID_PIOC ) ;
+   \   00000006   1021               MOV         R1,#+16
+   \   00000008   0160               STR         R1,[R0, #+0]
+      7            
+      8            AT91F_PIO_CfgOutput( AT91C_BASE_PIOA, AT91C_PIO_PA0|AT91C_PIO_PA1);
+   \   0000000A   0320               MOV         R0,#+3
+   \   0000000C   0949               LDR         R1,??init_translator_0+0x4  ;; 0xfffff400
+   \   0000000E   0860               STR         R0,[R1, #+0]
+   \   00000010   0949               LDR         R1,??init_translator_0+0x8  ;; 0xfffff410
+   \   00000012   0860               STR         R0,[R1, #+0]
+      9            
+     10             AT91F_PIO_CfgOutput( AT91C_BASE_PIOC, AT91C_PIO_PC0|AT91C_PIO_PC1|
+     11                                 AT91C_PIO_PC2|AT91C_PIO_PC3) ;
+   \   00000014   0F20               MOV         R0,#+15
+   \   00000016   0949               LDR         R1,??init_translator_0+0xC  ;; 0xfffff800
+   \   00000018   0860               STR         R0,[R1, #+0]
+   \   0000001A   0949               LDR         R1,??init_translator_0+0x10  ;; 0xfffff810
+   \   0000001C   0860               STR         R0,[R1, #+0]
+     12             AT91F_PIO_SetOutput( AT91C_BASE_PIOC,AT91C_PIO_PC0);
+   \   0000001E   0120               MOV         R0,#+1
+   \   00000020   0849               LDR         R1,??init_translator_0+0x14  ;; 0xfffff830
+   \   00000022   0860               STR         R0,[R1, #+0]
+     13             AT91F_PIO_ClearOutput( AT91C_BASE_PIOC, AT91C_PIO_PC1|AT91C_PIO_PC2|AT91C_PIO_PC3);  
+   \   00000024   0849               LDR         R1,??init_translator_0+0x18  ;; 0xfffff834
+   \   00000026   0E22               MOV         R2,#+14
+   \   00000028   0A60               STR         R2,[R1, #+0]
+     14             
+     15             CDREST;
+   \   0000002A   0849               LDR         R1,??init_translator_0+0x1C  ;; 0xfffff434
+   \   0000002C   0860               STR         R0,[R1, #+0]
+     16          }
+   \   0000002E   7047               BX          LR                 ;; return
+   \                     ??init_translator_0:
+   \   00000030   10FCFFFF           DC32        0xfffffc10
+   \   00000034   00F4FFFF           DC32        0xfffff400
+   \   00000038   10F4FFFF           DC32        0xfffff410
+   \   0000003C   00F8FFFF           DC32        0xfffff800
+   \   00000040   10F8FFFF           DC32        0xfffff810
+   \   00000044   30F8FFFF           DC32        0xfffff830
+   \   00000048   34F8FFFF           DC32        0xfffff834
+   \   0000004C   34F4FFFF           DC32        0xfffff434
+     17          
+     18          
+     19          
+
+   Maximum stack usage in bytes:
+
+     Function        CSTACK
+     --------        ------
+     init_translator     0
+
+
+   Segment part sizes:
+
+     Function/Label  Bytes
+     --------------  -----
+     init_translator   80
+      Others            8
+
+ 
+ 88 bytes in segment CODE
+ 
+ 80 bytes of CODE memory (+ 8 bytes shared)
+
+Errors: none
+Warnings: none
